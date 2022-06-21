@@ -27,3 +27,19 @@ This is my team.
 - Our team can create frontend and link to backend
 - My team can generate receipts which can calculate xxx
 - You can view demo project by clicking this [link](http://18.136.199.111/)
+
+### Getting start with Create React App
+
+This project was bootstrapped with [Create React App](https://github.com/bobow22/Flowaccount).
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
