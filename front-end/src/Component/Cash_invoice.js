@@ -7,10 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Cash_invoice() {
 
 
-    
-
-
-
 
   return (<>
     <div className="Header">
