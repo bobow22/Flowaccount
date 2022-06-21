@@ -1,4 +1,6 @@
-<img src="" />
+<div align="center">
+  <img src="https://github.com/bobow22/Flowaccount/blob/main/img/logo.png?raw=true" >
+</div>
 
 # FlowAccount receipt generator
 
