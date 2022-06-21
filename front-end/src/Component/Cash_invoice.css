@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200&display=swap');
+
+.Header{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.Header h1{
+    font-size: 35px;
+    font-family: 'Kanit', sans-serif;
+    border: 1px solid red;
+}
+
+img{
+    /* object-fit: cover; */
+    height: 30%;
+    width: 30%;
+    border: 1px solid red;
+}
+
+.Btn_Header{
+    border: 1px solid red;
+    padding-top: 25px;
+}
+
+.Btn_Header Button{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'Kanit', sans-serif;
+}
+
+
+
+
+.Content{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 2px solid rgb(255, 187, 0);
+    margin-top: 30px;
+}
+
+.Btn_and_PDF{
+    /* border: 1px solid rgb(17, 0, 255); */
+}
+
+.PDF{
+    text-align: center;
+    border-top: 1px solid rgb(230, 230, 230);
+    border-left: 1px solid rgb(230, 230, 230);
+    border-right: 2.8px solid rgb(187, 187, 187);
+    border-bottom: 2.8px solid rgb(187, 187, 187);
+    margin-top: 30px;
+    padding: 5rem;
+}
+
+.receipt{
+    font-family: 'Kanit', sans-serif;
+}
+
+.receipt h3{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+.my_company{
+    border-bottom: 1px solid rgb(136, 136, 136);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+.my_company p{
+    border: 1px solid red;
+}
+
+.customer_company{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    border: 1px solid rgb(81, 255, 0);
+}
+
+.description{
+    border: 2px solid yellowgreen;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.summary{
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    font-size: 15px;
+    /* border: 2px solid red; */
+}
+
+
+.summary p{
+    border: 2px solid yellowgreen;
+}
+
+.result{
+ margin-left: 20px;
+}
+
+
+.PDF_img_footer{
+    margin-top: 20px;
+    width: 25%;
+}
+
+
+
+.PDF img{
+    width:100%;
+}
+
+.Text_explain_procedure{
+    border: 1px solid red;
+    margin-left: 25px;
+}
+
+.Text_explain_procedure h2{
+    font-size: 30px;
+    font-family: 'Kanit', sans-serif;
+    border: 1px solid rgb(199, 196, 0);
+}
+
+.Text_explain_procedure p{
+    font-family: 'Kanit', sans-serif;
+    font-size: 25px;
+}
+
+.Text_explain_procedure p span{
+    margin-left: 10px;
+}
+
+.Btn_Content Button{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'Kanit', sans-serif;
+}
+
+
+
+
+/* .button-1{
+    background-color: #5ec3fd;
+    border-radius: 5px;
+    border-style: none;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    width: 50%;
+}
+
+.button-1:hover {
+    background-color: #46aeeb;
+    box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+} */
+
+
+
+/* CSS */
+.button-65 {
+    appearance: none;
+    backface-visibility: hidden;
+    background-color: #5ec3fd;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    height: 50px;
+    letter-spacing: normal;
+    line-height: 1.5;
+    outline: none;
+    overflow: hidden;
+    padding: 10px 20px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transform: translate3d(0, 0, 0);
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+  
+  .button-65:hover {
+    background-color: #46aeeb;
+    box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+  }
+  
+  .button-65:hover:after {
+    opacity: .5;
+  }
+  
+  .button-65:active {
+    box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
+    transform: translateY(2px);
+    transition-duration: .35s;
+  }
+  
+  .button-65:active:after {
+    opacity: 1;
+  }
+
+@media (min-width: 768px) {
+  .button-65 {
+    padding: 14px 22px;
+    width: 176px;
+  }
+}
+
+
+
+.Sub_Footer{
+    /* border: 2px solid yellowgreen; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 30px;
+}
+
+
+.Sub_Footer{
+    background-color: rgb(243, 243, 243);
+    width: 65%;
+    font-family: 'Prompt', sans-serif;
+    color: rgb(56, 56, 56);
+    display: flex;
+    justify-content: center;
+    /* border: 2px solid yellowgreen; */
+    margin-bottom: 30px;
+    margin-top: 50px
+}
+
+.Sub_Footer Button{
+    margin-top: 12px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'Kanit', sans-serif;
+}
+
+.Sub_Footer h2{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+
+
+/*--------------- Responsive Web Design - Media Queries --------------------*/
+@media screen and (max-width: 1075px) {
+    .Sub_Footer{
+        background-color: rgb(243, 243, 243);
+        width: 60%;
+        font-family: 'Prompt', sans-serif;
+        color: rgb(56, 56, 56);
+        display: flex;
+        justify-content: center;
+        /* border: 2px solid yellowgreen; */
+    }
+
+    .Sub_Footer h2{
+        margin-left: 10px;
+    }
+
+    .Sub_Footer Button{
+        margin-top: 1px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        font-family: 'Kanit', sans-serif;
+        /* border: 2px solid yellowgreen; */
+    }
+}
+
+

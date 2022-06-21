@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/*----------------------------------Log in-------------------------------*/
+/* body{
+    background-color: rgb(71, 192, 240);
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+  } */
+  
+  
+  .button-37 {
+    background-color: rgb(55, 174, 221);
+    border: 1px solid rgb(55, 174, 221);
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    outline: none;
+    outline: 0;
+    padding: 10px 25px;
+    text-align: center;
+    transform: translateY(0);
+    transition: transform 150ms, box-shadow 150ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 100%;
+  }
+  
+  .button-37:hover {
+    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+    transform: translateY(-2px);
+  }
+  
+  @media (min-width: 768px) {
+    .button-37 {
+      padding: 10px 30px;
+    }
+  }
+  
+  .Form_Login{
+    border-radius: 6px;
+    margin: auto;
+    width: 70%;
+    padding: 1rem;
+    display: 'flex';
+    justify-content: center;
+    flex-wrap: 'wrap';
+    background-color: white;
+    /* border: 2px solid rgb(132, 134, 21); */
+  }
+  
+  .Form_Login p{
+    color: rgb(68, 68, 68);
+  }
+  
+  .form__input{
+    border: 1.5px solid rgb(212, 212, 212);
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 10px;
+    width: 94%;
+  }
+  
+  .Form{
+    padding: 1rem;
+    /* border: 2px solid rgb(59, 13, 165); */
+  }
+  
+  .Form p span {
+    color: rgb(13, 143, 230);
+    font-size: 12px;
+    
+  }
+  
+  .Form p{
+    font-size: 12px;
+  }
+  
+
+  .image_header{
+    text-align: center;
+    /* border: 2px solid rgb(59, 13, 165); */
+  }
+  
+  .image_header h2{
+    color: rgb(23, 164, 230);;
+    font-size: 20px;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  .image_header h2 span{
+    color: rgb(105, 105, 105);
+    font-size: 18px;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  .image_header img{
+    margin-top: 10px;
+    object-fit: cover;
+    width: 40%
+  }
+  
+  .form_text{
+    text-align: center;
+  }
+  
+  .animate-bottom{
+    /* border: 2px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+
+  .FlowAccount_Co{
+    /* border: 2px solid rgb(59, 13, 165); */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #fff;
+    font-size: 13px;
+    margin: auto;
+    width: 75%;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  .FlowAccount_Co p span{
+    margin-left: 10px;
+  }
+
+
+
+  /*Pen code from this point on*/
+.btn {
+  width: 45%;
+  clear:both;
+  white-space:nowrap;
+  font-size:.8em;
+  display:flex;
+  border-radius:5px;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.35);
+  margin:2px;
+  -webkit-transition:all .5s;
+  -moz-transition:all .5s;
+  transition:all .5s;
+  overflow:hidden
+}
+
+.btn:hover {
+  box-shadow: 0 5px 15px 0 rgba(109, 109, 109, 0.45);
+}
+
+.btn:focus {
+  box-shadow: 0 3px 10px 0 rgba(109, 109, 109, 0.45);
+}
+
+.btn > span,.btn-icon > i {
+  float:left;
+  padding:13px;
+  -webkit-transition:all .5s;
+  -moz-transition:all .5s;
+  transition:all .5s;
+  line-height:1em
+}
+
+.btn > span {
+  padding:14px 18px 16px;
+  white-space:nowrap;
+  color:#FFF;
+  background:#b8b8b8
+}
+
+.btn:focus > span {
+  background:#9a9a9a
+}
+
+.btn-icon > i {
+  border-radius:5px 0 0 5px;
+  position:relative;
+  width:13px;
+  text-align:center;
+  font-size:1.25em;
+  color:#fff;
+  background:#212121
+}
+
+.btn-icon > i:after {
+  content:"";
+  border:8px solid;
+  border-color:transparent transparent transparent #222;
+  position:absolute;
+  top:13px;
+  right:-15px
+}
+
+.btn-icon:hover > i,.btn-icon:focus > i {
+  color:#FFF
+}
+
+.btn-icon > span {
+  border-radius:0 5px 5px 0
+}
+
+/*Facebook*/
+.btn-facebook:hover > i,.btn-facebook:focus > i {
+  color:#3b5998
+}
+
+.btn-facebook > span {
+  background:#3b5998;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+/*Google*/
+.btn-googleplus:hover > i,.btn-googleplus:focus > i {
+  color:#dd4b39
+}
+
+.btn-googleplus > span {
+  background:#dd4b39;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+
+  
+
+
+
+
+
+/*--------------- Responsive Web Design - Media Queries --------------------*/
+@media screen and (max-width: 750px) {
+
+    body{
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        justify-content: center;
+    }
+
+    .Form_Register{
+        margin: auto;
+        width: 70%;
+        padding: 1rem;
+        display: 'flex';
+        justify-content: center;
+        flex-wrap: 'wrap';
+        background-color: white;
+        /* border: 2px solid rgb(132, 134, 21); */
+      }
+
+      .image_header img{
+        margin-top: 10px;
+        object-fit: cover;
+        position: relative;
+        width: 60%
+      }
+
+      .FlowAccount_Co p{
+        color: rgb(51, 51, 51);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin: auto;
+        width: 65%;
+      }
+
+      .FlowAccount_Co span{
+        margin-left: 10px;
+      }
+
+      .btn span{
+        width: 40%;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .btn-facebook > span {
+        width: 100%;
+        text-align: center;
+      }
+
+      .btn-googleplus > span {
+        width: 100%;
+        text-align: center;
+      }
+}
+
+
+@media screen and (max-width: 700px) {
+    .FlowAccount_Co p{
+        margin: auto;
+        width: 65%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+}
+
+
+@media screen and (max-width: 650px) {
+    .FlowAccount_Co p{
+        margin: auto;
+        width: 80%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        margin: auto;
+      }
+
+      .btn-facebook > span {
+        width: 100%;
+        margin: auto;
+      }
+
+      .btn-facebook{
+        margin-bottom: 10px;
+      }
+
+      .btn-googleplus > span {
+        width: 100%;
+        margin: auto;
+      }
+
+      .btn-icon > i {
+        display: none;
+      }
+      
+      .btn-icon > i:after {
+        display: none;
+      } 
+}
+
+@media screen and (max-width: 528px) {
+    .FlowAccount_Co p {
+        /* border: 1px solid red; */
+        margin: auto;
+        width: 85%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+}

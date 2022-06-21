@@ -1,0 +1,128 @@
+/* 
+body{
+  background-color: rgb(63, 143, 235);
+  display: flex;
+  justify-content: center;
+}
+
+
+.button-37 {
+  background-color: #7ac913f5;
+  border: 1px solid #7ac913f5;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+}
+
+.button-37:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .button-37 {
+    padding: 10px 30px;
+  }
+}
+
+.Form_Register{
+  border-radius: 6px;
+  margin: auto;
+  width: 60%;
+  padding: 1rem;
+  display: 'flex';
+  justify-content: center;
+  flex-wrap: 'wrap';
+  background-color: white;
+  border: 2px solid rgb(132, 134, 21);
+}
+
+.Form_Register p{
+  color: rgb(68, 68, 68);
+}
+
+.form__input{
+  border: 1.5px solid rgb(212, 212, 212);
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 10px;
+  width: 94%;
+}
+
+.Form{
+  padding: 1rem;
+  border: 2px solid rgb(59, 13, 165);
+}
+
+.Form p span {
+  color: rgb(13, 143, 230);
+  font-size: 12px;
+  
+}
+
+.Form p{
+  font-size: 12px;
+}
+
+
+.image_header{
+  text-align: center;
+  border: 2px solid rgb(59, 13, 165);
+}
+
+.image_header h2{
+  color: rgb(23, 164, 230);;
+  font-size: 20px;
+  font-family: 'Prompt', sans-serif;
+}
+
+.image_header h3{
+  color: rgb(105, 105, 105);
+  font-size: 18px;
+  font-family: 'Prompt', sans-serif;
+}
+
+.image_header img{
+  margin-top: 10px;
+  object-fit: cover;
+  width: 40%
+  
+}
+
+.form_text{
+  text-align: center;
+}
+
+.animate-bottom{
+  border: 2px solid red;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+} */
+
+
+
+
+
+
+
+
+
+
+
+
