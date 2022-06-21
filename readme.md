@@ -1,3 +1,5 @@
+<img src="" />
+
 # FlowAccount receipt generator
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga unde aliquam maiores aspernatur esse ex voluptate, repellendus quidem deleniti est eveniet beatae. Odio facere rerum, at amet fuga hic officiis, maiores sapiente eum impedit labore, reiciendis cum rem quam saepe!
