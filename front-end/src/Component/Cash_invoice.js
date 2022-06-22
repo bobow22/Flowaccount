@@ -1,5 +1,4 @@
 import React from 'react'
-import { Button } from 'antd';
 import '../Component/Cash_invoice.css';
 import { SiVerizon } from "react-icons/si";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,60 +8,74 @@ export default function Cash_invoice() {
 
 
   return (<>
+
+
+    {/* -----------------------------------------Header----------------------------------------------- */}
     <div className="Header">
-        <img src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png" />
+
+        <img className='Heade_img' src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png" />
+
+
         <h1>สร้างใบเสร็จรับเงิน</h1>
         
         <div className="Btn_Header">
-            <Button type="primary" htmlType="submit" className='button-65'>ทดลองใช้งานฟรี</Button>
-            <Button type="primary" htmlType="submit" className='button-65'>ลงชื่อเข้าใช้งาน</Button>
+            <button type="primary" htmlType="submit" className='button-65'>ทดลองใช้งานฟรี</button>
+            <button type="primary" htmlType="submit" className='button-65'>ลงชื่อเข้าใช้งาน</button>
         </div>
     </div>
 
 
+
+
+    {/* -----------------------------------------Content----------------------------------------------- */}
     <div className="Content">
             <div className="Btn_and_PDF">
 
                 <div className='Btn_Content'>
-                    <Button type="primary" htmlType="submit"  className='button-65'>ส่ง</Button>
-                    <Button type="primary" htmlType="submit"  className='button-65'>บันทึก</Button>
-                    <Button type="primary" htmlType="submit"  className='button-65'>รับ PDF</Button>
-                    <Button type="primary" htmlType="submit"  className='button-65'>พิมพ์</Button>
+                    <button type="submit" className='button-1'>ส่ง</button>
+                    <button type="submit" className='button-1'>บันทึก</button>
+                    <button type="submit" className='button-1'>รับ PDF</button>
+                    <button type="submit" className='button-1'>พิมพ์</button>
                 </div>
 
 
-
-                <div className="PDF">
+                <div className="PDF" style={{marginTop: '25px'}}>
 
                     {/* <img src='https://edit.org/images/cat/invoices-big-2019042509.jpg'/> */}
                     <div className="receipt">
                         <h3>ใบเสร็จรับเงิน</h3>
 
                         
-                        <div className='my_company'>
-                            <p>ชื่อบริษัท:
-                                <span><br/>ชื่อ:</span>
-                                <span><br/>ที่อยู่:</span>
-                                <span><br/>เลขประจำตัวผู้เสียภาษี:</span>
-                            </p>
+                        <div className='my_company' style={{fontSize: '13px',textAlign: 'left'}}>
 
-                            <p>วันที่:
-                                <span><br/>เลขที่:</span>
-                                <span><br/>ผู้ขาย:</span>
-                                <span><br/>ครบกำหนด:</span>
-                            </p>
+                            <div>
+                                <p>ชื่อบริษัท: <input type="text" />
+                                    <span><br/>ชื่อ:  <input type="text" /></span>
+                                    <span><br/>ที่อยู่: <input type="text" /></span>
+                                    <span><br/>เลขประจำตัวผู้เสียภาษี: <input type="text" /></span>
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <p>วันที่: <input type="text" />
+                                    <span><br/>เลขที่: <input type="text" /></span>
+                                    <span><br/>ผู้ขาย: <input type="text" /></span>
+                                    <span><br/>ครบกำหนด: <input type="text" /></span>
+                                </p>
+                            </div>
+
                         </div>
                         
 
-                        <div className='customer_company'>
-                            <p>ชื่อบริษัทลูกค้า:
-                                <span><br/>ชื่อลูกค้า:</span>
-                                <span><br/>ที่อยู่ลูกค้า:</span>
-                                <span><br/>เลขประจำตัวผู้เสียภาษี:</span>
+                        <div className='customer_company' style={{fontSize: '13px', textAlign: 'left'}}>
+                            <p>ชื่อบริษัทลูกค้า: <input type="text" />
+                                <span><br/>ชื่อลูกค้า: <input type="text" /></span>
+                                <span><br/>ที่อยู่ลูกค้า: <input type="text" /></span>
+                                <span><br/>เลขประจำตัวผู้เสียภาษี: <input type="text" /></span>
                             </p>
                         </div>
 
-                        <div className="description">
+                        <div className="description" style={{fontSize: '13px'}}>
                             <p>ชื่องาน:</p>
 
                             <table class="table">
@@ -87,39 +100,46 @@ export default function Cash_invoice() {
                                     </tr>
 
                                     <tr>
-                                        <td>2</td>
-                                        <td>ชื่อสินค้า</td>
-                                        <td>1</td>
-                                        <td>ชิ้น</td>
-                                        <td>100.00</td>
-                                        <td>100.00</td>
+                                        {/* <td><input type="text" /></td>
+                                        <td><input type="text" /></td>
+                                        <td><input type="text" /></td>
+                                        <td><input type="text" /></td>
+                                        <td><input type="text" /></td>
+                                        <td><input type="text" /></td> */}
                                     </tr>
 
                                     <tr>
-                                        <td>+ เพิ่มแถวรายการ</td>
+                                        <button type="button">+ เพิ่มแถวรายการ</button>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
 
-                        <div className='summary'>
-                            <p>รวมเป็นเงิน:   <span className='result'>105</span>
-                                <span><br/>ส่วนลด 5%</span>         <span className='result'>105</span>
-                                <span><br/>ราคาหลังหักส่วนลด</span>   <span className='result'>105</span>
-                                <span><br/>ภาษีมูลค่าเพิ่ม 7%</span>    <span className='result'>105</span>
-                                <span><br/>จำนวนเงินรวมทั้งสิ้น</span>   <span className='result'>10,500.00</span>
+                        <div className='summary' style={{fontSize: '13px', textAlign: 'left'}}>
+                            <p>รวมเป็นเงิน:   <span className='result'><td><input type="text" /></td></span>
+                                <span><br/>ส่วนลด 5%</span>         
+                                    <span className='result'><td><input type="text" /></td></span>
+                                
+                                <span><br/>ราคาหลังหักส่วนลด</span>   
+                                    <span className='result'><td><input type="text" /></td></span>
+                                
+                                <span><br/>ภาษีมูลค่าเพิ่ม 7%</span>    
+                                    <span className='result'><td><input type="text" /></td></span>
+                                
+                                <span><br/>จำนวนเงินรวมทั้งสิ้น</span>   
+                                    <span className='result'><td><input type="text" /></td></span>
                             </p>
                         </div>
                         
                         
-                        <div className='PDF_img_footer'>
+                        <div className='PDF_img_footer' >
                             <img src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png" />
                         </div>
 
+
                     </div>
                  
-
                 </div>
             </div>
 
@@ -133,14 +153,19 @@ export default function Cash_invoice() {
             </div>
     </div>
 
+
+
+    {/* -----------------------------------------Footer----------------------------------------------- */}
     <div className='Footer'>
         <div className='Sub_Footer'>
+
             <h2>ทดลองใช้โปรเเกรมบัญชี FlowAccount</h2>
 
             <div className='Btn_Footer'>
-                <Button type="primary" htmlType="submit" className='button-65'>สมัครใช้งาน</Button>
-                <Button type="primary" htmlType="submit" className='button-65'>ติดต่อเรา</Button>
+                <button type="primary" htmlType="submit" className='button-65'>สมัครใช้งาน</button>
+                <button type="primary" htmlType="submit" className='button-65'>ติดต่อเรา</button>
             </div>
+
         </div>
     </div>
     
