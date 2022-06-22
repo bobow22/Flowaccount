@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function Cash_invoice() {
 
 
+
   return (<>
 
 
@@ -13,6 +14,7 @@ export default function Cash_invoice() {
     <div className="Header">
 
         <img className='Heade_img' src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png" />
+
 
         <h1>สร้างใบเสร็จรับเงิน</h1>
         
