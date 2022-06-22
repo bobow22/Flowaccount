@@ -19,8 +19,9 @@ export default function Cash_invoice() {
         <h1>สร้างใบเสร็จรับเงิน</h1>
         
         <div className="Btn_Header">
-            <button type="primary" htmlType="submit" className='button-65'>ทดลองใช้งานฟรี</button>
-            <button type="primary" htmlType="submit" className='button-65'>ลงชื่อเข้าใช้งาน</button>
+            <button type="primary" htmlType="submit" className='button-65'><a style={{color: 'white', textDecoration: 'none'}} href="https://flowaccount.com/">ทดลองใช้งานฟรี</a></button>
+
+            <button type="primary" htmlType="submit" className='button-65'><a style={{color: 'white', textDecoration: 'none'}} href="https://auth.flowaccount.com/">ลงชื่อเข้าใช้งาน</a></button>
         </div>
     </div>
 
@@ -162,8 +163,9 @@ export default function Cash_invoice() {
             <h2>ทดลองใช้โปรเเกรมบัญชี FlowAccount</h2>
 
             <div className='Btn_Footer'>
-                <button type="primary" htmlType="submit" className='button-65'>สมัครใช้งาน</button>
-                <button type="primary" htmlType="submit" className='button-65'>ติดต่อเรา</button>
+                <button type="primary" htmlType="submit" className='button-65'><a style={{color: 'white', textDecoration: 'none'}} href="https://auth.flowaccount.com/th/Account/Register">สมัครใช้งาน</a></button>
+
+                <button type="primary" htmlType="submit" className='button-65'><a style={{color: 'white', textDecoration: 'none'}} href="https://flowaccount.com/">ติดต่อเรา</a></button>
             </div>
 
         </div>
