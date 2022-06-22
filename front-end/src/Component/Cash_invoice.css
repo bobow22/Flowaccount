@@ -98,6 +98,10 @@
     border: none;
 }
 
+.input2{
+    padding-left: 14px;
+}
+
 .customer_company{
     margin-top: 20px;
     display: flex;

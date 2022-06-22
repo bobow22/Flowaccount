@@ -58,7 +58,6 @@ export default function Cash_invoice() {
                             
                             <div>
                                 <p>วันที่: <input type="text" />
-                                    <span><br/>เลขที่: <input type="text" /></span>
                                     <span><br/>ผู้ขาย: <input type="text" /></span>
                                     <span><br/>ครบกำหนด: <input type="text" /></span>
                                 </p>
@@ -78,8 +77,8 @@ export default function Cash_invoice() {
                         <div className="description" style={{fontSize: '13px'}}>
                             <strong>ชื่องาน:</strong>
 
-                            <table class="table">
-                                <thead class="thead-dark">
+                            <table className="table">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th>ลำดับ</th>
                                         <th>ชื่อสินค้า/รายละเอียด</th>
@@ -104,15 +103,51 @@ export default function Cash_invoice() {
                                         <td><input type="text" placeholder="ชื่อสินค้า"/></td>
                                         <td><input type="text" placeholder="1"/></td>
                                         <td><select id="unit" name="unit">
-                                                <option value="volvo">ชิ้น</option>
-                                                <option value="saab">ตัว</option>
+                                                <option value="piece">ชิ้น</option>
+                                                <option value="item">ตัว</option>
                                             </select></td>
                                         <td><input type="text" placeholder="100.00"/></td>
-                                        <td><input type="text" placeholder="100.00"/></td>
+                                        <td><input type="text" placeholder="00.00"/></td>
                                     </tr>
 
                                     <tr>
-                                        <button type="button">+ เพิ่มแถวรายการ</button>
+                                        <td><input type="text" placeholder="2"/></td>
+                                        <td><input type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="text" placeholder="1"/></td>
+                                        <td><select id="unit" name="unit">
+                                                <option value="piece">ชิ้น</option>
+                                                <option value="item">ตัว</option>
+                                            </select></td>
+                                        <td><input type="text" placeholder="100.00"/></td>
+                                        <td><input type="text" placeholder="00.00"/></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><input type="text" placeholder="3"/></td>
+                                        <td><input type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="text" placeholder="1"/></td>
+                                        <td><select id="unit" name="unit">
+                                                <option value="piece">ชิ้น</option>
+                                                <option value="item">ตัว</option>
+                                            </select></td>
+                                        <td><input type="text" placeholder="100.00"/></td>
+                                        <td><input type="text" placeholder="00.00"/></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><input type="text" placeholder="4"/></td>
+                                        <td><input type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="text" placeholder="1"/></td>
+                                        <td><select id="unit" name="unit">
+                                                <option value="piece">ชิ้น</option>
+                                                <option value="item">ตัว</option>
+                                            </select></td>
+                                        <td><input type="text" placeholder="100.00"/></td>
+                                        <td><input type="text" placeholder="00.00"/></td>
+                                    </tr>
+
+                                    <tr>
+                                        <button type="button"><a href="https://sandbox-new.flowaccount.com/N732809/business/receipts">+เพิ่มแถวรายการ</a></button>
                                     </tr>
                                 </tbody>
                             </table>
