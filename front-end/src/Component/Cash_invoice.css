@@ -123,8 +123,9 @@
 }
 
 .description input{
-    border: 1px solid rgb(255, 54, 54);
+    border: 1px solid #DDD9D3;
     width: 50%;
+    text-align: center;
 }
 
 
@@ -139,6 +140,7 @@
 
 .summary p{
     /* border: 2px solid yellowgreen; */
+    text-align: left;
 }
 
 .summary input{
@@ -147,6 +149,12 @@
 
 .result{
  margin-left: 20px;
+}
+
+
+.result input{
+    text-align: right;
+    width: 100px
 }
 
 
@@ -189,6 +197,7 @@
     margin-right: 10px;
     font-family: 'Kanit', sans-serif;
 }
+
 
 
 

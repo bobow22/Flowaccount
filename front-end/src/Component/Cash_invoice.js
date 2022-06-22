@@ -76,7 +76,7 @@ export default function Cash_invoice() {
                         </div>
 
                         <div className="description" style={{fontSize: '13px'}}>
-                            <p>ชื่องาน:</p>
+                            <strong>ชื่องาน:</strong>
 
                             <table class="table">
                                 <thead class="thead-dark">
@@ -85,27 +85,30 @@ export default function Cash_invoice() {
                                         <th>ชื่อสินค้า/รายละเอียด</th>
                                         <th>จำนวน</th>
                                         <th>หน่วย</th>
-                                        <th>ราคาต่อหร่วย</th>
+                                        <th>ราคาต่อหน่วย</th>
                                         <th>ราคารวม</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {/* <tr>
                                         <td>1</td>
                                         <td>ชื่อสินค้า</td>
                                         <td>1</td>
                                         <td>ชิ้น</td>
                                         <td>100.00</td>
                                         <td>100.00</td>
-                                    </tr>
+                                    </tr> */}
 
                                     <tr>
-                                        {/* <td><input type="text" /></td>
-                                        <td><input type="text" /></td>
-                                        <td><input type="text" /></td>
-                                        <td><input type="text" /></td>
-                                        <td><input type="text" /></td>
-                                        <td><input type="text" /></td> */}
+                                        <td><input type="text" placeholder="1"/></td>
+                                        <td><input type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="text" placeholder="1"/></td>
+                                        <td><select id="unit" name="unit">
+                                                <option value="volvo">ชิ้น</option>
+                                                <option value="saab">ตัว</option>
+                                            </select></td>
+                                        <td><input type="text" placeholder="100.00"/></td>
+                                        <td><input type="text" placeholder="100.00"/></td>
                                     </tr>
 
                                     <tr>
