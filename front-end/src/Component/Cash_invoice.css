@@ -152,7 +152,8 @@
 }
 
 .description input{
-    border: 1px solid #DDD9D3;
+    outline: none;
+    border: none;
     width: 50%;
     /* text-align: center; */
 }

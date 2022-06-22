@@ -95,10 +95,7 @@ export default function Cash_invoice() {
                                         <td><input style={{textAlign: "left"}} type="text" placeholder="1"/></td>
                                         <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
                                         <td><input type="text" placeholder="1"/></td>
-                                        <td><select id="unit" name="unit">
-                                                <option value="piece">ชิ้น</option>
-                                                <option value="item">ตัว</option>
-                                            </select></td>
+                                        <td><input type="text" placeholder="ชิ้น"/></td>
                                         <td><input type="text" placeholder="100.00"/></td>
                                         <td><input type="text" placeholder="100.00"/></td>
                                     </tr>
@@ -107,10 +104,7 @@ export default function Cash_invoice() {
                                         <td><input style={{textAlign: "left"}} type="text" placeholder="2"/></td>
                                         <td><input style={{textAlign: "left"}}type="text" placeholder="ชื่อสินค้า"/></td>
                                         <td><input type="text" placeholder="1"/></td>
-                                        <td><select id="unit" name="unit">
-                                                <option value="piece">ชิ้น</option>
-                                                <option value="item">ตัว</option>
-                                            </select></td>
+                                        <td><input type="text" placeholder="ตัว"/></td>
                                         <td><input type="text" placeholder="0.00"/></td>
                                         <td><input type="text" placeholder="0.00"/></td>
                                     </tr>
@@ -119,10 +113,7 @@ export default function Cash_invoice() {
                                         <td><input style={{textAlign: "left"}} type="text" placeholder="3"/></td>
                                         <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
                                         <td><input type="text" placeholder="1"/></td>
-                                        <td><select id="unit" name="unit">
-                                                <option value="piece">ชิ้น</option>
-                                                <option value="item">ตัว</option>
-                                            </select></td>
+                                        <td><input type="text" placeholder="ตัว"/></td>
                                         <td><input type="text" placeholder="0.00"/></td>
                                         <td><input type="text" placeholder="0.00"/></td>
                                     </tr>
@@ -131,10 +122,7 @@ export default function Cash_invoice() {
                                         <td><input style={{textAlign: "left"}} type="text" placeholder="4"/></td>
                                         <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
                                         <td><input type="text" placeholder="1"/></td>
-                                        <td><select id="unit" name="unit">
-                                                <option value="piece">ชิ้น</option>
-                                                <option value="item">ตัว</option>
-                                            </select></td>
+                                        <td><input type="text" placeholder="ตัว"/></td>
                                         <td><input type="text" placeholder="0.00"/></td>
                                         <td><input type="text" placeholder="0.00"/></td>
                                     </tr>
