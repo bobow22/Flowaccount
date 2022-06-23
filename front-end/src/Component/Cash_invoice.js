@@ -33,9 +33,9 @@ export default function Cash_invoice() {
 
                 <div className='Btn_Content'>
                     <button type="submit" className='button-1'>ส่ง</button>
-                    <button type="submit" className='button-1'>บันทึก</button>
-                    <button type="submit" className='button-1'>รับ PDF</button>
-                    <button type="submit" className='button-1'>พิมพ์</button>
+                    <button type="submit" className='button-2'>บันทึก</button>
+                    <button type="submit" className='button-2'>รับ PDF</button>
+                    <button type="submit" className='button-2'>พิมพ์</button>
                 </div>
 
 
