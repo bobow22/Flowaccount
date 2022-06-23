@@ -4,7 +4,9 @@ const querystring = require("querystring");
 var cors = require("cors");
 
 const app = express();
-app.use(cors({ credentials: true, origin: true }));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   const requestBody = {
@@ -56,11 +58,38 @@ app.get("/", (req, res) => {
   //   });
 });
 
-app.post("/post-receipt", async (req, res) => {
-  axios
-    .post("https://openapi.flowaccount.com/test/receipts", {})
-    .then((result) => res.send(result.data))
-    .catch((err) => res.status(401));
+app.post("/post-receipt", (req, res) => {
+  let tokens = req.body.token;
+  console.log(tokens);
+
+  var axios = require("axios");
+  var data = JSON.stringify({
+    contactName: "บริษัท ลูกค้า จำกัด, คุณลูกค้า ซื้อประจำ",
+    publishedOn: "2021-06-23",
+    dueDate: "2021-06-23",
+    totalAfterDiscount: 255,
+    grandTotal: 300,
+  });
+
+  var config = {
+    method: "post",
+    url: "https://openapi.flowaccount.com/test/receipts",
+    headers: {
+      Authorization: tokens,
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+
+  axios(config)
+    .then(function (response) {
+      // console.log(JSON.stringify(response.data));
+      console.log(response.data);
+      res.json(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 });
 
 const PORT = 3000;

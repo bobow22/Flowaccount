@@ -10,14 +10,30 @@ function App() {
   };
 
   getToken();
-  // const token = localStorage.getItem("token");
-  // const postApi = async () => {
-  //   axios.post("http://localhost:3000/post-receipt");
-  // };
+
+  const tokens = localStorage.getItem("token");
+  console.log(tokens);
+
+  const postApi = async () => {
+    axios
+      .post("http://localhost:3000/post-receipt", {
+        token: `Bearer ${tokens}`,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        if (err.response.status === 401) {
+          // token expired - remove and redirect to login
+          localStorage.removeItem("token");
+          // navigate("/login");
+        }
+      });
+  };
 
   return (
     <div>
-      <button>post api</button>
+      <button onClick={postApi}>post api</button>
     </div>
   );
 }
