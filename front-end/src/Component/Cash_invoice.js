@@ -58,7 +58,7 @@ export default function Cash_invoice() {
                             <div>
                                 <p>วันที่: <input type="date" id="dt"/>
                                     <span><br/>ผู้ขาย: <input type="text" /></span>
-                                    <span><br/>ครบกำหนด: <input type="text" /></span>
+                                    <span><br/>ครบกำหนด: <input type="date" id="dt"/></span>
                                 </p>
                             </div>
 
