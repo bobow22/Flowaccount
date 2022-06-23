@@ -19,8 +19,9 @@ export default function Cash_invoice() {
         <h1>สร้างใบเสร็จรับเงิน</h1>
         
         <div className="Btn_Header">
-            <button type="primary" htmlType="submit" className='button-65'>ทดลองใช้งานฟรี</button>
-            <button type="primary" htmlType="submit" className='button-65'>ลงชื่อเข้าใช้งาน</button>
+            <button type="primary" htmlType="submit" className='button-65'><a style={{color: 'white', textDecoration: 'none'}} href="https://flowaccount.com/">ทดลองใช้งานฟรี</a></button>
+
+            <button type="primary" htmlType="submit" className='button-65'><a style={{color: 'white', textDecoration: 'none'}} href="https://auth.flowaccount.com/">ลงชื่อเข้าใช้งาน</a></button>
         </div>
     </div>
 
@@ -58,7 +59,6 @@ export default function Cash_invoice() {
                             
                             <div>
                                 <p>วันที่: <input type="text" />
-                                    <span><br/>เลขที่: <input type="text" /></span>
                                     <span><br/>ผู้ขาย: <input type="text" /></span>
                                     <span><br/>ครบกำหนด: <input type="text" /></span>
                                 </p>
@@ -76,59 +76,78 @@ export default function Cash_invoice() {
                         </div>
 
                         <div className="description" style={{fontSize: '13px'}}>
-                            <p>ชื่องาน:</p>
+                            <strong>ชื่องาน:</strong>
 
-                            <table class="table">
-                                <thead class="thead-dark">
+                            <table className="table">
+                                <thead className="thead-dark">
                                     <tr>
                                         <th>ลำดับ</th>
                                         <th>ชื่อสินค้า/รายละเอียด</th>
                                         <th>จำนวน</th>
                                         <th>หน่วย</th>
-                                        <th>ราคาต่อหร่วย</th>
+                                        <th>ราคาต่อหน่วย</th>
                                         <th>ราคารวม</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     <tr>
-                                        <td>1</td>
-                                        <td>ชื่อสินค้า</td>
-                                        <td>1</td>
-                                        <td>ชิ้น</td>
-                                        <td>100.00</td>
-                                        <td>100.00</td>
+                                        <td><input style={{textAlign: "left"}} type="text" placeholder="1"/></td>
+                                        <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="text" placeholder="1"/></td>
+                                        <td><input type="text" placeholder="ชิ้น"/></td>
+                                        <td><input type="text" placeholder="100.00"/></td>
+                                        <td><input type="text" placeholder="100.00"/></td>
                                     </tr>
 
                                     <tr>
-                                        {/* <td><input type="text" /></td>
-                                        <td><input type="text" /></td>
-                                        <td><input type="text" /></td>
-                                        <td><input type="text" /></td>
-                                        <td><input type="text" /></td>
-                                        <td><input type="text" /></td> */}
+                                        <td><input style={{textAlign: "left"}} type="text" placeholder="2"/></td>
+                                        <td><input style={{textAlign: "left"}}type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="text" placeholder="1"/></td>
+                                        <td><input type="text" placeholder="ตัว"/></td>
+                                        <td><input type="text" placeholder="0.00"/></td>
+                                        <td><input type="text" placeholder="0.00"/></td>
                                     </tr>
 
                                     <tr>
-                                        <button type="button">+ เพิ่มแถวรายการ</button>
+                                        <td><input style={{textAlign: "left"}} type="text" placeholder="3"/></td>
+                                        <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="text" placeholder="1"/></td>
+                                        <td><input type="text" placeholder="ตัว"/></td>
+                                        <td><input type="text" placeholder="0.00"/></td>
+                                        <td><input type="text" placeholder="0.00"/></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><input style={{textAlign: "left"}} type="text" placeholder="4"/></td>
+                                        <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="text" placeholder="1"/></td>
+                                        <td><input type="text" placeholder="ตัว"/></td>
+                                        <td><input type="text" placeholder="0.00"/></td>
+                                        <td><input type="text" placeholder="0.00"/></td>
+                                    </tr>
+
+                                    <tr>
+                                        <button className='buttonAdd' type="button"><a style={{color: "black"}} href="https://sandbox-new.flowaccount.com/N732809/business/receipts">+เพิ่มแถวรายการ</a></button>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
 
-                        <div className='summary' style={{fontSize: '13px', textAlign: 'left'}}>
-                            <p>รวมเป็นเงิน:   <span className='result'><td><input type="text" /></td></span>
+                        <div className='summary' style={{fontSize: '13px'}}>
+                            <p>รวมเป็นเงิน:  <span className='result'><td><input type="text" value="100.00"/></td></span>
                                 <span><br/>ส่วนลด 5%</span>         
-                                    <span className='result'><td><input type="text" /></td></span>
+                                    <span className='result1'><td><input type="text" value="5.00"/></td></span>
                                 
                                 <span><br/>ราคาหลังหักส่วนลด</span>   
-                                    <span className='result'><td><input type="text" /></td></span>
+                                    <span className='result2'><td><input type="text" value="95.00"/></td></span>
                                 
                                 <span><br/>ภาษีมูลค่าเพิ่ม 7%</span>    
-                                    <span className='result'><td><input type="text" /></td></span>
+                                    <span className='result3'><td><input type="text" value="6.65"/></td></span>
                                 
                                 <span><br/>จำนวนเงินรวมทั้งสิ้น</span>   
-                                    <span className='result'><td><input type="text" /></td></span>
+                                    <span className='result4'><td><input type="text" value="101.65"/></td></span>
                             </p>
                         </div>
                         
@@ -162,8 +181,9 @@ export default function Cash_invoice() {
             <h2>ทดลองใช้โปรเเกรมบัญชี FlowAccount</h2>
 
             <div className='Btn_Footer'>
-                <button type="primary" htmlType="submit" className='button-65'>สมัครใช้งาน</button>
-                <button type="primary" htmlType="submit" className='button-65'>ติดต่อเรา</button>
+                <button type="primary" htmlType="submit" className='button-65'><a style={{color: 'white', textDecoration: 'none'}} href="https://auth.flowaccount.com/th/Account/Register">สมัครใช้งาน</a></button>
+
+                <button type="primary" htmlType="submit" className='button-65'><a style={{color: 'white', textDecoration: 'none'}} href="https://flowaccount.com/">ติดต่อเรา</a></button>
             </div>
 
         </div>
