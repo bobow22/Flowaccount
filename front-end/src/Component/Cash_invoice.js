@@ -9,7 +9,6 @@ export default function Cash_invoice() {
 
   return (<>
 
-
     {/* -----------------------------------------Header----------------------------------------------- */}
     <div className="Header">
 
@@ -26,7 +25,6 @@ export default function Cash_invoice() {
     </div>
 
 
-    {/* Kan */}
 
     {/* -----------------------------------------Content----------------------------------------------- */}
     <div className="Content">
@@ -136,18 +134,18 @@ export default function Cash_invoice() {
 
 
                         <div className='summary' style={{fontSize: '13px'}}>
-                            <p>รวมเป็นเงิน:  <span className='result'><td><input type="text" value="100.00"/></td></span>
-                                <span><br/>ส่วนลด 5%</span>         
-                                    <span className='result1'><td><input type="text" value="5.00"/></td></span>
+                            <p>รวมเป็นเงิน:  <span className='result'><td><input type="text" placeholder="100.00"/></td></span>
+                                <span><br/>ส่วนลด <input style={{width: '5%'}} type="text" placeholder="5"/>%</span>         
+                                    <span className='result1'><td><input type="text" placeholder="5.00"/></td></span>
                                 
                                 <span><br/>ราคาหลังหักส่วนลด</span>   
-                                    <span className='result2'><td><input type="text" value="95.00"/></td></span>
+                                    <span className='result2'><td><input type="text" placeholder="95.00"/></td></span>
                                 
                                 <span><br/>ภาษีมูลค่าเพิ่ม 7%</span>    
-                                    <span className='result3'><td><input type="text" value="6.65"/></td></span>
+                                    <span className='result3'><td><input type="text" placeholder="6.65"/></td></span>
                                 
                                 <span><br/>จำนวนเงินรวมทั้งสิ้น</span>   
-                                    <span className='result4'><td><input type="text" value="101.65"/></td></span>
+                                    <span className='result4'><td><input type="text" placeholder="101.65"/></td></span>
                             </p>
                         </div>
                         
