@@ -26,7 +26,7 @@ export default function Cash_invoice() {
     </div>
 
 
-
+    {/* Kan */}
 
     {/* -----------------------------------------Content----------------------------------------------- */}
     <div className="Content">
