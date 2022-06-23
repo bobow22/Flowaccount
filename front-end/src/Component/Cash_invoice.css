@@ -230,7 +230,7 @@
 
 .Text_explain_procedure{
     /* border: 1px solid red; */
-    margin-left: 50px;
+    /* margin-left: 20px; */
 }
 
 .Text_explain_procedure p span{
@@ -254,7 +254,13 @@
     margin-left: 10px;
 }
 
-.Btn_Content Button{
+.Btn_Content{
+    /* border: 1px solid rgb(199, 119, 0); */
+    width: 70%;
+    margin-left: 190px;
+}
+
+.Btn_Content button{
     margin-left: 10px;
     margin-right: 10px;
     font-family: 'Kanit', sans-serif;
@@ -461,7 +467,7 @@
 /*-------------------------- Responsive Web Design - Media Queries --------------------*/
 
 
-@media screen and (max-width: 1665px) {
+@media screen and (max-width: 1619px) {
     .PDF{
         width: 70%;
     }
@@ -478,9 +484,19 @@
     .Text_explain_procedure{
         margin-top: 40px;
     }
+
+    .Btn_Content{
+        width: 80%;
+        margin-left: 120px;
+    }
 }
 
 @media screen and (max-width: 1075px) {
+    .Btn_Content{
+        width: 90%;
+        margin-left: 50px;
+    }
+
     .PDF{
         width: 80%;
     }
@@ -553,12 +569,10 @@
         flex-wrap: wrap;
         margin-top: 40px;
     }
-
     .Header img{
         margin: 0 auto;
         width: 100%;
     }
-
     .Header h1{
         margin-right: 15px;
         margin-top: 20px;
@@ -570,27 +584,54 @@
 
     .Btn_Content{
         margin-left: 10px;
+        width: 90%;
     }
 }
+
+
+@media screen and (max-width: 930px) {
+    .Btn_Content{
+        margin-left: 45px;
+        width: 90%;
+    }
+}
+
+
+@media screen and (max-width: 882px) {
+    .Btn_Content{
+        margin-left: 45px;
+        width: 90%;
+    }
+}
+
+
+@media screen and (max-width: 877px) {
+    .Btn_Content{
+        display: flex;
+        text-align: center;
+        /* margin-left: 30px; */
+        /* border: 1px solid red; */
+        width: 90%;
+    }
+}
+
+
 
 @media screen and (max-width: 793px) {
     .Content{
         margin-top: 10px
     }
-
     .Btn_Content{
-        display: block;
+        display: flex;
         text-align: center;
         /* border: 1px solid rgb(255, 50, 50); */
-        width: 40%;
+        width: 50%;
         margin: 0 auto;
     }
-
     .Btn_Content button{
         margin-top: 10px;
     }
 }
-
 
 @media screen and (max-width: 665px) {
     .Sub_Footer h2{
