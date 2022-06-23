@@ -12,7 +12,6 @@ app.get("/", (req, res) => {
     client_secret: "YqfVrGkhQdFNYMpjxhAerLQHCihSPFMJXRUPc",
     grant_type: "client_credentials",
     scope: "flowaccount-api",
-    guid: "",
   };
 
   const config = {
