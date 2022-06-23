@@ -56,6 +56,13 @@ app.get("/", (req, res) => {
   //   });
 });
 
+app.post("/post-receipt", async (req, res) => {
+  axios
+    .post("https://openapi.flowaccount.com/test/receipts", {})
+    .then((result) => res.send(result.data))
+    .catch((err) => res.status(401));
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Listening at port ${PORT}`);
