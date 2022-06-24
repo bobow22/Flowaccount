@@ -1,11 +1,12 @@
-<<<<<<< HEAD
 import React, { useState } from 'react'
 import '../Component/Cash_invoice.css';
 import { SiVerizon } from "react-icons/si";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from 'react';
 
+
 export default function Cash_invoice() {
+
     
     //----------------- 1 -----------------//
     const [quantity1, setQuantity1] = useState();
@@ -66,6 +67,7 @@ export default function Cash_invoice() {
     }, [price1, price2, price3, price4, amount1, amount2, amount3, amount4, quantity1, quantity2, quantity3, quantity4, sum, numberdiscount, discount, tax, netTotal])
     
 
+
   return (<>
 
     {/* -----------------------------------------Header----------------------------------------------- */}
@@ -73,22 +75,6 @@ export default function Cash_invoice() {
 
         <img className='Heade_img' src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png" />
 
-=======
-import React from "react";
-import "../Component/Cash_invoice.css";
-import { SiVerizon } from "react-icons/si";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-export default function Cash_invoice() {
-  return (
-    <>
-      {/* -----------------------------------------Header----------------------------------------------- */}
-      <div className="Header">
-        <img
-          className="Heade_img"
-          src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png"
-        />
->>>>>>> f2bf1dd8ac66fbeee903d7f22669465b58ec1ae9
 
         <h1>สร้างใบเสร็จรับเงิน</h1>
 
@@ -158,7 +144,7 @@ export default function Cash_invoice() {
                   </p>
                 </div>
 
-<<<<<<< HEAD
+
 
                 <div className="PDF" style={{marginTop: '25px'}}>
 
@@ -214,6 +200,7 @@ export default function Cash_invoice() {
                                     <tr>
                                         <td><input style={{textAlign: "left"}} type="float" placeholder="1"/></td>
                                         <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
+
                                         <td><input type="float" placeholder="1" value={quantity1} onChange={(e) => setQuantity1(e.target.value)}/></td>
                                         <td><input type="text" placeholder="ชิ้น"/></td>
                                         <td><input type="float" placeholder="100.00" value={price1} onChange={(e) => setPrice1(e.target.value)}/></td>
@@ -280,7 +267,6 @@ export default function Cash_invoice() {
 
                     </div>
                  
-=======
                 <div>
                   <p>
                     วันที่: <input type="date" id="dt" />
@@ -293,7 +279,6 @@ export default function Cash_invoice() {
                       ครบกำหนด: <input type="date" id="dt" />
                     </span>
                   </p>
->>>>>>> f2bf1dd8ac66fbeee903d7f22669465b58ec1ae9
                 </div>
               </div>
 
