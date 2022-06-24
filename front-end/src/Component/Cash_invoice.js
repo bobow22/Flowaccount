@@ -1,10 +1,14 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import '../Component/Cash_invoice.css';
 import { SiVerizon } from "react-icons/si";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 export default function Cash_invoice() {
 
+
+  
+  
 
 
   return (<>
@@ -92,10 +96,16 @@ export default function Cash_invoice() {
                                     <tr>
                                         <td><input style={{textAlign: "left"}} type="text" placeholder="1"/></td>
                                         <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
-                                        <td><input type="text" placeholder="1"/></td>
+
+
+
+
+                                        {/* ----------------------Calculate --------------------- */}
+
+                                        <td><input name="number"  placeholder="1"/></td>
                                         <td><input type="text" placeholder="ชิ้น"/></td>
-                                        <td><input type="text" placeholder="100.00"/></td>
-                                        <td><input type="text" placeholder="100.00"/></td>
+                                        <td><input name="numbers" placeholder="100.00"/></td>
+                                        <td name="result"></td>
                                     </tr>
 
                                     <tr>
