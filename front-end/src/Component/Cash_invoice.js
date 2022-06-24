@@ -5,8 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from 'react';
 
 
-export default function Cash_invoice() {
 
+export default function Cash_invoice() {
     
     //----------------- 1 -----------------//
     const [quantity1, setQuantity1] = useState();
@@ -66,7 +66,6 @@ export default function Cash_invoice() {
 
     }, [price1, price2, price3, price4, amount1, amount2, amount3, amount4, quantity1, quantity2, quantity3, quantity4, sum, numberdiscount, discount, tax, netTotal])
     
-
 
   return (<>
 
@@ -145,7 +144,6 @@ export default function Cash_invoice() {
                 </div>
 
 
-
                 <div className="PDF" style={{marginTop: '25px'}}>
 
                     {/* <img src='https://edit.org/images/cat/invoices-big-2019042509.jpg'/> */}
@@ -200,7 +198,6 @@ export default function Cash_invoice() {
                                     <tr>
                                         <td><input style={{textAlign: "left"}} type="float" placeholder="1"/></td>
                                         <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
-
                                         <td><input type="float" placeholder="1" value={quantity1} onChange={(e) => setQuantity1(e.target.value)}/></td>
                                         <td><input type="text" placeholder="ชิ้น"/></td>
                                         <td><input type="float" placeholder="100.00" value={price1} onChange={(e) => setPrice1(e.target.value)}/></td>
@@ -267,18 +264,6 @@ export default function Cash_invoice() {
 
                     </div>
                  
-                <div>
-                  <p>
-                    วันที่: <input type="date" id="dt" />
-                    <span>
-                      <br />
-                      ผู้ขาย: <input type="text" />
-                    </span>
-                    <span>
-                      <br />
-                      ครบกำหนด: <input type="date" id="dt" />
-                    </span>
-                  </p>
                 </div>
               </div>
 
@@ -558,3 +543,4 @@ export default function Cash_invoice() {
     </>
   );
 }
+
