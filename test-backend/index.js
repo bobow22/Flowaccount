@@ -59,23 +59,20 @@ app.get("/", (req, res) => {
 });
 
 app.post("/post-receipt", (req, res) => {
-  let tokens = req.body.token;
-  console.log(tokens);
+  let token = req.body.headers.Authorization;
+  let dataObj = req.body.dataObj;
+  console.log(token);
+  console.log(dataObj);
 
   var axios = require("axios");
-  var data = JSON.stringify({
-    contactName: "บริษัท ลูกค้า จำกัด, คุณลูกค้า ซื้อประจำ",
-    publishedOn: "2021-06-23",
-    dueDate: "2021-06-23",
-    totalAfterDiscount: 255,
-    grandTotal: 300,
-  });
+  var data = JSON.stringify(dataObj);
+  console.log(data);
 
   var config = {
     method: "post",
     url: "https://openapi.flowaccount.com/test/receipts",
     headers: {
-      Authorization: tokens,
+      Authorization: token,
       "Content-Type": "application/json",
     },
     data: data,
