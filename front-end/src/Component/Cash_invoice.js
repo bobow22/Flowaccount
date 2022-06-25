@@ -9,38 +9,38 @@ import { useEffect } from 'react';
 export default function Cash_invoice() {
     
     //----------------- 1 -----------------//
-    const [quantity1, setQuantity1] = useState();
-    const [price1, setPrice1] = useState();
-    const [amount1, setAmount1] = useState();
+    const [quantity1, setQuantity1] = useState(0);
+    const [price1, setPrice1] = useState(0);
+    const [amount1, setAmount1] = useState(0);
 
     //----------------- 2 -----------------//
-    const [quantity2, setQuantity2] = useState();
-    const [price2, setPrice2] = useState();
-    const [amount2, setAmount2] = useState();
+    const [quantity2, setQuantity2] = useState(0);
+    const [price2, setPrice2] = useState(0);
+    const [amount2, setAmount2] = useState(0);
 
     //----------------- 3 -----------------//
-    const [quantity3, setQuantity3] = useState();
-    const [price3, setPrice3] = useState();
-    const [amount3, setAmount3] = useState();
+    const [quantity3, setQuantity3] = useState(0);
+    const [price3, setPrice3] = useState(0);
+    const [amount3, setAmount3] = useState(0);
 
     //----------------- 4 -----------------//
-    const [quantity4, setQuantity4] = useState();
-    const [price4, setPrice4] = useState();
-    const [amount4, setAmount4] = useState();
+    const [quantity4, setQuantity4] = useState(0);
+    const [price4, setPrice4] = useState(0);
+    const [amount4, setAmount4] = useState(0);
 
     //----------------- Sum -----------------//
-    const [sum, setSum] = useState();
+    const [sum, setSum] = useState(0);
 
     //----------------- Discount -----------------//
-    const [numberdiscount, setNumberdiscount] = useState();
-    const [displayDiscount, setDisplayDiscount] = useState();
-    const [discount, setDiscount] = useState();
+    const [numberdiscount, setNumberdiscount] = useState(0);
+    const [displayDiscount, setDisplayDiscount] = useState(0);
+    const [discount, setDiscount] = useState(0);
 
     //----------------- Tax -----------------//
-    const [tax, setTax] = useState();
+    const [tax, setTax] = useState(0);
 
     //----------------- Net Total -----------------//
-    const [netTotal, setNetTotal] = useState();
+    const [netTotal, setNetTotal] = useState(0);
 
     //----------------- useEffect -----------------//
 
@@ -57,10 +57,15 @@ export default function Cash_invoice() {
         setSum(parseFloat(amount1) + parseFloat(amount2) + parseFloat(amount3) + parseFloat(amount4)) //Sum
         //Discount
         setDiscount(parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100)) //Discount
+        
+        
         //Display Discount
         setDisplayDiscount(parseFloat(sum) * parseFloat(numberdiscount/100)) //Display Discount
+
+
         //Tax
         setTax(parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100) *7/100) //Tax
+        
         //Net Total
         setNetTotal(parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100) + parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100))//Discount
 
@@ -98,6 +103,9 @@ export default function Cash_invoice() {
         </div>
       </div>
 
+
+
+
       {/* -----------------------------------------Content----------------------------------------------- */}
       <div className="Content">
         <div className="Btn_and_PDF">
@@ -116,35 +124,10 @@ export default function Cash_invoice() {
             </button>
           </div>
 
-          <div className="PDF" style={{ marginTop: "25px" }}>
-            {/* <img src='https://edit.org/images/cat/invoices-big-2019042509.jpg'/> */}
-            <div className="receipt">
-              <h3>ใบเสร็จรับเงิน</h3>
 
-              <div
-                className="my_company"
-                style={{ fontSize: "13px", textAlign: "left" }}
-              >
-                <div>
-                  <p>
-                    ชื่อบริษัท: <input type="text" />
-                    <span>
-                      <br />
-                      ชื่อ: <input type="text" />
-                    </span>
-                    <span>
-                      <br />
-                      ที่อยู่: <input type="text" />
-                    </span>
-                    <span>
-                      <br />
-                      เลขประจำตัวผู้เสียภาษี: <input type="text" />
-                    </span>
-                  </p>
-                </div>
+          {/*---------------------------------- PDF --------------------------------- */}
 
-
-                <div className="PDF" style={{marginTop: '25px'}}>
+          <div className="PDF" style={{marginTop: '25px'}}>
 
                     {/* <img src='https://edit.org/images/cat/invoices-big-2019042509.jpg'/> */}
                     <div className="receipt">
@@ -197,38 +180,38 @@ export default function Cash_invoice() {
 
                                     <tr>
                                         <td><input style={{textAlign: "left"}} type="float" placeholder="1"/></td>
-                                        <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
                                         <td><input type="float" placeholder="1" value={quantity1} onChange={(e) => setQuantity1(e.target.value)}/></td>
                                         <td><input type="text" placeholder="ชิ้น"/></td>
-                                        <td><input type="float" placeholder="100.00" value={price1} onChange={(e) => setPrice1(e.target.value)}/></td>
-                                        <td><p>{amount1}</p></td>
+                                        <td class="Name_item"><input type="float" placeholder="100.00" value={price1} onChange={(e) => setPrice1(e.target.value)}/></td>
+                                        <td><p>{amount1.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td>
                                     </tr>
 
                                     <tr>
-                                        <td><input style={{textAlign: "left"}} type="float" placeholder="1"/></td>
-                                        <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input style={{textAlign: "left"}} type="float" placeholder="2"/></td>
+                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
                                         <td><input type="float" placeholder="1" value={quantity2} onChange={(e) => setQuantity2(e.target.value)}/></td>
                                         <td><input type="text" placeholder="ชิ้น"/></td>
-                                        <td><input type="float" placeholder="100.00" value={price2} onChange={(e) => setPrice2(e.target.value)}/></td>
-                                        <td><p>{amount2}</p></td>
+                                        <td class="Name_item"><input type="float" placeholder="100.00" value={price2} onChange={(e) => setPrice2(e.target.value)}/></td>
+                                        <td><p>{amount2.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td>
                                     </tr>
 
                                     <tr>
-                                        <td><input style={{textAlign: "left"}} type="float" placeholder="1"/></td>
-                                        <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input style={{textAlign: "left"}} type="float" placeholder="3"/></td>
+                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
                                         <td><input type="float" placeholder="1" value={quantity3} onChange={(e) => setQuantity3(e.target.value)}/></td>
                                         <td><input type="text" placeholder="ชิ้น"/></td>
-                                        <td><input type="float" placeholder="100.00" value={price3} onChange={(e) => setPrice3(e.target.value)}/></td>
-                                        <td><p>{amount3}</p></td>
+                                        <td class="Name_item"><input type="float" placeholder="100.00" value={price3} onChange={(e) => setPrice3(e.target.value)}/></td>
+                                        <td><p>{amount3.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td>
                                     </tr>
 
                                     <tr>
-                                        <td><input style={{textAlign: "left"}} type="float" placeholder="1"/></td>
-                                        <td><input style={{textAlign: "left"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input style={{textAlign: "left"}} type="float" placeholder="4"/></td>
+                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
                                         <td><input type="float" placeholder="1" value={quantity4} onChange={(e) => setQuantity4(e.target.value)}/></td>
                                         <td><input type="text" placeholder="ชิ้น"/></td>
-                                        <td><input type="float" placeholder="100.00" value={price4} onChange={(e) => setPrice4(e.target.value)}/></td>
-                                        <td><p>{amount4}</p></td>
+                                        <td class="Name_item"><input type="float" placeholder="100.00" value={price4} onChange={(e) => setPrice4(e.target.value)}/></td>
+                                        <td><p>{amount4.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td>
                                     </tr>
 
                                     <tr>
@@ -239,20 +222,31 @@ export default function Cash_invoice() {
                         </div>
 
 
+                        {/* --------------------------แก้ toFixed---------------------------------- */}
+                        {/* .toFixed(2) */}
+                        {/* .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") */}
+
+
                         <div className='summary' style={{fontSize: '13px'}}>
-                            <p>รวมเป็นเงิน:  <span className='result'><td><input type="float" placeholder="100.00" value={sum}/></td></span>
-                                <span><br/>ส่วนลด <input style={{width: '5%'}} type="float" placeholder="5" value={numberdiscount} onChange={(e) => setNumberdiscount(e.target.value)}/>%</span>         
-                                    <span className='result1'><td><input type="text" value={displayDiscount}/></td></span>
+                          
+                            <p>
+                              รวมเป็นเงิน:  <span className='result'><td>{sum.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
+
+                                <span className='discount'><br/>ส่วนลด 
+                                  <input style={{width: '8.5%'}} type="float" placeholder="5" value={numberdiscount} onChange={(e) => setNumberdiscount(e.target.value)}/>%
+                                </span>         
+                                
+                                <span className='result1'><td>{displayDiscount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
                                 
                                 <span><br/>ราคาหลังหักส่วนลด</span>   
-                                    <span className='result2'><td><input type="float" placeholder="95.00" value={discount}/></td></span>
+                                    <span className='result2'><td>{discount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
                                 
                                 <span><br/>ภาษีมูลค่าเพิ่ม 7%</span>    
-                                    {/* <span className='result3'><td><input type="float" placeholder="6.65" value={tax}/></td></span> */}
-                                    <span className='result3'><td><p placeholder="6.65">{tax.toFixed(2)}</p></td></span>
+                                 
+                                    <span className='result3'><td>{tax.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
                                 
                                 <span><br/>จำนวนเงินรวมทั้งสิ้น</span>   
-                                    <span className='result4'><td><input type="float" placeholder="101.65" value={netTotal}/></td></span>
+                                    <span className='result4'><td><p type="float" placeholder="101.65">{netTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td></span>
                             </p>
                         </div>
                         
@@ -263,234 +257,13 @@ export default function Cash_invoice() {
 
 
                     </div>
-                 
                 </div>
-              </div>
 
-              <div
-                className="customer_company"
-                style={{ fontSize: "13px", textAlign: "left" }}
-              >
-                <p>
-                  ชื่อบริษัทลูกค้า: <input type="text" />
-                  <span>
-                    <br />
-                    ชื่อลูกค้า: <input type="text" />
-                  </span>
-                  <span>
-                    <br />
-                    ที่อยู่ลูกค้า: <input type="text" />
-                  </span>
-                  <span>
-                    <br />
-                    เลขประจำตัวผู้เสียภาษี: <input type="text" />
-                  </span>
-                </p>
-              </div>
 
-              <div className="description" style={{ fontSize: "13px" }}>
-                <strong>ชื่องาน:</strong>
 
-                <table className="table">
-                  <thead className="thead-dark">
-                    <tr>
-                      <th>ลำดับ</th>
-                      <th>ชื่อสินค้า/รายละเอียด</th>
-                      <th>จำนวน</th>
-                      <th>หน่วย</th>
-                      <th>ราคาต่อหน่วย</th>
-                      <th>ราคารวม</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="1"
-                        />
-                      </td>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="ชื่อสินค้า"
-                        />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="1" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="ชิ้น" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="100.00" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="100.00" />
-                      </td>
-                    </tr>
 
-                    <tr>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="2"
-                        />
-                      </td>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="ชื่อสินค้า"
-                        />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="1" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="ตัว" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="0.00" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="0.00" />
-                      </td>
-                    </tr>
 
-                    <tr>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="3"
-                        />
-                      </td>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="ชื่อสินค้า"
-                        />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="1" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="ตัว" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="0.00" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="0.00" />
-                      </td>
-                    </tr>
 
-                    <tr>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="4"
-                        />
-                      </td>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="ชื่อสินค้า"
-                        />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="1" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="ตัว" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="0.00" />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="0.00" />
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <button className="buttonAdd" type="button">
-                        <a
-                          style={{ color: "black" }}
-                          href="https://sandbox-new.flowaccount.com/N732809/business/receipts"
-                        >
-                          +เพิ่มแถวรายการ
-                        </a>
-                      </button>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="summary" style={{ fontSize: "13px" }}>
-                <p>
-                  รวมเป็นเงิน:{" "}
-                  <span className="result">
-                    <td>
-                      <input type="text" placeholder="100.00" />
-                    </td>
-                  </span>
-                  <span>
-                    <br />
-                    ส่วนลด{" "}
-                    <input
-                      style={{ width: "5%" }}
-                      type="text"
-                      placeholder="5"
-                    />
-                    %
-                  </span>
-                  <span className="result1">
-                    <td>
-                      <input type="text" placeholder="5.00" />
-                    </td>
-                  </span>
-                  <span>
-                    <br />
-                    ราคาหลังหักส่วนลด
-                  </span>
-                  <span className="result2">
-                    <td>
-                      <input type="text" placeholder="95.00" />
-                    </td>
-                  </span>
-                  <span>
-                    <br />
-                    ภาษีมูลค่าเพิ่ม 7%
-                  </span>
-                  <span className="result3">
-                    <td>
-                      <input type="text" placeholder="6.65" />
-                    </td>
-                  </span>
-                  <span>
-                    <br />
-                    จำนวนเงินรวมทั้งสิ้น
-                  </span>
-                  <span className="result4">
-                    <td>
-                      <input type="text" placeholder="101.65" />
-                    </td>
-                  </span>
-                </p>
-              </div>
-
-              <div className="PDF_img_footer">
-                <img src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png" />
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="Text_explain_procedure">
