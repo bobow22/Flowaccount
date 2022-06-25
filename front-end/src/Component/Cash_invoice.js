@@ -1,12 +1,19 @@
-import React from "react";
-import "../Component/Cash_invoice.css";
+import React, { useState } from 'react'
+import '../Component/Cash_invoice.css';
 import { SiVerizon } from "react-icons/si";
-import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect } from 'react';
 import axios from "axios";
 import { useRef } from "react";
 
+
+
+
+
+
 export default function Cash_invoice() {
-  const getToken = async () => {
+
+      const getToken = async () => {
     const result = await axios.get("http://localhost:3000/");
     console.log(result.data.access_token);
     localStorage.setItem("token", result.data.access_token);
@@ -14,8 +21,72 @@ export default function Cash_invoice() {
 
   getToken();
 
-  const token = localStorage.getItem("token");
+    //----------------- 1 -----------------//
+    const [quantity1, setQuantity1] = useState(0);
+    const [price1, setPrice1] = useState(0);
+    const [amount1, setAmount1] = useState(0);
 
+    //----------------- 2 -----------------//
+    const [quantity2, setQuantity2] = useState(0);
+    const [price2, setPrice2] = useState(0);
+    const [amount2, setAmount2] = useState(0);
+
+    //----------------- 3 -----------------//
+    const [quantity3, setQuantity3] = useState(0);
+    const [price3, setPrice3] = useState(0);
+    const [amount3, setAmount3] = useState(0);
+
+    //----------------- 4 -----------------//
+    const [quantity4, setQuantity4] = useState(0);
+    const [price4, setPrice4] = useState(0);
+    const [amount4, setAmount4] = useState(0);
+
+    //----------------- Sum -----------------//
+    const [sum, setSum] = useState(0);
+
+    //----------------- Discount -----------------//
+    const [numberdiscount, setNumberdiscount] = useState(0);
+    const [displayDiscount, setDisplayDiscount] = useState(0);
+    const [discount, setDiscount] = useState(0);
+
+    //----------------- Tax -----------------//
+    const [tax, setTax] = useState(0);
+
+    //----------------- Net Total -----------------//
+    const [netTotal, setNetTotal] = useState(0);
+
+    //----------------- useEffect -----------------//
+
+    useEffect(() => {
+        //1
+        setAmount1(parseFloat(quantity1) * parseFloat(price1)) //amount1
+        //2
+        setAmount2(parseFloat(quantity2) * parseFloat(price2)) //amount2
+        //3
+        setAmount3(parseFloat(quantity3) * parseFloat(price3)) //amount3
+        //4
+        setAmount4(parseFloat(quantity4) * parseFloat(price4)) //amount4
+        //Sum
+        setSum(parseFloat(amount1) + parseFloat(amount2) + parseFloat(amount3) + parseFloat(amount4)) //Sum
+        //Discount
+        setDiscount(parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100)) //Discount
+        
+        
+        //Display Discount
+        setDisplayDiscount(parseFloat(sum) * parseFloat(numberdiscount/100)) //Display Discount
+
+  
+
+  
+        //Tax
+        setTax(parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100) *7/100) //Tax
+        
+        //Net Total
+        setNetTotal(parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100) + parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100))//Discount
+
+    }, [price1, price2, price3, price4, amount1, amount2, amount3, amount4, quantity1, quantity2, quantity3, quantity4, sum, numberdiscount, discount, tax, netTotal])
+    
+const token = localStorage.getItem("token");
   // if (token) {
   //   axios
   //     .get("http://localhost:3000/company", {
@@ -47,6 +118,7 @@ export default function Cash_invoice() {
   const dueDateRef = useRef("");
   const totalAfterDiscountRef = useRef("");
   const grandTotalRef = useRef("");
+
 
   const nameRef1 = useRef("");
   const quantityRef1 = useRef("");
@@ -182,301 +254,165 @@ export default function Cash_invoice() {
             <div className="receipt">
               <h3>ใบเสร็จรับเงิน</h3>
 
-              <div
-                className="my_company"
-                style={{ fontSize: "13px", textAlign: "left" }}
-              >
-                <div>
-                  <p>
-                    ชื่อบริษัท: <input type="text" />
-                    <span>
-                      <br />
-                      ชื่อ: <input type="text" />
-                    </span>
-                    <span>
-                      <br />
-                      ที่อยู่: <input type="text" />
-                    </span>
-                    <span>
-                      <br />
-                      เลขประจำตัวผู้เสียภาษี: <input type="text" />
-                    </span>
-                  </p>
-                </div>
 
-                <div>
-                  <p>
-                    วันที่: <input type="text" ref={publishedOnRef} />
-                    <span>
-                      <br />
-                      ผู้ขาย: <input type="text" ref={salesNameRef} />
-                    </span>
-                    <span>
-                      <br />
-                      ครบกำหนด: <input type="text" ref={dueDateRef} />
-                    </span>
-                  </p>
-                </div>
-              </div>
-
-              <div
-                className="customer_company"
-                style={{ fontSize: "13px", textAlign: "left" }}
-              >
-                <p>
-                  ชื่อบริษัทลูกค้า: <input type="text" ref={contactNameRef} />
-                  <span>
-                    <br />
-                    ชื่อลูกค้า: <input type="text" />
-                  </span>
-                  <span>
-                    <br />
-                    ที่อยู่ลูกค้า: <input type="text" ref={contactAddressRef} />
-                  </span>
-                  <span>
-                    <br />
-                    เลขประจำตัวผู้เสียภาษี:{" "}
-                    <input type="text" ref={contactTaxIdRef} />
-                  </span>
-                </p>
-              </div>
-
-              <div className="description" style={{ fontSize: "13px" }}>
-                <strong>ชื่องาน:</strong>
-
-                <table className="table">
-                  <thead className="thead-dark">
-                    <tr>
-                      <th>ลำดับ</th>
-                      <th>ชื่อสินค้า/รายละเอียด</th>
-                      <th>จำนวน</th>
-                      <th>หน่วย</th>
-                      <th>ราคาต่อหน่วย</th>
-                      <th>ราคารวม</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="1"
-                        />
-                      </td>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="ชื่อสินค้า"
-                          ref={nameRef1}
-                        />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="1" ref={quantityRef1} />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          placeholder="ชิ้น"
-                          ref={unitNameRef1}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          placeholder="100.00"
-                          ref={pricePerUnitRef1}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          placeholder="100.00"
-                          ref={totalRef1}
-                        />
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="2"
-                        />
-                      </td>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="ชื่อสินค้า"
-                          ref={nameRef2}
-                        />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="1" ref={quantityRef2} />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          placeholder="ตัว"
-                          ref={unitNameRef2}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          placeholder="0.00"
-                          ref={pricePerUnitRef2}
-                        />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="0.00" ref={totalRef2} />
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="3"
-                        />
-                      </td>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="ชื่อสินค้า"
-                          ref={nameRef3}
-                        />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="1" ref={quantityRef3} />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          placeholder="ตัว"
-                          ref={unitNameRef3}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          placeholder="0.00"
-                          ref={pricePerUnitRef3}
-                        />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="0.00" ref={totalRef3} />
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="4"
-                        />
-                      </td>
-                      <td>
-                        <input
-                          style={{ textAlign: "left" }}
-                          type="text"
-                          placeholder="ชื่อสินค้า"
-                          ref={nameRef4}
-                        />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="1" ref={quantityRef4} />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          placeholder="ตัว"
-                          ref={unitNameRef4}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="text"
-                          placeholder="0.00"
-                          ref={pricePerUnitRef4}
-                        />
-                      </td>
-                      <td>
-                        <input type="text" placeholder="0.00" ref={totalRef4} />
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <button
-                        className="buttonAdd"
-                        type="button"
-                        onClick={postApi}
-                      >
-                        <a style={{ color: "black" }}>+เพิ่มแถวรายการ</a>
-                      </button>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-              <div className="summary" style={{ fontSize: "13px" }}>
-                <p>
-                  รวมเป็นเงิน:{" "}
-                  <span className="result">
-                    <td>
-                      <input type="text" value="100.00" />
-                    </td>
-                  </span>
-                  <span>
-                    <br />
-                    ส่วนลด 5%
-                  </span>
-                  <span className="result1">
-                    <td>
-                      <input type="text" value="5.00" />
-                    </td>
-                  </span>
-                  <span>
-                    <br />
-                    ราคาหลังหักส่วนลด
-                  </span>
-                  <span className="result2">
-                    <td>
-                      <input type="text" ref={totalAfterDiscountRef} />
-                    </td>
-                  </span>
-                  <span>
-                    <br />
-                    ภาษีมูลค่าเพิ่ม 7%
-                  </span>
-                  <span className="result3">
-                    <td>
-                      <input type="text" value="6.65" />
-                    </td>
-                  </span>
-                  <span>
-                    <br />
-                    จำนวนเงินรวมทั้งสิ้น
-                  </span>
-                  <span className="result4">
-                    <td>
-                      <input type="text" ref={grandTotalRef} />
-                    </td>
-                  </span>
-                </p>
-              </div>
-
-              <div className="PDF_img_footer">
-                <img src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png" />
-              </div>
-            </div>
+      {/* -----------------------------------------Content----------------------------------------------- */}
+      <div className="Content">
+        <div className="Btn_and_PDF">
+          <div className="Btn_Content">
+            <button type="submit" className="button-1">
+              ส่ง
+            </button>
+            <button type="submit" className="button-2">
+              บันทึก
+            </button>
+            <button type="submit" className="button-2">
+              รับ PDF
+            </button>
+            <button type="submit" className="button-2">
+              พิมพ์
+            </button>
           </div>
+
+
+          {/*---------------------------------- PDF --------------------------------- */}
+
+          <div className="PDF" style={{marginTop: '25px'}}>
+
+                    {/* <img src='https://edit.org/images/cat/invoices-big-2019042509.jpg'/> */}
+                    <div className="receipt">
+                        <h3>ใบเสร็จรับเงิน</h3>
+
+                        
+                        <div className='my_company' style={{fontSize: '13px',textAlign: 'left'}}>
+
+                            <div>
+                                <p>ชื่อบริษัท: <input type="text" placeholder="ตัวอย่าง บริษัท ขายดี จำกัด" />
+                                    <span><br/>ชื่อ:  <input type="text"placeholder="ตัวอย่าง นาย เฮง ทำมาค้าขึ้น"/></span>
+                                    <span><br/>ที่อยู่: <input type="text" placeholder="ตัวอย่าง 234 ซอย สุขุมวิท 21 แขวงคลองเตยเหนือ เขตวัฒนา กรุงเทพมหานคร 10110 "/></span>
+                                    <span><br/>เลขประจำตัวผู้เสียภาษี: <input type="text" placeholder="0000000000000"/></span>
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <p>วันที่: <input type="date" id="dt"/>
+                                    <span><br/>ผู้ขาย: <input type="text" placeholder="เฮง เฮง"/></span>
+                                    <span><br/>ครบกำหนด: <input type="date" id="dt"/></span>
+                                </p>
+                            </div>
+
+                        </div>
+                        
+
+                        <div className='customer_company' style={{fontSize: '13px', textAlign: 'left'}}>
+                            <p>ชื่อบริษัทลูกค้า: <input type="text" placeholder="ตัวอย่าง บริษัท ชอบซื้อ จำกัด"/>
+                                <span><br/>ชื่อลูกค้า: <input type="text" placeholder="ตัวอย่าง นาย รักดี รักมั่น"/></span>
+                                <span><br/>ที่อยู่ลูกค้า: <input type="text" placeholder="ตัวอย่าง 123 ถนนสุรวงศ์ แขวงสุริยวงศ เขตบางรัก กรุงเทพ 10500"/></span>
+                                <span><br/>เลขประจำตัวผู้เสียภาษี: <input type="text" placeholder="1234567891234"/></span>
+                            </p>
+                        </div>
+
+                        <div className="description" style={{fontSize: '13px'}}>
+                            <strong>ชื่องาน:</strong>
+
+                            <table className="table">
+                                <thead className="thead-dark">
+                                    <tr>
+                                        <th>ลำดับ</th>
+                                        <th>ชื่อสินค้า/รายละเอียด</th>
+                                        <th>จำนวน</th>
+                                        <th>หน่วย</th>
+                                        <th>ราคาต่อหน่วย</th>
+                                        <th>ราคารวม</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td><input style={{textAlign: "left"}} type="float" placeholder="1"/></td>
+                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="float" placeholder="1" value={quantity1} onChange={(e) => setQuantity1(e.target.value)}/></td>
+                                        <td><input type="text" placeholder="ชิ้น"/></td>
+                                        <td class="Name_item"><input type="float" placeholder="100.00" value={price1} onChange={(e) => setPrice1(e.target.value)}/></td>
+                                        <td><p>{amount1.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><input style={{textAlign: "left"}} type="float" placeholder="2"/></td>
+                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="float" placeholder="1" value={quantity2} onChange={(e) => setQuantity2(e.target.value)}/></td>
+                                        <td><input type="text" placeholder="ชิ้น"/></td>
+                                        <td class="Name_item"><input type="float" placeholder="100.00" value={price2} onChange={(e) => setPrice2(e.target.value)}/></td>
+                                        <td><p>{amount2.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><input style={{textAlign: "left"}} type="float" placeholder="3"/></td>
+                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="float" placeholder="1" value={quantity3} onChange={(e) => setQuantity3(e.target.value)}/></td>
+                                        <td><input type="text" placeholder="ชิ้น"/></td>
+                                        <td class="Name_item"><input type="float" placeholder="100.00" value={price3} onChange={(e) => setPrice3(e.target.value)}/></td>
+                                        <td><p>{amount3.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><input style={{textAlign: "left"}} type="float" placeholder="4"/></td>
+                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        <td><input type="float" placeholder="1" value={quantity4} onChange={(e) => setQuantity4(e.target.value)}/></td>
+                                        <td><input type="text" placeholder="ชิ้น"/></td>
+                                        <td class="Name_item"><input type="float" placeholder="100.00" value={price4} onChange={(e) => setPrice4(e.target.value)}/></td>
+                                        <td><p>{amount4.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td>
+                                    </tr>
+
+                                    <tr>
+                                        <button className='buttonAdd' type="button"><a style={{color: "black"}} href="https://sandbox-new.flowaccount.com/N732809/business/receipts">+เพิ่มแถวรายการ</a></button>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        {/* --------------------------แก้ toFixed---------------------------------- */}
+                        {/* .toFixed(2) */}
+                        {/* .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") */}
+
+
+                        <div className='summary' style={{fontSize: '13px'}}>
+                          
+                            <p>
+                              รวมเป็นเงิน:  <span className='result'><td>{sum.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
+
+                                <span className='discount'><br/>ส่วนลด 
+                                  <input style={{width: '8.5%'}} type="float" placeholder="5" value={numberdiscount} onChange={(e) => setNumberdiscount(e.target.value)}/>%
+                                </span>         
+                                
+                                <span className='result1'><td>{displayDiscount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
+                                
+                                <span><br/>ราคาหลังหักส่วนลด</span>   
+                                    <span className='result2'><td>{discount.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
+                                
+                                <span><br/>ภาษีมูลค่าเพิ่ม 7%</span>    
+                                 
+                                    <span className='result3'><td>{tax.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
+                                
+                                <span><br/>จำนวนเงินรวมทั้งสิ้น</span>   
+                                    <span className='result4'><td><p type="float" placeholder="101.65">{netTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td></span>
+                            </p>
+                        </div>
+                        
+                        
+                        <div className='PDF_img_footer' >
+                            <img src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png" />
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
         </div>
 
         <div className="Text_explain_procedure">
@@ -527,5 +463,5 @@ export default function Cash_invoice() {
         </div>
       </div>
     </>
-  );
+  )
 }
