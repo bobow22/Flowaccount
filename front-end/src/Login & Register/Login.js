@@ -1,4 +1,5 @@
 import { Button, Form, Input } from 'antd';
+import From from '../Component/validation_Test';
 import '../Login & Register/Login.css';
 // import axios from 'axios';
 
@@ -14,8 +15,11 @@ export default function Login() {
        
        
        return (<>
+       
+            {/* --------------------Form Login----------------- */}
 
-                {/* --------------------Form Login----------------- */}
+            <div className="Container">
+                
                 <div className="Form_Login">
 
                         <div className="image_header">
@@ -80,11 +84,16 @@ export default function Login() {
                             </div>
                         </Form>
                     </div>
+
+
+                    <div className='FlowAccount_Co'>
+                        <p>2014-2022 © FlowAccount Co., Ltd. All Right Reserved <span>Terms of Service</span><span>Privacy Policy</span></p>
+                    </div>
                 </div>
                 
-                <div className='FlowAccount_Co'>
-                    <p>2014-2022 © FlowAccount Co., Ltd. All Right Reserved <span>Terms of Service</span><span>Privacy Policy</span></p>
-                </div>
-            </>
-        );
+                
+            
+            </div>                   
+        </>
+        )
     }

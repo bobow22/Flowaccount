@@ -15,7 +15,10 @@ export default function Register() {
        
        return (<>
 
-                {/* --------------------Form Register----------------- */}
+            {/* --------------------Form Register----------------- */}
+
+            {/* <div className="Container_Register"> */}
+
                 <div className="Form_Register">
 
                         <div className="image_header">
@@ -75,8 +78,8 @@ export default function Register() {
                             
 
                             <div className='form_text'>
-                                <p>ในการสมัครใช้งาน ฉันได้ยอมรับ</p>
-                                <p><span>ประกาศความเป็นส่วนตัวสําหรับลูกค้าและผู้รับบริการ</span> และ <span>เงื่อนไขการใช้บริการ</span></p>
+                                <p><span>ในการสมัครใช้งาน ฉันได้ยอมรับ<br /></span>
+                                    <span>ประกาศความเป็นส่วนตัวสําหรับลูกค้าและผู้รับบริการ</span> และ <span>เงื่อนไขการใช้บริการ</span></p>
                             </div>
                             
 
@@ -119,6 +122,8 @@ export default function Register() {
                 <div className='FlowAccount_Co'>
                     <p>2014-2022 © FlowAccount Co., Ltd. All Right Reserved <span>Terms of Service</span><span>Privacy Policy</span></p>
                 </div>
-            </>
-        );
-    }
+
+            {/* </div> */}
+        </>
+    )
+}
