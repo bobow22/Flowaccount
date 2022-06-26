@@ -6,13 +6,13 @@
 
 
 /*----------------------------------Register-------------------------------*/
-/* body{
-    background-color: rgb(71, 192, 240);
+/* .Container_Register{
+    background: rgb(71, 192, 240);
     display: flex;
     justify-content: center;
     margin-top: 25px;
-  }
-   */
+  } */
+  
   
   .button-38 {
     background-color: #7ac913f5;
@@ -51,13 +51,13 @@
   .Form_Register{
     border-radius: 6px;
     margin: auto;
-    width: 70%;
+    width: 45%;
     padding: 1rem;
     display: 'flex';
     justify-content: center;
     flex-wrap: 'wrap';
     background-color: white;
-    /* border: 2px solid rgb(132, 134, 21); */
+    border: 2px solid rgb(132, 134, 21);
   }
   
   .Form_Register p{
@@ -113,6 +113,14 @@
   
   .form_text{
     text-align: center;
+  }
+
+  .form_text p{
+    font-size: 1rem;
+  }
+
+  .form_text p span{
+    font-size: 1.1rem;
   }
   
   .animate-bottom{

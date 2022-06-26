@@ -7,6 +7,46 @@ import { useEffect } from 'react';
 
 
 export default function Cash_invoice() {
+
+    //-----------------------------------Form validation----------------------------------------//
+    const [customer_name, setCustomer_name] = useState('')
+
+
+
+    const [ItemName_1, setItemName_1] = useState('')
+    const [ItemName_2, setItemName_2] = useState('')
+    const [ItemName_3, setItemName_3] = useState('')
+    const [ItemName_4, setItemName_4] = useState('')
+
+
+
+    const [error, setError] = useState('')
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+
+      //--------------Error 
+      if(customer_name.length === 0){
+        setError(true)
+      }
+
+      if(ItemName_1.length === 0 || ItemName_2.length === 0 || ItemName_3.length === 0 || ItemName_4.length === 0){
+        setError(true)
+      }
+
+      //------------Success
+      if(customer_name){
+        console.log(
+          'Customer name:',customer_name,
+          '\nItem Name 1:', ItemName_1,
+          '\nItem Name 2:', ItemName_2,
+          '\nItem Name 3:', ItemName_3,
+          '\nItem Name 4:', ItemName_4,
+
+        )
+      }
+    }
+  
     
     //----------------- 1 -----------------//
     const [quantity1, setQuantity1] = useState(0);
@@ -46,30 +86,30 @@ export default function Cash_invoice() {
 
     useEffect(() => {
         //1
-        setAmount1(parseFloat(quantity1) * parseFloat(price1)) //amount1
+        setAmount1(parseFloat(quantity1, 10) * parseFloat(price1, 10)) //amount1
         //2
-        setAmount2(parseFloat(quantity2) * parseFloat(price2)) //amount2
+        setAmount2(parseFloat(quantity2, 10) * parseFloat(price2, 10)) //amount2
         //3
-        setAmount3(parseFloat(quantity3) * parseFloat(price3)) //amount3
+        setAmount3(parseFloat(quantity3, 10) * parseFloat(price3, 10)) //amount3
         //4
-        setAmount4(parseFloat(quantity4) * parseFloat(price4)) //amount4
+        setAmount4(parseFloat(quantity4, 10) * parseFloat(price4, 10)) //amount4
+
         //Sum
-        setSum(parseFloat(amount1) + parseFloat(amount2) + parseFloat(amount3) + parseFloat(amount4)) //Sum
+        setSum(parseFloat(amount1, 10) + parseFloat(amount2, 10) + parseFloat(amount3, 10) + parseFloat(amount4, 10))
+
         //Discount
-        setDiscount(parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100)) //Discount
-        
+        setDiscount(parseFloat(sum, 10) - parseFloat(sum, 10) * parseFloat(numberdiscount/100)) //Discount
         
         //Display Discount
-        setDisplayDiscount(parseFloat(sum) * parseFloat(numberdiscount/100)) //Display Discount
-
+        setDisplayDiscount(parseFloat(sum, 10) * parseFloat(numberdiscount/100)) //Display Discount
 
         //Tax
-        setTax(parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100) *7/100) //Tax
+        setTax(parseFloat(discount, 10)* 7/100) //Tax
         
         //Net Total
-        setNetTotal(parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100) + parseFloat(sum) - parseFloat(sum) * parseFloat(numberdiscount/100))//Discount
+        setNetTotal(parseFloat(discount, 10) + (parseFloat(discount, 10)* 7/100))//Discount
 
-    }, [price1, price2, price3, price4, amount1, amount2, amount3, amount4, quantity1, quantity2, quantity3, quantity4, sum, numberdiscount, discount, tax, netTotal])
+    }, [price1, price2, price3, price4, amount1, amount2, amount3, amount4, quantity1, quantity2, quantity3, quantity4, sum, numberdiscount, discount, tax, netTotal,displayDiscount])
     
 
   return (<>
@@ -110,7 +150,9 @@ export default function Cash_invoice() {
       <div className="Content">
         <div className="Btn_and_PDF">
           <div className="Btn_Content">
-            <button type="submit" className="button-1">
+
+            {/* -------------Submit------------- */}
+            <button id='form' type="submit" className="button-1" onClick={handleSubmit}>
               ส่ง
             </button>
             <button type="submit" className="button-2">
@@ -129,17 +171,15 @@ export default function Cash_invoice() {
 
           <div className="PDF" style={{marginTop: '25px'}}>
 
-                    {/* <img src='https://edit.org/images/cat/invoices-big-2019042509.jpg'/> */}
                     <div className="receipt">
                         <h3>ใบเสร็จรับเงิน</h3>
 
-                        
                         <div className='my_company' style={{fontSize: '13px',textAlign: 'left'}}>
 
                             <div>
                                 <p>ชื่อบริษัท: <input type="text" placeholder="ตัวอย่าง บริษัท ขายดี จำกัด" />
                                     <span><br/>ชื่อ:  <input type="text"placeholder="ตัวอย่าง นาย เฮง ทำมาค้าขึ้น"/></span>
-                                    <span><br/>ที่อยู่: <input type="text" placeholder="ตัวอย่าง 234 ซอย สุขุมวิท 21 แขวงคลองเตยเหนือ เขตวัฒนา กรุงเทพมหานคร 10110 "/></span>
+                                    <span className="Address"><br/>ที่อยู่: <input type="text" placeholder="ตัวอย่าง 234 ซอย สุขุมวิท 21   แขวงคลองเตยเหนือ เขตวัฒนา กรุงเทพมหานคร 10110 "/></span>
                                     <span><br/>เลขประจำตัวผู้เสียภาษี: <input type="text" placeholder="0000000000000"/></span>
                                 </p>
                             </div>
@@ -153,9 +193,17 @@ export default function Cash_invoice() {
 
                         </div>
                         
-
+                      
                         <div className='customer_company' style={{fontSize: '13px', textAlign: 'left'}}>
-                            <p>ชื่อบริษัทลูกค้า: <input type="text" placeholder="ตัวอย่าง บริษัท ชอบซื้อ จำกัด"/>
+                            <p>ชื่อบริษัทลูกค้า: 
+                              
+                            <input id="customer_name" type="text" placeholder="ตัวอย่าง บริษัท ชอบซื้อ จำกัด" onChange={e =>setCustomer_name(e.target.value)}/>
+
+                            {/* ---------------error: customer_name---------------- */}
+                            {error && customer_name.length <=0? <label style={{color: 'red'}}>:Customer Name can't be empty</label>: ''}
+
+
+
                                 <span><br/>ชื่อลูกค้า: <input type="text" placeholder="ตัวอย่าง นาย รักดี รักมั่น"/></span>
                                 <span><br/>ที่อยู่ลูกค้า: <input type="text" placeholder="ตัวอย่าง 123 ถนนสุรวงศ์ แขวงสุริยวงศ เขตบางรัก กรุงเทพ 10500"/></span>
                                 <span><br/>เลขประจำตัวผู้เสียภาษี: <input type="text" placeholder="1234567891234"/></span>
@@ -177,10 +225,15 @@ export default function Cash_invoice() {
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     <tr>
                                         <td><input style={{textAlign: "left"}} type="float" placeholder="1"/></td>
-                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        
+                                        {/* ---------------error: Name_item_1---------------- */}
+                                        <td class="Name_item">                         
+                                          <input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า" onChange={e=>setItemName_1(e.target.value)}/>
+                                          {error && ItemName_1.length <=0? <label style={{color: 'red'}}>Item Name can't be empty</label>: ''}
+                                        </td>
+
                                         <td><input type="float" placeholder="1" value={quantity1} onChange={(e) => setQuantity1(e.target.value)}/></td>
                                         <td><input type="text" placeholder="ชิ้น"/></td>
                                         <td class="Name_item"><input type="float" placeholder="100.00" value={price1} onChange={(e) => setPrice1(e.target.value)}/></td>
@@ -189,7 +242,15 @@ export default function Cash_invoice() {
 
                                     <tr>
                                         <td><input style={{textAlign: "left"}} type="float" placeholder="2"/></td>
-                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        
+                                        {/* ---------------error: Name_item_2---------------- */}
+                                        <td class="Name_item">
+                                          <input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า" onChange={e=>setItemName_2(e.target.value)}/>
+                                         
+                                          {error && ItemName_2.length <=0? <label style={{color: 'red'}}>Item Name can't be empty</label>: ''}
+                                        </td>
+
+
                                         <td><input type="float" placeholder="1" value={quantity2} onChange={(e) => setQuantity2(e.target.value)}/></td>
                                         <td><input type="text" placeholder="ชิ้น"/></td>
                                         <td class="Name_item"><input type="float" placeholder="100.00" value={price2} onChange={(e) => setPrice2(e.target.value)}/></td>
@@ -198,7 +259,13 @@ export default function Cash_invoice() {
 
                                     <tr>
                                         <td><input style={{textAlign: "left"}} type="float" placeholder="3"/></td>
-                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        
+                                        {/* ---------------error: Name_item_3---------------- */}
+                                        <td class="Name_item">
+                                          <input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า" onChange={e=>setItemName_3(e.target.value)}/>
+                                          {error && ItemName_3.length <=0? <label style={{color: 'red'}}>Item Name can't be empty</label>: ''}
+                                        </td>
+
                                         <td><input type="float" placeholder="1" value={quantity3} onChange={(e) => setQuantity3(e.target.value)}/></td>
                                         <td><input type="text" placeholder="ชิ้น"/></td>
                                         <td class="Name_item"><input type="float" placeholder="100.00" value={price3} onChange={(e) => setPrice3(e.target.value)}/></td>
@@ -207,7 +274,13 @@ export default function Cash_invoice() {
 
                                     <tr>
                                         <td><input style={{textAlign: "left"}} type="float" placeholder="4"/></td>
-                                        <td class="Name_item"><input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า"/></td>
+                                        
+                                        {/* ---------------error: Name_item_4---------------- */}
+                                        <td class="Name_item">
+                                          <input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า" onChange={e=>setItemName_4(e.target.value)}/>
+                                          {error && ItemName_4.length <=0? <label style={{color: 'red'}}>Item Name can't be empty</label>: ''}
+
+                                        </td>
                                         <td><input type="float" placeholder="1" value={quantity4} onChange={(e) => setQuantity4(e.target.value)}/></td>
                                         <td><input type="text" placeholder="ชิ้น"/></td>
                                         <td class="Name_item"><input type="float" placeholder="100.00" value={price4} onChange={(e) => setPrice4(e.target.value)}/></td>
@@ -222,15 +295,13 @@ export default function Cash_invoice() {
                         </div>
 
 
-                        {/* --------------------------แก้ toFixed---------------------------------- */}
-                        {/* .toFixed(2) */}
-                        {/* .toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") */}
-
+                        {/* --------------------------Summary---------------------------------- */}
+                       
 
                         <div className='summary' style={{fontSize: '13px'}}>
                           
                             <p>
-                              รวมเป็นเงิน:  <span className='result'><td>{sum.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
+                              <span>รวมเป็นเงิน:</span>  <span className='result'><td>{sum.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
 
                                 <span className='discount'><br/>ส่วนลด 
                                   <input style={{width: '8.5%'}} type="float" placeholder="5" value={numberdiscount} onChange={(e) => setNumberdiscount(e.target.value)}/>%
@@ -246,7 +317,7 @@ export default function Cash_invoice() {
                                     <span className='result3'><td>{tax.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
                                 
                                 <span><br/>จำนวนเงินรวมทั้งสิ้น</span>   
-                                    <span className='result4'><td><p type="float" placeholder="101.65">{netTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td></span>
+                                    <span className='result4'><td>{netTotal.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</td></span>
                             </p>
                         </div>
                         
