@@ -2,9 +2,9 @@
   <img src="https://github.com/bobow22/Flowaccount/blob/main/img/logo.png?raw=true" >
 </div>
 
-# FlowAccount receipt generator
+# FlowAccount Receipt Generator
 
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga unde aliquam maiores aspernatur esse ex voluptate, repellendus quidem deleniti est eveniet beatae. Odio facere rerum, at amet fuga hic officiis, maiores sapiente eum impedit labore, reiciendis cum rem quam saepe!
+This project was assigned from FlowAccount to the Mungtaro, a group from DEVCAMP to create FlowAcount receipt generator which customers can put information and order list on the pdf page and submit to the FlowAccount website including save, get pdf, and print by using our knowledge down below to create the project.
 
 - React
 - React Hook
@@ -18,9 +18,9 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga unde aliquam maior
 ## Team
 
 This is my team.
-[Bow](https://github.com/bobow22)
-[Kan](https://github.com/bobow22)
-[Zera](https://github.com/bobow22)
+- [Bow](https://github.com/bobow22)
+- [Karn](https://github.com/Silapakarn)
+- [Zeera](https://github.com/zeeracha)
 
 ### Key Features
 
@@ -28,12 +28,12 @@ This is my team.
 - My team can generate receipts which can calculate xxx
 - You can view demo project by clicking this [link](http://18.136.199.111/)
 
-### Getting start with Create React App
+### Getting Start With Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/bobow22/Flowaccount).
 
-## Available Scripts
-
+## How to Install and Run The Project
+Clone the project from https://github.com/bobow22/Flowaccount 
 In the project directory, you can run:
 
 ### `npm start`
