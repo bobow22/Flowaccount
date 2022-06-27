@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useRef } from "react";
 
+
+
 export default function Cash_invoice() {
 	const getToken = async () => {
 		const result = await axios.get("http://localhost:3000/");
@@ -13,50 +15,54 @@ export default function Cash_invoice() {
 		localStorage.setItem("token", result.data.access_token);
 	};
 
+  
 	getToken();
+
 	//-----------------------------------Form validation----------------------------------------//
-	const [customer_name, setCustomer_name] = useState("");
+	const [CompanyCustomer_name, setCompanyCustomer_name] = useState('')
+    const [customer_name, setCustomer_name] = useState('')
+    const [Customer_address, setCustomer_address] = useState('')
+    const [Tax_Number, setTax_Number] = useState('')
 
-	const [ItemName_1, setItemName_1] = useState("");
-	const [ItemName_2, setItemName_2] = useState("");
-	const [ItemName_3, setItemName_3] = useState("");
-	const [ItemName_4, setItemName_4] = useState("");
 
-	const [error, setError] = useState("");
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
+    const [ItemName_1, setItemName_1] = useState('')
+    const [ItemName_2, setItemName_2] = useState('')
+    const [ItemName_3, setItemName_3] = useState('')
+    const [ItemName_4, setItemName_4] = useState('')
 
-		//--------------Error
-		if (customer_name.length === 0) {
-			setError(true);
-		}
 
-		if (
-			ItemName_1.length === 0 ||
-			ItemName_2.length === 0 ||
-			ItemName_3.length === 0 ||
-			ItemName_4.length === 0
-		) {
-			setError(true);
-		}
+    const [error, setError] = useState('')
 
-		//------------Success
-		if (customer_name) {
-			console.log(
-				"Customer name:",
-				customer_name,
-				"\nItem Name 1:",
-				ItemName_1,
-				"\nItem Name 2:",
-				ItemName_2,
-				"\nItem Name 3:",
-				ItemName_3,
-				"\nItem Name 4:",
-				ItemName_4
-			);
-		}
-	};
+
+
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      //--------------Error 
+      if(customer_name.length === 0 || CompanyCustomer_name.length === 0 || Customer_address.length === 0 || Tax_Number.length != 13){
+
+        setError(true)
+
+      }
+
+      if(ItemName_1.length === 0 || ItemName_2.length === 0 || ItemName_3.length === 0 || ItemName_4.length === 0){
+        setError(true)
+      }
+
+      //------------Success
+      if(customer_name){
+        console.log(
+          'CompanyCustomer name:', CompanyCustomer_name,
+          '\nCustomer name:',customer_name,
+          '\nCustomer address:', Customer_address,
+          '\mTax Number:', Tax_Number,
+          '\nItem Name 1:', ItemName_1,
+          '\nItem Name 2:', ItemName_2,
+          '\nItem Name 3:', ItemName_3,
+          '\nItem Name 4:', ItemName_4,
+        )
+      }
+    }
 
 	//----------------- 1 -----------------//
 	const [quantity1, setQuantity1] = useState(0);
@@ -361,21 +367,17 @@ export default function Cash_invoice() {
 									id="customer_name"
 									type="text"
 									placeholder="ตัวอย่าง บริษัท ชอบซื้อ จำกัด"
-									onChange={(e) => setCustomer_name(e.target.value)}
+									onChange={(e) => setCompanyCustomer_name(e.target.value)}
 									ref={contactCompanyNameRef}
 								/>
-								{/* ---------------error: customer_name---------------- */}
-								{error && customer_name.length <= 0 ? (
-									<label style={{ color: "red" }}>
-										:Customer Name can't be empty
-									</label>
-								) : (
-									""
-								)}
+								{/* ---------------error: CompanyCustomer_name---------------- */}
+								{error && CompanyCustomer_name.length <=0? <label style={{color: 'red'}}>กรุณากรอกชื่อบริษัทลูกค้า</label>: ''}
+
 								<span>
 									<br />
 									ชื่อลูกค้า:{" "}
-									<input type="text" placeholder="ตัวอย่าง นาย รักดี รักมั่น" ref={contactNameRef} />
+									<input type="text" placeholder="ตัวอย่าง นาย รักดี รักมั่น" ref={contactNameRef} onChange={e =>setCustomer_name(e.target.value)}/>
+									{error && customer_name.length <=0? <label style={{color: 'red'}}>กรุณากรอกชื่อลูกค้า</label>: ''}
 								</span>
 								<span>
 									<br />
@@ -384,13 +386,18 @@ export default function Cash_invoice() {
 										type="text"
 										placeholder="ตัวอย่าง 123 ถนนสุรวงศ์ แขวงสุริยวงศ เขตบางรัก กรุงเทพ 10500"
 										ref={contactAddressRef}
+										onChange={e=>setCustomer_address(e.target.value)}
 									/>
+									{error && Customer_address.length <=0? <label style={{color: 'red'}}>กรุณากรอกที่อยู่ลูกค้า</label>: ''}
 								</span>
 								<span>
 									<br />
 									เลขประจำตัวผู้เสียภาษี:{" "}
 									<input type="text" placeholder="1234567891234"
-										ref={contactTaxIdRef} />
+										ref={contactTaxIdRef} 
+										onChange={e=>setTax_Number(e.target.value)}
+									/>
+									{error && Tax_Number.length != 13? <label style={{color: 'red'}}>กรุณากรอกเลขประจำตัวผู้เสียภาษีให้ครบ</label>: ''}
 								</span>
 							</p>
 						</div>
@@ -412,11 +419,7 @@ export default function Cash_invoice() {
 								<tbody>
 									<tr>
 										<td>
-											<input
-												style={{ textAlign: "left" }}
-												type="float"
-												placeholder="1"
-											/>
+											<span>1</span>
 										</td>
 
 										{/* ---------------error: Name_item_1---------------- */}
@@ -430,7 +433,7 @@ export default function Cash_invoice() {
 											/>
 											{error && ItemName_1.length <= 0 ? (
 												<label style={{ color: "red" }}>
-													Item Name can't be empty
+													กรุณากรอกชื่อสินค้า
 												</label>
 											) : (
 												""
@@ -469,11 +472,7 @@ export default function Cash_invoice() {
 
 									<tr>
 										<td>
-											<input
-												style={{ textAlign: "left" }}
-												type="float"
-												placeholder="2"
-											/>
+											<span>2</span>
 										</td>
 
 										{/* ---------------error: Name_item_2---------------- */}
@@ -488,7 +487,7 @@ export default function Cash_invoice() {
 
 											{error && ItemName_2.length <= 0 ? (
 												<label style={{ color: "red" }}>
-													Item Name can't be empty
+													กรุณากรอกชื่อสินค้า
 												</label>
 											) : (
 												""
@@ -526,11 +525,7 @@ export default function Cash_invoice() {
 
 									<tr>
 										<td>
-											<input
-												style={{ textAlign: "left" }}
-												type="float"
-												placeholder="3"
-											/>
+											<span>3</span>
 										</td>
 
 										{/* ---------------error: Name_item_3---------------- */}
@@ -544,7 +539,7 @@ export default function Cash_invoice() {
 											/>
 											{error && ItemName_3.length <= 0 ? (
 												<label style={{ color: "red" }}>
-													Item Name can't be empty
+													กรุณากรอกชื่อสินค้า
 												</label>
 											) : (
 												""
@@ -582,11 +577,7 @@ export default function Cash_invoice() {
 
 									<tr>
 										<td>
-											<input
-												style={{ textAlign: "left" }}
-												type="float"
-												placeholder="4"
-											/>
+											<span>4</span>
 										</td>
 
 										{/* ---------------error: Name_item_4---------------- */}
@@ -600,7 +591,7 @@ export default function Cash_invoice() {
 											/>
 											{error && ItemName_4.length <= 0 ? (
 												<label style={{ color: "red" }}>
-													Item Name can't be empty
+													กรุณากรอกชื่อสินค้า
 												</label>
 											) : (
 												""
@@ -771,7 +762,7 @@ export default function Cash_invoice() {
 							style={{ color: "white", textDecoration: "none" }}
 							href="https://flowaccount.com/"
 						>
-							ติดต่อเรา
+							ติดต่อเราา
 						</a>
 					</button>
 				</div>
