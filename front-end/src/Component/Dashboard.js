@@ -6,6 +6,7 @@ export default function Dashboard() {
 
     return (
         <div className="flex flex-no-wrap">
+            
             {/* Sidebar starts */}
             {/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
             <div className="w-64 absolute sm:relative bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex">

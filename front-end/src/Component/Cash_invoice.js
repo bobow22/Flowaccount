@@ -5,11 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect } from 'react';
 
 
-
 export default function Cash_invoice() {
 
     //-----------------------------------Form validation----------------------------------------//
+    const [CompanyCustomer_name, setCompanyCustomer_name] = useState('')
     const [customer_name, setCustomer_name] = useState('')
+    const [Customer_address, setCustomer_address] = useState('')
+    const [Tax_Number, setTax_Number] = useState('')
 
 
 
@@ -19,15 +21,17 @@ export default function Cash_invoice() {
     const [ItemName_4, setItemName_4] = useState('')
 
 
-
     const [error, setError] = useState('')
+
+
 
     const handleSubmit = (e) => {
       e.preventDefault()
-
       //--------------Error 
-      if(customer_name.length === 0){
+      if(customer_name.length === 0 || CompanyCustomer_name.length === 0 || Customer_address.length === 0 || Tax_Number.length != 13){
+
         setError(true)
+
       }
 
       if(ItemName_1.length === 0 || ItemName_2.length === 0 || ItemName_3.length === 0 || ItemName_4.length === 0){
@@ -37,7 +41,10 @@ export default function Cash_invoice() {
       //------------Success
       if(customer_name){
         console.log(
-          'Customer name:',customer_name,
+          'CompanyCustomer name:', CompanyCustomer_name,
+          '\nCustomer name:',customer_name,
+          '\nCustomer address:', Customer_address,
+          '\mTax Number:', Tax_Number,
           '\nItem Name 1:', ItemName_1,
           '\nItem Name 2:', ItemName_2,
           '\nItem Name 3:', ItemName_3,
@@ -79,11 +86,12 @@ export default function Cash_invoice() {
     //----------------- Tax -----------------//
     const [tax, setTax] = useState(0);
 
+
     //----------------- Net Total -----------------//
     const [netTotal, setNetTotal] = useState(0);
 
-    //----------------- useEffect -----------------//
 
+    //----------------- useEffect -----------------//
     useEffect(() => {
         //1
         setAmount1(parseFloat(quantity1, 10) * parseFloat(price1, 10)) //amount1
@@ -144,8 +152,6 @@ export default function Cash_invoice() {
       </div>
 
 
-
-
       {/* -----------------------------------------Content----------------------------------------------- */}
       <div className="Content">
         <div className="Btn_and_PDF">
@@ -190,23 +196,33 @@ export default function Cash_invoice() {
                                     <span><br/>ครบกำหนด: <input type="date" id="dt"/></span>
                                 </p>
                             </div>
-
                         </div>
                         
                       
                         <div className='customer_company' style={{fontSize: '13px', textAlign: 'left'}}>
                             <p>ชื่อบริษัทลูกค้า: 
                               
-                            <input id="customer_name" type="text" placeholder="ตัวอย่าง บริษัท ชอบซื้อ จำกัด" onChange={e =>setCustomer_name(e.target.value)}/>
+                            <input id="customer_name" type="text" placeholder="ตัวอย่าง บริษัท ชอบซื้อ จำกัด" onChange={e =>setCompanyCustomer_name(e.target.value)}/>
 
                             {/* ---------------error: customer_name---------------- */}
-                            {error && customer_name.length <=0? <label style={{color: 'red'}}>:Customer Name can't be empty</label>: ''}
+                            {error && CompanyCustomer_name.length <=0? <label style={{color: 'red'}}>กรุณากรอกชื่อบริษัทลูกค้า</label>: ''}
 
 
+                                <span><br/>ชื่อลูกค้า: 
+                                  <input type="text" placeholder="ตัวอย่าง นาย รักดี รักมั่น" onChange={e =>setCustomer_name(e.target.value)}/>
+                                  {error && customer_name.length <=0? <label style={{color: 'red'}}>กรุณากรอกชื่อลูกค้า</label>: ''}
+                                </span>
 
-                                <span><br/>ชื่อลูกค้า: <input type="text" placeholder="ตัวอย่าง นาย รักดี รักมั่น"/></span>
-                                <span><br/>ที่อยู่ลูกค้า: <input type="text" placeholder="ตัวอย่าง 123 ถนนสุรวงศ์ แขวงสุริยวงศ เขตบางรัก กรุงเทพ 10500"/></span>
-                                <span><br/>เลขประจำตัวผู้เสียภาษี: <input type="text" placeholder="1234567891234"/></span>
+
+                                <span><br/>ที่อยู่ลูกค้า: 
+                                  <input type="text" placeholder="ตัวอย่าง 123 ถนนสุรวงศ์ แขวงสุริยวงศ เขตบางรัก กรุงเทพ 10500" onChange={e=>setCustomer_address(e.target.value)}/>
+                                  {error && Customer_address.length <=0? <label style={{color: 'red'}}>กรุณากรอกที่อยู่ลูกค้า</label>: ''}
+                                </span>
+
+                                <span><br/>เลขประจำตัวผู้เสียภาษี: 
+                                  <input type="text" placeholder="1234567891234" onChange={e=>setTax_Number(e.target.value)}/>
+                                  {error && Tax_Number.length != 13? <label style={{color: 'red'}}>กรุณากรอกเลขประจำตัวผู้เสียภาษีให้ครบ</label>: ''}
+                                </span>
                             </p>
                         </div>
 
@@ -231,7 +247,7 @@ export default function Cash_invoice() {
                                         {/* ---------------error: Name_item_1---------------- */}
                                         <td class="Name_item">                         
                                           <input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า" onChange={e=>setItemName_1(e.target.value)}/>
-                                          {error && ItemName_1.length <=0? <label style={{color: 'red'}}>Item Name can't be empty</label>: ''}
+                                          {error && ItemName_1.length <=0? <label style={{color: 'red'}}>กรุณากรอกชื่อสินค้า</label>: ''}
                                         </td>
 
                                         <td><input type="float" placeholder="1" value={quantity1} onChange={(e) => setQuantity1(e.target.value)}/></td>
@@ -240,6 +256,7 @@ export default function Cash_invoice() {
                                         <td><p>{amount1.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p></td>
                                     </tr>
 
+
                                     <tr>
                                         <td><input style={{textAlign: "left"}} type="float" placeholder="2"/></td>
                                         
@@ -247,7 +264,7 @@ export default function Cash_invoice() {
                                         <td class="Name_item">
                                           <input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า" onChange={e=>setItemName_2(e.target.value)}/>
                                          
-                                          {error && ItemName_2.length <=0? <label style={{color: 'red'}}>Item Name can't be empty</label>: ''}
+                                          {error && ItemName_2.length <=0? <label style={{color: 'red'}}>กรุณากรอกชื่อสินค้า</label>: ''}
                                         </td>
 
 
@@ -263,7 +280,7 @@ export default function Cash_invoice() {
                                         {/* ---------------error: Name_item_3---------------- */}
                                         <td class="Name_item">
                                           <input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า" onChange={e=>setItemName_3(e.target.value)}/>
-                                          {error && ItemName_3.length <=0? <label style={{color: 'red'}}>Item Name can't be empty</label>: ''}
+                                          {error && ItemName_3.length <=0? <label style={{color: 'red'}}>กรุณากรอกชื่อสินค้า</label>: ''}
                                         </td>
 
                                         <td><input type="float" placeholder="1" value={quantity3} onChange={(e) => setQuantity3(e.target.value)}/></td>
@@ -278,7 +295,7 @@ export default function Cash_invoice() {
                                         {/* ---------------error: Name_item_4---------------- */}
                                         <td class="Name_item">
                                           <input style={{textAlign: "center"}} type="text" placeholder="ชื่อสินค้า" onChange={e=>setItemName_4(e.target.value)}/>
-                                          {error && ItemName_4.length <=0? <label style={{color: 'red'}}>Item Name can't be empty</label>: ''}
+                                          {error && ItemName_4.length <=0? <label style={{color: 'red'}}>กรุณากรอกชื่อสินค้า</label>: ''}
 
                                         </td>
                                         <td><input type="float" placeholder="1" value={quantity4} onChange={(e) => setQuantity4(e.target.value)}/></td>
@@ -296,8 +313,7 @@ export default function Cash_invoice() {
 
 
                         {/* --------------------------Summary---------------------------------- */}
-                       
-
+                
                         <div className='summary' style={{fontSize: '13px'}}>
                           
                             <p>
@@ -327,35 +343,31 @@ export default function Cash_invoice() {
                         </div>
 
 
-                    </div>
                 </div>
-
-
-
-
-
+            </div>
 
         </div>
 
-        <div className="Text_explain_procedure">
-          <h2>ใส่ข้อมูลใบเสร็จรับเงิน</h2>
-          <p>
-            <SiVerizon />
-            <span>เพิ่มที่อยู่ลูกค้าของคุณ</span>
-          </p>
-          <p>
-            <SiVerizon />
-            <span>เพิ่มหมายเลขใบเสร็จรับเงิน</span>
-          </p>
-          <p>
-            <SiVerizon />
-            <span>เพิ่มข้อมูลสินค้า</span>
-          </p>
-          <p>
-            <SiVerizon />
-            <span>พิมพ์ใบเสร็จรับเงิน</span>
-          </p>
-        </div>
+            <div className="Text_explain_procedure">
+              <h2>ใส่ข้อมูลใบเสร็จรับเงิน</h2>
+              <p>
+                <SiVerizon />
+                <span>เพิ่มที่อยู่ลูกค้าของคุณ</span>
+              </p>
+              <p>
+                <SiVerizon />
+                <span>เพิ่มหมายเลขใบเสร็จรับเงิน</span>
+              </p>
+              <p>
+                <SiVerizon />
+                <span>เพิ่มข้อมูลสินค้า</span>
+              </p>
+              <p>
+                <SiVerizon />
+                <span>พิมพ์ใบเสร็จรับเงิน</span>
+              </p>
+            </div>
+
       </div>
 
       {/* -----------------------------------------Footer----------------------------------------------- */}
@@ -385,6 +397,6 @@ export default function Cash_invoice() {
         </div>
       </div>
     </>
-  );
+  )
 }
 
