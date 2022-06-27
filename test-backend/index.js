@@ -58,13 +58,33 @@ app.get("/", (req, res) => {
   //   });
 });
 
+app.get("/company", (req, res) => {
+  var config = {
+    method: "get",
+    url: "https://openapi.flowaccount.com/test/company/info",
+    headers: {
+      Authorization: `Bearer WpLsYIA7iU2hipBJwI217hYLWIAxCjevA7rWN3Ut1-Y`,
+      "Content-Type": "application/json",
+    },
+  };
+
+  axios(config)
+    .then(function (response) {
+      // console.log(JSON.stringify(response.data));
+      console.log(response.data);
+      res.json(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+});
+
 app.post("/post-receipt", (req, res) => {
   let token = req.body.headers.Authorization;
   let dataObj = req.body.dataObj;
   console.log(token);
   console.log(dataObj);
 
-  var axios = require("axios");
   var data = JSON.stringify(dataObj);
   console.log(data);
 
