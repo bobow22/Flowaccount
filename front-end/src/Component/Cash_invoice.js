@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react'
 import '../Component/Cash_invoice.css';
 import { SiVerizon } from "react-icons/si";
@@ -73,22 +72,6 @@ export default function Cash_invoice() {
 
         <img className='Heade_img' src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png" />
 
-=======
-import React from "react";
-import "../Component/Cash_invoice.css";
-import { SiVerizon } from "react-icons/si";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-export default function Cash_invoice() {
-  return (
-    <>
-      {/* -----------------------------------------Header----------------------------------------------- */}
-      <div className="Header">
-        <img
-          className="Heade_img"
-          src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png"
-        />
->>>>>>> f2bf1dd8ac66fbeee903d7f22669465b58ec1ae9
 
         <h1>สร้างใบเสร็จรับเงิน</h1>
 
@@ -158,7 +141,6 @@ export default function Cash_invoice() {
                   </p>
                 </div>
 
-<<<<<<< HEAD
 
                 <div className="PDF" style={{marginTop: '25px'}}>
 
@@ -265,7 +247,7 @@ export default function Cash_invoice() {
                                 
                                 <span><br/>ภาษีมูลค่าเพิ่ม 7%</span>    
                                     {/* <span className='result3'><td><input type="float" placeholder="6.65" value={tax}/></td></span> */}
-                                    <span className='result3'><td><p placeholder="6.65">{tax.toFixed(2)}</p></td></span>
+                                    <span className='result3'><td><p placeholder="6.65">{tax}</p></td></span>
                                 
                                 <span><br/>จำนวนเงินรวมทั้งสิ้น</span>   
                                     <span className='result4'><td><input type="float" placeholder="101.65" value={netTotal}/></td></span>
@@ -280,20 +262,6 @@ export default function Cash_invoice() {
 
                     </div>
                  
-=======
-                <div>
-                  <p>
-                    วันที่: <input type="date" id="dt" />
-                    <span>
-                      <br />
-                      ผู้ขาย: <input type="text" />
-                    </span>
-                    <span>
-                      <br />
-                      ครบกำหนด: <input type="date" id="dt" />
-                    </span>
-                  </p>
->>>>>>> f2bf1dd8ac66fbeee903d7f22669465b58ec1ae9
                 </div>
               </div>
 
