@@ -12,8 +12,7 @@ export default function Cash_invoice() {
     const [customer_name, setCustomer_name] = useState('')
     const [Customer_address, setCustomer_address] = useState('')
     const [Tax_Number, setTax_Number] = useState('')
-
-
+    
 
     const [ItemName_1, setItemName_1] = useState('')
     const [ItemName_2, setItemName_2] = useState('')
@@ -22,8 +21,6 @@ export default function Cash_invoice() {
 
 
     const [error, setError] = useState('')
-
-
 
     const handleSubmit = (e) => {
       e.preventDefault()
