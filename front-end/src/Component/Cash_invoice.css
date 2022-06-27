@@ -163,11 +163,11 @@
   text-align: right;
 }
 
-/* .summary p{
+.summary p{
     border: 1px solid red;
-    width: 50%;
-    text-align: left;
-} */
+    /* width: 50%;
+    text-align: left; */
+} 
 
 .summary input {
   border: none;
@@ -206,7 +206,7 @@
 .PDF_img_footer {
   margin-top: 20px;
   width: 100%;
-  /* border: 1px solid rgb(255, 0, 0); */
+  border: 1px solid rgb(255, 0, 0);
   text-align: right;
 }
 
@@ -221,8 +221,9 @@
   /* margin-left: 20px; */
 }
 
-.Text_explain_procedure p span {
-  text-align: center;
+.Text_explain_procedure{
+    border: 1px solid red;
+    /* margin-left: 20px; */
 }
 
 .Text_explain_procedure h2 {
@@ -243,7 +244,7 @@
 }
 
 .Btn_Content {
-  /* border: 1px solid rgb(199, 119, 0); */
+  border: 1px solid rgb(199, 119, 0);
   width: 70%;
   margin-left: 190px;
 }
