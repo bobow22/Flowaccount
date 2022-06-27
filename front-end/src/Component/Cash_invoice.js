@@ -771,7 +771,7 @@ export default function Cash_invoice() {
 							style={{ color: "white", textDecoration: "none" }}
 							href="https://flowaccount.com/"
 						>
-							ติดต่อเรา
+							ติดต่อเราา
 						</a>
 					</button>
 				</div>
