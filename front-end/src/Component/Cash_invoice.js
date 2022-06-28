@@ -13,10 +13,19 @@ export default function Cash_invoice() {
 		const result = await axios.get("http://localhost:3000/");
 		console.log(result.data.access_token);
 		localStorage.setItem("token", result.data.access_token);
-	};
+	}
 
   
 	getToken();
+
+	//------------------------Thousand separator input with React Hooks--------------------------//
+
+  	const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  	const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "")
+
+  	const ThousandChange = event =>
+	  setQuantity1(addCommas(removeNonNumeric(event.target.value)))
+
 
 	//-----------------------------------Form validation----------------------------------------//
 	const [CompanyCustomer_name, setCompanyCustomer_name] = useState('')
@@ -25,15 +34,18 @@ export default function Cash_invoice() {
     const [Tax_Number, setTax_Number] = useState('')
 
 
-
     const [ItemName_1, setItemName_1] = useState('')
     const [ItemName_2, setItemName_2] = useState('')
     const [ItemName_3, setItemName_3] = useState('')
     const [ItemName_4, setItemName_4] = useState('')
 
+	const [ProductUnit_1, setProductUnit_1] = useState('')
+	const [ProductUnit_2, setProductUnit_2] = useState('')
+	const [ProductUnit_3, setProductUnit_3] = useState('')
+	const [ProductUnit_4, setProductUnit_4] = useState('')
+
 
     const [error, setError] = useState('')
-
 
 
     const handleSubmit = (e) => {
@@ -49,6 +61,10 @@ export default function Cash_invoice() {
         setError(true)
       }
 
+	  if(ProductUnit_1.length === 0 || ProductUnit_2.length === 0 || ProductUnit_3.length === 0 || ProductUnit_4.length === 0){
+		setError(true)
+	  }
+
       //------------Success
       if(customer_name){
         console.log(
@@ -60,6 +76,10 @@ export default function Cash_invoice() {
           '\nItem Name 2:', ItemName_2,
           '\nItem Name 3:', ItemName_3,
           '\nItem Name 4:', ItemName_4,
+		  '\nProductUnit 1:', ProductUnit_1,
+		  '\nProductUnit 2:', ProductUnit_2,
+		  '\nProductUnit 3:', ProductUnit_3,
+		  '\nProductUnit 4:', ProductUnit_4,
         )
       }
     }
@@ -185,12 +205,12 @@ export default function Cash_invoice() {
 				},
 			})
 			.then((res) => {
-				console.log(res);
+				console.log(res)
 			})
 			.catch((err) => {
-				console.error(err);
-			});
-	};
+				console.error(err)
+			})
+	}
 
 	//----------------- useEffect -----------------//
 
@@ -289,7 +309,8 @@ export default function Cash_invoice() {
 						id="form"
 						type="submit"
 						className="button-1"
-						onClick={handleSubmit}
+					
+						
 					>
 						ส่ง
 					</button>
@@ -442,20 +463,30 @@ export default function Cash_invoice() {
 
 										<td>
 											<input
+												style={{border:'1px solid red'}}
 												type="float"
 												placeholder="1"
 												value={quantity1}
 												onChange={(e) => setQuantity1(e.target.value)}
+												onInput={ThousandChange}
 											/>
 										</td>
 										<td>
-											<input type="text" placeholder="ชิ้น" ref={unitNameRef1} />
+											<input type="text" placeholder="ชิ้น" ref={unitNameRef1} onChange={(e) => setProductUnit_1(e.target.value)}/>
+											{error && ProductUnit_1.length <= 0 ? (
+												<label style={{ color: "red" }}>
+													กรุณากรอกหน่วยสินค้า
+												</label>
+											) : (
+												""
+											)}
+											
 										</td>
 										<td class="Name_item">
 											<input
 												type="float"
 												placeholder="100.00"
-												value={price1}
+												value={price1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
 												onChange={(e) => setPrice1(e.target.value)}
 
 											/>
@@ -503,7 +534,15 @@ export default function Cash_invoice() {
 											/>
 										</td>
 										<td>
-											<input type="text" placeholder="ชิ้น" ref={unitNameRef2} />
+											<input type="text" placeholder="ชิ้น" ref={unitNameRef2}  onChange={(e) => setProductUnit_2(e.target.value)}/>
+											{error && ProductUnit_2.length <= 0 ? (
+												<label style={{ color: "red" }}>
+													กรุณากรอกหน่วยสินค้า
+												</label>
+											) : (
+												""
+											)}
+
 										</td>
 										<td class="Name_item">
 											<input
@@ -737,6 +776,12 @@ export default function Cash_invoice() {
 					<SiVerizon />
 					<span>พิมพ์ใบเสร็จรับเงิน</span>
 				</p>
+
+				<div className="Text_Create_quote">
+					<h1>สร้างใบเสนอราคา</h1>
+					<h1>สร้างใบวางบิล</h1>
+					<h1>สร้างใบกำกับภาษี</h1>
+				</div>
 			</div>
 		</div>;
 
