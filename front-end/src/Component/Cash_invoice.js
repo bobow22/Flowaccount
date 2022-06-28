@@ -20,11 +20,7 @@ export default function Cash_invoice() {
 
 	//------------------------Thousand separator input with React Hooks--------------------------//
 
-  	const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  	const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "")
 
-  	const ThousandChange = event =>
-	  setQuantity1(addCommas(removeNonNumeric(event.target.value)))
 
 
 	//-----------------------------------Form validation----------------------------------------//
@@ -309,7 +305,7 @@ export default function Cash_invoice() {
 						id="form"
 						type="submit"
 						className="button-1"
-					
+						onClick={handleSubmit}
 						
 					>
 						ส่ง
@@ -466,9 +462,11 @@ export default function Cash_invoice() {
 												style={{border:'1px solid red'}}
 												type="float"
 												placeholder="1"
-												value={quantity1}
+												value={quantity1.toString()
+													.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+													
 												onChange={(e) => setQuantity1(e.target.value)}
-												onInput={ThousandChange}
+												
 											/>
 										</td>
 										<td>
@@ -486,7 +484,7 @@ export default function Cash_invoice() {
 											<input
 												type="float"
 												placeholder="100.00"
-												value={price1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+												value={price1}
 												onChange={(e) => setPrice1(e.target.value)}
 
 											/>
@@ -594,7 +592,15 @@ export default function Cash_invoice() {
 											/>
 										</td>
 										<td>
-											<input type="text" placeholder="ชิ้น" ref={unitNameRef3} />
+											<input type="text" placeholder="ชิ้น" ref={unitNameRef3} onChange={e=>setProductUnit_3(e.target.value)} />
+											{error && ProductUnit_3.length <= 0 ? (
+												<label style={{ color: "red" }}>
+													กรุณากรอกหน่วยสินค้า
+												</label>
+											) : (
+												""
+											)}
+
 										</td>
 										<td class="Name_item">
 											<input
@@ -645,7 +651,14 @@ export default function Cash_invoice() {
 											/>
 										</td>
 										<td>
-											<input type="text" placeholder="ชิ้น" ref={unitNameRef4} />
+											<input type="text" placeholder="ชิ้น" ref={unitNameRef4} onChange={e=>setProductUnit_4(e.target.value)} />
+											{error && ProductUnit_4.length <= 0 ? (
+												<label style={{ color: "red" }}>
+													กรุณากรอกหน่วยสินค้า
+												</label>
+											) : (
+												""
+											)}
 										</td>
 										<td class="Name_item">
 											<input
@@ -814,5 +827,5 @@ export default function Cash_invoice() {
 			</div>
 		</div>
 	</>
-	);
+	)
 }
