@@ -59,19 +59,20 @@ app.get("/", (req, res) => {
 });
 
 app.get("/company", (req, res) => {
+  let token2 = req.headers.authorization;
+  console.log(token2)
   var config = {
-    method: "get",
-    url: "https://openapi.flowaccount.com/test/company/info",
+    method: 'get',
+    url: 'https://openapi.flowaccount.com/test/company/info',
     headers: {
-      Authorization: `Bearer WpLsYIA7iU2hipBJwI217hYLWIAxCjevA7rWN3Ut1-Y`,
-      "Content-Type": "application/json",
-    },
+      // 'Authorization': 'Bearer LnCQW11ra1psUnDzCQr3VTlsWLlDRSitgkulMqKHmwc'
+      'Authorization': token2
+    }
   };
 
   axios(config)
     .then(function (response) {
-      // console.log(JSON.stringify(response.data));
-      console.log(response.data);
+      console.log("test", JSON.stringify(response.data));
       res.json(response.data);
     })
     .catch(function (error) {
@@ -82,11 +83,13 @@ app.get("/company", (req, res) => {
 app.post("/post-receipt", (req, res) => {
   let token = req.body.headers.Authorization;
   let dataObj = req.body.dataObj;
-  console.log(token);
-  console.log(dataObj);
+  // console.log(token);
+  // console.log(dataObj);
 
-  var data = JSON.stringify(dataObj);
-  console.log(data);
+  // var data = JSON.stringify(dataObj);
+  // console.log(data);
+  console.log("token", token);
+  console.log("test1", dataObj);
 
   var config = {
     method: "post",
@@ -95,13 +98,13 @@ app.post("/post-receipt", (req, res) => {
       Authorization: token,
       "Content-Type": "application/json",
     },
-    data: data,
+    data: dataObj,
   };
 
   axios(config)
     .then(function (response) {
       // console.log(JSON.stringify(response.data));
-      console.log(response.data);
+      // console.log(response.data);
       res.json(response.data);
     })
     .catch(function (error) {

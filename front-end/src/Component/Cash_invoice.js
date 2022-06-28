@@ -10,24 +10,37 @@ import { useRef } from "react";
 
 export default function Cash_invoice() {
 
-	const getToken = async () => {
-		const result = await axios.get("http://localhost:3000/");
-		console.log(result.data.access_token);
-		localStorage.setItem("token", result.data.access_token);
-	}
+	const token = localStorage.getItem("token");
 
+	const [companyNameEn, setCompanyNameEn] = useState('')
+	const [companyName, setCompanyName] = useState('')
+	const [companyAddress, setCompanyAddress] = useState('')
+	const [companyTaxId, setCompanyTaxId] = useState('')
 
-	getToken();
+	useEffect(() => {
+		console.log(token)
+		const getCompanyInfo = async () => {
+			await axios
+				.get("http://localhost:3000/company", {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					}
+				})
+				.then((res) => {
+					console.log(res.data.data.companyName)
+					setCompanyNameEn(res.data.data.companyNameEn)
+					setCompanyName(res.data.data.companyName)
+					setCompanyAddress(res.data.data.companyAddress)
+					setCompanyTaxId(res.data.data.companyTaxId)
+				})
+				.catch((err) => {
+					console.error(err);
+				}
+				);
+		}
+		getCompanyInfo();
+	}, [])
 
-	// let companyName;
-	// const getCompanyInfo = async () => {
-	// 	const result = await axios.get("http://localhost:3000/company");
-	// 	console.log(result.data.data);
-	// 	companyName = result.data.data.companyName;
-	// 	console.log(companyName)
-	// };
-
-	// getCompanyInfo();
 	//------------------------Thousand separator input with React Hooks--------------------------//
 
 	const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -128,9 +141,6 @@ export default function Cash_invoice() {
 	//----------------- Net Total -----------------//
 	const [netTotal, setNetTotal] = useState(0);
 
-
-	const token = localStorage.getItem("token");
-
 	const contactCompanyNameRef = useRef("");
 	const contactNameRef = useRef("");
 	const contactAddressRef = useRef("");
@@ -150,16 +160,6 @@ export default function Cash_invoice() {
 
 	const nameRef4 = useRef("");
 	const unitNameRef4 = useRef("");
-
-	const discountPercentageRef = useRef("");
-
-	// "subTotal": 0,
-	// "discountPercentage": 0,
-	// "discountAmount": 0,
-	// "totalAfterDiscount": 0,
-	// "isVat": false,
-	// "vatAmount": 0,
-	// "grandTotal": 0,
 
 	const postApi = async () => {
 		axios
@@ -348,13 +348,13 @@ export default function Cash_invoice() {
 							<div>
 								<p>
 									ชื่อบริษัท:{" "}
-									<input type="text" />
+									<input type="text" value={companyNameEn} />
 									<span>
 										<br />
 										ชื่อ:{" "}
 										<input
 											type="text"
-											placeholder="ตัวอย่าง นาย เฮง ทำมาค้าขึ้น"
+											value={companyName}
 										/>
 									</span>
 									<span className="Address">
@@ -362,13 +362,13 @@ export default function Cash_invoice() {
 										ที่อยู่:{" "}
 										<input
 											type="text"
-											placeholder="ตัวอย่าง 234 ซอย สุขุมวิท 21   แขวงคลองเตยเหนือ เขตวัฒนา กรุงเทพมหานคร 10110 "
+											value={companyAddress}
 										/>
 									</span>
 									<span>
 										<br />
 										เลขประจำตัวผู้เสียภาษี:{" "}
-										<input type="text" placeholder="0000000000000" />
+										<input type="text" value={companyTaxId} />
 									</span>
 								</p>
 							</div>
