@@ -1,12 +1,15 @@
 const express = require("express");
 const axios = require("axios");
 const querystring = require("querystring");
-var cors = require("cors");
-
+const cors = require("cors");
 const app = express();
+
+
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
 
 app.get("/", (req, res) => {
   const requestBody = {
@@ -15,6 +18,7 @@ app.get("/", (req, res) => {
     grant_type: "client_credentials",
     scope: "flowaccount-api",
   };
+ 
 
   const config = {
     headers: {
@@ -29,12 +33,12 @@ app.get("/", (req, res) => {
       config
     )
     .then((response) => {
-      console.log(response.data);
-      res.json(response.data);
+      console.log(response.data)
+      res.json(response.data)
     })
     .catch((error) => {
-      console.log(error);
-    });
+      console.log(error)
+    })
 
   // axios({
   //   method: "post",
@@ -56,7 +60,7 @@ app.get("/", (req, res) => {
   //   .catch((error) => {
   //     console.log(error);
   //   });
-});
+})
 
 app.get("/company", (req, res) => {
   var config = {
@@ -71,22 +75,22 @@ app.get("/company", (req, res) => {
   axios(config)
     .then(function (response) {
       // console.log(JSON.stringify(response.data));
-      console.log(response.data);
-      res.json(response.data);
+      console.log(response.data)
+      res.json(response.data)
     })
     .catch(function (error) {
-      console.log(error);
-    });
-});
+      console.log(error)
+    })
+})
 
 app.post("/post-receipt", (req, res) => {
-  let token = req.body.headers.Authorization;
-  let dataObj = req.body.dataObj;
-  console.log(token);
-  console.log(dataObj);
+  let token = req.body.headers.Authorization
+  let dataObj = req.body.dataObj
+  console.log(token)
+  console.log(dataObj)
 
-  var data = JSON.stringify(dataObj);
-  console.log(data);
+  var data = JSON.stringify(dataObj)
+  console.log(data)
 
   var config = {
     method: "post",
@@ -96,20 +100,20 @@ app.post("/post-receipt", (req, res) => {
       "Content-Type": "application/json",
     },
     data: data,
-  };
+  }
 
   axios(config)
     .then(function (response) {
       // console.log(JSON.stringify(response.data));
-      console.log(response.data);
-      res.json(response.data);
+      console.log(response.data)
+      res.json(response.data)
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(error)
     });
 });
 
-const PORT = 3000;
+const PORT = 3000
 app.listen(PORT, () => {
-  console.log(`Listening at port ${PORT}`);
+  console.log(`Listening at port ${PORT}`)
 });
