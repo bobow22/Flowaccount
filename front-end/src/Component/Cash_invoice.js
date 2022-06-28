@@ -43,11 +43,6 @@ export default function Cash_invoice() {
 
 	//------------------------Thousand separator input with React Hooks--------------------------//
 
-	const addCommas = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-	const removeNonNumeric = num => num.toString().replace(/[^0-9]/g, "")
-
-	const ThousandChange = event =>
-		setQuantity1(addCommas(removeNonNumeric(event.target.value)))
 
 
 	//-----------------------------------Form validation----------------------------------------//
@@ -74,37 +69,73 @@ export default function Cash_invoice() {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		//--------------Error 
-		if (customer_name.length === 0 || CompanyCustomer_name.length === 0 || Customer_address.length === 0 || Tax_Number.length != 13) {
+		if (customer_name.length === 0 || CompanyCustomer_name.length === 0 || Customer_address.length === 0 || Tax_Number.length != 13 || ItemName_1.length === 0 || ItemName_2.length === 0 || ItemName_3.length === 0 || ItemName_4.length === 0 || ProductUnit_1.length === 0 || ProductUnit_2.length === 0 || ProductUnit_3.length === 0 || ProductUnit_4.length === 0) {
 
 			setError(true)
 
+		} else {
+			axios
+				.post("http://localhost:3000/post-receipt", {
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+					dataObj: {
+						contactName: contactCompanyNameRef.current.value + ", " + contactNameRef.current.value,
+						contactAddress: contactAddressRef.current.value,
+						contactTaxIdRef: contactAddressRef.current.value,
+						publishedOn: publishedOnRef.current.value,
+						salesName: salesNameRef.current.value,
+						dueDate: dueDateRef.current.value,
+
+						subTotal: sum,
+						discountPercentage: numberDiscount,
+						discountAmount: displayDiscount,
+						totalAfterDiscount: discount,
+						vatAmount: tax,
+						grandTotal: netTotal,
+
+						items: [
+							{
+								name: nameRef1.current.value,
+								quantity: quantity1,
+								unitName: unitNameRef1.current.value,
+								pricePerUnit: price1,
+								total: amount1,
+							},
+							{
+								name: nameRef2.current.value,
+								quantity: quantity2,
+								unitName: unitNameRef2.current.value,
+								pricePerUnit: price2,
+								total: amount2,
+							},
+							{
+								name: nameRef3.current.value,
+								quantity: quantity3,
+								unitName: unitNameRef3.current.value,
+								pricePerUnit: price3,
+								total: amount3,
+							},
+							{
+								name: nameRef4.current.value,
+								quantity: quantity4,
+								unitName: unitNameRef4.current.value,
+								pricePerUnit: price4,
+								total: amount4,
+							},
+						],
+					},
+				})
+				.then((res) => {
+					console.log(res)
+				})
+				.catch((err) => {
+					console.error(err)
+				})
 		}
 
-		if (ItemName_1.length === 0 || ItemName_2.length === 0 || ItemName_3.length === 0 || ItemName_4.length === 0) {
-			setError(true)
-		}
 
-		if (ProductUnit_1.length === 0 || ProductUnit_2.length === 0 || ProductUnit_3.length === 0 || ProductUnit_4.length === 0) {
-			setError(true)
-		}
 
-		//------------Success
-		if (customer_name) {
-			console.log(
-				'CompanyCustomer name:', CompanyCustomer_name,
-				'\nCustomer name:', customer_name,
-				'\nCustomer address:', Customer_address,
-				'\mTax Number:', Tax_Number,
-				'\nItem Name 1:', ItemName_1,
-				'\nItem Name 2:', ItemName_2,
-				'\nItem Name 3:', ItemName_3,
-				'\nItem Name 4:', ItemName_4,
-				'\nProductUnit 1:', ProductUnit_1,
-				'\nProductUnit 2:', ProductUnit_2,
-				'\nProductUnit 3:', ProductUnit_3,
-				'\nProductUnit 4:', ProductUnit_4,
-			)
-		}
 	}
 
 	//----------------- 1 -----------------//
@@ -161,66 +192,66 @@ export default function Cash_invoice() {
 	const nameRef4 = useRef("");
 	const unitNameRef4 = useRef("");
 
-	const postApi = async () => {
-		axios
-			.post("http://localhost:3000/post-receipt", {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-				dataObj: {
-					contactName: contactCompanyNameRef.current.value + ", " + contactNameRef.current.value,
-					contactAddress: contactAddressRef.current.value,
-					contactTaxIdRef: contactAddressRef.current.value,
-					publishedOn: publishedOnRef.current.value,
-					salesName: salesNameRef.current.value,
-					dueDate: dueDateRef.current.value,
+	// const postApi = async () => {
+	// 	axios
+	// 		.post("http://localhost:3000/post-receipt", {
+	// 			headers: {
+	// 				Authorization: `Bearer ${token}`,
+	// 			},
+	// 			dataObj: {
+	// 				contactName: contactCompanyNameRef.current.value + ", " + contactNameRef.current.value,
+	// 				contactAddress: contactAddressRef.current.value,
+	// 				contactTaxIdRef: contactAddressRef.current.value,
+	// 				publishedOn: publishedOnRef.current.value,
+	// 				salesName: salesNameRef.current.value,
+	// 				dueDate: dueDateRef.current.value,
 
-					subTotal: sum,
-					discountPercentage: numberDiscount,
-					discountAmount: displayDiscount,
-					totalAfterDiscount: discount,
-					vatAmount: tax,
-					grandTotal: netTotal,
+	// 				subTotal: sum,
+	// 				discountPercentage: numberDiscount,
+	// 				discountAmount: displayDiscount,
+	// 				totalAfterDiscount: discount,
+	// 				vatAmount: tax,
+	// 				grandTotal: netTotal,
 
-					items: [
-						{
-							name: nameRef1.current.value,
-							quantity: quantity1,
-							unitName: unitNameRef1.current.value,
-							pricePerUnit: price1,
-							total: amount1,
-						},
-						{
-							name: nameRef2.current.value,
-							quantity: quantity2,
-							unitName: unitNameRef2.current.value,
-							pricePerUnit: price2,
-							total: amount2,
-						},
-						{
-							name: nameRef3.current.value,
-							quantity: quantity3,
-							unitName: unitNameRef3.current.value,
-							pricePerUnit: price3,
-							total: amount3,
-						},
-						{
-							name: nameRef4.current.value,
-							quantity: quantity4,
-							unitName: unitNameRef4.current.value,
-							pricePerUnit: price4,
-							total: amount4,
-						},
-					],
-				},
-			})
-			.then((res) => {
-				console.log(res)
-			})
-			.catch((err) => {
-				console.error(err)
-			})
-	}
+	// 				items: [
+	// 					{
+	// 						name: nameRef1.current.value,
+	// 						quantity: quantity1,
+	// 						unitName: unitNameRef1.current.value,
+	// 						pricePerUnit: price1,
+	// 						total: amount1,
+	// 					},
+	// 					{
+	// 						name: nameRef2.current.value,
+	// 						quantity: quantity2,
+	// 						unitName: unitNameRef2.current.value,
+	// 						pricePerUnit: price2,
+	// 						total: amount2,
+	// 					},
+	// 					{
+	// 						name: nameRef3.current.value,
+	// 						quantity: quantity3,
+	// 						unitName: unitNameRef3.current.value,
+	// 						pricePerUnit: price3,
+	// 						total: amount3,
+	// 					},
+	// 					{
+	// 						name: nameRef4.current.value,
+	// 						quantity: quantity4,
+	// 						unitName: unitNameRef4.current.value,
+	// 						pricePerUnit: price4,
+	// 						total: amount4,
+	// 					},
+	// 				],
+	// 			},
+	// 		})
+	// 		.then((res) => {
+	// 			console.log(res)
+	// 		})
+	// 		.catch((err) => {
+	// 			console.error(err)
+	// 		})
+	// }
 
 	//----------------- useEffect -----------------//
 
@@ -319,8 +350,8 @@ export default function Cash_invoice() {
 						id="form"
 						type="submit"
 						className="button-1"
-						onChange={handleSubmit}
-						onClick={postApi}
+
+						onClick={handleSubmit}
 					>
 						ส่ง
 					</button>
@@ -476,9 +507,11 @@ export default function Cash_invoice() {
 												style={{ border: '1px solid red' }}
 												type="float"
 												placeholder="1"
-												value={quantity1}
+												value={quantity1.toString()
+													.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+
 												onChange={(e) => setQuantity1(e.target.value)}
-												onInput={ThousandChange}
+
 											/>
 										</td>
 										<td>
@@ -496,7 +529,7 @@ export default function Cash_invoice() {
 											<input
 												type="float"
 												placeholder="100.00"
-												value={price1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+												value={price1}
 												onChange={(e) => setPrice1(e.target.value)}
 
 											/>
@@ -604,7 +637,15 @@ export default function Cash_invoice() {
 											/>
 										</td>
 										<td>
-											<input type="text" placeholder="ชิ้น" ref={unitNameRef3} />
+											<input type="text" placeholder="ชิ้น" ref={unitNameRef3} onChange={e => setProductUnit_3(e.target.value)} />
+											{error && ProductUnit_3.length <= 0 ? (
+												<label style={{ color: "red" }}>
+													กรุณากรอกหน่วยสินค้า
+												</label>
+											) : (
+												""
+											)}
+
 										</td>
 										<td class="Name_item">
 											<input
@@ -655,7 +696,14 @@ export default function Cash_invoice() {
 											/>
 										</td>
 										<td>
-											<input type="text" placeholder="ชิ้น" ref={unitNameRef4} />
+											<input type="text" placeholder="ชิ้น" ref={unitNameRef4} onChange={e => setProductUnit_4(e.target.value)} />
+											{error && ProductUnit_4.length <= 0 ? (
+												<label style={{ color: "red" }}>
+													กรุณากรอกหน่วยสินค้า
+												</label>
+											) : (
+												""
+											)}
 										</td>
 										<td class="Name_item">
 											<input
@@ -677,7 +725,7 @@ export default function Cash_invoice() {
 
 									<tr>
 										<button className="buttonAdd" type="button" onChange={handleSubmit}
-											onClick={postApi}>
+										>
 											<a
 												style={{ color: "black" }}
 
@@ -825,5 +873,5 @@ export default function Cash_invoice() {
 			</div>
 		</div>
 	</>
-	);
+	)
 }

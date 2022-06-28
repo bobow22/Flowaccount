@@ -1,13 +1,14 @@
 const express = require("express");
 const axios = require("axios");
 const querystring = require("querystring");
-var cors = require("cors");
-
+const cors = require("cors");
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Get Token
 app.get("/", (req, res) => {
   const requestBody = {
     client_id: "thai-proggrammer-camp-client",
@@ -29,12 +30,12 @@ app.get("/", (req, res) => {
       config
     )
     .then((response) => {
-      console.log(response.data);
-      res.json(response.data);
+      console.log(response.data)
+      res.json(response.data)
     })
     .catch((error) => {
-      console.log(error);
-    });
+      console.log(error)
+    })
 
   // axios({
   //   method: "post",
@@ -56,7 +57,7 @@ app.get("/", (req, res) => {
   //   .catch((error) => {
   //     console.log(error);
   //   });
-});
+})
 
 app.get("/company", (req, res) => {
   let token2 = req.headers.authorization;
@@ -72,13 +73,14 @@ app.get("/company", (req, res) => {
 
   axios(config)
     .then(function (response) {
-      console.log("test", JSON.stringify(response.data));
-      res.json(response.data);
+      // console.log(JSON.stringify(response.data));
+      console.log(response.data)
+      res.json(response.data)
     })
     .catch(function (error) {
-      console.log(error);
-    });
-});
+      console.log(error)
+    })
+})
 
 app.post("/post-receipt", (req, res) => {
   let token = req.body.headers.Authorization;
@@ -93,7 +95,7 @@ app.post("/post-receipt", (req, res) => {
 
   var config = {
     method: "post",
-    url: "https://openapi.flowaccount.com/test/receipts",
+    url: "https://openapi.flowaccount.com/test/cash-invoices",
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
@@ -108,11 +110,11 @@ app.post("/post-receipt", (req, res) => {
       res.json(response.data);
     })
     .catch(function (error) {
-      console.log(error);
+      console.log(error)
     });
 });
 
-const PORT = 3000;
+const PORT = 3000
 app.listen(PORT, () => {
-  console.log(`Listening at port ${PORT}`);
+  console.log(`Listening at port ${PORT}`)
 });
