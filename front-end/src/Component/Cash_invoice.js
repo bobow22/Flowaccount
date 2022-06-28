@@ -9,60 +9,71 @@ import { useRef } from "react";
 
 
 export default function Cash_invoice() {
+
 	const getToken = async () => {
 		const result = await axios.get("http://localhost:3000/");
 		console.log(result.data.access_token);
 		localStorage.setItem("token", result.data.access_token);
 	};
 
-  
+
 	getToken();
+
+	// let companyName;
+	// const getCompanyInfo = async () => {
+	// 	const result = await axios.get("http://localhost:3000/company");
+	// 	console.log(result.data.data);
+	// 	companyName = result.data.data.companyName;
+	// 	console.log(companyName)
+	// };
+
+	// getCompanyInfo();
 
 	//-----------------------------------Form validation----------------------------------------//
 	const [CompanyCustomer_name, setCompanyCustomer_name] = useState('')
-    const [customer_name, setCustomer_name] = useState('')
-    const [Customer_address, setCustomer_address] = useState('')
-    const [Tax_Number, setTax_Number] = useState('')
+	const [customer_name, setCustomer_name] = useState('')
+	const [Customer_address, setCustomer_address] = useState('')
+	const [Tax_Number, setTax_Number] = useState('')
 
 
 
-    const [ItemName_1, setItemName_1] = useState('')
-    const [ItemName_2, setItemName_2] = useState('')
-    const [ItemName_3, setItemName_3] = useState('')
-    const [ItemName_4, setItemName_4] = useState('')
+	const [ItemName_1, setItemName_1] = useState('')
+	const [ItemName_2, setItemName_2] = useState('')
+	const [ItemName_3, setItemName_3] = useState('')
+	const [ItemName_4, setItemName_4] = useState('')
 
 
-    const [error, setError] = useState('')
+	const [error, setError] = useState('')
 
 
 
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      //--------------Error 
-      if(customer_name.length === 0 || CompanyCustomer_name.length === 0 || Customer_address.length === 0 || Tax_Number.length != 13){
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		//--------------Error 
+		if (customer_name.length === 0 || CompanyCustomer_name.length === 0 || Customer_address.length === 0 || Tax_Number.length != 13) {
 
-        setError(true)
+			setError(true)
 
-      }
+		}
 
-      if(ItemName_1.length === 0 || ItemName_2.length === 0 || ItemName_3.length === 0 || ItemName_4.length === 0){
-        setError(true)
-      }
+		if (ItemName_1.length === 0 || ItemName_2.length === 0 || ItemName_3.length === 0 || ItemName_4.length === 0) {
+			setError(true)
+		}
 
-      //------------Success
-      if(customer_name){
-        console.log(
-          'CompanyCustomer name:', CompanyCustomer_name,
-          '\nCustomer name:',customer_name,
-          '\nCustomer address:', Customer_address,
-          '\mTax Number:', Tax_Number,
-          '\nItem Name 1:', ItemName_1,
-          '\nItem Name 2:', ItemName_2,
-          '\nItem Name 3:', ItemName_3,
-          '\nItem Name 4:', ItemName_4,
-        )
-      }
-    }
+		//------------Success
+		if (customer_name) {
+			console.log(
+				'CompanyCustomer name:', CompanyCustomer_name,
+				'\nCustomer name:', customer_name,
+				'\nCustomer address:', Customer_address,
+				'\mTax Number:', Tax_Number,
+				'\nItem Name 1:', ItemName_1,
+				'\nItem Name 2:', ItemName_2,
+				'\nItem Name 3:', ItemName_3,
+				'\nItem Name 4:', ItemName_4,
+			)
+		}
+	}
 
 	//----------------- 1 -----------------//
 	const [quantity1, setQuantity1] = useState(0);
@@ -289,7 +300,8 @@ export default function Cash_invoice() {
 						id="form"
 						type="submit"
 						className="button-1"
-						onClick={handleSubmit}
+						onChange={handleSubmit}
+						onClick={postApi}
 					>
 						ส่ง
 					</button>
@@ -317,7 +329,7 @@ export default function Cash_invoice() {
 							<div>
 								<p>
 									ชื่อบริษัท:{" "}
-									<input type="text" placeholder="ตัวอย่าง บริษัท ขายดี จำกัด" />
+									<input type="text" />
 									<span>
 										<br />
 										ชื่อ:{" "}
@@ -371,13 +383,13 @@ export default function Cash_invoice() {
 									ref={contactCompanyNameRef}
 								/>
 								{/* ---------------error: CompanyCustomer_name---------------- */}
-								{error && CompanyCustomer_name.length <=0? <label style={{color: 'red'}}>กรุณากรอกชื่อบริษัทลูกค้า</label>: ''}
+								{error && CompanyCustomer_name.length <= 0 ? <label style={{ color: 'red' }}>กรุณากรอกชื่อบริษัทลูกค้า</label> : ''}
 
 								<span>
 									<br />
 									ชื่อลูกค้า:{" "}
-									<input type="text" placeholder="ตัวอย่าง นาย รักดี รักมั่น" ref={contactNameRef} onChange={e =>setCustomer_name(e.target.value)}/>
-									{error && customer_name.length <=0? <label style={{color: 'red'}}>กรุณากรอกชื่อลูกค้า</label>: ''}
+									<input type="text" placeholder="ตัวอย่าง นาย รักดี รักมั่น" ref={contactNameRef} onChange={e => setCustomer_name(e.target.value)} />
+									{error && customer_name.length <= 0 ? <label style={{ color: 'red' }}>กรุณากรอกชื่อลูกค้า</label> : ''}
 								</span>
 								<span>
 									<br />
@@ -386,18 +398,18 @@ export default function Cash_invoice() {
 										type="text"
 										placeholder="ตัวอย่าง 123 ถนนสุรวงศ์ แขวงสุริยวงศ เขตบางรัก กรุงเทพ 10500"
 										ref={contactAddressRef}
-										onChange={e=>setCustomer_address(e.target.value)}
+										onChange={e => setCustomer_address(e.target.value)}
 									/>
-									{error && Customer_address.length <=0? <label style={{color: 'red'}}>กรุณากรอกที่อยู่ลูกค้า</label>: ''}
+									{error && Customer_address.length <= 0 ? <label style={{ color: 'red' }}>กรุณากรอกที่อยู่ลูกค้า</label> : ''}
 								</span>
 								<span>
 									<br />
 									เลขประจำตัวผู้เสียภาษี:{" "}
 									<input type="text" placeholder="1234567891234"
-										ref={contactTaxIdRef} 
-										onChange={e=>setTax_Number(e.target.value)}
+										ref={contactTaxIdRef}
+										onChange={e => setTax_Number(e.target.value)}
 									/>
-									{error && Tax_Number.length != 13? <label style={{color: 'red'}}>กรุณากรอกเลขประจำตัวผู้เสียภาษีให้ครบ</label>: ''}
+									{error && Tax_Number.length != 13 ? <label style={{ color: 'red' }}>กรุณากรอกเลขประจำตัวผู้เสียภาษีให้ครบ</label> : ''}
 								</span>
 							</p>
 						</div>
@@ -627,7 +639,8 @@ export default function Cash_invoice() {
 									</tr>
 
 									<tr>
-										<button className="buttonAdd" type="button" onClick={postApi}>
+										<button className="buttonAdd" type="button" onChange={handleSubmit}
+											onClick={postApi}>
 											<a
 												style={{ color: "black" }}
 
