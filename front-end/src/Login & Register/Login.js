@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // import axios from 'axios';
 
 
-//555555 kan
+
 
 export default function Login() {
 
@@ -18,13 +18,13 @@ export default function Login() {
             'Email:',email,
             '\nPassword:',password
             )
-       }
+        }
 
 
   return (<>
-   {/* --------------------Form Login----------------- */}
+    {/* --------------------Form Login----------------- */}
 
-   {/* <div className="download">
+    {/* <div className="download">
         <div className="download_logo">
             <img src="https://yt3.ggpht.com/ytc/AKedOLR7cAY0PMWykv9qnD0byzz19CfsRuBgBZxKrRkVKw=s900-c-k-c0x00ffffff-no-rj" />
             {/* <p>FlowAccount<br/><span>ดาวน์โหลดฟรีได้แล้ววันนี้</span></p> 
@@ -90,58 +90,3 @@ export default function Login() {
   )
 }
 
-
-// export default function Login() {
-//     //-----------onFinish---------------
-//     const onFinish = async (values) => {
-//         console.log(values)
-//        }
-       
-       
-//        return (<>
-       
-//             {/* --------------------Form Login----------------- */}
-//             <div className="Container">
-                
-//                 <div className="Form_Login">
-//                         <div className="image_header">
-//                             <img src="https://flowaccount.com/blog/wp-content/uploads/2017/01/e27-flowaccount-logo.png" />
-//                             <h2>ล๊อกอินเข้าสู่ระบบ</h2>
-//                         </div>
-                    
-//                     <div className='Form'>
-//                         <span>อีเมล</span><br/>
-//                         <input className='form__input' placeholder="name@example.com"/>
-//                         <br/><span>รหัสผ่าน</span>
-//                         <input className='form__input' placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร"/>
-                         
-
-//                         <button type="primary" htmlType="submit" className="button-37" style={{marginTop: '30px'}}>
-//                              เข้าสู่ระบบ
-//                         </button>
-
-//                         <div className="form_text" style={{marginBottom: '25px'}}> 
-//                             <p>ยังไม่มีบัญชีกับเรา? <span>สมัครใช้งานฟรี</span></p>
-//                         </div>
-                            
-//                                     <hr/>
-
-//                             <div className="form_text" style={{marginTop: '25px'}}>
-//                                 <p>หรือเข้าสู่ระบบโดยล็อกอินผ่าน</p>
-//                             </div>    
-
-//                             <div class="animate-bottom">
-//                                 <a class="btn btn-icon btn-facebook" href="#"><i class="fa fa-facebook"></i><span>Log in with Facebook</span></a>
-//                                 <a class="btn btn-icon btn-googleplus" href="#"><i class="fa fa-google-plus"></i><span>Sign in with Google+</span></a>
-//                             </div>
-                      
-//                     </div>
-//                 </div>
-
-//                 <div className='FlowAccount_Co'>
-//                     <p>2014-2022 © FlowAccount Co., Ltd. All Right Reserved <span>Terms of Service</span><span>Privacy Policy</span></p>
-//                 </div>
-//             </div>                   
-//         </>
-//         )
-//     }
