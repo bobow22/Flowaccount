@@ -3,8 +3,8 @@ import Register from "./Login & Register/Register";
 import Login from "./Login & Register/Login";
 import Dashboard from "./Component/Dashboard";
 import Cash_invoice from "./Component/Cash_invoice";
-import From from "./Component/validation_Test";
 import axios from "axios";
+import 'boxicons'
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
