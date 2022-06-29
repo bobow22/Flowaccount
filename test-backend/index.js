@@ -82,7 +82,7 @@ app.get("/company", (req, res) => {
     })
 })
 
-app.post("/post-receipt", (req, res) => {
+app.post("/cash-invoice", (req, res) => {
   let token = req.body.headers.Authorization;
   let dataObj = req.body.dataObj;
   // console.log(token);
