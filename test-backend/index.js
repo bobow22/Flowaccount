@@ -4,13 +4,11 @@ const querystring = require("querystring");
 const cors = require("cors");
 const app = express();
 
-
-
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
+// Get Token
 app.get("/", (req, res) => {
   const requestBody = {
     client_id: "thai-proggrammer-camp-client",
@@ -18,7 +16,6 @@ app.get("/", (req, res) => {
     grant_type: "client_credentials",
     scope: "flowaccount-api",
   };
- 
 
   const config = {
     headers: {
@@ -63,13 +60,15 @@ app.get("/", (req, res) => {
 })
 
 app.get("/company", (req, res) => {
+  let token2 = req.headers.authorization;
+  console.log(token2)
   var config = {
-    method: "get",
-    url: "https://openapi.flowaccount.com/test/company/info",
+    method: 'get',
+    url: 'https://openapi.flowaccount.com/test/company/info',
     headers: {
-      Authorization: `Bearer WpLsYIA7iU2hipBJwI217hYLWIAxCjevA7rWN3Ut1-Y`,
-      "Content-Type": "application/json",
-    },
+      // 'Authorization': 'Bearer LnCQW11ra1psUnDzCQr3VTlsWLlDRSitgkulMqKHmwc'
+      'Authorization': token2
+    }
   };
 
   axios(config)
@@ -84,29 +83,31 @@ app.get("/company", (req, res) => {
 })
 
 app.post("/post-receipt", (req, res) => {
-  let token = req.body.headers.Authorization
-  let dataObj = req.body.dataObj
-  console.log(token)
-  console.log(dataObj)
+  let token = req.body.headers.Authorization;
+  let dataObj = req.body.dataObj;
+  // console.log(token);
+  // console.log(dataObj);
 
-  var data = JSON.stringify(dataObj)
-  console.log(data)
+  // var data = JSON.stringify(dataObj);
+  // console.log(data);
+  console.log("token", token);
+  console.log("test1", dataObj);
 
   var config = {
     method: "post",
-    url: "https://openapi.flowaccount.com/test/receipts",
+    url: "https://openapi.flowaccount.com/test/cash-invoices",
     headers: {
       Authorization: token,
       "Content-Type": "application/json",
     },
-    data: data,
-  }
+    data: dataObj,
+  };
 
   axios(config)
     .then(function (response) {
       // console.log(JSON.stringify(response.data));
-      console.log(response.data)
-      res.json(response.data)
+      // console.log(response.data);
+      res.json(response.data);
     })
     .catch(function (error) {
       console.log(error)
