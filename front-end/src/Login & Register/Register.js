@@ -1,5 +1,4 @@
 import { Button, Form, Input } from 'antd';
-import '../Login & Register/Register.css';
 // import axios from 'axios';
 
 
