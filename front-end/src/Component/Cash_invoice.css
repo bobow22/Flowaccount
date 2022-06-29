@@ -1,231 +1,174 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@200&display=swap');
-
-
-
+@import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@200&display=swap");
 
 /*------------------------------------Header--------------------------------------*/
 
-.Header{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 40px;
-    /* border: 1.8px solid rgb(180, 123, 0); */
+.Header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  /* border: 1.8px solid rgb(180, 123, 0); */
 }
 
-.Header h1{
-    font-weight: bold;
-    margin-top: 5px;
-    font-size: 2.4rem;
-    font-family: 'Kanit', sans-serif;
-    /* border: 1px solid red; */
+.Header h1 {
+  font-weight: bold;
+  margin-top: 5px;
+  font-size: 2.4rem;
+  font-family: "Kanit", sans-serif;
+  /* border: 1px solid red; */
 }
 
-.Heade_img{
-    object-fit: cover;
-    height: 20%;
-    width: 20%;
-    margin-left: 80px;
-    margin-top: 12px;
-    /* border: 1px solid rgb(255, 0, 212); */
+.Heade_img {
+  object-fit: cover;
+  height: 20%;
+  width: 20%;
+  margin-left: 80px;
+  margin-top: 12px;
+  /* border: 1px solid rgb(255, 0, 212); */
 }
 
-.Btn_Header{
-    /* border: 1px solid red; */
-    padding-top: 3px;
-    margin-right: 15px;
+.Btn_Header {
+  /* border: 1px solid red; */
+  padding-top: 3px;
+  margin-right: 15px;
 }
 
-.Btn_Header Button{
-    margin-left: 10px;
-    margin-right: 10px;
-    font-family: 'Kanit', sans-serif;
+.Btn_Header Button {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: "Kanit", sans-serif;
 }
-
-
-
-
-
-
 
 /*------------------------------------Content--------------------------------------*/
 
-.Content{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    /* border: 2px solid rgb(255, 187, 0); */
-    margin-top: 50px;
+.Content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* border: 2px solid rgb(255, 187, 0); */
+  margin-top: 50px;
 }
 
-
-
-.Btn_and_PDF{
-    /* border: 1px solid rgb(17, 0, 255); */
+.Btn_and_PDF {
+  /* border: 1px solid rgb(17, 0, 255); */
 }
 
-.PDF{
-    text-align: center;
-    border-top: 1px solid rgb(230, 230, 230);
-    border-left: 1px solid rgb(230, 230, 230);
-    border-right: 2.8px solid rgb(187, 187, 187);
-    border-bottom: 2.8px solid rgb(187, 187, 187);
-    margin-top: 30px;
-    padding: 5rem;
-    width: 60%;
-    margin: auto;
+.PDF {
+  text-align: center;
+  border-top: 1px solid rgb(230, 230, 230);
+  border-left: 1px solid rgb(230, 230, 230);
+  border-right: 2.8px solid rgb(187, 187, 187);
+  border-bottom: 2.8px solid rgb(187, 187, 187);
+  margin-top: 30px;
+  padding: 5rem;
+  width: 78%;
+  margin: auto;
 }
 
-.receipt{
-    font-family: 'Kanit', sans-serif;
+.receipt {
+  font-family: "Kanit", sans-serif;
 }
 
-.receipt h3{
-    /* margin-top: 30px; */
-    margin-bottom: 30px;
+.receipt h3 {
+  /* margin-top: 30px; */
+  margin-bottom: 30px;
 }
 
-.my_company{
-    border-bottom: 1px solid rgb(136, 136, 136);
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.my_company {
+  border-bottom: 1px solid rgb(136, 136, 136);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.my_company p{
-    /* border: 1px solid red; */
+.my_company p {
+  /* border: 1px solid red; */
 }
 
-.my_company input{
-    border: none;
+.my_company input {
+  border: none;
 }
 
-.input2{
-    padding-left: 14px;
+.input2 {
+  padding-left: 14px;
 }
 
-.customer_company{
-    margin-top: 20px;
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    /* border: 1px solid rgb(81, 255, 0); */
+.customer_company {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  /* border: 1px solid rgb(81, 255, 0); */
 }
 
-
-.customer_company input{
-    border: none;
+.customer_company input {
+  border: none;
 }
 
-.description strong{
-    border-bottom: 1px solid black;
-    width: 100%;
-    text-align: left;
+.description strong {
+  border-bottom: 1px solid black;
+  width: 100%;
+  text-align: left;
 }
 
 .description input {
-    text-align: center;
+  text-align: center;
 }
 
 .topicLeft {
-    text-align: left;
+  text-align: left;
 }
-.description{
-    /* border: 2px solid yellowgreen; */
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    border-bottom: 1px solid black;
+
+.description {
+  /* border: 2px solid yellowgreen; */
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  border-bottom: 1px solid black;
 }
 
 .description button {
-    border: none;
-    text-decoration: none;
-    color: black;
-    
+  border: none;
+  text-decoration: none;
+  color: black;
 }
 
-.description a{
-
-    text-decoration: none;
+.description a {
+  text-decoration: none;
 }
 
-.description input{
-    outline: none;
-    border: none;
-    width: 50%;
-    /* text-align: center; */
+.description input {
+  outline: none;
+  border: none;
+  width: 50%;
+  /* text-align: center; */
 }
 
-
-.summary{
-    margin-top: 20px;
-    margin-right: 20px;
-    /* margin-left: 320px;  */
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    font-size: 15px;
-    text-align: right;
-    /* border: 2px solid red; */
+.Name_item input {
+  width: 100%;
+  /* border: 1px solid red; */
 }
 
-.summary p{
-    /* border: 2px solid yellowgreen; */
-    text-align: right; 
+.PDF_img_footer {
+  margin-top: 20px;
+  width: 100%;
+  /* border: 1px solid rgb(255, 0, 0); */
+  /* text-align: right; */
 }
 
-.summary input{
-    border: none;
-    text-align: right; 
+.PDF_img_footer img {
+  float: right;
+  margin-top: 30px;
+  width: 25%;
+  /* border: 1px solid rgb(255, 0, 0); */
 }
 
-.result{
-    margin-left: 111px;
-    text-align: right;
-    /* border: 2px solid red; */
-}
-
-.result input{
-    width: 50%;
-}
-
-.result1{
-    margin-left: 101px;
-    /* border: 2px solid red; */
-   }
-
-.result2{
-    margin-left: 74px;
-    /* border: 2px solid red; */
-}
-
-.result3{
-    margin-left: 85px;
-    /* border: 2px solid red; */
-}
-
-.result4{
-    margin-left: 71px;
-    /* border: 2px solid red; */
-}
-
-
-.PDF_img_footer{
-    margin-top: 20px;
-    width: 100%;
-    /* border: 1px solid rgb(255, 0, 0); */
-    text-align: right;
-}
-
-
-.PDF_img_footer img{
-    margin-top: 30px;
-    width:25%;
-    /* border: 1px solid rgb(255, 0, 0); */
+.Text_explain_procedure {
+  /* border: 1px solid red; */
+  /* margin-left: 20px; */
 }
 
 .Text_explain_procedure{
@@ -233,97 +176,105 @@
     /* margin-left: 20px; */
 }
 
-.Text_explain_procedure p span{
-    text-align: center;
+.Text_explain_procedure h2 {
+  font-weight: bold;
+  font-size: 2.1rem;
+  font-family: "Kanit", sans-serif;
+  /* border: 1px solid rgb(199, 196, 0); */
 }
 
-.Text_explain_procedure h2{
-    font-weight: bold;
-    font-size: 2.1rem;
-    font-family: 'Kanit', sans-serif;
-    /* border: 1px solid rgb(199, 196, 0); */
+.Text_explain_procedure h1 {
+  font-weight: bold;
+  font-size: 2.5rem;
+  font-family: "Kanit", sans-serif;
+  /* border: 1px solid rgb(199, 196, 0); */
 }
 
-.Text_explain_procedure p{
-    font-family: 'Kanit', sans-serif;
-    font-size: 1.8rem;
-    /* border: 1px solid rgb(199, 0, 0); */
+.Text_Create_quote{
+  margin-top: 90px;
+  /* border: 1px solid rgb(199, 196, 0); */
 }
 
-.Text_explain_procedure p span{
-    margin-left: 10px;
+.Text_explain_procedure p {
+  margin-top: 1.3rem;
+  display: flex;
+  font-family: "Kanit", sans-serif;
+  font-size: 1.8rem;
+  /* border: 2px solid rgb(43, 0, 199); */
 }
 
-.Btn_Content{
-    /* border: 1px solid rgb(199, 119, 0); */
-    width: 70%;
-    margin-left: 190px;
+.Text_explain_procedure p span {
+  margin-left: 10px;
 }
 
-.Btn_Content button{
-    margin-left: 10px;
-    margin-right: 10px;
-    font-family: 'Kanit', sans-serif;
+.Btn_Content {
+  /* border: 1px solid rgb(199, 119, 0); */
+  width: 80%;
+  margin-left: 100px;
 }
 
-
-
-
+.Btn_Content button {
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: "Kanit", sans-serif;
+}
 
 /* CSS */
 .button-65 {
-    appearance: none;
-    backface-visibility: hidden;
-    background-color: #5ec3fd;
-    border-radius: 10px;
-    border-style: none;
-    box-shadow: none;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: Inter,-apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    height: 50px;
-    letter-spacing: normal;
-    line-height: 1.5;
-    outline: none;
-    overflow: hidden;
-    padding: 10px 20px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    transform: translate3d(0, 0, 0);
-    transition: all .3s;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: top;
-    white-space: nowrap;
-  }
-  
-  .button-65:hover {
-    background-color: #46aeeb;
-    box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
-    opacity: 1;
-    transform: translateY(0);
-    transition-duration: .35s;
-  }
-  
-  .button-65:hover:after {
-    opacity: .5;
-  }
-  
-  .button-65:active {
-    box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
-    transform: translateY(2px);
-    transition-duration: .35s;
-  }
-  
-  .button-65:active:after {
-    opacity: 1;
-  }
+  appearance: none;
+  backface-visibility: hidden;
+  background-color: #5ec3fd;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  height: 50px;
+  letter-spacing: normal;
+  line-height: 1.5;
+  outline: none;
+  overflow: hidden;
+  padding: 10px 20px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.button-65:hover {
+  background-color: #46aeeb;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 5px 30px, rgba(0, 0, 0, 0.05) 0 1px 4px;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 0.35s;
+}
+
+.button-65:hover:after {
+  opacity: 0.5;
+}
+
+.button-65:active {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 3px 6px 0, rgba(0, 0, 0, 0.1) 0 0 10px 0,
+    rgba(0, 0, 0, 0.1) 0 1px 4px -1px;
+  transform: translateY(2px);
+  transition-duration: 0.35s;
+}
+
+.button-65:active:after {
+  opacity: 1;
+}
 
 @media (min-width: 768px) {
   .button-1 {
@@ -332,309 +283,380 @@
   }
 }
 
-
 /* CSS */
-.button-1{
-    width: 50%;
-    background-color: #5ec3fd;
-    border-radius: 10px;
-    border-style: none;
-    box-shadow: none;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
+.button-1 {
+  width: 50%;
+  background-color: #5ec3fd;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
 }
-  
+
 .button-1:hover {
-    background-color: #46aeeb;
-    box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
-    opacity: 1;
-    transform: translateY(0);
-    transition-duration: .35s;
-  }
-  
-  .button-1:hover:after {
-    opacity: .5;
-  }
-  
-  .button-1:active {
-    box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
-    transform: translateY(2px);
-    transition-duration: .35s;
-  }
-  
-  .button-1:active:after {
-    opacity: 1;
-  }
-
-  @media (min-width: 768px) {
-    .button-1 {
-      padding: 14px 22px;
-      width: 176px;
-    }
+  background-color: #46aeeb;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 5px 30px, rgba(0, 0, 0, 0.05) 0 1px 4px;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 0.35s;
 }
 
-  .button-2{
-    width: 50%;
-    background-color: #5ec3fd;
-    border-radius: 10px;
-    border-style: none;
-    box-shadow: none;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    float: right;
+.button-1:hover:after {
+  opacity: 0.5;
 }
-  
+
+.button-1:active {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 3px 6px 0, rgba(0, 0, 0, 0.1) 0 0 10px 0,
+  rgba(0, 0, 0, 0.1) 0 1px 4px -1px;
+  transform: translateY(2px);
+  transition-duration: 0.35s;
+}
+
+.button-1:active:after {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .button-1 {
+    padding: 14px 22px;
+    width: 176px;
+  }
+}
+
+.button-2 {
+  width: 50%;
+  background-color: #5ec3fd;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  float: right;
+}
+
 .button-2:hover {
-    background-color: #46aeeb;
-    box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
-    opacity: 1;
-    transform: translateY(0);
-    transition-duration: .35s;  
-  }
-  
+  background-color: #46aeeb;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 5px 30px, rgba(0, 0, 0, 0.05) 0 1px 4px;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 0.35s;
+}
+
 .button-2:hover:after {
-    opacity: .5;
-  }
-  
-  .button-2:active {
-    box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
-    transform: translateY(2px);
-    transition-duration: .35s;
-  }
-  
-  .button-2:active:after {
-    opacity: 1;
-  }
+  opacity: 0.5;
+}
+
+.button-2:active {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 3px 6px 0, rgba(0, 0, 0, 0.1) 0 0 10px 0,
+    rgba(0, 0, 0, 0.1) 0 1px 4px -1px;
+  transform: translateY(2px);
+  transition-duration: 0.35s;
+}
+
+.button-2:active:after {
+  opacity: 1;
+}
 
 @media (min-width: 768px) {
   .button-2 {
     padding: 14px 22px;
     width: 176px;
   }
-} 
-
+}
 
 
 /*------------------------------------Footer--------------------------------------*/
 
-.Sub_Footer{
-    /* border: 2px solid yellowgreen; */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0 auto;
-    width: 100%;
-    margin-top: 30px;
+.Sub_Footer {
+  /* border: 2px solid yellowgreen; */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 30px;
 }
 
-.Sub_Footer{
+.Sub_Footer {
+  background-color: rgb(243, 243, 243);
+  width: 65%;
+  font-family: "Prompt", sans-serif;
+  color: rgb(56, 56, 56);
+  display: flex;
+  justify-content: center;
+  /* border: 2px solid yellowgreen; */
+  margin-bottom: 30px;
+  margin-top: 50px;
+  padding: 0.3rem;
+}
+
+.Sub_Footer Button {
+  margin-bottom: 10px;
+  margin-top: 7px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: "Kanit", sans-serif;
+}
+
+.Sub_Footer h2 {
+  /* border: 2px solid yellowgreen; */
+  margin-top: 12px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 5px;
+  font-size: 1.3rem;
+}
+
+/*-------------------------- Responsive Web Design - Media Queries --------------------*/
+
+/* @media screen and (max-width: 1502px) {
+  .PDF {
+    width: 70%;
+  }
+} */
+
+@media screen and (max-width: 1414px) {
+   .Text_explain_procedure {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 1270px) {
+  
+  .PDF {
+    width: 77%;
+  }
+
+  /* .Text_explain_procedure {
+    margin-top: 40px;
+  } */
+
+  .Btn_Content {
+    width: 80%;
+    margin-left: 110px;
+  }
+}
+
+.summary1 {
+  
+  /* border: 1px solid red; */
+  /* width: 50%; */
+  margin-top: 20px;
+  margin-right: 14px;
+  display: grid;
+  grid-template-columns: 0.2fr 1fr;
+  font-size: .8rem;
+  font-weight: 500;
+  margin-left: 200px;
+  
+}
+.summary1 .summary1-row {
+  display: grid;
+  grid-template-columns: 1fr .7fr;
+  /* margin-left: 111px; */
+}
+
+.summary1 .summary1-row .summary1-left {
+  display: flex;
+  justify-content: start;
+  
+}
+
+.summary1 .summary1-row .summary1-right {
+  display: flex;
+  justify-content: end;
+  
+}
+
+.summary1 .summary1-row .summary1-left input{
+  width: 1.5rem;
+  text-align: center;
+  margin: 0 0.5rem;
+}
+
+@media screen and (max-width: 660px) {
+  .summary1 {
+  
+    /* border: 1px solid red; */
+    width: 100%;
+    max-width: inherit;
+    margin-top: 20px;
+    margin-right: 14px;
+    display: flex;
+    grid-template-columns: 0.2fr 1fr;
+    font-size: .8rem;
+    font-weight: 500;
+    margin-left: 200px;
+    /* padding: 5px 1rem; */
+    
+  }
+  .summary1 .summary1-row {
+    display: grid;
+    grid-template-columns: 1fr .7fr;
+    /* margin-left: 111px; */
+  }
+  
+  .summary1 .summary1-row .summary1-left {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    max-width: inherit;
+    
+  }
+  
+  .summary1 .summary1-row .summary1-right {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    max-width: inherit;    
+  }
+  
+  .summary1 .summary1-row .summary1-left input{
+    width: 1.5rem;
+    text-align: center;
+    margin: 0 0.5rem;
+  }
+}
+
+@media screen and (max-width: 1075px) {
+  .Btn_Content {
+    width: 90%;
+    margin-left: 50px;
+  }
+
+  .PDF {
+    width: 90%;
+  }
+
+  .Header h1 {
+    margin-top: 12px;
+    padding-top: 15px;
+    font-family: "Kanit", sans-serif;
+    /* border: 1px solid red; */
+  }
+
+  .Heade_img {
+    object-fit: cover;
+    height: 20%;
+    width: 30%;
+    margin-left: 40px;
+    margin-top: 2px;
+
+    padding: 2rem;
+    /* border: 1px solid rgb(255, 0, 212); */
+  }
+
+  .Btn_Header {
+    margin-top: 12px;
+    /* border: 1px solid red; */
+    padding-top: 12px;
+  }
+
+  .Btn_Header Button {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: "Kanit", sans-serif;
+  }
+
+  .Sub_Footer {
     background-color: rgb(243, 243, 243);
-    width: 65%;
-    font-family: 'Prompt', sans-serif;
+    width: 60%;
+    font-family: "Prompt", sans-serif;
     color: rgb(56, 56, 56);
     display: flex;
     justify-content: center;
     /* border: 2px solid yellowgreen; */
-    margin-bottom: 30px;
-    margin-top: 50px;
-    padding: 0.3rem;
-}
+  }
 
-.Sub_Footer Button{
-    margin-bottom: 10px;
-    margin-top: 7px;
+  .Sub_Footer h2 {
+    margin-left: 10px;
+  }
+
+  .Sub_Footer Button {
+    margin-top: 1px;
     margin-left: 10px;
     margin-right: 10px;
-    font-family: 'Kanit', sans-serif;
-}
-
-.Sub_Footer h2{
+    margin-bottom: 10px;
+    font-family: "Kanit", sans-serif;
     /* border: 2px solid yellowgreen; */
-    margin-top: 12px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-top: 5px;
-    font-size: 1.3rem;
+  }
+
+  .Text_explain_procedure {
+    margin-top: 40px;
+  }
 }
 
+@media screen and (max-width: 944px) {
+  .Header {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  .Header img {
+    margin: 0 auto;
+    width: 100%;
+  }
+  .Header h1 {
+    margin-right: 15px;
+    margin-top: 20px;
+  }
 
+  .Btn_Header {
+    margin-top: 20px;
+  }
 
-
-
-
-/*-------------------------- Responsive Web Design - Media Queries --------------------*/
-
-
-@media screen and (max-width: 1619px) {
-    .PDF{
-        width: 70%;
-    }
-    .Text_explain_procedure{
-        margin-top: 40px;
-    }
+  .Btn_Content {
+    margin-left: 45px;
+    width: 90%;
+  }
 }
 
-
-@media screen and (max-width: 1270px) {
-    .PDF{
-        width: 65%;
-    }
-    .Text_explain_procedure{
-        margin-top: 40px;
-    }
-
-    .Btn_Content{
-        width: 80%;
-        margin-left: 120px;
-    }
-}
-
-@media screen and (max-width: 1075px) {
-    .Btn_Content{
-        width: 90%;
-        margin-left: 50px;
-    }
-
-    .PDF{
-        width: 80%;
-    }
-
-    .Header h1{
-        margin-top: 12px;
-        padding-top: 15px;
-        font-family: 'Kanit', sans-serif;
-        /* border: 1px solid red; */
-    }
-
-    .Heade_img{
-        object-fit: cover;
-        height: 20%;
-        width: 20%;
-        margin-left: 40px;
-        margin-top: 12px;
-       
-        padding: 2rem;
-        /* border: 1px solid rgb(255, 0, 212); */
-    }
-
-    .Btn_Header{
-        margin-top: 12px;
-        /* border: 1px solid red; */
-        padding-top: 12px;
-    }
-    
-    .Btn_Header Button{
-        margin-left: 10px;
-        margin-right: 10px;
-        font-family: 'Kanit', sans-serif;
-    }
-    
-
-    .Sub_Footer{
-        background-color: rgb(243, 243, 243);
-        width: 60%;
-        font-family: 'Prompt', sans-serif;
-        color: rgb(56, 56, 56);
-        display: flex;
-        justify-content: center;
-        /* border: 2px solid yellowgreen; */
-    }
-
-    .Sub_Footer h2{
-        margin-left: 10px;
-    }
-
-    .Sub_Footer Button{
-        margin-top: 1px;
-        margin-left: 10px;
-        margin-right: 10px;
-        margin-bottom: 10px;
-        font-family: 'Kanit', sans-serif;
-        /* border: 2px solid yellowgreen; */
-    }
-
-    .Text_explain_procedure{
-        margin-top: 40px;
-    }
-}
-
-
-@media screen and (max-width: 930px) {
-
-    .Header{
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 40px;
-    }
-    .Header img{
-        margin: 0 auto;
-        width: 100%;
-    }
-    .Header h1{
-        margin-right: 15px;
-        margin-top: 20px;
-    }
-
-    .Btn_Header{
-        margin-top: 20px;
-    }
-
-    .Btn_Content{
-        margin-left: 10px;
-        width: 90%;
-    }
-}
-
-
-@media screen and (max-width: 930px) {
+/* @media screen and (max-width: 930px) {
     .Btn_Content{
         margin-left: 45px;
         width: 90%;
     }
-}
-
+} */
 
 @media screen and (max-width: 882px) {
-    .Btn_Content{
-        margin-left: 45px;
-        width: 90%;
-    }
+  .Btn_Content {
+    margin-left: 45px;
+    width: 90%;
+  }
 }
-
 
 @media screen and (max-width: 877px) {
-    .Btn_Content{
-        display: flex;
-        text-align: center;
-        /* margin-left: 30px; */
-        /* border: 1px solid red; */
-        width: 90%;
-    }
+  .Btn_Content {
+    display: flex;
+    text-align: center;
+    /* margin-left: 30px; */
+    /* border: 1px solid red; */
+    width: 90%;
+  }
 }
 
-
-
 @media screen and (max-width: 793px) {
-    .Content{
-        margin-top: 10px
-    }
-    .Btn_Content{
-        display: flex;
-        text-align: center;
-        /* border: 1px solid rgb(255, 50, 50); */
-        width: 50%;
-        margin: 0 auto;
-    }
-    .Btn_Content button{
-        margin-top: 10px;
-    }
+  .Content {
+    margin-top: 10px;
+  }
+  .Btn_Content {
+    display: flex;
+    text-align: center;
+    /* border: 1px solid rgb(255, 50, 50); */
+    width: 50%;
+    margin: 0 auto;
+  }
+  .Btn_Content button {
+    margin-top: 10px;
+  }
 }
 
 @media screen and (max-width: 665px) {
-    .Sub_Footer h2{
-        text-align: center;
-    }
+  .Sub_Footer h2 {
+    text-align: center;
+  }
 }
