@@ -75,7 +75,7 @@ export default function Cash_invoice() {
 
 		} else {
 			axios
-				.post("http://localhost:3000/post-receipt", {
+				.post("http://localhost:3000/cash-invoice", {
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
@@ -192,67 +192,6 @@ export default function Cash_invoice() {
 	const nameRef4 = useRef("");
 	const unitNameRef4 = useRef("");
 
-	// const postApi = async () => {
-	// 	axios
-	// 		.post("http://localhost:3000/post-receipt", {
-	// 			headers: {
-	// 				Authorization: `Bearer ${token}`,
-	// 			},
-	// 			dataObj: {
-	// 				contactName: contactCompanyNameRef.current.value + ", " + contactNameRef.current.value,
-	// 				contactAddress: contactAddressRef.current.value,
-	// 				contactTaxIdRef: contactAddressRef.current.value,
-	// 				publishedOn: publishedOnRef.current.value,
-	// 				salesName: salesNameRef.current.value,
-	// 				dueDate: dueDateRef.current.value,
-
-	// 				subTotal: sum,
-	// 				discountPercentage: numberDiscount,
-	// 				discountAmount: displayDiscount,
-	// 				totalAfterDiscount: discount,
-	// 				vatAmount: tax,
-	// 				grandTotal: netTotal,
-
-	// 				items: [
-	// 					{
-	// 						name: nameRef1.current.value,
-	// 						quantity: quantity1,
-	// 						unitName: unitNameRef1.current.value,
-	// 						pricePerUnit: price1,
-	// 						total: amount1,
-	// 					},
-	// 					{
-	// 						name: nameRef2.current.value,
-	// 						quantity: quantity2,
-	// 						unitName: unitNameRef2.current.value,
-	// 						pricePerUnit: price2,
-	// 						total: amount2,
-	// 					},
-	// 					{
-	// 						name: nameRef3.current.value,
-	// 						quantity: quantity3,
-	// 						unitName: unitNameRef3.current.value,
-	// 						pricePerUnit: price3,
-	// 						total: amount3,
-	// 					},
-	// 					{
-	// 						name: nameRef4.current.value,
-	// 						quantity: quantity4,
-	// 						unitName: unitNameRef4.current.value,
-	// 						pricePerUnit: price4,
-	// 						total: amount4,
-	// 					},
-	// 				],
-	// 			},
-	// 		})
-	// 		.then((res) => {
-	// 			console.log(res)
-	// 		})
-	// 		.catch((err) => {
-	// 			console.error(err)
-	// 		})
-	// }
-
 	//----------------- useEffect -----------------//
 
 	useEffect(() => {
@@ -350,18 +289,17 @@ export default function Cash_invoice() {
 						id="form"
 						type="submit"
 						className="button-1"
-
 						onClick={handleSubmit}
 					>
 						ส่ง
 					</button>
-					<button type="submit" className="button-2">
+					<button type="submit" className="button-2" onClick={handleSubmit}>
 						บันทึก
 					</button>
-					<button type="submit" className="button-2">
+					<button type="submit" className="button-2" onClick={handleSubmit}>
 						รับ PDF
 					</button>
-					<button type="submit" className="button-2">
+					<button type="submit" className="button-2" onClick={handleSubmit}>
 						พิมพ์
 					</button>
 				</div>
@@ -504,7 +442,7 @@ export default function Cash_invoice() {
 
 										<td>
 											<input
-												style={{ border: '1px solid red' }}
+												// style={{ border: '1px solid red' }}
 												type="float"
 												placeholder="1"
 												value={quantity1.toString()
@@ -724,12 +662,8 @@ export default function Cash_invoice() {
 									</tr>
 
 									<tr>
-										<button className="buttonAdd" type="button" onChange={handleSubmit}
-										>
-											<a
-												style={{ color: "black" }}
-
-											>
+										<button className="buttonAdd" type="button" onClick={handleSubmit}>
+											<a style={{ color: "black" }}>
 												+เพิ่มแถวรายการ
 											</a>
 										</button>
@@ -739,75 +673,72 @@ export default function Cash_invoice() {
 						</div>
 
 						{/* --------------------------Summary---------------------------------- */}
-
-						<div className="summary" style={{ fontSize: "13px" }}>
-							<p>
-								<span>รวมเป็นเงิน:</span>{" "}
-								<span className="result">
-									<td>
+						<div className="summary1">
+							<div></div>
+							<div>
+								<div className="summary1-row">
+									<div className="summary1-left">
+										รวมเป็นเงิน:
+									</div>
+									<div className="summary1-right">
 										{sum
 											.toFixed(2)
 											.toString()
 											.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-									</td>
-								</span>
-								<span className="discount">
-									<br />
-									ส่วนลด
-									<input
-										style={{ width: "8.5%" }}
-										type="float"
-										placeholder="5"
-										value={numberDiscount}
-										onChange={(e) => setNumberDiscount(e.target.value)}
-									/>
-									%
-								</span>
-								<span className="result1">
-									<td>
+									</div>
+								</div>
+
+								<div className="summary1-row">
+									<div className="summary1-left">
+										ส่วนลด <input type="float"
+											placeholder="5"
+											value={numberDiscount}
+											onChange={(e) => setNumberDiscount(e.target.value)} /> %
+									</div>
+									<div className="summary1-right">
 										{displayDiscount
 											.toFixed(2)
 											.toString()
 											.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-									</td>
-								</span>
-								<span>
-									<br />
-									ราคาหลังหักส่วนลด
-								</span>
-								<span className="result2">
-									<td>
+									</div>
+								</div>
+
+								<div className="summary1-row">
+									<div className="summary1-left">
+										ราคาหลังหักส่วนลด
+									</div>
+									<div className="summary1-right">
 										{discount
 											.toFixed(2)
 											.toString()
 											.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-									</td>
-								</span>
-								<span>
-									<br />
-									ภาษีมูลค่าเพิ่ม 7%
-								</span>
-								<span className="result3">
-									<td>
+									</div>
+								</div>
+
+								<div className="summary1-row">
+									<div className="summary1-left">
+										ภาษีมูลค่าเพิ่ม 7%
+									</div>
+									<div className="summary1-right">
 										{tax
 											.toFixed(2)
 											.toString()
 											.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-									</td>
-								</span>
-								<span>
-									<br />
-									จำนวนเงินรวมทั้งสิ้น
-								</span>
-								<span className="result4">
-									<td>
+									</div>
+								</div>
+
+								<div className="summary1-row">
+									<div className="summary1-left">
+										จำนวนเงินรวมทั้งสิ้น
+									</div>
+									<div className="summary1-right">
 										{netTotal
 											.toFixed(2)
 											.toString()
 											.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-									</td>
-								</span>
-							</p>
+									</div>
+								</div>
+							</div>
 						</div>
 
 						<div className="PDF_img_footer">
