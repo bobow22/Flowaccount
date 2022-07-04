@@ -70,3 +70,33 @@
   font-weight: 400;
   white-space: nowrap;
 }
+
+/* Slider */
+.rec.rec-carousel-wrapper:focus,
+.rec.rec-carousel-wrapper .rec-carousel:focus,
+.rec.rec-carousel-wrapper .rec-slider-container:focus,
+.rec.rec-carousel-wrapper .rec-slider-container .rec-slider:focus,
+.rec.rec-carousel-wrapper .rec-slider-container .rec-slider div:focus {
+  outline: none;
+}
+
+/* .rec.rec-carousel-wrapper .rec-slider-container {
+  background: lightblue;
+} */
+
+/* Arrow Styles */
+
+.rec.rec-carousel-wrapper .rec-carousel button {
+  background: #3b82f6;
+  color: #fff;
+  font-size: medium;
+}
+
+.rec.rec-carousel-wrapper .rec-pagination .rec.rec-dot.rec {
+  box-shadow: none;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.rec.rec-carousel-wrapper .rec-pagination .rec.rec-dot.rec.rec-dot_active {
+  background: #3b82f6;
+}
