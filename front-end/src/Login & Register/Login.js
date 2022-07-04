@@ -81,8 +81,8 @@ export default function Login() {
                     </div>
 
                     <div class="animate-bottom">
-                        <button class="loginBtn loginBtn--facebook">
-                            <a href="http://localhost:3000/auth/facebook">Log in With Facebook</a>
+                        <button class="loginBtn loginBtn--facebook" >
+                            <a href="http://localhost:3000/auth/facebook" style={{ color: "white", textDecoration: "none" }}>Log in With Facebook</a>
                         </button>
                         {/* <FacebookLogin
                             appId='5233430176714318'

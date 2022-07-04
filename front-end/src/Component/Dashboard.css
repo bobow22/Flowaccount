@@ -50,7 +50,6 @@
   transition: all 0.4s ease;
 }
 
-
 .sidebar ul.nav-links li a:hover {
   background: #78a7ff;
   border-radius: 0.5rem;
@@ -71,4 +70,3 @@
   font-weight: 400;
   white-space: nowrap;
 }
-
