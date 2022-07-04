@@ -91,7 +91,7 @@ export default function Login() {
                             callback={signUserIn}
                         /> */}
                         <button class="loginBtn loginBtn--google">
-                            Sign in with Google
+                            <a href="http://localhost:3000/auth/google">Log in With Google</a>
                         </button>
                     </div>
 

@@ -180,7 +180,7 @@ app.get('/', function (req, res) {
   res.redirect('http://localhost:3001');
 });
 
-/*  PASSPORT SETUP  */
+/*  GOOGLE PASSPORT SETUP  */
 // var userProfile;
 
 app.use(passport.initialize());
