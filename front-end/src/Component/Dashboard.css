@@ -1,0 +1,72 @@
+/* Googlefont Poppins CDN Link */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.sidebar {
+  position: fixed;
+  height: 100%;
+  width: 3.5rem;
+  background: #518eff;
+  transition: all 0.5s ease;
+}
+
+.sidebar ul.nav-links {
+  padding: 0;
+  margin-top: 1.7rem;
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sidebar ul.nav-links li {
+  /* position: relative; */
+  list-style: none;
+  height: 40px;
+}
+
+.sidebar ul.nav-links li:nth-child(1) {
+  margin: 1rem 0;
+}
+
+.sidebar ul.nav-links li a img {
+  display: flex;
+  width: 100%;
+  transform: scale(0.7);
+}
+
+.sidebar ul.nav-links li a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.sidebar ul.nav-links li a:hover {
+  background: #78a7ff;
+  border-radius: 0.5rem;
+  padding: 0.9rem;
+  /* border: 2px solid rgb(10, 78, 44); */
+}
+
+.sidebar ul.nav-links li i {
+  /* min-width: 60px; */
+  text-align: center;
+  font-size: 25px;
+  color: #fff;
+}
+
+.sidebar ul.nav-links li a .links_name {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+}
