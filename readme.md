@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="C:\Users\bobow\OneDrive\Desktop\Flowaccount\front-end\src\img\logo.png" >
+  <img src="https://github.com/bobow22/Flowaccount/blob/main/img/logo.png?raw=true" >
 </div>
 
 # FlowAccount Receipt Generator
