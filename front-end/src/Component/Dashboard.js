@@ -311,7 +311,12 @@ export default function Dashboard() {
                             >Sales by Product<div class="inline-block px-2"><i class='bx bxs-info-circle'></i></div></a
                             >
 
-                            <button onClick={handleClick1} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left">1 Year</button>
+                            <button onClick={handleClick1} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left flex justify-between hover:shadow-md">
+                                1 Year
+                                <svg class="-mr-1 ml-2 h-5 w-5 fill-gray-500">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
                             {showDropdown1 && (<div class="absolute top-24 bg-white mx-4 py-1 w-2/5 border border-gray-900 rounded-lg shadow-md text-xs">
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Month</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
@@ -322,7 +327,6 @@ export default function Dashboard() {
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Year</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Year</a>
                             </div>)}
-
 
                             <div class="my-4 text-center text-sm flex justify-center">
                                 <div class="w-3 h-3 bg-blue-500 rounded-full mx-2 mt-1"></div><p>Total Income: <span class="text-blue-500 font-semibold">0.00</span></p>
@@ -354,10 +358,15 @@ export default function Dashboard() {
                             >Collection Summary<div class="inline-block px-2"><i class='bx bxs-info-circle'></i></div></a
                             >
 
-                            <button onClick={handleClick2} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left">1 Year</button>
+                            <button onClick={handleClick2} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left flex justify-between hover:shadow-md">
+                                1 Year
+                                <svg class="-mr-1 ml-2 h-5 w-5 fill-gray-500">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
                             {showDropdown2 && (<div class="absolute top-24 bg-white mx-4 py-1 w-2/5 border border-gray-900 rounded-lg shadow-md text-xs">
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Month</a>
+                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">2 Months</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">3 Months</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">6 Months</a>
@@ -411,10 +420,15 @@ export default function Dashboard() {
                             >Expense by Category<div class="inline-block px-2"><i class='bx bxs-info-circle'></i></div></a
                             >
 
-                            <button onClick={handleClick3} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left">1 Year</button>
+                            <button onClick={handleClick3} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left flex justify-between hover:shadow-md">
+                                1 Year
+                                <svg class="-mr-1 ml-2 h-5 w-5 fill-gray-500">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
                             {showDropdown3 && (<div class="absolute top-24 bg-white mx-4 py-1 w-2/5 border border-gray-900 rounded-lg shadow-md text-xs">
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Month</a>
+                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">2 Months</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">3 Months</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">6 Months</a>
@@ -453,10 +467,15 @@ export default function Dashboard() {
                             >Payment Summary<div class="inline-block px-2"><i class='bx bxs-info-circle'></i></div></a
                             >
 
-                            <button onClick={handleClick4} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left">1 Year</button>
+                            <button onClick={handleClick4} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left flex justify-between hover:shadow-md">
+                                1 Year
+                                <svg class="-mr-1 ml-2 h-5 w-5 fill-gray-500">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
                             {showDropdown4 && (<div class="absolute top-24 bg-white mx-4 py-1 w-2/5 border border-gray-900 rounded-lg shadow-md text-xs">
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Month</a>
+                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">2 Months</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">3 Months</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">6 Months</a>
@@ -508,16 +527,21 @@ export default function Dashboard() {
                             <div class=""><a href='#' class='pt-1 px-3 text-sm text-blue-500 no-underline hover:underline'>See Total Income and Total Expense by Project</a><button class="bg-orange-400 px-3 text-white text-sm rounded">New!</button></div>
                         </div>
 
-                        <button onClick={handleClick5} class="mt-3 mx-4 w-1/4 py-1 px-2 border-gray-300 border text-sm rounded-md text-left">1 Year</button>
-                        {showDropdown5 && (<div class="absolute top-28 bg-white mx-4 py-1 w-1/4 border border-gray-900 rounded-lg shadow-md text-xs">
-                            <a href="#" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
-                            <a href="#" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Month</a>
-                            <a href="#" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">2 Months</a>
-                            <a href="#" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">3 Months</a>
-                            <a href="#" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">6 Months</a>
-                            <a href="#" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">1 Year</a>
-                            <a href="#" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Year</a>
-                            <a href="#" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Year</a>
+                        <button onClick={handleClick5} class="mt-3 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left flex justify-between hover:shadow-md">
+                            1 Year
+                            <svg class="-mr-1 ml-2 h-5 w-5 fill-gray-500">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        {showDropdown5 && (<div class="absolute top-28 bg-white mx-4 py-1 w-2/5 border border-gray-900 rounded-lg shadow-md text-xs">
+                            <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Month</a>
+                            <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
+                            <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">2 Months</a>
+                            <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">3 Months</a>
+                            <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">6 Months</a>
+                            <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">1 Year</a>
+                            <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Year</a>
+                            <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Year</a>
                         </div>)}
 
                         <div class="my-4 text-center text-sm flex justify-center">
@@ -561,10 +585,15 @@ export default function Dashboard() {
                             >Outstanding Receivables<div class="inline-block px-2"><i class='bx bxs-info-circle'></i></div></a
                             >
 
-                            <button onClick={handleClick6} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left">1 Year</button>
+                            <button onClick={handleClick6} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left flex justify-between hover:shadow-md">
+                                1 Year
+                                <svg class="-mr-1 ml-2 h-5 w-5 fill-gray-500">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
                             {showDropdown6 && (<div class="absolute top-24 bg-white mx-4 py-1 w-2/5 border border-gray-900 rounded-lg shadow-md text-xs">
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Month</a>
+                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">2 Months</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">3 Months</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">6 Months</a>
@@ -608,10 +637,15 @@ export default function Dashboard() {
                             >Outstanding Payables<div class="inline-block px-2"><i class='bx bxs-info-circle'></i></div></a
                             >
 
-                            <button onClick={handleClick7} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left">1 Year</button>
+                            <button onClick={handleClick7} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left flex justify-between hover:shadow-md">
+                                1 Year
+                                <svg class="-mr-1 ml-2 h-5 w-5 fill-gray-500">
+                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
                             {showDropdown7 && (<div class="absolute top-24 bg-white mx-4 py-1 w-2/5 border border-gray-900 rounded-lg shadow-md text-xs">
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Month</a>
+                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">2 Months</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">3 Months</a>
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">6 Months</a>
