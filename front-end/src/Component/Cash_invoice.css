@@ -2,6 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@200&display=swap");
+@import 'https://fonts.googleapis.com/css?family=Kanit|Prompt';
+
 
 /*------------------------------------Header--------------------------------------*/
 
@@ -37,9 +39,16 @@
 }
 
 .Btn_Header Button {
-  margin-left: 10px;
+  background-color: #1CA4FC;
+  padding: 8px 12px;
+  margin-left: 10px; 
   margin-right: 10px;
+  width: 150px;
+}
+
+.Btn_Header Button a{
   font-family: "Kanit", sans-serif;
+  font-weight: 300;
 }
 
 /*------------------------------------Content--------------------------------------*/
@@ -68,6 +77,11 @@
   margin: auto;
 }
 
+.PDF p{
+  font-family: "Kanit", serif;
+  font-weight: 300;
+}
+
 .receipt {
   font-family: "Kanit", sans-serif;
 }
@@ -75,6 +89,8 @@
 .receipt h3 {
   /* margin-top: 30px; */
   margin-bottom: 30px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
 }
 
 .my_company {
@@ -86,8 +102,15 @@
 
 .my_company p {
   /* border: 1px solid red; */
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
 }
 
+.my_company span {
+  /* border: 1px solid red; */
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+}
 .my_company input {
   border: none;
 }
@@ -108,22 +131,41 @@
   border: none;
 }
 
+.customer_company span {
+  /* border: 1px solid rgb(81, 255, 0); */
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+}
+
 .description strong {
   border-bottom: 1px solid black;
   width: 100%;
   text-align: left;
+  font-family: "Kanit", sans-serif;
+  font-weight: 500;
+}
+
+.description th {
+  text-align: center;
+  font-family: "Kanit", sans-serif;
+  font-weight: 500;
 }
 
 .description input {
   text-align: center;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
 }
 
+.table span{
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+}
 .topicLeft {
   text-align: left;
 }
 
 .description {
-  /* border: 2px solid yellowgreen; */
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -131,13 +173,16 @@
 }
 
 .description button {
-  border: none;
+  padding: 10px 10px;
   text-decoration: none;
   color: black;
 }
 
 .description a {
   text-decoration: none;
+  white-space: nowrap;
+  font-family: "Kanit", sans-serif;
+  font-weight: 500;
 }
 
 .description input {
@@ -171,8 +216,9 @@
   /* margin-left: 20px; */
 }
 
-.Text_explain_procedure{
+.Text_explain_procedure span{
     /* border: 1px solid red; */
+    font-family: "Kanit", sans-serif;
     /* margin-left: 20px; */
 }
 
@@ -214,16 +260,22 @@
 }
 
 .Btn_Content button {
+  background-color: #1CA4FC;
+  /* border: 1px solid red; */
+  padding: 8px 20px;
+  width: 150px;
   margin-left: 10px;
   margin-right: 10px;
   font-family: "Kanit", sans-serif;
+  font-weight: 300;
 }
 
 /* CSS */
 .button-65 {
   appearance: none;
   backface-visibility: hidden;
-  background-color: #5ec3fd;
+  background-color: #1CA4FC;
+  padding: 8px 12px; 
   border-radius: 10px;
   border-style: none;
   box-shadow: none;
@@ -231,8 +283,9 @@
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
-    sans-serif;
+  /* font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif; */
+  /* font-family: 'Kanit'; */
   font-size: 15px;
   font-weight: 500;
   height: 50px;
@@ -240,7 +293,7 @@
   line-height: 1.5;
   outline: none;
   overflow: hidden;
-  padding: 10px 20px;
+  padding: 8px 12px;
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -251,10 +304,11 @@
   touch-action: manipulation;
   vertical-align: top;
   white-space: nowrap;
+  width: 120px;
 }
 
 .button-65:hover {
-  background-color: #46aeeb;
+  background-color: #1CA4FC;
   box-shadow: rgba(0, 0, 0, 0.05) 0 5px 30px, rgba(0, 0, 0, 0.05) 0 1px 4px;
   opacity: 1;
   transform: translateY(0);
@@ -286,7 +340,7 @@
 /* CSS */
 .button-1 {
   width: 50%;
-  background-color: #5ec3fd;
+  background-color: #1CA4FC;
   border-radius: 10px;
   border-style: none;
   box-shadow: none;
@@ -296,7 +350,7 @@
 }
 
 .button-1:hover {
-  background-color: #46aeeb;
+  background-color: #1CA4FC;
   box-shadow: rgba(0, 0, 0, 0.05) 0 5px 30px, rgba(0, 0, 0, 0.05) 0 1px 4px;
   opacity: 1;
   transform: translateY(0);
@@ -327,7 +381,7 @@
 
 .button-2 {
   width: 50%;
-  background-color: #5ec3fd;
+  background-color: #1CA4FC;
   border-radius: 10px;
   border-style: none;
   box-shadow: none;
@@ -338,7 +392,7 @@
 }
 
 .button-2:hover {
-  background-color: #46aeeb;
+  background-color: #1CA4FC;
   box-shadow: rgba(0, 0, 0, 0.05) 0 5px 30px, rgba(0, 0, 0, 0.05) 0 1px 4px;
   opacity: 1;
   transform: translateY(0);
@@ -372,6 +426,7 @@
 
 .Sub_Footer {
   /* border: 2px solid yellowgreen; */
+  font-family: "Kanit", sans-serif;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -383,7 +438,6 @@
 .Sub_Footer {
   background-color: rgb(243, 243, 243);
   width: 65%;
-  font-family: "Prompt", sans-serif;
   color: rgb(56, 56, 56);
   display: flex;
   justify-content: center;
@@ -394,11 +448,19 @@
 }
 
 .Sub_Footer Button {
+  /* border: 2px solid yellowgreen;  */
+  padding: 9px 19px;
   margin-bottom: 10px;
   margin-top: 7px;
   margin-left: 10px;
   margin-right: 10px;
+  width: 150px;
+}
+
+.Sub_Footer Button a{
+  /* border: 2px solid yellowgreen; */
   font-family: "Kanit", sans-serif;
+  font-weight: 300;
 }
 
 .Sub_Footer h2 {
@@ -408,6 +470,9 @@
   margin-right: 20px;
   padding-top: 5px;
   font-size: 1.3rem;
+  font-family: "Kanit", sans-serif;
+  font-weight: 400;
+  font-size: x-large;
 }
 
 /*-------------------------- Responsive Web Design - Media Queries --------------------*/
@@ -435,6 +500,7 @@
   } */
 
   .Btn_Content {
+    
     width: 80%;
     margin-left: 110px;
   }
@@ -457,6 +523,16 @@
   display: grid;
   grid-template-columns: 1fr .7fr;
   /* margin-left: 111px; */
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+}
+
+.summary1 .summary1-row div{
+  display: grid;
+  grid-template-columns: 1fr .7fr;
+  /* margin-left: 111px; */
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
 }
 
 .summary1 .summary1-row .summary1-left {
@@ -497,6 +573,16 @@
     display: grid;
     grid-template-columns: 1fr .7fr;
     /* margin-left: 111px; */
+    font-family: "Kanit", sans-serif;
+    font-weight: 300;
+  }
+  
+  .summary1 .summary1-row div{
+    display: grid;
+    grid-template-columns: 1fr .7fr;
+    /* margin-left: 111px; */
+    font-family: "Kanit", sans-serif;
+    font-weight: 300;
   }
   
   .summary1 .summary1-row .summary1-left {
@@ -624,6 +710,7 @@
 
 @media screen and (max-width: 882px) {
   .Btn_Content {
+    
     margin-left: 45px;
     width: 90%;
   }

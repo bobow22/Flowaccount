@@ -780,7 +780,7 @@ export default function Cash_invoice() {
 		}
 		<div className="Footer">
 			<div className="Sub_Footer">
-				<h2>ทดลองใช้โปรเเกรมบัญชี FlowAccount</h2>
+				<h2>ทดลองใช้โปรเเกรมบัญชีออนไลน์ FlowAccount</h2>
 
 				<div className="Btn_Footer">
 					<button type="primary" htmlType="submit" className="button-65">
@@ -797,7 +797,7 @@ export default function Cash_invoice() {
 							style={{ color: "white", textDecoration: "none" }}
 							href="https://flowaccount.com/"
 						>
-							ติดต่อเราา
+							ติดต่อเรา
 						</a>
 					</button>
 				</div>
