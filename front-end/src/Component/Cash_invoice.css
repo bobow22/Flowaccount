@@ -208,9 +208,9 @@
 }
 
 .Btn_Content {
-  /* border: 1px solid rgb(199, 119, 0); */
-  width: 80%;
-  margin-left: 100px;
+  border: 1px solid rgb(199, 119, 0);
+  width: 79%;
+  margin-left: 6.9rem;
 }
 
 .Btn_Content button {
@@ -283,9 +283,9 @@
   }
 }
 
-/* CSS */
+/*--------------------- CSS ------------------------*/
 .button-1 {
-  width: 50%;
+  width: 30%;
   background-color: #5ec3fd;
   border-radius: 10px;
   border-style: none;
@@ -418,7 +418,7 @@
   }
 } */
 
-@media screen and (max-width: 1414px) {
+@media screen and (max-width: 1439px) {
    .Text_explain_procedure {
     margin-top: 40px;
   }
@@ -435,7 +435,7 @@
   } */
 
   .Btn_Content {
-    width: 80%;
+    width: 79%;
     margin-left: 110px;
   }
 }
@@ -479,7 +479,6 @@
 
 @media screen and (max-width: 660px) {
   .summary1 {
-  
     /* border: 1px solid red; */
     width: 100%;
     max-width: inherit;
@@ -589,7 +588,7 @@
   }
 }
 
-@media screen and (max-width: 944px) {
+@media screen and (max-width: 951px) {
   .Header {
     display: flex;
     justify-content: center;
@@ -643,6 +642,15 @@
   .Content {
     margin-top: 10px;
   }
+
+  .Header{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5rem;
+    /* border: 1px solid red; */
+   }
+
   .Btn_Content {
     display: flex;
     text-align: center;
@@ -659,4 +667,32 @@
   .Sub_Footer h2 {
     text-align: center;
   }
+
+  .PDF{
+    /* border: 1px solid red; */
+    margin-left: 6rem;
+  }
+
+ .Header{
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 8.2rem;
+  /* border: 1px solid red; */
+ }
+
+ .Btn_Content{
+  /* border: 1px solid red; */
+  margin-left: 14rem;
+ }
+
+ .Text_explain_procedure{
+  /* border: 1px solid red; */
+  margin-left: 7rem;
+ }
+
+ .Footer{
+  margin-left: 7rem;
+ }
 }
+
