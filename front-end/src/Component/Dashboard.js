@@ -197,86 +197,102 @@ export default function Dashboard() {
                     <div class="rounded-md shadow-md p-6">
                         <div class="pb-4 text-center text-2xl">Take a Tour of Flow Account With These Easy Steps</div>
 
-                        <div class="grid grid-cols-5">
-                            <div class="px-8 text-center">
-                                <p>Get your Free Demo!</p>
-                                <div class="flex justify-center p-1"><img class="w-28 h-28" src="/img/Account.png" alt="" /></div>
 
-                                <span class="inline-block pt-3 text-sm">
-                                    Contact Our Team
-                                </span>
-                                <span class="block my-2 text-gray-500 text-xs">
-                                    To schedule a free demo via video call
-                                </span>
-                                <span class="block my-2 text-blue-500 hover:cursor-pointer">📞 02-026-8991</span>
+                        <div class="flex">
+                            <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 items-center">
+                                <div class="px-8 text-center">
+                                    <p>Get your Free Demo!</p>
+                                    <div class="flex justify-center p-1"><img class="w-28 h-28" src="/img/Account.png" alt="" /></div>
 
-                                <p
-                                    class="flex justify-center rounded-md bg-blue-500 text-sm text-white py-1 hover:cursor-pointer"
-                                    href=""
-                                >Request for demo</p>
+                                    <span class="inline-block pt-3 text-sm">
+                                        Contact Our Team
+                                    </span>
+                                    <span class="block my-2 text-gray-500 text-xs">
+                                        To schedule a free demo via video call
+                                    </span>
+                                    <span class="block my-2 text-blue-500 hover:cursor-pointer">📞 02-026-8991</span>
+
+                                    <div class="">
+                                        <button
+                                            class="inline-block bg-blue-500 rounded-md px-2 py-1 text-sm text-white mr-2 mb-2"
+                                        >
+                                            Request for demo
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="text-center px-4">
-                                <div class="flex justify-center mb-4"><img src="/img/start_1.png" alt="" /></div>
-                                <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
-                                <span class="inline-block pt-3 text-sm">
-                                    How to create quotation
-                                </span>
-                                <span class="block my-2 text-gray-500 text-xs">
-                                    Create and quote your client in a snap.
-                                </span>
-                                <p
-                                    class="flex justify-center rounded-md bg-green-500 text-sm text-white py-1 hover:cursor-pointer"
-                                    href=""
-                                >Take the tour</p>
-                            </div>
+                            <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4">
+                                <div class="text-center px-4 mt-2">
+                                    <div class="flex justify-center mb-4"><img src="/img/start_1.png" alt="" /></div>
+                                    <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
+                                    <span class="inline-block pt-3 text-sm">
+                                        How to create quotation
+                                    </span>
+                                    <span class="block my-2 text-gray-500 text-xs mx-4">
+                                        Create and quote your client in a snap.
+                                    </span>
+                                    <div class="">
+                                        <button
+                                            class="inline-block bg-green-500 rounded-md px-4 py-1 text-sm text-white mr-2 mb-2"
+                                        >
+                                            Take the tour
+                                        </button></div>
+                                </div>
 
-                            <div class="text-center px-4">
-                                <div class="flex justify-center mb-4"><img src="/img/start_2.png" alt="" /></div>
-                                <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
-                                <span class="inline-block pt-3 text-sm">
-                                    How to issue invoices
-                                </span>
-                                <span class="block my-2 text-gray-500 text-xs">
-                                    Track document status and see who owes you.
-                                </span>
-                                <p
-                                    class="flex justify-center rounded-md bg-green-500 text-sm text-white py-1 hover:cursor-pointer"
-                                    href=""
-                                >Take the tour</p>
-                            </div>
+                                <div class="text-center px-4 mt-2">
+                                    <div class="flex justify-center mb-4"><img src="/img/start_2.png" alt="" /></div>
+                                    <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
+                                    <span class="inline-block pt-3 text-sm">
+                                        How to issue invoices
+                                    </span>
+                                    <span class="block my-2 text-gray-500 text-xs">
+                                        Track document status and see who owes you.
+                                    </span>
+                                    <div class="">
+                                        <button
+                                            class="inline-block bg-green-500 rounded-md px-4 py-1 text-sm text-white mr-2 mb-2"
+                                        >
+                                            Take the tour
+                                        </button></div>
+                                </div>
 
-                            <div class="text-center px-4">
-                                <div class="flex justify-center mb-4"><img src="/img/start_3.png" alt="" /></div>
-                                <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
-                                <span class="inline-block pt-3 text-sm">
-                                    Add Business Details
-                                </span>
-                                <span class="block my-2 text-gray-500 text-xs">
-                                    Prepare business details to start invoicing right away.
-                                </span>
-                                <p
-                                    class="flex justify-center rounded-md bg-green-500 text-sm text-white py-1 hover:cursor-pointer"
-                                    href=""
-                                >Start</p>
-                            </div>
+                                <div class="text-center px-4 mt-2">
+                                    <div class="flex justify-center mb-4"><img src="/img/start_3.png" alt="" /></div>
+                                    <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
+                                    <span class="inline-block pt-3 text-sm">
+                                        Add Business Details
+                                    </span>
+                                    <span class="block my-2 text-gray-500 text-xs">
+                                        Prepare business details to start invoicing right away.
+                                    </span>
+                                    <div class="">
+                                        <button
+                                            class="inline-block bg-green-500 rounded-md px-4 py-1 text-sm text-white mb-2"
+                                        >
+                                            Start
+                                        </button></div>
+                                </div>
 
-                            <div class="text-center px-4">
-                                <div class="flex justify-center mb-4"><img src="/img/start_4.png" alt="" /></div>
-                                <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
-                                <span class="inline-block pt-3 text-sm">
-                                    How to add users
-                                </span>
-                                <span class="block my-2 text-gray-500 text-xs">
-                                    Manage users permission such as accountant or sales.
-                                </span>
-                                <p
-                                    class="flex justify-center rounded-md bg-green-500 text-sm text-white py-1 hover:cursor-pointer"
-                                    href=""
-                                >Take the tour</p>
+                                <div class="text-center px-4 mt-2">
+                                    <div class="flex justify-center mb-4"><img src="/img/start_4.png" alt="" /></div>
+                                    <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
+                                    <span class="inline-block pt-3 text-sm">
+                                        How to add users
+                                    </span>
+                                    <span class="block my-2 text-gray-500 text-xs">
+                                        Manage users permission such as accountant or sales.
+                                    </span>
+                                    <div class="">
+                                        <button
+                                            class="inline-block bg-green-500 rounded-md px-4 py-1 text-sm text-white mr-2 mb-2"
+                                        >
+                                            Take the tour
+                                        </button></div>
+                                </div>
+
                             </div>
                         </div>
-
                     </div>
                 </div>
                 {/* Take a Tour */}
