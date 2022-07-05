@@ -18,6 +18,7 @@ This project was assigned from FlowAccount to the Mungtaro, a group from DEVCAMP
 ## Team
 
 This is my team.
+
 - [Bow](https://github.com/bobow22)
 - [Karn](https://github.com/Silapakarn)
 - [Zeera](https://github.com/zeeracha)
@@ -33,7 +34,8 @@ This is my team.
 This project was bootstrapped with [Create React App](https://github.com/bobow22/Flowaccount).
 
 ## How to Install and Run The Project
-Clone the project from https://github.com/bobow22/Flowaccount 
+
+Clone the project from https://github.com/bobow22/Flowaccount
 In the project directory, you can run:
 
 ### `npm start`
