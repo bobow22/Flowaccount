@@ -11,7 +11,7 @@
   position: fixed;
   height: 100%;
   width: 3.5rem;
-  background: #518eff;
+  background: #44a2d8;
   transition: all 0.5s ease;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .sidebar ul.nav-links li a:hover {
-  background: #78a7ff;
+  background: #6bbdec;
   border-radius: 0.5rem;
   padding: 0.9rem;
   /* border: 2px solid rgb(10, 78, 44); */
