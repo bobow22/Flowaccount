@@ -37,7 +37,7 @@ export default function Register() {
                         <input style={{ marginBottom: '1.5rem' }}  className='input_email' placeholder="name@example.com" onChange={e => setEmail(e.target.value)} />
 
                         <br /><span>รหัสผ่าน*</span>
-                        <br/><input className='input_pass' placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร" onChange={e => setPassword(e.target.value)}/>
+                        <br/><input type="password" className='input_pass' placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร" onChange={e => setPassword(e.target.value)}/>
                         <p class="limit_pass"></p>
                         <p className='password_rule'>รหัสผ่านควรมีทั้งตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน</p>
 

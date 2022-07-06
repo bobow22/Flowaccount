@@ -3,6 +3,7 @@ import Register from "./Login & Register/Register";
 import Login from "./Login & Register/Login";
 import Dashboard from "./Component/Dashboard";
 import Cash_invoice from "./Component/Cash_invoice";
+import Business_information from '../src/Login & Register/Business_information'
 import axios from "axios";
 import 'boxicons'
 
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/CashInvoice" element={<Cash_invoice />} />
         <Route exact path="/Dashboard" element={<Dashboard />} />
         <Route exact path="/Register" element={<Register />} />
+        <Route exact path="/BusinessInformation" element={<Business_information />} />
         <Route exact path="/" element={<Login />} />
       </Routes>
     </Router>

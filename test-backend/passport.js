@@ -14,6 +14,7 @@ const facebookPassportConfig = () => {
       function (req, accessToken, refreshToken, profile, done) {
         try {
           if (profile) {
+            console.log("FB Token: " + accessToken)
             req.user = profile
             done(null, profile)
           }

@@ -71,7 +71,7 @@
 
 .Form_Register{
   margin-top: 3.8rem;
-  width: 42%;
+  width: 45%;
   background: rgb(255, 255, 255);
   border-radius: 0.6rem;
   padding: 1rem;
@@ -90,15 +90,15 @@
 }
 
 .Logo h3{
-  font-weight:600;
-  margin-top: 1.5rem;
+  /* font-weight:600; */
+  margin-top: 2rem;
   color: rgb(45, 163, 192);
   font-size: 1.5rem;
   font-family: 'Prompt', sans-serif;
 }
 
 .Logo span{
-  font-weight: 600;
+  /* font-weight: 600; */
   margin-top: 1.7rem;
   color: rgb(145, 145, 145);
   font-size: 1.2rem;
@@ -208,3 +208,24 @@
   font-size: 0.92rem;
   color: rgb(92, 92, 92);
 }
+
+
+
+/*-------------------------- Responsive Web Design - Media Queries --------------------*/
+
+
+
+@media screen and (max-width: 756px) {  
+  .Container_Register{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .Form_Register{
+    width: 90%;
+    /* border: 1.5px solid rgb(243, 0, 0); */
+  }
+}
+
