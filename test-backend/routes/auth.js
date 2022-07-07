@@ -19,7 +19,7 @@ router.post("/token", async function (req, res) {
     const passwordMatch = await bcrypt.compare(password, result[0][0].password);
     if (passwordMatch) {
 
-      const privateKey = "flowaccount_mungtaro";
+      const privateKey = "codecamp_very_$secr3T!";
       const token = jwt.sign(
         {
           id: result[0][0].id,

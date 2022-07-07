@@ -13,6 +13,7 @@ require('./passport-google')
 var usersRouter = require("./routes/users");
 var authRouter = require("./routes/auth");
 var cashInvoiceRouter = require("./routes/cash-invoice");
+var businessInfoRouter = require("./routes/business-info")
 
 const app = express();
 app.use(cors());
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/cash-invoice", cashInvoiceRouter);
+app.use("/api/business-info", businessInfoRouter)
 
 // Get Token
 app.get("/", (req, res) => {
@@ -46,11 +48,11 @@ app.get("/", (req, res) => {
       config
     )
     .then((response) => {
-      console.log(response.data)
+      // console.log(response.data)
       res.json(response.data)
     })
     .catch((error) => {
-      console.log(error)
+      // console.log(error)
     })
 
   // axios({
@@ -93,7 +95,7 @@ app.get("/company", (req, res) => {
       res.json(response.data)
     })
     .catch(function (error) {
-      console.log(error)
+      // console.log(error)
     })
 })
 
@@ -119,7 +121,7 @@ app.post("/cash-invoice", (req, res) => {
       res.json(response.data);
     })
     .catch(function (error) {
-      console.log(error)
+      // console.log(error)
     });
 });
 
