@@ -6,7 +6,6 @@ import Cash_invoice from "./Component/Cash_invoice";
 import Business_information from '../src/Login & Register/Business_information'
 import axios from "axios";
 import 'boxicons'
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
