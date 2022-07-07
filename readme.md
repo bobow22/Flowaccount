@@ -27,7 +27,7 @@ This is my team.
 
 - Our team can create frontend and link to backend
 - My team can generate receipts which can calculate xxx
-- You can view demo project by clicking this [link](http://18.136.199.111/)
+- You can view demo project by clicking this [link](http://13.215.191.2/)
 
 ### Getting Start With Create React App
 
