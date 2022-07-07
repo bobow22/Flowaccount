@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Register from "./Login & Register/Register";
 import Login from "./Login & Register/Login";
 import Dashboard from "./Component/Dashboard";
+import Dashboard_cash_invoice from "./Component/Dashboard_cash_invoice";
 import Cash_invoice from "./Component/Cash_invoice";
 import Business_information from '../src/Login & Register/Business_information'
 import axios from "axios";
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route exact path="/CashInvoice" element={<Cash_invoice />} />
         <Route exact path="/Dashboard" element={<Dashboard />} />
+        <Route exact path="/DashboardCashInvoice" element={<Dashboard_cash_invoice />} />
         <Route exact path="/Register" element={<Register />} />
         <Route exact path="/BusinessInformation" element={<Business_information />} />
         <Route exact path="/" element={<Login />} />
