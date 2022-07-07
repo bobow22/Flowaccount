@@ -10,11 +10,19 @@ const isLoggedIn = require('./Middleware/auth')
 require('./passport-facebook')
 require('./passport-google')
 
+var usersRouter = require("./routes/users");
+var authRouter = require("./routes/auth");
+var cashInvoiceRouter = require("./routes/cash-invoice");
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.json())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use("/api/users", usersRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/cash-invoice", cashInvoiceRouter);
 
 // Get Token
 app.get("/", (req, res) => {
