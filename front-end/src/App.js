@@ -8,8 +8,10 @@ import axios from "axios";
 import 'boxicons'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App() {
 
+
+function App() {
+  
   useEffect(() => {
     const getToken = async () => {
       const result = await axios.get("http://localhost:3000/");
@@ -29,7 +31,7 @@ function App() {
         <Route exact path="/" element={<Login />} />
       </Routes>
     </Router>
-  );
+  )
 }
 
 export default App;
