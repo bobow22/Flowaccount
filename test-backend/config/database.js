@@ -1,12 +1,11 @@
-var express = require("express");
-var router = express.Router();
-const jwt = require("jsonwebtoken");
-const validate = require("./validate");
+const mysql = require("mysql2/promise");
 
-router.get("/", validate, function (req, res) {
-  let token = req.headers.authorization;
-  console.log(token);
-  res.send([{ item: "Product A selected" }, { item: "Product B selected" }]);
+const pool = mysql.createPool({
+  connectionLimit: 10,
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "test_fa",
 });
 
-module.exports = router;
+module.exports = pool;
