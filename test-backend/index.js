@@ -6,7 +6,6 @@ const passport = require('passport')
 const cookieSession = require('cookie-session')
 const session = require('express-session');
 const cors = require("cors");
-const isLoggedIn = require('./Middleware/auth')
 require('./passport-facebook')
 require('./passport-google')
 
@@ -45,31 +44,11 @@ app.get("/", (req, res) => {
       console.log(error)
     })
 
-  // axios({
-  //   method: "post",
-  //   url: "https://openapi.flowaccount.com/test/token",
-  //   body: {
-  //     client_id: "thai-proggrammer-camp-client",
-  //     client_secret: "YqfVrGkhQdFNYMpjxhAerLQHCihSPFMJXRUPc",
-  //     grant_type: "client_credentials",
-  //     scope: "flowaccount-api",
-  //     guid: "",
-  //   },
-  //   headers: {
-  //     "Content-Type": "application/x-www-form-urlencoded",
-  //   },
-  // })
-  //   .then((response) => {
-  //     console.log(response);
-  //   })
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
 })
 
 app.get("/company", (req, res) => {
   let token2 = req.headers.authorization;
-  console.log(token2)
+  console.log("token2", token2)
   var config = {
     method: 'get',
     url: 'https://openapi.flowaccount.com/test/company/info',

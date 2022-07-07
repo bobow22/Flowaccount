@@ -23,11 +23,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/CashInvoice" element={<Cash_invoice />} />
+        <Route exact path="/" element={<Cash_invoice />} />
+        {/* <Route exact path="/CashInvoice" element={<Cash_invoice />} />
         <Route exact path="/Dashboard" element={<Dashboard />} />
         <Route exact path="/Register" element={<Register />} />
         <Route exact path="/BusinessInformation" element={<Business_information />} />
-        <Route exact path="/" element={<Login />} />
+        <Route exact path="/" element={<Login />} /> */}
       </Routes>
     </Router>
   );
