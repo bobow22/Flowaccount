@@ -13,7 +13,7 @@ function App() {
 
   useEffect(() => {
     const getToken = async () => {
-      const result = await axios.get("http://localhost:3000/");
+      const result = await axios.get("http://13.215.205.13:3000/");
       console.log(result.data.access_token);
       localStorage.setItem("token", result.data.access_token);
     }

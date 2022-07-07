@@ -21,7 +21,7 @@ export default function Cash_invoice() {
 		console.log(token)
 		const getCompanyInfo = async () => {
 			await axios
-				.get("http://localhost:3000/company", {
+				.get("http://13.215.205.13:3000/company", {
 					headers: {
 						Authorization: `Bearer ${token}`,
 					}
@@ -75,7 +75,7 @@ export default function Cash_invoice() {
 
 		} else {
 			axios
-				.post("http://localhost:3000/cash-invoice", {
+				.post("http://13.215.205.13:3000/cash-invoice", {
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
