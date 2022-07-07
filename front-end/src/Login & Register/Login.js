@@ -87,7 +87,7 @@ export default function Login() {
                         เข้าสู่ระบบ
                     </button>
 
-                    <div className="form_text" style={{ marginBottom: '25px' }}>                            <p>ยังไม่มีบัญชีกับเรา? <span>สมัครใช้งานฟรี</span></p>
+                    <div className="form_text" style={{ marginBottom: '25px' }}>                            <p>ยังไม่มีบัญชีกับเรา? <span onClick={(e) => navigate("/register")}>สมัครใช้งานฟรี</span></p>
                     </div>
                     <hr style={{ color: 'rgb(173, 173, 173)' }} />
 
