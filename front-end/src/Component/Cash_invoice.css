@@ -754,12 +754,12 @@
   display: flex;
   flex-wrap: wrap;
   margin-left: 11.5rem;
-  border: 1px solid rgb(255, 0, 0);
+  /* border: 1px solid rgb(255, 0, 0); */
  }
 
  .Btn_Content{
   margin-left: 24.5rem;
-  border: 1px solid rgb(255, 0, 0);
+  /* border: 1px solid rgb(255, 0, 0); */
  }
 
  .Text_explain_procedure{
