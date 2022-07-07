@@ -4,6 +4,7 @@ const pool = require("../config/database");
 const bcrypt = require("bcrypt");
 
 router.post("/", async function (req, res) {
+
   const { username, password, phone_number, first_name, last_name, company_name, company_address, tax_id } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 

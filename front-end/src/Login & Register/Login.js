@@ -2,6 +2,7 @@ import '../Login & Register/Login.css';
 import React, { useState } from "react";
 import FacebookLogin from 'react-facebook-login'
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -22,6 +23,8 @@ export default function Login() {
     //     })
     // }
 
+    let navigate = useNavigate();
+
     //-----------onFinish---------------
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -29,10 +32,22 @@ export default function Login() {
     const onFinish = async (e) => {
         e.preventDefault()
 
-        console.log(
-            'Email:', email,
-            '\nPassword:', password
-        )
+        try {
+            const result = await axios.post("/api/auth/token", {
+                username: email,
+                password: password,
+            });
+            localStorage.setItem("token", result.data.token);
+            localStorage.setItem("user_id", result.data.user_id)
+            navigate("/CashInvoice");
+        } catch (e) {
+            // form.setFields([
+            //     {
+            //         name: "username",
+            //         errors: [e.response.data.error],
+            //     },
+            // ]);
+        }
     }
 
 
@@ -84,12 +99,7 @@ export default function Login() {
                         <button class="loginBtn loginBtn--facebook" >
                             <a href="http://localhost:3000/auth/facebook" style={{ color: "white", textDecoration: "none" }}>Log in With Facebook</a>
                         </button>
-                        {/* <FacebookLogin
-                            appId='5233430176714318'
-                            fields='name,email'
-                            scope='public_profile, email'
-                            callback={signUserIn}
-                        /> */}
+
                         <button class="loginBtn loginBtn--google">
                             <a href="http://localhost:3000/auth/google" style={{ color: "white", textDecoration: "none" }}>Log in With Google</a>
                         </button>
