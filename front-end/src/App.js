@@ -12,14 +12,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   
-  useEffect(() => {
-    const getToken = async () => {
-      const result = await axios.get("http://localhost:3000/");
-      console.log(result.data.access_token);
-      localStorage.setItem("token", result.data.access_token);
-    }
-    getToken();
-  }, [])
+  // useEffect(() => {
+  //   const getToken = async () => {
+  //     const result = await axios.get("http://localhost:3000/");
+  //     console.log(result.data.access_token);
+  //     localStorage.setItem("token", result.data.access_token);
+  //   }
+  //   getToken();
+  // }, [])
 
   return (
     <Router>

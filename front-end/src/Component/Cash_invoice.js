@@ -11,6 +11,7 @@ import { useRef } from "react";
 export default function Cash_invoice() {
 
 	const token = localStorage.getItem("token");
+	const user_id = localStorage.getItem("user_id");
 
 	const [companyNameEn, setCompanyNameEn] = useState('')
 	const [companyName, setCompanyName] = useState('')
@@ -66,6 +67,80 @@ export default function Cash_invoice() {
 	const [error, setError] = useState('')
 
 
+	// FLOWACCOUNT ------------------------------------------------------------------------------------
+	// const handleSubmit = (e) => {
+	// 	e.preventDefault()
+	// 	//--------------Error 
+	// 	if (customer_name.length === 0 || CompanyCustomer_name.length === 0 || Customer_address.length === 0 || Tax_Number.length != 13 || ItemName_1.length === 0 || ItemName_2.length === 0 || ItemName_3.length === 0 || ItemName_4.length === 0 || ProductUnit_1.length === 0 || ProductUnit_2.length === 0 || ProductUnit_3.length === 0 || ProductUnit_4.length === 0) {
+
+	// 		setError(true)
+
+	// 	} else {
+	// 		axios
+	// 			.post("http://localhost:3000/cash-invoice", {
+	// 				headers: {
+	// 					Authorization: `Bearer ${token}`,
+	// 				},
+	// 				dataObj: {
+	// 					contactName: contactCompanyNameRef.current.value + ", " + contactNameRef.current.value,
+	// 					contactAddress: contactAddressRef.current.value,
+	// 					contactTaxIdRef: contactAddressRef.current.value,
+	// 					publishedOn: publishedOnRef.current.value,
+	// 					salesName: salesNameRef.current.value,
+	// 					dueDate: dueDateRef.current.value,
+
+	// 					subTotal: sum,
+	// 					discountPercentage: numberDiscount,
+	// 					discountAmount: displayDiscount,
+	// 					totalAfterDiscount: discount,
+	// 					vatAmount: tax,
+	// 					grandTotal: netTotal,
+
+	// 					items: [
+	// 						{
+	// 							name: nameRef1.current.value,
+	// 							quantity: quantity1,
+	// 							unitName: unitNameRef1.current.value,
+	// 							pricePerUnit: price1,
+	// 							total: amount1,
+	// 						},
+	// 						{
+	// 							name: nameRef2.current.value,
+	// 							quantity: quantity2,
+	// 							unitName: unitNameRef2.current.value,
+	// 							pricePerUnit: price2,
+	// 							total: amount2,
+	// 						},
+	// 						{
+	// 							name: nameRef3.current.value,
+	// 							quantity: quantity3,
+	// 							unitName: unitNameRef3.current.value,
+	// 							pricePerUnit: price3,
+	// 							total: amount3,
+	// 						},
+	// 						{
+	// 							name: nameRef4.current.value,
+	// 							quantity: quantity4,
+	// 							unitName: unitNameRef4.current.value,
+	// 							pricePerUnit: price4,
+	// 							total: amount4,
+	// 						},
+	// 					],
+	// 				},
+	// 			})
+	// 			.then((res) => {
+	// 				console.log(res)
+	// 			})
+	// 			.catch((err) => {
+	// 				console.error(err)
+	// 			})
+	// 	}
+
+
+
+	// }
+
+
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		//--------------Error 
@@ -75,56 +150,58 @@ export default function Cash_invoice() {
 
 		} else {
 			axios
-				.post("http://localhost:3000/cash-invoice", {
+				.post("/api/cash-invoice", {
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
-					dataObj: {
-						contactName: contactCompanyNameRef.current.value + ", " + contactNameRef.current.value,
-						contactAddress: contactAddressRef.current.value,
-						contactTaxIdRef: contactAddressRef.current.value,
-						publishedOn: publishedOnRef.current.value,
-						salesName: salesNameRef.current.value,
-						dueDate: dueDateRef.current.value,
+					// dataObj: {
+					user_id: user_id,
+					document_number: "CA0001",
+					customer_company: contactCompanyNameRef.current.value,
+					customer_name: contactCompanyNameRef.current.value,
+					customer_address: contactAddressRef.current.value,
+					customer_tax_id: contactAddressRef.current.value,
+					date: publishedOnRef.current.value,
+					salesperson: salesNameRef.current.value,
+					due_date: dueDateRef.current.value,
 
-						subTotal: sum,
-						discountPercentage: numberDiscount,
-						discountAmount: displayDiscount,
-						totalAfterDiscount: discount,
-						vatAmount: tax,
-						grandTotal: netTotal,
+					sub_total: sum,
+					discount: numberDiscount,
+					total_after_discount: discount,
+					vat: tax,
+					grand_total: netTotal,
 
-						items: [
-							{
-								name: nameRef1.current.value,
-								quantity: quantity1,
-								unitName: unitNameRef1.current.value,
-								pricePerUnit: price1,
-								total: amount1,
-							},
-							{
-								name: nameRef2.current.value,
-								quantity: quantity2,
-								unitName: unitNameRef2.current.value,
-								pricePerUnit: price2,
-								total: amount2,
-							},
-							{
-								name: nameRef3.current.value,
-								quantity: quantity3,
-								unitName: unitNameRef3.current.value,
-								pricePerUnit: price3,
-								total: amount3,
-							},
-							{
-								name: nameRef4.current.value,
-								quantity: quantity4,
-								unitName: unitNameRef4.current.value,
-								pricePerUnit: price4,
-								total: amount4,
-							},
-						],
-					},
+					// items: [
+					// 	{
+					// 		name: nameRef1.current.value,
+					// 		quantity: quantity1,
+					// 		unitName: unitNameRef1.current.value,
+					// 		pricePerUnit: price1,
+					// 		total: amount1,
+					// 	},
+					// 	{
+					// 		name: nameRef2.current.value,
+					// 		quantity: quantity2,
+					// 		unitName: unitNameRef2.current.value,
+					// 		pricePerUnit: price2,
+					// 		total: amount2,
+					// 	},
+					// 	{
+					// 		name: nameRef3.current.value,
+					// 		quantity: quantity3,
+					// 		unitName: unitNameRef3.current.value,
+					// 		pricePerUnit: price3,
+					// 		total: amount3,
+					// 	},
+					// 	{
+					// 		name: nameRef4.current.value,
+					// 		quantity: quantity4,
+					// 		unitName: unitNameRef4.current.value,
+					// 		pricePerUnit: price4,
+					// 		total: amount4,
+					// 	},
+					// ],
+					// },
 				})
 				.then((res) => {
 					console.log(res)
