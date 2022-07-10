@@ -269,6 +269,22 @@
 
 /*-------------------------- Responsive Web Design - Media Queries --------------------*/
 
+@media screen and (max-width: 1546px) {  
+  /* .Form_Login{
+    margin-top: 3.8rem;
+    width: 35%;
+    background: rgb(255, 255, 255);
+    border-radius: 0.6rem;
+    padding: 1rem;
+    
+  } */
+
+}
+
+
+
+
+
 @media screen and (max-width: 586px) {  
   /* Facebook */
 .loginBtn--facebook {

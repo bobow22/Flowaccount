@@ -486,7 +486,7 @@ export default function Cash_invoice() {
 								<thead className="thead-dark">
 									<tr>
 										<th>ลำดับ</th>
-										<th>ชื่อสินค้า/รายละเอียด</th>
+										<th style={{width: "20%"}}>ชื่อสินค้า/รายละเอียด</th>
 										<th>จำนวน</th>
 										<th>หน่วย</th>
 										<th>ราคาต่อหน่วย</th>
@@ -844,11 +844,11 @@ export default function Cash_invoice() {
 					<span>พิมพ์ใบเสร็จรับเงิน</span>
 				</p>
 
-				<div className="Text_Create_quote">
+				{/* <div className="Text_Create_quote">
 					<h1>สร้างใบเสนอราคา</h1>
 					<h1>สร้างใบวางบิล</h1>
 					<h1>สร้างใบกำกับภาษี</h1>
-				</div>
+				</div> */}
 			</div>
 		</div>;
 

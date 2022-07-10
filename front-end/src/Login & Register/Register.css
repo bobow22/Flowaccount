@@ -71,7 +71,7 @@
 
 .Form_Register{
   margin-top: 3.8rem;
-  width: 45%;
+  width: 38%;
   background: rgb(255, 255, 255);
   border-radius: 0.6rem;
   padding: 1rem;
@@ -212,6 +212,12 @@
 
 
 /*-------------------------- Responsive Web Design - Media Queries --------------------*/
+
+@media screen and (max-width: 1415px) {  
+
+
+}
+
 
 
 
