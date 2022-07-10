@@ -53,7 +53,7 @@
 }
 
 .button-3:active {
-  background-color: #54eb26;
+  background-color: #6da52c;
   box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
 }
 
@@ -71,7 +71,7 @@
 
 .Form_Register{
   margin-top: 3.8rem;
-  width: 45%;
+  width: 38%;
   background: rgb(255, 255, 255);
   border-radius: 0.6rem;
   padding: 1rem;
@@ -128,7 +128,7 @@
   border: 1.5px solid rgb(212, 212, 212);
   border-radius: 0.3rem;
   padding: 0.8rem;
-  margin-bottom: 0.8rem;
+  /* margin-bottom: 0.8rem; */
   width: 100%;
 }
 
@@ -136,7 +136,7 @@
   border: 1.5px solid rgb(212, 212, 212);
   border-radius: 0.3rem;
   padding: 0.8rem;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.2rem;
   width: 100%;
 }
 
@@ -153,7 +153,7 @@
   border: 1.5px solid rgb(212, 212, 212);
   border-radius: 0.3rem;
   padding: 0.8rem;
-  margin-bottom: 0.8rem;
+  /* margin-bottom: 0.8rem; */
   width: 100%;
 }
 
@@ -212,6 +212,12 @@
 
 
 /*-------------------------- Responsive Web Design - Media Queries --------------------*/
+
+@media screen and (max-width: 1415px) {  
+
+
+}
+
 
 
 

@@ -197,7 +197,6 @@ export default function Dashboard() {
                     <div class="rounded-md shadow-md p-6">
                         <div class="pb-4 text-center text-2xl">Take a Tour of Flow Account With These Easy Steps</div>
 
-
                         <div class="flex">
                             <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 items-center">
                                 <div class="px-8 text-center">

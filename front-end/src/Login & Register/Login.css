@@ -78,11 +78,19 @@
 /*----------------------Form Email Pass-----------------------------*/
 
 
-.form__input{
+.form__input1{
   border: 1.5px solid rgb(212, 212, 212);
   border-radius: 0.3rem;
   padding: 0.8rem;
-  margin-bottom: 0.8rem;
+  /* margin-bottom: 2.2rem; */
+  width: 100%;
+}
+
+.form__input2{
+  border: 1.5px solid rgb(212, 212, 212);
+  border-radius: 0.3rem;
+  padding: 0.8rem;
+  /* margin-bottom: 0.8rem; */
   width: 100%;
 }
 
@@ -260,6 +268,22 @@
 
 
 /*-------------------------- Responsive Web Design - Media Queries --------------------*/
+
+@media screen and (max-width: 1546px) {  
+  /* .Form_Login{
+    margin-top: 3.8rem;
+    width: 35%;
+    background: rgb(255, 255, 255);
+    border-radius: 0.6rem;
+    padding: 1rem;
+    
+  } */
+
+}
+
+
+
+
 
 @media screen and (max-width: 586px) {  
   /* Facebook */

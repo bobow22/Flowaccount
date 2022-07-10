@@ -8,17 +8,22 @@ export default function Register() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [phone, setPhone] = useState('')
+    const [error, setError] = useState('')
 
     //-----------onFinish---------------
     const onFinish = async (e) => {
-
         e.preventDefault()
-        
-        console.log('email:', email,
-        '\npassword:' ,password,
-        '\nphone:' ,phone,
-        )
-       }
+    
+        if(email.length === 0 || password.length === 0 || phone.length != 10){
+            setError(true)
+        }else{
+
+            console.log('email:', email,
+            '\npassword:' ,password,
+            '\nphone:' ,phone,
+            )
+        } 
+    }
 
        
        return (<>
@@ -32,20 +37,34 @@ export default function Register() {
                     </div>
 
                     <div className='Conten_in_from'>
-                        <span style={{ textAlign: 'left' }}>อีเมล*</span><br />
+                        <div>
+                            <span style={{ textAlign: 'left' }}>อีเมล*</span><br />
 
-                        <input style={{ marginBottom: '1.5rem' }}  className='input_email' placeholder="name@example.com" onChange={e => setEmail(e.target.value)} />
+                            <input className='input_email' placeholder="name@example.com" onChange={e => setEmail(e.target.value)} />
+                            {/* ---------------error: Email---------------- */}
+                            {error && email.length <= 0 ? <label style={{ color: 'red' , marginTop: '0.3rem'}}>กรุณากรอกที่อยู่ Email</label> : ''}
+                        </div>
+                        
 
-                        <br /><span>รหัสผ่าน*</span>
-                        <br/><input type="password" className='input_pass' placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร" onChange={e => setPassword(e.target.value)}/>
-                        <p class="limit_pass"></p>
-                        <p className='password_rule'>รหัสผ่านควรมีทั้งตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน</p>
+                        <div>
+                            <br /><span>รหัสผ่าน*</span>
+                            <br/><input type="password" className='input_pass' placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร" onChange={e => setPassword(e.target.value)}/>
+                            <p class="limit_pass"></p>
+                            <p className='password_rule'>รหัสผ่านควรมีทั้งตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน</p>
+                            {/* ---------------error: password---------------- */}
+                            {error && password.length < 8 ? <label style={{ color: 'red' , marginTop: '0.3rem'}}>กรุณากรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร</label> : ''}
+                        </div>
+                        
+
+                        <div>
+                            <br/><span>เบอร์ของผู้สมัครใช้งาน*</span>
+                            <br/><input className='input_phone' placeholder="09XXXXXXXX" onChange={e => setPhone(e.target.value)}/>
+                            {/* ---------------error: phone---------------- */}
+                            {error && phone.length != 10 ? <label style={{ color: 'red' , marginTop: '0.3rem'}}>กรุณากรอกหมายเลขโทรศัพท์ให้ครบ</label> : ''}
+                        </div>
 
 
-                        <br/><span>เบอร์ของผู้สมัครใช้งาน*</span>
-                        <br/><input className='input_phone' placeholder="09XXXXXXXX" onChange={e => setPhone(e.target.value)}/>
-
-                        <div className="text_above_button">
+                        <div className="text_above_button" style={{ marginTop: '1.8rem' }}>
                             <h4>ในการสมัครใช้งาน <span>ฉันได้ยอมรับ</span></h4>
                             <h5>ประกาศความเป็นส่วนตัวสําหรับลูกค้าและผู้รับบริการ <span>และ</span> เงื่อนไขการใช้บริการ</ h5>
                         </div>
