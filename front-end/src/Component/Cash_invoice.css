@@ -61,9 +61,9 @@
   margin-top: 50px;
 }
 
-.Btn_and_PDF {
-  /* border: 1px solid rgb(17, 0, 255); */
-}
+/* .Btn_and_PDF {
+  border: 1px solid rgb(17, 0, 255);
+} */
 
 .PDF {
   text-align: center;
@@ -73,7 +73,7 @@
   border-bottom: 2.8px solid rgb(187, 187, 187);
   margin-top: 30px;
   padding: 5rem;
-  width: 78%;
+  width: 80%;
   margin: auto;
 }
 
@@ -211,10 +211,10 @@
   /* border: 1px solid rgb(255, 0, 0); */
 }
 
-.Text_explain_procedure {
-  /* border: 1px solid red; */
-  /* margin-left: 20px; */
-}
+/* .Text_explain_procedure {
+  border: 1px solid red; 
+  margin-left: 20px;
+} */
 
 .Text_explain_procedure span{
     /* border: 1px solid red; */
@@ -256,7 +256,7 @@
 .Btn_Content {
   /* border: 1px solid rgb(199, 119, 0); */
   width: 80%;
-  margin-left: 100px;
+  margin-left: 6.9rem;
 }
 
 .Btn_Content button {
@@ -337,7 +337,7 @@
   }
 }
 
-/* CSS */
+/*--------------------- CSS ------------------------*/
 .button-1 {
   width: 50%;
   background-color: #1CA4FC;
@@ -442,6 +442,7 @@
   display: flex;
   justify-content: center;
   /* border: 2px solid yellowgreen; */
+  text-align: center;
   margin-bottom: 30px;
   margin-top: 50px;
   padding: 0.3rem;
@@ -483,24 +484,17 @@
   }
 } */
 
-@media screen and (max-width: 1414px) {
+@media screen and (max-width: 1406px) {
    .Text_explain_procedure {
-    margin-top: 40px;
+    margin-top: 3rem;
+    margin-left: 2.5rem;
+    /* border-top: 1px solid red; */
   }
 }
 
 @media screen and (max-width: 1270px) {
   
-  .PDF {
-    width: 77%;
-  }
-
-  /* .Text_explain_procedure {
-    margin-top: 40px;
-  } */
-
   .Btn_Content {
-    
     width: 80%;
     margin-left: 110px;
   }
@@ -555,7 +549,6 @@
 
 @media screen and (max-width: 660px) {
   .summary1 {
-  
     /* border: 1px solid red; */
     width: 100%;
     max-width: inherit;
@@ -606,6 +599,8 @@
     margin: 0 0.5rem;
   }
 }
+
+
 
 @media screen and (max-width: 1075px) {
   .Btn_Content {
@@ -675,7 +670,7 @@
   }
 }
 
-@media screen and (max-width: 944px) {
+@media screen and (max-width: 982px) {
   .Header {
     display: flex;
     justify-content: center;
@@ -701,35 +696,28 @@
   }
 }
 
-/* @media screen and (max-width: 930px) {
-    .Btn_Content{
-        margin-left: 45px;
-        width: 90%;
-    }
-} */
 
 @media screen and (max-width: 882px) {
   .Btn_Content {
-    
     margin-left: 45px;
     width: 90%;
   }
 }
 
-@media screen and (max-width: 877px) {
-  .Btn_Content {
-    display: flex;
-    text-align: center;
-    /* margin-left: 30px; */
-    /* border: 1px solid red; */
-    width: 90%;
-  }
-}
 
 @media screen and (max-width: 793px) {
   .Content {
     margin-top: 10px;
   }
+
+  .Header{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 5rem;
+    /* border: 1px solid red; */
+   }
+
   .Btn_Content {
     display: flex;
     text-align: center;
@@ -742,8 +730,4 @@
   }
 }
 
-@media screen and (max-width: 665px) {
-  .Sub_Footer h2 {
-    text-align: center;
-  }
-}
+

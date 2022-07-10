@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+/*---------------------------- CSS ----------------------------*/
+.button-3 {
+  width: 100%;
+  appearance: none;
+  background-color: #91d642;
+  /* border: 1px solid rgba(27, 31, 35, .15); */
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 18px;
+  /* font-weight: 600; */
+  line-height: 20px;
+  padding: 16px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.button-3:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+.button-3:hover {
+  background-color:#7fbb3b;
+}
+
+.button-3:focus {
+  /* box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px; */
+  outline: none;
+}
+
+.button-3:disabled {
+  background-color: #94d3a2;
+  border-color: rgba(27, 31, 35, .1);
+  color: rgba(255, 255, 255, .8);
+  cursor: default;
+}
+
+.button-3:active {
+  background-color: #6da52c;
+  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+}
+
+
+
+
+/*---------------------------------Container_Register-------------------------------------*/
+
+.Container_Register{
+  background-color: rgb(84, 192, 235);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Form_Register{
+  margin-top: 3.8rem;
+  width: 38%;
+  background: rgb(255, 255, 255);
+  border-radius: 0.6rem;
+  padding: 1rem;
+  /* border: 2px solid rgb(0, 30, 201); */
+}
+
+.Logo{
+  text-align: center;
+}
+
+.Logo img{
+  padding-top: 0.7rem;
+  margin: auto;
+  width: 38%;
+  /* border: 1px solid rgb(188, 201, 0); */
+}
+
+.Logo h3{
+  /* font-weight:600; */
+  margin-top: 2rem;
+  color: rgb(45, 163, 192);
+  font-size: 1.5rem;
+  font-family: 'Prompt', sans-serif;
+}
+
+.Logo span{
+  /* font-weight: 600; */
+  margin-top: 1.7rem;
+  color: rgb(145, 145, 145);
+  font-size: 1.2rem;
+  font-family: 'Prompt', sans-serif;
+}
+
+.Logo h4 span{
+  text-align: center;
+  margin-top: 1.5rem;
+  color: rgb(133, 133, 133);
+  font-size: 1.2rem;
+  font-family: 'Prompt', sans-serif;
+}
+
+/*------------------------------------------Conten-------------------------------------*/
+
+.Conten_in_from{
+  padding: 0.8rem;
+  /* border-top: 1px solid red; */
+}
+
+.Conten_in_from span{
+  color: rgb(92, 92, 92);
+}
+
+.input_email{
+  border: 1.5px solid rgb(212, 212, 212);
+  border-radius: 0.3rem;
+  padding: 0.8rem;
+  /* margin-bottom: 0.8rem; */
+  width: 100%;
+}
+
+.input_pass{
+  border: 1.5px solid rgb(212, 212, 212);
+  border-radius: 0.3rem;
+  padding: 0.8rem;
+  margin-bottom: 0.2rem;
+  width: 100%;
+}
+
+.limit_pass{
+  border-bottom: 0.40rem solid rgb(231, 231, 231);
+}
+
+.password_rule{
+  /* border: 1.5px solid red; */
+  font-size: 0.9rem;
+}
+
+.input_phone{
+  border: 1.5px solid rgb(212, 212, 212);
+  border-radius: 0.3rem;
+  padding: 0.8rem;
+  /* margin-bottom: 0.8rem; */
+  width: 100%;
+}
+
+.password_rule{
+  /* border: 1.5px solid red; */
+  color: rgb(133, 133, 133);
+}
+
+/*------------------------------text------------------------------------*/
+
+.text_above_button{
+  /* border: 1.5px solid red; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.text_above_button h4{
+  font-size: 0.92rem;
+  color: rgb(92, 92, 92);
+}
+
+.text_above_button h5{
+  font-size: 0.92rem;
+  color: rgb(32, 172, 207);
+}
+
+.text_below_button{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.text_below_button p{
+  font-size: 0.92rem;
+  color: rgb(92, 92, 92);
+}
+
+.text_below_button span{
+  font-size: 0.92rem;
+  color: rgb(32, 172, 207);
+}
+
+.text_above_FB_GL{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.text_above_FB_GL p{ 
+  font-size: 0.92rem;
+  color: rgb(92, 92, 92);
+}
+
+
+
+/*-------------------------- Responsive Web Design - Media Queries --------------------*/
+
+@media screen and (max-width: 1415px) {  
+
+
+}
+
+
+
+
+@media screen and (max-width: 756px) {  
+  .Container_Register{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .Form_Register{
+    width: 90%;
+    /* border: 1.5px solid rgb(243, 0, 0); */
+  }
+}
+

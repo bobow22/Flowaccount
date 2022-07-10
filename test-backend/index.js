@@ -3,20 +3,28 @@ const axios = require("axios");
 const querystring = require("querystring");
 const bodyParser = require('body-parser')
 const passport = require('passport')
-const FacebookStrategy = require("passport-facebook").Strategy;
-const cors = require("cors");
-
-//Google
+const cookieSession = require('cookie-session')
 const session = require('express-session');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const GOOGLE_CLIENT_ID = '436633461111-00gde3bu29qkrj15m15tum6h4439r2i3.apps.googleusercontent.com';
-const GOOGLE_CLIENT_SECRET = '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';
+const cors = require("cors");
+const isLoggedIn = require('./Middleware/auth')
+require('./passport-facebook')
+require('./passport-google')
+
+var usersRouter = require("./routes/users");
+var authRouter = require("./routes/auth");
+var cashInvoiceRouter = require("./routes/cash-invoice");
+var businessInfoRouter = require("./routes/business-info")
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use("/api/users", usersRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/cash-invoice", cashInvoiceRouter);
+app.use("/api/business-info", businessInfoRouter)
 
 // Get Token
 app.get("/", (req, res) => {
@@ -40,11 +48,11 @@ app.get("/", (req, res) => {
       config
     )
     .then((response) => {
-      console.log(response.data)
+      // console.log(response.data)
       res.json(response.data)
     })
     .catch((error) => {
-      console.log(error)
+      // console.log(error)
     })
 
   // axios({
@@ -83,11 +91,11 @@ app.get("/company", (req, res) => {
   axios(config)
     .then(function (response) {
       // console.log(JSON.stringify(response.data));
-      console.log(response.data)
+      // console.log(response.data)
       res.json(response.data)
     })
     .catch(function (error) {
-      console.log(error)
+      // console.log(error)
     })
 })
 
@@ -113,14 +121,18 @@ app.post("/cash-invoice", (req, res) => {
       res.json(response.data);
     })
     .catch(function (error) {
-      console.log(error)
+      // console.log(error)
     });
 });
 
 
 /* FACEBOOK */
-const { facebookPassportConfig } = require('./passport')
-facebookPassportConfig()
+app.use(cookieSession({
+  name: 'facebook-auth-session',
+  keys: ['key1', 'key2']
+}))
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/auth/facebook',
   passport.authenticate('facebook'));
@@ -140,28 +152,15 @@ app.get('/auth/facebook/callback',
 
   });
 
-const PORT = 3000
-app.listen(PORT, () => {
-  console.log(`Listening at port ${PORT}`)
-});
-
-
-
-
-// app.post('/signin/facebook', async (req, res) => {
-//   console.log('Request -->', req.body.user)
-
-//   try {
-//     const response = await axios({
-//       method: 'get',
-//       url: `https://graph.facebook.com/v6.0/oauth/access_token?grant_type=fb_exchange_token&client_id=<5233430176714318>&client_secret=<371453627b3bb9becd60fdb047fcea34>&fb_exchange_token=${req.body.user.accessToken}`,
-//     })
-//     const result = response.data
-//     console.log('Result -->', result)
-
-//     // If (result) --> process signup (new user) / signin (exiting user)
-//   } catch (error) { }
-// })
+app.get('/logout', (req, res) => {
+  console.log("b req.user", req.user)
+  console.log("b reg.session", req.session)
+  req.session = null;
+  console.log("a req.session", req.session)
+  req.logout()
+  console.log("a req.user", req.user)
+  res.redirect('http://localhost:3001');
+})
 
 
 /* Google Auth */
@@ -186,37 +185,11 @@ app.get('/', function (req, res) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Middleware
-app.set('view engine', 'ejs');
-
 app.get('/success', (req, res) =>
   res.redirect('http://localhost:3001/cashinvoice'));
 
-
 app.get('/error', (req, res) =>
   res.send("error logging in"));
-
-passport.serializeUser(function (user, cb) {
-  cb(null, user);
-});
-
-passport.deserializeUser(function (obj, cb) {
-  cb(null, obj);
-});
-
-/*  Google AUTH  */
-passport.use(new GoogleStrategy({
-  clientID: GOOGLE_CLIENT_ID,
-  clientSecret: GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:3000/auth/google/callback",
-  profileFields: ['id', 'displayName', 'name', 'email']
-},
-  function (accessToken, refreshToken, profile, done) {
-    userProfile = profile;
-    console.log('User -->', profile)
-    return done(null, userProfile);
-  }
-));
 
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile', 'email'] }));
@@ -227,3 +200,11 @@ app.get('/auth/google/callback',
     // Successful authentication, redirect success.
     res.redirect('/success');
   });
+
+
+const PORT = 3000
+app.listen(PORT, () => {
+  console.log(`Listening at port ${PORT}`)
+});
+
+
