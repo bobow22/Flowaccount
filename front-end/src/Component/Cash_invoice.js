@@ -97,7 +97,8 @@ export default function Cash_invoice() {
 	const [ProductUnit_3, setProductUnit_3] = useState('')
 	const [ProductUnit_4, setProductUnit_4] = useState('')
 
-
+	const [DocumentNumber, setDocumentNumber] = useState(0);
+	
 	const [error, setError] = useState('')
 
 
@@ -189,6 +190,8 @@ export default function Cash_invoice() {
 			});
 
 		} else {
+			setDocumentNumber(DocumentNumber + 1)
+
 			axios
 				.post("/api/cash-invoice", {
 					headers: {
@@ -196,7 +199,7 @@ export default function Cash_invoice() {
 					},
 					// dataObj: {
 					user_id: user_id,
-					document_number: "CA0001",
+					document_number: "CA000" + DocumentNumber,
 					customer_company: contactCompanyNameRef.current.value,
 					customer_name: contactCompanyNameRef.current.value,
 					customer_address: contactAddressRef.current.value,
@@ -250,11 +253,15 @@ export default function Cash_invoice() {
 					console.error(err)
 				})
 
+				console.log(
+					'document_number:',"CA000" + DocumentNumber
+					)
 				//--------------React-Toastify----------------
 				toast.success("Successfull!", {
 					position: "top-center",
 				});
 		}
+		
 
 
 
