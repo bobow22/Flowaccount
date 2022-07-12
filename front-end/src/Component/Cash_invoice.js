@@ -14,26 +14,59 @@ export default function Cash_invoice() {
 	const token = localStorage.getItem("token");
 	const user_id = localStorage.getItem("user_id");
 
-	const [companyNameEn, setCompanyNameEn] = useState('')
-	const [companyName, setCompanyName] = useState('')
-	const [companyAddress, setCompanyAddress] = useState('')
-	const [companyTaxId, setCompanyTaxId] = useState('')
+	// FLOWACCOUT ------------------------------------------------------------------------
+	// const [companyNameEn, setCompanyNameEn] = useState('')
+	// const [companyName, setCompanyName] = useState('')
+	// const [companyAddress, setCompanyAddress] = useState('')
+	// const [companyTaxId, setCompanyTaxId] = useState('')
+
+	// useEffect(() => {
+	// 	console.log(token)
+	// 	const getCompanyInfo = async () => {
+	// 		await axios
+	// 			.get("http://localhost:3000/company", {
+	// 				headers: {
+	// 					Authorization: `Bearer ${token}`,
+	// 				}
+	// 			})
+	// 			.then((res) => {
+	// 				console.log(res.data.data.companyName)
+	// 				setCompanyNameEn(res.data.data.companyNameEn)
+	// 				setCompanyName(res.data.data.companyName)
+	// 				setCompanyAddress(res.data.data.companyAddress)
+	// 				setCompanyTaxId(res.data.data.companyTaxId)
+	// 			})
+	// 			.catch((err) => {
+	// 				console.error(err);
+	// 			}
+	// 			);
+	// 	}
+	// 	getCompanyInfo();
+	// }, [])
+
+	const [companyName, setCompanyName] = useState('');
+	const [name, setName] = useState('');
+	const [companyAddress, setCompanyAddress] = useState('');
+	const [companyTaxId, setCompanyTaxId] = useState('');
 
 	useEffect(() => {
+		// const token = localStorage.getItem("token");
 		console.log(token)
 		const getCompanyInfo = async () => {
 			await axios
-				.get("http://localhost:3000/company", {
+				.get(`http://localhost:3000/api/business-info/${user_id}`, {
 					headers: {
 						Authorization: `Bearer ${token}`,
-					}
+
+					},
+					user_id: user_id
 				})
 				.then((res) => {
-					console.log(res.data.data.companyName)
-					setCompanyNameEn(res.data.data.companyNameEn)
-					setCompanyName(res.data.data.companyName)
-					setCompanyAddress(res.data.data.companyAddress)
-					setCompanyTaxId(res.data.data.companyTaxId)
+					console.log(res.data.result[0].company_name)
+					setCompanyName(res.data.result[0].company_name)
+					setName(res.data.result[0].first_name + " " + res.data.result[0].last_name)
+					setCompanyAddress(res.data.result[0].company_address)
+					setCompanyTaxId(res.data.result[0].tax_id)
 				})
 				.catch((err) => {
 					console.error(err);
@@ -181,36 +214,36 @@ export default function Cash_invoice() {
 					vat: tax,
 					grand_total: netTotal,
 
-					// items: [
-					// 	{
-					// 		name: nameRef1.current.value,
-					// 		quantity: quantity1,
-					// 		unitName: unitNameRef1.current.value,
-					// 		pricePerUnit: price1,
-					// 		total: amount1,
-					// 	},
-					// 	{
-					// 		name: nameRef2.current.value,
-					// 		quantity: quantity2,
-					// 		unitName: unitNameRef2.current.value,
-					// 		pricePerUnit: price2,
-					// 		total: amount2,
-					// 	},
-					// 	{
-					// 		name: nameRef3.current.value,
-					// 		quantity: quantity3,
-					// 		unitName: unitNameRef3.current.value,
-					// 		pricePerUnit: price3,
-					// 		total: amount3,
-					// 	},
-					// 	{
-					// 		name: nameRef4.current.value,
-					// 		quantity: quantity4,
-					// 		unitName: unitNameRef4.current.value,
-					// 		pricePerUnit: price4,
-					// 		total: amount4,
-					// 	},
-					// ],
+					items: [
+						{
+							item_name: nameRef1.current.value,
+							item_quantity: quantity1,
+							item_unit: unitNameRef1.current.value,
+							price_per_unit: price1,
+							item_total: amount1,
+						},
+						{
+							item_name: nameRef2.current.value,
+							item_quantity: quantity2,
+							item_unit: unitNameRef2.current.value,
+							price_per_unit: price2,
+							item_total: amount2,
+						},
+						{
+							item_name: nameRef3.current.value,
+							item_quantity: quantity3,
+							item_unit: unitNameRef3.current.value,
+							price_per_unit: price3,
+							item_total: amount3,
+						},
+						{
+							item_name: nameRef4.current.value,
+							item_quantity: quantity4,
+							item_unit: unitNameRef4.current.value,
+							price_per_unit: price4,
+							item_total: amount4,
+						},
+					],
 					// },
 				})
 				.then((res) => {
@@ -416,13 +449,15 @@ export default function Cash_invoice() {
 							<div>
 								<p>
 									ชื่อบริษัท:{" "}
-									<input type="text" value={companyNameEn} />
+									{/* <input type="text" value={companyNameEn} /> */}
+									<input type="text" value={companyName} />
 									<span>
 										<br />
 										ชื่อ:{" "}
 										<input
 											type="text"
-											value={companyName}
+											// value={companyName}
+											value={name}
 										/>
 									</span>
 									<span className="Address">
