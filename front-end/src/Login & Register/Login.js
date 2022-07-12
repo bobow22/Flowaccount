@@ -94,7 +94,7 @@ export default function Login() {
                     <div>   
                         <br /><span>รหัสผ่าน</span>
 
-                        <input className='form__input2' placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร" onChange={e => setPassword(e.target.value)} />
+                        <input className='form__input2' type="password" placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร" onChange={e => setPassword(e.target.value)} />
                         {/* ---------------error: Password---------------- */}
                         {error && password.length <= 0 ? <label style={{ color: 'red' , marginTop: '0.3rem'}}>รหัสผ่านไม่ถูกต้อง</label> : ''}
                     </div>
@@ -104,7 +104,7 @@ export default function Login() {
                         เข้าสู่ระบบ
                     </button>
 
-                    <div className="form_text" style={{ marginBottom: '25px' }}>                            <p>ยังไม่มีบัญชีกับเรา? <span>สมัครใช้งานฟรี</span></p>
+                    <div className="form_text" style={{ marginBottom: '25px' }}>                                      <p>ยังไม่มีบัญชีกับเรา? <span>สมัครใช้งานฟรี</span></p>
                     </div>
                     <hr style={{ color: 'rgb(173, 173, 173)' }} />
 
