@@ -13,7 +13,9 @@ require('./passport-google')
 var usersRouter = require("./routes/users");
 var authRouter = require("./routes/auth");
 var cashInvoiceRouter = require("./routes/cash-invoice");
+var cashInvoiceSummaryRouter = require("./routes/cash-invoice-summary")
 var businessInfoRouter = require("./routes/business-info")
+var dashboardRouter = require("./routes/dashboard")
 
 const app = express();
 app.use(cors());
@@ -24,7 +26,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/cash-invoice", cashInvoiceRouter);
+app.use("/api/cash-invoice-summary", cashInvoiceSummaryRouter);
 app.use("/api/business-info", businessInfoRouter)
+app.use("/api/dashboard", dashboardRouter)
 
 // Get Token
 app.get("/", (req, res) => {

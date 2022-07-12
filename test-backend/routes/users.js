@@ -10,8 +10,10 @@ router.post("/", async function (req, res) {
   const hashedPassword = await bcrypt.hash(password, 10);
 
   const checkUser = await pool.execute(`select username from general_register where username = ?`, [username])
+  console.log(checkUser[0])
+  console.log(checkUser[0].length)
 
-  if (checkUser.length === 0) {
+  if (checkUser[0].length === 0) {
 
     const result = await pool.execute(`INSERT INTO register (phone_number, first_name, last_name, company_name, company_address, tax_id, register_type) VALUES (?, ?, ?, ?, ?, ?, "general")`, [phone_number, first_name, last_name, company_name, company_address, tax_id])
 

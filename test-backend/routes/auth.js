@@ -33,7 +33,7 @@ router.post("/token", async function (req, res) {
         `SELECT * FROM register WHERE user_id = '${result[0][0].register_id}'`
       );
 
-      res.json({ token: token, user_id: result2[0][0].user_id });
+      res.json({ token: token, user_id: result2[0][0].user_id, company_name: result2[0][0].company_name });
     } else {
       res.status(401).send({ error: "password does not match" });
       return;

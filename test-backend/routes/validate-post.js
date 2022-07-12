@@ -6,10 +6,10 @@ const validate_post = (req, res, next) => {
   console.log(token);
   if (!token) {
     console.log("not token")
-    res.status(401).send("Unauthorized");
+    res.status(401).send("Unauthorized1111111");
   } else {
     try {
-      console.log("token", token)
+      console.log("token >>>", token)
       const decoded = jwt.verify(
         token.replace("Bearer", "").trim(),
         "codecamp_very_$secr3T!"
@@ -20,7 +20,7 @@ const validate_post = (req, res, next) => {
       next();
     } catch (e) {
       console.log("error")
-      res.status(401).send("Unauthorized");
+      res.status(401).send("Unauthorized2222222222");
     }
   }
 };
