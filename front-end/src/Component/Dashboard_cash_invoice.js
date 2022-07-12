@@ -3,6 +3,11 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import '../Component/Dashboard_cash_invoice.css'
+import { Table } from 'antd';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -10,6 +15,65 @@ function classNames(...classes) {
 
 
 export default function Dashboard_cash_invoice() {
+
+    let navigate = useNavigate();
+
+    const columns = [
+        {
+            title: 'DATE',
+            dataIndex: 'date',
+            key: 'date',
+        },
+        {
+            title: 'DOCUMENT NO.',
+            dataIndex: 'document_number',
+            key: 'document_number',
+        },
+        {
+            title: 'CUSTOMER NAME / PROJECT NAME',
+            dataIndex: 'customer_name',
+            key: 'customer_name',
+        },
+        {
+            title: 'NET TOTAL',
+            dataIndex: 'grand_total',
+            key: 'grand_total',
+        },
+        {
+            title: 'STATUS',
+            dataIndex: '',
+            key: '',
+        },
+    ];
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const user_id = localStorage.getItem("user_id");
+        console.log(user_id)
+        console.log(token)
+        const getData = async () => {
+            await axios
+                .get(`http://localhost:3000/api/cash-invoice-summary/${user_id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+                .then((res) => {
+                    console.log(res.data.result[0])
+                    setData(res.data.result[0])
+                })
+                .catch((err) => {
+                    console.error(err);
+                }
+                );
+        };
+        getData();
+        console.log("User data:", getData());
+    }, []);
+
+
+
     return (<>
         <div class="flex relative">
             <div class="sidebar">
@@ -92,7 +156,7 @@ export default function Dashboard_cash_invoice() {
             <div class="flex justify-between ml-12 mt-3 px-10">
                 <div class="text-blue-500 text-3xl">Abbreviated Tax Invoice/Receipt (Cash)</div>
                 <div class="space-x-4">
-                    <button class="bg-lime-500 hover:bg-lime-600 text-white py-2 px-4 border-1 border-gray-400 rounded">
+                    <button onClick={() => navigate("/CashInvoice")} class="bg-lime-500 hover:bg-lime-600 text-white py-2 px-4 border-1 border-gray-400 rounded">
                         Create New
                     </button>
                 </div>
@@ -124,6 +188,14 @@ export default function Dashboard_cash_invoice() {
                     </div>
                 </div>
             </div><br></br>
+
+
+            {/* ANTD TABLE */}
+            <div class="ml-12 mb-8 px-10">
+                <Table dataSource={data} columns={columns} pagination={false} />
+            </div>
+
+
 
             <div class="ml-12 mb-8 px-10">
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">

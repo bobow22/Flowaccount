@@ -4,7 +4,7 @@ var router = express.Router();
 const validate = require("./validate-post");
 const pool = require("../config/database");
 
-router.post("/", validate, async function (req, res) {
+router.post("/", async function (req, res) {
 
   const { user_id, document_number, date, due_date, salesperson, customer_company, customer_name, customer_address, customer_tax_id, sub_total, discount, total_after_discount, vat, grand_total, items } = req.body;
 

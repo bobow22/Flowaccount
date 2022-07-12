@@ -5,10 +5,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import axios from "axios";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function Cash_invoice() {
+
+	let navigate = useNavigate();
 
 	const token = localStorage.getItem("token");
 	const user_id = localStorage.getItem("user_id");
@@ -49,7 +52,7 @@ export default function Cash_invoice() {
 	const [companyTaxId, setCompanyTaxId] = useState('');
 
 	useEffect(() => {
-		// const token = localStorage.getItem("token");
+
 		console.log(token)
 		const getCompanyInfo = async () => {
 			await axios
@@ -58,7 +61,7 @@ export default function Cash_invoice() {
 						Authorization: `Bearer ${token}`,
 
 					},
-					user_id: user_id
+
 				})
 				.then((res) => {
 					console.log(res.data.result[0].company_name)
@@ -183,7 +186,7 @@ export default function Cash_invoice() {
 
 		} else {
 			axios
-				.post("/api/cash-invoice", {
+				.post("http://localhost:3000/api/cash-invoice", {
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
@@ -238,6 +241,7 @@ export default function Cash_invoice() {
 				})
 				.then((res) => {
 					console.log(res)
+					navigate("/DashboardCashInvoice");
 				})
 				.catch((err) => {
 					console.error(err)
