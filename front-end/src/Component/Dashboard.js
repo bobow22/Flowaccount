@@ -63,11 +63,16 @@ export default function Dashboard() {
         const getDashboardData = async () => {
             const res = await axios.get(`http://localhost:3000/api/dashboard/${user_id}`);
             console.log(res.data)
+
             const label = [];
             const data = [];
-            for (let i of Object.values(res.data)) {
+
+            const top4 = res.data.slice(0, 3);
+            let others = res.data.slice(3);
+
+            for (let i of (res.data)) {
                 label.push(i.item_name);
-                data.push(i.item_total);
+                data.push(i['sum(item_total)']);
             }
             setData({
                 datasets: [{
@@ -77,16 +82,16 @@ export default function Dashboard() {
                         "rgba(54, 162, 235, 1)",
                         "rgba(255, 206, 86, 1)",
                         "rgba(75, 192, 192, 1)",
-                        // "rgba(153, 102, 255, 1)",
-                        // "rgba(255, 159, 64, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 159, 64, 1)",
                     ],
                     borderColor: [
                         "rgba(255, 99, 132, 1)",
                         "rgba(54, 162, 235, 1)",
                         "rgba(255, 206, 86, 1)",
                         "rgba(75, 192, 192, 1)",
-                        // "rgba(153, 102, 255, 1)",
-                        // "rgba(255, 159, 64, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 159, 64, 1)",
                     ],
                 }],
                 labels: label
@@ -354,7 +359,6 @@ export default function Dashboard() {
                 <div class="ml-12 mb-8 px-10">
                     <div class="rounded-md shadow-md p-6">
                         <div class="pb-4 text-center text-2xl">Take a Tour of Flow Account With These Easy Steps</div>
-
 
                         <div class="flex">
                             <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 items-center">

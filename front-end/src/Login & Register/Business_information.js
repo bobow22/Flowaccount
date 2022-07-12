@@ -1,6 +1,32 @@
-import React from 'react'
+import React, { useState } from "react";
 import './Business_information.css'
+
+
 export default function Business_information() {
+
+    const [firstName, setFirstName] = useState('')
+    const [LastName, setLastName] = useState('')
+
+    const [Company_name, setCompany_name] = useState('')
+    const [Company_address, setCompany_address] = useState('')
+    const [Tax_number, setTax_number] = useState('')
+    const [error, setError] = useState('')
+
+    //-----------onFinish---------------
+    const onFinish = async (e) => {
+        e.preventDefault()
+    
+        if(firstName.length === 0 || LastName.length === 0 || Company_name.length === 0 || Company_address.length === 0 || Tax_number.length != 13){
+            setError(true)
+        }else{
+            console.log('FirstName:', firstName,
+            '\nLastName:', LastName,
+            '\nCompanyName:', Company_name
+            
+            )
+        }
+    }
+
   return (<>
     <div className="Container_BusinessInformation">
 
@@ -17,11 +43,16 @@ export default function Business_information() {
             <div className='row_Firstname_ane_LastName'>
                 <div className='Firstname'>   
                     <span style={{ textAlign: 'left' }}>ชื่อ*</span><br/>
-                    <input/>
+                    <input onChange={e => setFirstName(e.target.value)}/>
+                    {/* ---------------error: FirstName---------------- */}
+                    {error && firstName.length <= 0 ? <label style={{ color: 'red' , marginTop: '0.3rem'}}>กรุณากรอกชื่อ*</label> : ''}
                 </div>
+
                 <div className='LastName'>   
                     <span style={{ textAlign: 'left' }}>นามสกุล*</span><br/>
-                    <input/>
+                    <input onChange={e => setLastName(e.target.value)}/>
+                    {/* ---------------error: LastName---------------- */}
+                    {error && LastName.length <= 0 ? <label style={{ color: 'red' , marginTop: '0.3rem'}}>กรุณากรอกนามสกุล*</label> : ''}
                 </div>
             </div>
 
@@ -30,22 +61,29 @@ export default function Business_information() {
             <div className='row_CompanyInformation'>
                 <div className='company_name'>   
                     <span style={{ textAlign: 'left' }}>ชื่อธุรกิจ*</span><br/>
-                    <input placeholder="ใส่ชื่อธุรกิจเพื่อแสดงบนหน้าเอกสาร"/>
+                    <input placeholder="ใส่ชื่อธุรกิจเพื่อแสดงบนหน้าเอกสาร" onChange={e => setCompany_name(e.target.value)}/>
+                    {/* ---------------error: Company_name---------------- */}
+                    {error && Company_name.length <= 0 ? <label style={{ color: 'red' , marginTop: '0.3rem'}}>กรุณาใส่ชื่อธุรกิจ*</label> : ''}
                 </div>
+
                 <div className='company_address'>   
                     <span style={{ textAlign: 'left' }}>ที่อยู่*</span><br/>
-                    <input placeholder="ที่อยู่สำหรับติดต่อธุรกิจ"/>
+                    <input placeholder="ที่อยู่สำหรับติดต่อธุรกิจ" onChange={e => setCompany_address(e.target.value)}/>
+                    {/* ---------------error: Company_address---------------- */}
+                    {error && Company_address.length <= 0 ? <label style={{ color: 'red' , marginTop: '0.3rem'}}>กรุณาใส่ที่อยู่ธุรกิจ*</label> : ''}
                 </div>
             </div>
 
             <div className='tax_number'>
                 <span style={{ textAlign: 'left' }}>เลขประจำตัวผู้เสียภาษี*</span><br/>
-                <input placeholder="14XXXXXXXXXXX"/>
+                <input placeholder="14XXXXXXXXXXX" onChange={e => setTax_number(e.target.value)}/>
+                {/* ---------------error: Tax_number---------------- */}
+                {error && Tax_number.length != 13 ? <label style={{ color: 'red' , marginTop: '0.3rem'}}>กรุณาใส่เลขประจำตัวผู้เสียภาษีให้ครบ 13 หลัก*</label> : ''}
             </div>
 
 
             <div className='Btn_BusinessInformation'>
-                <button type="primary" htmlType="submit" className="button-4" style={{ marginTop: '1.8rem'}}>
+                <button type="primary" htmlType="submit" className="button-4" style={{ marginTop: '1.8rem'}} onClick={onFinish}>
                     เริ่มต้นใช้งาน
                 </button>
             </div>

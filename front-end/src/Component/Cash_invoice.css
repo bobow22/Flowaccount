@@ -38,12 +38,24 @@
   margin-right: 15px;
 }
 
-.Btn_Header Button {
+/* .Btn_Header Button {
   background-color: #1CA4FC;
+  border: 1px solid red;
   padding: 8px 12px;
   margin-left: 10px; 
   margin-right: 10px;
   width: 150px;
+} */
+
+.Btn_Header Button {
+  background-color: #1CA4FC;
+  /* border: 1px solid red; */
+  padding: 8px 20px;
+  width: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
 }
 
 .Btn_Header Button a{
@@ -73,7 +85,7 @@
   border-bottom: 2.8px solid rgb(187, 187, 187);
   margin-top: 30px;
   padding: 5rem;
-  width: 78%;
+  width: 80%;
   margin: auto;
 }
 
@@ -172,7 +184,7 @@
   border-bottom: 1px solid black;
 }
 
-.description button {
+.description button  {
   padding: 10px 10px;
   text-decoration: none;
   color: black;
@@ -255,56 +267,30 @@
 
 .Btn_Content {
   /* border: 1px solid rgb(199, 119, 0); */
-  width: 79%;
-  margin-left: 6.9rem;
+  width: 79.5%;
+  margin-left: 6.7rem;
 }
 
 .Btn_Content button {
   background-color: #1CA4FC;
-  /* border: 1px solid red; */
   padding: 8px 20px;
   width: 150px;
-  margin-left: 10px;
-  margin-right: 10px;
   font-family: "Kanit", sans-serif;
   font-weight: 300;
 }
 
 /* CSS */
 .button-65 {
-  appearance: none;
-  backface-visibility: hidden;
   background-color: #1CA4FC;
-  padding: 8px 12px; 
+  border: 1px solid red;
+  padding: 8px 20px;
+  width: 150px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
   border-radius: 10px;
   border-style: none;
-  box-shadow: none;
-  box-sizing: border-box;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  /* font-family: Inter, -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
-    sans-serif; */
-  /* font-family: 'Kanit'; */
-  font-size: 15px;
-  font-weight: 500;
-  height: 50px;
-  letter-spacing: normal;
-  line-height: 1.5;
-  outline: none;
-  overflow: hidden;
-  padding: 8px 12px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  transform: translate3d(0, 0, 0);
-  transition: all 0.3s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: top;
-  white-space: nowrap;
-  width: 120px;
 }
 
 .button-65:hover {
@@ -494,15 +480,8 @@
 
 @media screen and (max-width: 1270px) {
   
-  .PDF {
-    width: 77%;
-  }
-
-
-  
-
   .Btn_Content {
-    width: 79%;
+    width: 79.5%;
     margin-left: 110px;
   }
 }
@@ -703,12 +682,6 @@
   }
 }
 
-/* @media screen and (max-width: 930px) {
-    .Btn_Content{
-        margin-left: 45px;
-        width: 90%;
-    }
-} */
 
 @media screen and (max-width: 882px) {
   .Btn_Content {
@@ -741,33 +714,11 @@
   .Btn_Content button {
     margin-top: 10px;
   }
-}
 
-@media screen and (max-width: 660px) {
-  .Sub_Footer h2 {
-    text-align: center;
+  #button_save{
+    margin-left: 10px;
   }
-
-
- .Header{
-  width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 11.5rem;
-  /* border: 1px solid rgb(255, 0, 0); */
- }
-
- .Btn_Content{
-  margin-left: 24.5rem;
-  /* border: 1px solid rgb(255, 0, 0); */
- }
-
- .Text_explain_procedure{
-  margin-left: 7rem;
- }
-
- .Footer{
-  margin-left: 7rem;
- }
+  
 }
+
 

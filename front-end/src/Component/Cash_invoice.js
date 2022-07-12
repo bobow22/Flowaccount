@@ -7,6 +7,8 @@ import axios from "axios";
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Cash_invoice() {
@@ -99,7 +101,8 @@ export default function Cash_invoice() {
 	const [ProductUnit_3, setProductUnit_3] = useState('')
 	const [ProductUnit_4, setProductUnit_4] = useState('')
 
-
+	const [DocumentNumber, setDocumentNumber] = useState(0);
+	
 	const [error, setError] = useState('')
 
 
@@ -176,6 +179,7 @@ export default function Cash_invoice() {
 
 	// }
 
+	
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
@@ -184,7 +188,14 @@ export default function Cash_invoice() {
 
 			setError(true)
 
+			//--------------React-Toastify----------------
+			toast.error("Error!", {
+				position: "top-center",
+			});
+
 		} else {
+			setDocumentNumber(DocumentNumber + 1)
+
 			axios
 				.post("http://localhost:3000/api/cash-invoice", {
 					headers: {
@@ -192,7 +203,7 @@ export default function Cash_invoice() {
 					},
 					// dataObj: {
 					user_id: user_id,
-					document_number: "CA0001",
+					document_number: "CA000" + DocumentNumber,
 					customer_company: contactCompanyNameRef.current.value,
 					customer_name: contactCompanyNameRef.current.value,
 					customer_address: contactAddressRef.current.value,
@@ -246,7 +257,16 @@ export default function Cash_invoice() {
 				.catch((err) => {
 					console.error(err)
 				})
+
+				console.log(
+					'document_number:',"CA000" + DocumentNumber
+					)
+				//--------------React-Toastify----------------
+				toast.success("Successfull!", {
+					position: "top-center",
+				});
 		}
+		
 
 
 
@@ -399,25 +419,28 @@ export default function Cash_invoice() {
 			<div className="Btn_and_PDF">
 				<div className="Btn_Content">
 					{/* -------------Submit------------- */}
+					
 					<button
 						id="form"
 						type="submit"
 						className="button-1"
 						onClick={handleSubmit}
-					>
+						>
+						
 						ส่ง
 					</button>
-					<button type="submit" className="button-2" onClick={handleSubmit}>
+					
+					<button type="submit" id='button_save' className="button-2" onClick={handleSubmit}>
 						บันทึก
 					</button>
-					<button type="submit" className="button-2" onClick={handleSubmit}>
+					<button type="submit" style={{marginLeft: '10px', marginRight: '10px'}} className="button-2" onClick={handleSubmit}>
 						รับ PDF
 					</button>
 					<button type="submit" className="button-2" onClick={handleSubmit}>
 						พิมพ์
 					</button>
 				</div>
-
+				<ToastContainer />
 				{/*---------------------------------- PDF --------------------------------- */}
 
 				<div className="PDF" style={{ marginTop: "25px" }}>
@@ -525,7 +548,7 @@ export default function Cash_invoice() {
 								<thead className="thead-dark">
 									<tr>
 										<th>ลำดับ</th>
-										<th>ชื่อสินค้า/รายละเอียด</th>
+										<th style={{width: "20%"}}>ชื่อสินค้า/รายละเอียด</th>
 										<th>จำนวน</th>
 										<th>หน่วย</th>
 										<th>ราคาต่อหน่วย</th>
@@ -883,11 +906,11 @@ export default function Cash_invoice() {
 					<span>พิมพ์ใบเสร็จรับเงิน</span>
 				</p>
 
-				<div className="Text_Create_quote">
+				{/* <div className="Text_Create_quote">
 					<h1>สร้างใบเสนอราคา</h1>
 					<h1>สร้างใบวางบิล</h1>
 					<h1>สร้างใบกำกับภาษี</h1>
-				</div>
+				</div> */}
 			</div>
 		</div>;
 
