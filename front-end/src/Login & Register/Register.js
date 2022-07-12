@@ -98,7 +98,7 @@ export default function Register() {
 
                 </div>
 
-                <div className='FlowAccount_Co'>
+                <div className='FlowAccount_Co_Register'>
                     <p>2014-2022 © FlowAccount Co., Ltd. All Right Reserved <span>Terms of Service</span><span >Privacy Policy</span></p>
                 </div>
 

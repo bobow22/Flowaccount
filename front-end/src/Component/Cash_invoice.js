@@ -5,7 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import axios from "axios";
 import { useRef } from "react";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Cash_invoice() {
@@ -173,6 +174,7 @@ export default function Cash_invoice() {
 
 	// }
 
+	
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
@@ -180,6 +182,11 @@ export default function Cash_invoice() {
 		if (customer_name.length === 0 || CompanyCustomer_name.length === 0 || Customer_address.length === 0 || Tax_Number.length != 13 || ItemName_1.length === 0 || ItemName_2.length === 0 || ItemName_3.length === 0 || ItemName_4.length === 0 || ProductUnit_1.length === 0 || ProductUnit_2.length === 0 || ProductUnit_3.length === 0 || ProductUnit_4.length === 0) {
 
 			setError(true)
+
+			//--------------React-Toastify----------------
+			toast.error("Error!", {
+				position: "top-center",
+			});
 
 		} else {
 			axios
@@ -242,6 +249,11 @@ export default function Cash_invoice() {
 				.catch((err) => {
 					console.error(err)
 				})
+
+				//--------------React-Toastify----------------
+				toast.success("Successfull!", {
+					position: "top-center",
+				});
 		}
 
 
@@ -395,25 +407,28 @@ export default function Cash_invoice() {
 			<div className="Btn_and_PDF">
 				<div className="Btn_Content">
 					{/* -------------Submit------------- */}
+					
 					<button
 						id="form"
 						type="submit"
 						className="button-1"
 						onClick={handleSubmit}
-					>
+						>
+						
 						ส่ง
 					</button>
-					<button type="submit" className="button-2" onClick={handleSubmit}>
+					
+					<button type="submit" id='button_save' className="button-2" onClick={handleSubmit}>
 						บันทึก
 					</button>
-					<button type="submit" className="button-2" onClick={handleSubmit}>
+					<button type="submit" style={{marginLeft: '10px', marginRight: '10px'}} className="button-2" onClick={handleSubmit}>
 						รับ PDF
 					</button>
 					<button type="submit" className="button-2" onClick={handleSubmit}>
 						พิมพ์
 					</button>
 				</div>
-
+				<ToastContainer />
 				{/*---------------------------------- PDF --------------------------------- */}
 
 				<div className="PDF" style={{ marginTop: "25px" }}>
