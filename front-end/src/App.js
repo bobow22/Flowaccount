@@ -9,10 +9,14 @@ import axios from "axios";
 import 'boxicons'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-
+// Redex
+// import { selectUser } from "/Users/zeeracha/Desktop/Flowaccount/front-end/src/Login & Register/features/userSlice.js";
+// import { useSelector } from "react-redux";
 
 function App() {
-  
+  // const user = useSelector(selectUser);
+  // console.log(user);
+
   // useEffect(() => {
   //   const getToken = async () => {
   //     const result = await axios.get("http://localhost:3000/");
