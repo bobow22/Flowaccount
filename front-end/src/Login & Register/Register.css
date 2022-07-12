@@ -61,20 +61,22 @@
 
 
 /*---------------------------------Container_Register-------------------------------------*/
-
 .Container_Register{
   background-color: rgb(84, 192, 235);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 1rem;
+  
 }
 
 .Form_Register{
-  margin-top: 3.8rem;
-  width: 38%;
+  width: 45%;
   background: rgb(255, 255, 255);
   border-radius: 0.6rem;
   padding: 1rem;
+  max-width: 35rem;
+  min-width: 35rem;
   /* border: 2px solid rgb(0, 30, 201); */
 }
 
@@ -209,29 +211,48 @@
   color: rgb(92, 92, 92);
 }
 
+.FlowAccount_Co_Register{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: rgb(255, 255, 255);
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  width: 75%;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+
+}
+
 
 
 /*-------------------------- Responsive Web Design - Media Queries --------------------*/
 
 @media screen and (max-width: 1415px) {  
 
-
 }
 
 
 
 
-@media screen and (max-width: 756px) {  
+@media screen and (max-width: 749px) {  
   .Container_Register{
     background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    height: 66rem;
+    position: relative;
   }
   
   .Form_Register{
     width: 90%;
     /* border: 1.5px solid rgb(243, 0, 0); */
+  }
+
+  .FlowAccount_Co_Register{
+    text-align: center;
+    color: black;
   }
 }
 

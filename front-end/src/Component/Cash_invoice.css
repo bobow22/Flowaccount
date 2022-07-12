@@ -255,8 +255,8 @@
 
 .Btn_Content {
   /* border: 1px solid rgb(199, 119, 0); */
-  width: 80%;
-  margin-left: 6.9rem;
+  width: 79.5%;
+  margin-left: 6.7rem;
 }
 
 .Btn_Content button {
@@ -264,8 +264,6 @@
   /* border: 1px solid red; */
   padding: 8px 20px;
   width: 150px;
-  margin-left: 10px;
-  margin-right: 10px;
   font-family: "Kanit", sans-serif;
   font-weight: 300;
 }
@@ -495,7 +493,7 @@
 @media screen and (max-width: 1270px) {
   
   .Btn_Content {
-    width: 80%;
+    width: 79.5%;
     margin-left: 110px;
   }
 }
@@ -728,6 +726,11 @@
   .Btn_Content button {
     margin-top: 10px;
   }
+
+  #button_save{
+    margin-left: 10px;
+  }
+  
 }
 
 
