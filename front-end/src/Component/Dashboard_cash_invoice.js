@@ -7,6 +7,7 @@ import { Table } from 'antd';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import moment from 'moment'
 
 
 function classNames(...classes) {
@@ -18,11 +19,14 @@ export default function Dashboard_cash_invoice() {
 
     let navigate = useNavigate();
 
+
+
     const columns = [
         {
             title: 'DATE',
-            dataIndex: 'date',
-            key: 'date',
+            dataIndex: 'invoice_date',
+            key: 'invoice_date',
+
         },
         {
             title: 'DOCUMENT NO.',
@@ -38,12 +42,15 @@ export default function Dashboard_cash_invoice() {
             title: 'NET TOTAL',
             dataIndex: 'grand_total',
             key: 'grand_total',
+            render: (value) => {
+                return "฿ " + value.toLocaleString("en").replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            }
         },
-        {
-            title: 'STATUS',
-            dataIndex: '',
-            key: '',
-        },
+        // {
+        //     title: 'STATUS',
+        //     dataIndex: '',
+        //     key: '',
+        // },
     ];
     const [data, setData] = useState([]);
 
@@ -61,7 +68,13 @@ export default function Dashboard_cash_invoice() {
                 })
                 .then((res) => {
                     console.log(res.data.result[0])
+                    localStorage.setItem("docNum", res.data.result[0].length)
                     setData(res.data.result[0])
+                    res.data.result[0].map(el => {
+                        let date = moment(new Date(el.date));
+                        el.invoice_date = date.format("DD-MM-YYYY")
+                    })
+                    console.log(res.data.result[0])
                 })
                 .catch((err) => {
                     console.error(err);
@@ -69,22 +82,27 @@ export default function Dashboard_cash_invoice() {
                 );
         };
         getData();
-        console.log("User data:", getData());
     }, []);
 
-
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user_id");
+        localStorage.removeItem("docNum");
+        localStorage.removeItem("company_name");
+        navigate("/");
+    }
 
     return (<>
         <div class="flex relative">
             <div class="sidebar">
                 <ul class="nav-links">
                     <li>
-                        <a href="#">
+                        <a href="" onClick={() => navigate("/dashboard")}>
                             <img src="/img/icon_Flow.png" alt="" />
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="active">
+                        <a href="" onClick={() => navigate("/dashboardcashinvoice")}>
                             <i class='bx bx-dollar'></i>
                         </a>
                     </li>
@@ -133,9 +151,14 @@ export default function Dashboard_cash_invoice() {
                             <i class='bx bx-cog'></i>
                         </a>
                     </li>
-                    <li>
+                    <li style={{ borderBottom: '1px solid white' }}>
                         <a href="#">
                             <i class='bx bx-user-circle'></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onClick={handleLogout}>
+                            <i class='bx bx-log-out-circle' ></i>
                         </a>
                     </li>
                 </ul>
