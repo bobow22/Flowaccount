@@ -18,18 +18,6 @@ export default function Dashboard() {
 
     const user_id = localStorage.getItem("user_id");
 
-    // const data = {
-    //     datasets: [{
-    //         data: [10, 20, 30],
-    //         backgroundColor: [
-    //             'red',
-    //             'blue',
-    //             'yellow'
-    //         ]
-    //     }],
-    //     labels: ['Red', 'Yellow', 'Blue']
-    // }
-
     const [chartData, setChartData] = useState({
         datasets: [],
     })
@@ -37,106 +25,87 @@ export default function Dashboard() {
     const [chartOptions, setChartOptions] = useState({})
 
     const [data, setData] = useState({
-        datasets: [{
-            data: [10, 20, 30],
-            backgroundColor: [
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 159, 64, 1)",
-            ],
-            borderColor: [
-                "rgba(255, 99, 132, 1)",
-                "rgba(54, 162, 235, 1)",
-                "rgba(255, 206, 86, 1)",
-                "rgba(75, 192, 192, 1)",
-                "rgba(153, 102, 255, 1)",
-                "rgba(255, 159, 64, 1)",
-            ],
-        }],
-        labels: ['Red', 'Yellow', 'Blue']
+        datasets: [{}],
+        labels: []
     });
+
+    const [totalIncome, setTotalIncome] = useState(0)
+    console.log(totalIncome == 0)
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         const getDashboardData = async () => {
             const res = await axios.get(`http://localhost:3000/api/dashboard/${user_id}`);
             console.log(res.data)
+            if (res.data.length === 0) {
+                setShow(false);
+            } else {
+                setShow(true);
+            }
+
+            const totalIncome = res.data.map(item => parseFloat(item['sum(item_total)'])).reduce((prev, curr) => prev + curr, 0)
+            setTotalIncome(totalIncome.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }))
 
             const label = [];
             const data = [];
 
-            const top4 = res.data.slice(0, 3);
-            let others = res.data.slice(3);
+            const top5 = res.data.slice(0, 5);
+            const others = res.data.slice(5);
+            const sumOthers = others.map(item => parseFloat(item['sum(item_total)'])).reduce((prev, curr) => prev + curr, 0)
 
-            for (let i of (res.data)) {
+            for (let i of (top5)) {
                 label.push(i.item_name);
                 data.push(i['sum(item_total)']);
             }
+            label.push("Others")
+            data.push(sumOthers)
+
             setData({
                 datasets: [{
                     data: data,
                     backgroundColor: [
-                        "rgba(255, 99, 132, 1)",
-                        "rgba(54, 162, 235, 1)",
-                        "rgba(255, 206, 86, 1)",
-                        "rgba(75, 192, 192, 1)",
-                        "rgba(153, 102, 255, 1)",
-                        "rgba(255, 159, 64, 1)",
+                        "#00abf0",
+                        "#19bdff",
+                        "#55ceff",
+                        "#91e0ff",
+                        "#b9ebff",
+                        "#e1f6ff"
+                        // "rgba(255, 99, 132, 1)",
+                        // "rgba(54, 162, 235, 1)",
+                        // "rgba(255, 206, 86, 1)",
+                        // "rgba(75, 192, 192, 1)",
+                        // "rgba(153, 102, 255, 1)",
+                        // "rgba(255, 159, 64, 0.3)",
                     ],
                     borderColor: [
-                        "rgba(255, 99, 132, 1)",
-                        "rgba(54, 162, 235, 1)",
-                        "rgba(255, 206, 86, 1)",
-                        "rgba(75, 192, 192, 1)",
-                        "rgba(153, 102, 255, 1)",
-                        "rgba(255, 159, 64, 1)",
+                        "#00abf0",
+                        "#19bdff",
+                        "#55ceff",
+                        "#91e0ff",
+                        "#b9ebff",
+                        "#e1f6ff"
                     ],
                 }],
-                labels: label
+                labels: label,
+
+            })
+            setChartOptions({
+                // responsive: true,
+                plugins: {
+                    legend: {
+                        position: "right"
+                    },
+                    title: {
+                        display: false,
+                        text: "",
+                    }
+                }
             })
         };
         getDashboardData();
-        // const fetchData = () => {
-        //     fetch(`http://localhost:3000/api/dashboard/${user_id}`).then(data => {
-        //         const res = data;
-        //         return res
-        //     }).then((res) => {
-        //         console.log("resss", res)
-        //         const label = [];
-        //         const data = [];
-        //         for (let i of res) {
-        //             label.push(i.item_name);
-        //             data.push(i.item_total);
-        //         }
-        //         setData({
-        //             datasets: [{
-        //                 data: data,
-        //                 backgroundColor: [
-        //                     "rgba(255, 99, 132, 1)",
-        //                     "rgba(54, 162, 235, 1)",
-        //                     "rgba(255, 206, 86, 1)",
-        //                     "rgba(75, 192, 192, 1)",
-        //                     // "rgba(153, 102, 255, 1)",
-        //                     // "rgba(255, 159, 64, 1)",
-        //                 ],
-        //                 borderColor: [
-        //                     "rgba(255, 99, 132, 1)",
-        //                     "rgba(54, 162, 235, 1)",
-        //                     "rgba(255, 206, 86, 1)",
-        //                     "rgba(75, 192, 192, 1)",
-        //                     // "rgba(153, 102, 255, 1)",
-        //                     // "rgba(255, 159, 64, 1)",
-        //                 ],
-        //             }],
-        //             labels: label
-        //         })
-        //     }).catch(e => {
-        //         console.log("error", e)
-        //     })
-        // }
-        // fetchData();
     }, [])
 
     useEffect(() => {
@@ -491,138 +460,33 @@ export default function Dashboard() {
                             </div>)}
 
                             <div class="my-4 text-center text-sm flex justify-center">
-                                <div class="w-3 h-3 bg-blue-500 rounded-full mx-2 mt-1"></div><p>Total Income: <span class="text-blue-500 font-semibold">0.00</span></p>
-                            </div>
-                            <div class="flex justify-center mb-3 mx-40">
-                                {/* <img class="w-24 h-24 opacity-50" src='/img/empty_donut_chart.png' alt='' /> */}
-
-                                <Doughnut data={data} />
-                            </div>
-                            <div class="text-center">
-                                <p class="block my-2 text-gray-500 text-xs">
-                                    No information available.
-                                </p>
-                                <p class="block my-2 text-gray-500 text-xs">
-                                    Please create invoices to see your source of income.
-                                </p>
-                            </div>
-                            <div class="mx-auto mb-4">
-                                <p
-                                    class="flex justify-center rounded-md text-sm text-blue-500 border-1 border-blue-500 py-1 px-3 hover:cursor-pointer"
-                                    href=""
-                                >Create your invoice</p>
-                            </div>
-                        </div>
-
-                        {/* 2 copy */}
-                        <div class="card py-2 rounded-md shadow-md pb-4">
-                            <a
-                                class="no-underline py-2 px-4 border-gray-300 border-b text-blue-500 text-lg font-semibold"
-                                href=""
-                            >Collection Summary<div class="inline-block px-2"><i class='bx bxs-info-circle'></i></div></a
-                            >
-
-                            <button onClick={handleClick2} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left flex justify-between hover:shadow-md">
-                                1 Year
-                                <svg class="-mr-1 ml-2 h-5 w-5 fill-gray-500">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            {showDropdown2 && (<div class="absolute top-24 bg-white mx-4 py-1 w-2/5 border border-gray-900 rounded-lg shadow-md text-xs">
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Month</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">2 Months</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">3 Months</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">6 Months</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">1 Year</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Year</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Year</a>
-                            </div>)}
-
-                            <div class="my-4 text-center text-sm flex justify-center">
-                                <div class="w-3 h-3 bg-blue-500 rounded-full mx-2 mt-1"></div>
-                                <span>Collected: <span class="text-blue-500 font-semibold">0.00</span></span>
-                                <div class="w-3 h-3 bg-gray-500 rounded-full ml-5 mt-1"></div>
-                                <span class="ml-2">Total: <span class="font-semibold">0.00</span></span>
-                            </div>
-                            <div class="flex justify-center my-3">
-                                {/* <img class="w-24 h-24 opacity-50" src='/img/empty_bar_chart.png' alt='' /> */}
-                                <Bar options={chartOptions} data={chartData} />
-                            </div>
-                            <div class="text-center">
-                                <p class="block my-2 text-gray-500 text-xs">
-                                    No information available.
-                                </p>
-                                <p class="block my-2 text-gray-500 text-xs">
-                                    Please create invoices to see your source of income.
-                                </p>
-                            </div>
-                            <div class="mx-auto mb-4">
-                                <p
-                                    class="flex justify-center rounded-md text-sm text-blue-500 border-1 border-blue-500 py-1 px-3 hover:cursor-pointer"
-                                    href=""
-                                >Create your invoice</p>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-                {/* Dashboard 1,2 copy */}
-
-
-                {/* Dashboard 1,2 */}
-                <div class="ml-12 mb-8 px-10 ">
-                    <div
-                        class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4"
-                    >
-
-                        {/* 1 */}
-                        <div class="card py-2 rounded-md shadow-md pb-4">
-                            <a
-                                class="no-underline py-2 px-4 border-gray-300 border-b text-blue-500 text-lg font-semibold"
-                                href=""
-                            >Sales by Product<div class="inline-block px-2"><i class='bx bxs-info-circle'></i></div></a
-                            >
-
-                            <button onClick={handleClick1} class="mt-2 mx-4 w-2/5 py-1 px-2 border-gray-300 border text-sm rounded-md text-left flex justify-between hover:shadow-md">
-                                1 Year
-                                <svg class="-mr-1 ml-2 h-5 w-5 fill-gray-500">
-                                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            {showDropdown1 && (<div class="absolute top-24 bg-white mx-4 py-1 w-2/5 border border-gray-900 rounded-lg shadow-md text-xs">
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Month</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Month</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">2 Months</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">3 Months</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">6 Months</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">1 Year</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Current Year</a>
-                                <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Year</a>
-                            </div>)}
-
-                            <div class="my-4 text-center text-sm flex justify-center">
-                                <div class="w-3 h-3 bg-blue-500 rounded-full mx-2 mt-1"></div><p>Total Income: <span class="text-blue-500 font-semibold">0.00</span></p>
+                                <div class="w-3 h-3 bg-blue-500 rounded-full mx-2 mt-1"></div><p>Total Income: <span class="text-blue-500 font-semibold">{totalIncome}</span></p>
                             </div>
                             <div class="flex justify-center mb-3">
-                                <img class="w-24 h-24 opacity-50" src='/img/empty_donut_chart.png' alt='' />
+                                {
+                                    show === false ?
+                                        <img class="w-24 h-24 opacity-50" src='/img/empty_donut_chart.png' alt='' /> : <div class=" sm:w-3/4 lg:w-1/2"><Doughnut data={data} options={chartOptions} /></div>
+                                }
+
+
                             </div>
+
                             <div class="text-center">
-                                <p class="block my-2 text-gray-500 text-xs">
+                                {show === false ? <div><p class="block my-2 text-gray-500 text-xs">
                                     No information available.
                                 </p>
-                                <p class="block my-2 text-gray-500 text-xs">
-                                    Please create invoices to see your source of income.
-                                </p>
+                                    <p class="block my-2 text-gray-500 text-xs">
+                                        Please create invoices to see your source of income.
+                                    </p></div> : <div></div>}
+
                             </div>
-                            <div class="mx-auto mb-4">
+                            {show === false ? <div class="mx-auto mb-4">
                                 <p
                                     class="flex justify-center rounded-md text-sm text-blue-500 border-1 border-blue-500 py-1 px-3 hover:cursor-pointer"
                                     href=""
                                 >Create your invoice</p>
-                            </div>
+                            </div> : <div></div>}
+
                         </div>
 
                         {/* 2 */}
@@ -650,36 +514,42 @@ export default function Dashboard() {
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Year</a>
                             </div>)}
 
-                            <div class="my-4 text-center text-sm flex justify-center">
-                                <div class="w-3 h-3 bg-blue-500 rounded-full mx-2 mt-1"></div>
-                                <span>Collected: <span class="text-blue-500 font-semibold">0.00</span></span>
-                                <div class="w-3 h-3 bg-gray-500 rounded-full ml-5 mt-1"></div>
-                                <span class="ml-2">Total: <span class="font-semibold">0.00</span></span>
+
+                            <div class="my-auto mx-auto">
+                                <div class="my-4 text-center text-sm flex justify-center">
+                                    <div class="w-3 h-3 bg-blue-500 rounded-full mx-2 mt-1"></div>
+                                    <span>Collected: <span class="text-blue-500 font-semibold">0.00</span></span>
+                                    <div class="w-3 h-3 bg-gray-500 rounded-full ml-5 mt-1"></div>
+                                    <span class="ml-2">Total: <span class="font-semibold">0.00</span></span>
+                                </div>
+                                <div class="flex justify-center my-3">
+                                    <img class="w-24 h-24 opacity-50" src='/img/empty_bar_chart.png' alt='' />
+                                </div>
+                                <div class="text-center">
+                                    <p class="block my-2 text-gray-500 text-xs">
+                                        No information available.
+                                    </p>
+                                    <p class="block my-2 text-gray-500 text-xs">
+                                        Please create invoices to see your source of income.
+                                    </p>
+                                </div>
+                                <div class="sm:mx-24 mb-4">
+                                    <p
+                                        class="flex justify-center rounded-md text-sm text-blue-500 border-1 border-blue-500 py-1 px-3 hover:cursor-pointer"
+                                        href=""
+                                    >Create your invoice</p>
+                                </div>
                             </div>
-                            <div class="flex justify-center my-3">
-                                <img class="w-24 h-24 opacity-50" src='/img/empty_bar_chart.png' alt='' />
-                            </div>
-                            <div class="text-center">
-                                <p class="block my-2 text-gray-500 text-xs">
-                                    No information available.
-                                </p>
-                                <p class="block my-2 text-gray-500 text-xs">
-                                    Please create invoices to see your source of income.
-                                </p>
-                            </div>
-                            <div class="mx-auto mb-4">
-                                <p
-                                    class="flex justify-center rounded-md text-sm text-blue-500 border-1 border-blue-500 py-1 px-3 hover:cursor-pointer"
-                                    href=""
-                                >Create your invoice</p>
-                            </div>
+
                         </div>
 
 
 
                     </div>
                 </div>
-                {/* Dashboard 1,2 */}
+                {/* Dashboard 1,2 copy */}
+
+
 
                 {/* Dashboard 3,4 */}
                 <div class="ml-12 mb-8 px-10 ">
