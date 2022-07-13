@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import './Business_information.css'
 import { busInfo, regist } from "./features/userSlice.js";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addUser } from "../profileReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -21,25 +22,30 @@ export default function Business_information() {
     const [tax_number, setTax_number] = useState('')
     const [error, setError] = useState('')
 
+    const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
+
+    console.log(user.user.email)
+
     //-----------onFinish---------------
     const onFinish = async (e) => {
         e.preventDefault()
 
-        dispatch(
-            busInfo({
-                firstName: firstName,
-                LastName: lastName,
-                Company_name: company_name,
-                Company_address: company_address,
-                Tax_number: tax_number,
-            }),
-            regist({
-                email: email,
-                password: password,
-                phone: phone,
-            })
-        );
+        // dispatch(
+        //     busInfo({
+        //         firstName: firstName,
+        //         LastName: lastName,
+        //         Company_name: company_name,
+        //         Company_address: company_address,
+        //         Tax_number: tax_number,
+        //     }),
+        //     regist({
+        //         email: email,
+        //         password: password,
+        //         phone: phone,
+        //     })
+        // );
+        // console.log(profile.userData[0])
 
         setEmail("");
         setPassword("");
@@ -63,9 +69,9 @@ export default function Business_information() {
 
         try {
             const result = await axios.post("http://localhost:3000/api/users", {
-                username: email,
-                password: password,
-                phone_number: phone,
+                username: user.user.email,
+                password: user.user.password,
+                phone_number: user.user.phone,
                 first_name: firstName,
                 last_name: lastName,
                 company_name: company_name,
@@ -85,6 +91,7 @@ export default function Business_information() {
     }
 
     return (<>
+        <p>{JSON.stringify(user)}</p>
         <div className="Container_BusinessInformation">
 
             <div className="Form_BusinessInformation">

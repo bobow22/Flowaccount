@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import '../Login & Register/Register.css'
 // import axios from 'axios';
 import { regist } from "./features/userSlice.js";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { addUser } from "../profileReducer";
 
 
 const Register = () => {
+
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
 
     let navigate = useNavigate();
 
@@ -15,7 +19,6 @@ const Register = () => {
     const [phone, setPhone] = useState("")
     const [error, setError] = useState()
 
-    const dispatch = useDispatch();
     // -----------onFinish---------------
     const onFinish = async (e) => {
         e.preventDefault()
@@ -48,6 +51,7 @@ const Register = () => {
 
 
     return (<>
+        <p>{JSON.stringify(user)}</p>
         {/* --------------------Form Register----------------- */}
         <div className="Container_Register">
             <form className="Form_Register" >
