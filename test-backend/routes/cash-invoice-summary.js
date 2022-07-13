@@ -7,9 +7,9 @@ router.get("/:user_id", async function (req, res) {
 
   const { user_id } = req.params;
 
-  const result = await pool.query(`select * from register where user_id = ?`, [parseInt(user_id)]);
+  const result = await pool.query(`select * from cash_invoice where user_id = ?`, [parseInt(user_id)]);
 
-  res.json({ result: result[0] })
+  res.json({ result: result })
 
 });
 

@@ -32,20 +32,21 @@ export default function Login() {
     const onFinish = async (e) => {
         e.preventDefault()
 
-    if(email.length === 0 || password.length === 0){
-        setError(true)
-    }else{
-        console.log('email:', email,
-        '\npassword:', password)
+        if (email.length === 0 || password.length === 0) {
+            setError(true)
+        } else {
+            console.log('email:', email,
+                '\npassword:', password)
 
             try {
-                const result = await axios.post("/api/auth/token", {
+                const result = await axios.post("http://localhost:3000/api/auth/token", {
                     username: email,
                     password: password,
                 });
                 localStorage.setItem("token", result.data.token);
                 localStorage.setItem("user_id", result.data.user_id)
-                navigate("/CashInvoice");
+                localStorage.setItem("company_name", result.data.company_name)
+                navigate("/dashboard");
             } catch (e) {
                 // form.setFields([
                 //     {
@@ -88,23 +89,23 @@ export default function Login() {
 
                         <input onChange={e => setEmail(e.target.value)} className='form__input1' placeholder="name@example.com" />
                         {/* ---------------error: Email---------------- */}
-                        {error && email.length <= 0 ? <label style={{ color: 'red' , marginTop: '0.3rem'}}>ไม่มีที่อยู่ Email นี้ในระบบ</label> : ''}
+                        {error && email.length <= 0 ? <label style={{ color: 'red', marginTop: '0.3rem' }}>ไม่มีที่อยู่ Email นี้ในระบบ</label> : ''}
                     </div>
-                   
-                    <div>   
+
+                    <div>
                         <br /><span>รหัสผ่าน</span>
 
                         <input className='form__input2' type="password" placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร" onChange={e => setPassword(e.target.value)} />
                         {/* ---------------error: Password---------------- */}
-                        {error && password.length <= 0 ? <label style={{ color: 'red' , marginTop: '0.3rem'}}>รหัสผ่านไม่ถูกต้อง</label> : ''}
+                        {error && password.length <= 0 ? <label style={{ color: 'red', marginTop: '0.3rem' }}>รหัสผ่านไม่ถูกต้อง</label> : ''}
                     </div>
-        
+
 
                     <button type="primary" htmlType="submit" className="button-37" style={{ marginTop: '2rem', marginBottom: '1.5rem' }} onClick={onFinish}>
                         เข้าสู่ระบบ
                     </button>
 
-                    <div className="form_text" style={{ marginBottom: '25px' }}>                                      <p>ยังไม่มีบัญชีกับเรา? <span>สมัครใช้งานฟรี</span></p>
+                    <div className="form_text" style={{ marginBottom: '25px' }}>                            <p>ยังไม่มีบัญชีกับเรา? <span onClick={(e) => navigate("/register")}>สมัครใช้งานฟรี</span></p>
                     </div>
                     <hr style={{ color: 'rgb(173, 173, 173)' }} />
 

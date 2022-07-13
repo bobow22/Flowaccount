@@ -6,7 +6,7 @@ const validate_get = (req, res, next) => {
   console.log(token);
   if (!token) {
     console.log("not token")
-    res.status(401).send("Unauthorized");
+    res.status(401).send("Unauthorized111111");
   } else {
     try {
       console.log("token", token)
@@ -19,8 +19,8 @@ const validate_get = (req, res, next) => {
 
       next();
     } catch (e) {
-      console.log("error")
-      res.status(401).send("Unauthorized");
+      console.log("errorerrorerror")
+      res.status(401).send("Unauthorized22222222");
     }
   }
 };

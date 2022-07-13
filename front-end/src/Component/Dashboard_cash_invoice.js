@@ -3,6 +3,11 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import '../Component/Dashboard_cash_invoice.css'
+import { Table } from 'antd';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
@@ -10,6 +15,65 @@ function classNames(...classes) {
 
 
 export default function Dashboard_cash_invoice() {
+
+    let navigate = useNavigate();
+
+    const columns = [
+        {
+            title: 'DATE',
+            dataIndex: 'date',
+            key: 'date',
+        },
+        {
+            title: 'DOCUMENT NO.',
+            dataIndex: 'document_number',
+            key: 'document_number',
+        },
+        {
+            title: 'CUSTOMER NAME / PROJECT NAME',
+            dataIndex: 'customer_name',
+            key: 'customer_name',
+        },
+        {
+            title: 'NET TOTAL',
+            dataIndex: 'grand_total',
+            key: 'grand_total',
+        },
+        {
+            title: 'STATUS',
+            dataIndex: '',
+            key: '',
+        },
+    ];
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        const user_id = localStorage.getItem("user_id");
+        console.log(user_id)
+        console.log(token)
+        const getData = async () => {
+            await axios
+                .get(`http://localhost:3000/api/cash-invoice-summary/${user_id}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                })
+                .then((res) => {
+                    console.log(res.data.result[0])
+                    setData(res.data.result[0])
+                })
+                .catch((err) => {
+                    console.error(err);
+                }
+                );
+        };
+        getData();
+        console.log("User data:", getData());
+    }, []);
+
+
+
     return (<>
         <div class="flex relative">
             <div class="sidebar">
@@ -92,7 +156,7 @@ export default function Dashboard_cash_invoice() {
             <div class="flex justify-between ml-12 mt-3 px-10">
                 <div class="text-blue-500 text-3xl">Abbreviated Tax Invoice/Receipt (Cash)</div>
                 <div class="space-x-4">
-                    <button class="bg-lime-500 hover:bg-lime-600 text-white py-2 px-4 border-1 border-gray-400 rounded">
+                    <button onClick={() => navigate("/CashInvoice")} class="bg-lime-500 hover:bg-lime-600 text-white py-2 px-4 border-1 border-gray-400 rounded">
                         Create New
                     </button>
                 </div>
@@ -125,523 +189,16 @@ export default function Dashboard_cash_invoice() {
                 </div>
             </div><br></br>
 
+
+            {/* ANTD TABLE */}
             <div class="ml-12 mb-8 px-10">
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-white uppercase bg-blue-400 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="p-4">
-                                    <div class="flex items-center">
-                                        <input id="checkbox-all" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label for="checkbox-all" class="sr-only">checkbox</label>
-                                    </div>
-                                </th>
-                                <th scope="col" class="px-6 py-3 font-normal text-sm">
-                                    Date
-                                </th>
-                                <th scope="col" class="px-6 py-3 font-normal text-sm">
-                                    Document No.
-                                </th>
-                                <th scope="col" class="px-6 py-3 font-normal text-sm">
-                                    Customer Name/ Project Name
-                                </th>
-                                <th scope="col" class="px-6 py-3 font-normal text-sm">
-                                    Net Total
-                                </th>
-                                <th scope="col" class="px-6 py-3 font-normal text-sm">
-                                    Status
-                                </th>
-                                <th>
-                                    {/* empty */}
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="w-4 p-4">
-                                    <div class="flex items-center">
-                                        <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label for="checkbox-table-1" class="sr-only">checkbox</label>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    01-07-2022
-                                </td>
-                                <td class="px-6 py-4">
-                                    <i aria-hidden="true" class="fa fa-circle awaiting-color ng-star-inserted"></i>
-                                    CA2022070003
-                                </td>
-                                <td class="px-6 py-4">
-                                    a
-                                </td>
-                                <td class="px-6 py-4">
-                                    2,033.0
-                                </td>
+                <Table dataSource={data} columns={columns} pagination={false} />
+            </div>
 
-                                <td>
-                                    <Menu as="div" className="relative inline-block text-left">
-                                        <div>
-                                            <Menu.Button className="inline-flex justify-center w-full rounded-md border  px-4 py-2 bg-zinc-100 text-sm font-small text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                                                Pending
-                                                <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-                                            </Menu.Button>
-                                        </div>
 
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
-                                        >
-                                            <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="py-1">
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Finished
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Cancelled
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </td>
-                                <td>
-                                    <button class="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-blue-500 py-2 px-4 border border-blue-500 hover:border-transparent rounded pull-left">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pull-left" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="w-4 p-4">
-                                    <div class="flex items-center">
-                                        <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label for="checkbox-table-1" class="sr-only">checkbox</label>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    01-07-2022
-                                </td>
-                                <td class="px-6 py-4">
-                                    <i aria-hidden="true" class="fa fa-circle awaiting-color ng-star-inserted"></i>
-                                    CA2022070003
-                                </td>
-                                <td class="px-6 py-4">
-                                    a
-                                </td>
-                                <td class="px-6 py-4">
-                                    2,033.0
-                                </td>
 
-                                <td>
-                                    <Menu as="div" className="relative inline-block text-left">
-                                        <div>
-                                            <Menu.Button className="inline-flex justify-center w-full rounded-md border  px-4 py-2 bg-zinc-100 text-sm font-small text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                                                Pending
-                                                <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-                                            </Menu.Button>
-                                        </div>
 
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
-                                        >
-                                            <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="py-1">
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Finished
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Cancelled
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </td>
-                                <td>
-                                    <button class="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-blue-500 py-2 px-4 border border-blue-500 hover:border-transparent rounded pull-left">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pull-left" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="w-4 p-4">
-                                    <div class="flex items-center">
-                                        <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label for="checkbox-table-1" class="sr-only">checkbox</label>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    01-07-2022
-                                </td>
-                                <td class="px-6 py-4">
-                                    <i aria-hidden="true" class="fa fa-circle awaiting-color ng-star-inserted"></i>
-                                    CA2022070003
-                                </td>
-                                <td class="px-6 py-4">
-                                    a
-                                </td>
-                                <td class="px-6 py-4">
-                                    2,033.0
-                                </td>
-
-                                <td>
-                                    <Menu as="div" className="relative inline-block text-left">
-                                        <div>
-                                            <Menu.Button className="inline-flex justify-center w-full rounded-md border  px-4 py-2 bg-zinc-100 text-sm font-small text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                                                Pending
-                                                <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-                                            </Menu.Button>
-                                        </div>
-
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
-                                        >
-                                            <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="py-1">
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Finished
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Cancelled
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </td>
-                                <td>
-                                    <button class="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-blue-500 py-2 px-4 border border-blue-500 hover:border-transparent rounded pull-left">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pull-left" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="w-4 p-4">
-                                    <div class="flex items-center">
-                                        <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label for="checkbox-table-1" class="sr-only">checkbox</label>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    01-07-2022
-                                </td>
-                                <td class="px-6 py-4">
-                                    <i aria-hidden="true" class="fa fa-circle awaiting-color ng-star-inserted"></i>
-                                    CA2022070003
-                                </td>
-                                <td class="px-6 py-4">
-                                    a
-                                </td>
-                                <td class="px-6 py-4">
-                                    2,033.0
-                                </td>
-
-                                <td>
-                                    <Menu as="div" className="relative inline-block text-left">
-                                        <div>
-                                            <Menu.Button className="inline-flex justify-center w-full rounded-md border  px-4 py-2 bg-zinc-100 text-sm font-small text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                                                Pending
-                                                <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-                                            </Menu.Button>
-                                        </div>
-
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
-                                        >
-                                            <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="py-1">
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Finished
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Cancelled
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </td>
-                                <td>
-                                    <button class="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-blue-500 py-2 px-4 border border-blue-500 hover:border-transparent rounded pull-left">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pull-left" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="w-4 p-4">
-                                    <div class="flex items-center">
-                                        <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label for="checkbox-table-1" class="sr-only">checkbox</label>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    01-07-2022
-                                </td>
-                                <td class="px-6 py-4">
-                                    <i aria-hidden="true" class="fa fa-circle awaiting-color ng-star-inserted"></i>
-                                    CA2022070003
-                                </td>
-                                <td class="px-6 py-4">
-                                    a
-                                </td>
-                                <td class="px-6 py-4">
-                                    2,033.0
-                                </td>
-
-                                <td>
-                                    <Menu as="div" className="relative inline-block text-left">
-                                        <div>
-                                            <Menu.Button className="inline-flex justify-center w-full rounded-md border  px-4 py-2 bg-zinc-100 text-sm font-small text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                                                Pending
-                                                <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-                                            </Menu.Button>
-                                        </div>
-
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
-                                        >
-                                            <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="py-1">
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Finished
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Cancelled
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </td>
-                                <td>
-                                    <button class="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-blue-500 py-2 px-4 border border-blue-500 hover:border-transparent rounded pull-left">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pull-left" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="w-4 p-4">
-                                    <div class="flex items-center">
-                                        <input id="checkbox-table-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                        <label for="checkbox-table-1" class="sr-only">checkbox</label>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4">
-                                    01-07-2022
-                                </td>
-                                <td class="px-6 py-4">
-                                    <i aria-hidden="true" class="fa fa-circle awaiting-color ng-star-inserted"></i>
-                                    CA2022070003
-                                </td>
-                                <td class="px-6 py-4">
-                                    a
-                                </td>
-                                <td class="px-6 py-4">
-                                    2,033.0
-                                </td>
-
-                                <td>
-                                    <Menu as="div" className="relative inline-block text-left">
-                                        <div>
-                                            <Menu.Button className="inline-flex justify-center w-full rounded-md border  px-4 py-2 bg-zinc-100 text-sm font-small text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                                                Pending
-                                                <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
-                                            </Menu.Button>
-                                        </div>
-
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
-                                        >
-                                            <Menu.Items className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="py-1">
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Finished
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <a
-                                                                href="#"
-                                                                className={classNames(
-                                                                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                                                                    'block px-4 py-2 text-sm'
-                                                                )}
-                                                            >
-                                                                Cancelled
-                                                            </a>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </td>
-                                <td>
-                                    <button class="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-blue-500 py-2 px-4 border border-blue-500 hover:border-transparent rounded pull-left">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pull-left" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-                {/* chat icon 
+            {/* chat icon 
                 <div class="col-11 mr--5 mb-9 px- pr--5 w-90 h-0  absolute bottom-7 flex justify-end">
                     <button>
                         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"
@@ -650,17 +207,17 @@ export default function Dashboard_cash_invoice() {
                         </svg>
                     </button>
                 </div>*/}
-            </div>
+        </div>
 
 
-            {/* footer 
+        {/* footer 
             <div class=" ">
                 <div class="py-2 pr-20 text-right text-s border-t  absolute bottom-0 w-100 h-15 document-summary-footer flex justify-end ">
                     <span class="mr-14 text-blue-500 ">Grand Total</span>
                 </div>
             </div> */}
 
-        </div>
+
     </>
     )
 }

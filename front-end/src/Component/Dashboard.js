@@ -1,9 +1,138 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../Component/Dashboard.css'
 import 'boxicons'
 import Carousel from "react-elastic-carousel"
+import {
+    Chart as ChartJS,
+    CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, DoughnutController, ArcElement
+} from 'chart.js'
+import { Bar, Doughnut, Line, Pie } from "react-chartjs-2"
+import axios from 'axios'
+
+
+ChartJS.register(
+    CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, DoughnutController, ArcElement
+)
 
 export default function Dashboard() {
+
+    const user_id = localStorage.getItem("user_id");
+
+    const [chartData, setChartData] = useState({
+        datasets: [],
+    })
+
+    const [chartOptions, setChartOptions] = useState({})
+
+    const [data, setData] = useState({
+        datasets: [{}],
+        labels: []
+    });
+
+    const [totalIncome, setTotalIncome] = useState(0)
+    console.log(totalIncome == 0)
+    const [show, setShow] = useState(false);
+
+    useEffect(() => {
+        const getDashboardData = async () => {
+            const res = await axios.get(`http://localhost:3000/api/dashboard/${user_id}`);
+            console.log(res.data)
+            if (res.data.length === 0) {
+                setShow(false);
+            } else {
+                setShow(true);
+            }
+
+            const totalIncome = res.data.map(item => parseFloat(item['sum(item_total)'])).reduce((prev, curr) => prev + curr, 0)
+            setTotalIncome(totalIncome.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }))
+
+            const label = [];
+            const data = [];
+
+            const top5 = res.data.slice(0, 5);
+            const others = res.data.slice(5);
+            const sumOthers = others.map(item => parseFloat(item['sum(item_total)'])).reduce((prev, curr) => prev + curr, 0)
+
+            for (let i of (top5)) {
+                label.push(i.item_name);
+                data.push(i['sum(item_total)']);
+            }
+            label.push("Others")
+            data.push(sumOthers)
+
+            setData({
+                datasets: [{
+                    data: data,
+                    backgroundColor: [
+                        "#00abf0",
+                        "#19bdff",
+                        "#55ceff",
+                        "#91e0ff",
+                        "#b9ebff",
+                        "#e1f6ff"
+                        // "rgba(255, 99, 132, 1)",
+                        // "rgba(54, 162, 235, 1)",
+                        // "rgba(255, 206, 86, 1)",
+                        // "rgba(75, 192, 192, 1)",
+                        // "rgba(153, 102, 255, 1)",
+                        // "rgba(255, 159, 64, 0.3)",
+                    ],
+                    borderColor: [
+                        "#00abf0",
+                        "#19bdff",
+                        "#55ceff",
+                        "#91e0ff",
+                        "#b9ebff",
+                        "#e1f6ff"
+                    ],
+                }],
+                labels: label,
+
+            })
+            setChartOptions({
+                // responsive: true,
+                plugins: {
+                    legend: {
+                        position: "right"
+                    },
+                    title: {
+                        display: false,
+                        text: "",
+                    }
+                }
+            })
+        };
+        getDashboardData();
+    }, [])
+
+    useEffect(() => {
+        setChartData({
+            labels: ["John", "Kevin", "Geroge", "Micheal", "Oreo"],
+            datasets: [
+                {
+                    label: "Whom'st let the dogs out",
+                    data: [12, 55, 34, 120, 720],
+                    borderColor: "rgb(53, 162, 235)",
+                    backgroundColor: "rgba(53, 162, 235, 0.4)",
+                }
+            ]
+        })
+        setChartOptions({
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: "top"
+                },
+                title: {
+                    display: true,
+                    text: "Whom'st let the dogs out",
+                }
+            }
+        })
+    }, [])
 
     const [showDropdown1, setShowDropdown1] = useState(false);
     const [showDropdown2, setShowDropdown2] = useState(false);
@@ -41,6 +170,9 @@ export default function Dashboard() {
         { width: 768, itemsToShow: 3 },
         { width: 1200, itemsToShow: 4 },
     ];
+
+    const company_name = localStorage.getItem("company_name")
+    const customer_id = localStorage.getItem("user_id")
 
     return (<>
         <div class='flex'>
@@ -120,8 +252,8 @@ export default function Dashboard() {
                     <div class="text-blue-500 text-3xl">Dashboard</div>
                     <div class="space-x-4">
                         {/* <a href='' class="text-sm text-gray-500 hover:border-b border-gray-500 hover:text-gray-500" style={{ textDecoration: "none" }}>TH</a> */}
-                        <a href='' class="text-sm bg-gray-200 text-black rounded px-5 text-left" style={{ textAlign: "left", textDecoration: "none" }}>BW110</a>
-                        <span class="text-xs"><strong>Customer ID:</strong><span class="text-blue-500"> N830682</span></span>
+                        <a href='' class="text-sm bg-gray-200 text-black rounded px-5 text-left" style={{ textAlign: "left", textDecoration: "none" }}>{company_name}</a>
+                        <span class="text-xs"><strong>Customer ID:</strong><span class="text-blue-500"> {customer_id}</span></span>
                     </div>
                 </div>
 
@@ -296,13 +428,13 @@ export default function Dashboard() {
                 </div>
                 {/* Take a Tour */}
 
-                {/* Dashboard 1,2 */}
+                {/* Dashboard 1,2 copy */}
                 <div class="ml-12 mb-8 px-10 ">
                     <div
                         class="grid sm:grid-cols-1 lg:grid-cols-2 gap-4"
                     >
 
-                        {/* 1 */}
+                        {/* 1 copy */}
                         <div class="card py-2 rounded-md shadow-md pb-4">
                             <a
                                 class="no-underline py-2 px-4 border-gray-300 border-b text-blue-500 text-lg font-semibold"
@@ -328,25 +460,33 @@ export default function Dashboard() {
                             </div>)}
 
                             <div class="my-4 text-center text-sm flex justify-center">
-                                <div class="w-3 h-3 bg-blue-500 rounded-full mx-2 mt-1"></div><p>Total Income: <span class="text-blue-500 font-semibold">0.00</span></p>
+                                <div class="w-3 h-3 bg-blue-500 rounded-full mx-2 mt-1"></div><p>Total Income: <span class="text-blue-500 font-semibold">{totalIncome}</span></p>
                             </div>
                             <div class="flex justify-center mb-3">
-                                <img class="w-24 h-24 opacity-50" src='/img/empty_donut_chart.png' alt='' />
+                                {
+                                    show === false ?
+                                        <img class="w-24 h-24 opacity-50" src='/img/empty_donut_chart.png' alt='' /> : <div class=" sm:w-3/4 lg:w-1/2"><Doughnut data={data} options={chartOptions} /></div>
+                                }
+
+
                             </div>
+
                             <div class="text-center">
-                                <p class="block my-2 text-gray-500 text-xs">
+                                {show === false ? <div><p class="block my-2 text-gray-500 text-xs">
                                     No information available.
                                 </p>
-                                <p class="block my-2 text-gray-500 text-xs">
-                                    Please create invoices to see your source of income.
-                                </p>
+                                    <p class="block my-2 text-gray-500 text-xs">
+                                        Please create invoices to see your source of income.
+                                    </p></div> : <div></div>}
+
                             </div>
-                            <div class="mx-auto mb-4">
+                            {show === false ? <div class="mx-auto mb-4">
                                 <p
                                     class="flex justify-center rounded-md text-sm text-blue-500 border-1 border-blue-500 py-1 px-3 hover:cursor-pointer"
                                     href=""
                                 >Create your invoice</p>
-                            </div>
+                            </div> : <div></div>}
+
                         </div>
 
                         {/* 2 */}
@@ -374,36 +514,42 @@ export default function Dashboard() {
                                 <a href="" class="block px-3 py-2 text-gray-800 hover:bg-blue-100 no-underline">Previous Year</a>
                             </div>)}
 
-                            <div class="my-4 text-center text-sm flex justify-center">
-                                <div class="w-3 h-3 bg-blue-500 rounded-full mx-2 mt-1"></div>
-                                <span>Collected: <span class="text-blue-500 font-semibold">0.00</span></span>
-                                <div class="w-3 h-3 bg-gray-500 rounded-full ml-5 mt-1"></div>
-                                <span class="ml-2">Total: <span class="font-semibold">0.00</span></span>
+
+                            <div class="my-auto mx-auto">
+                                <div class="my-4 text-center text-sm flex justify-center">
+                                    <div class="w-3 h-3 bg-blue-500 rounded-full mx-2 mt-1"></div>
+                                    <span>Collected: <span class="text-blue-500 font-semibold">0.00</span></span>
+                                    <div class="w-3 h-3 bg-gray-500 rounded-full ml-5 mt-1"></div>
+                                    <span class="ml-2">Total: <span class="font-semibold">0.00</span></span>
+                                </div>
+                                <div class="flex justify-center my-3">
+                                    <img class="w-24 h-24 opacity-50" src='/img/empty_bar_chart.png' alt='' />
+                                </div>
+                                <div class="text-center">
+                                    <p class="block my-2 text-gray-500 text-xs">
+                                        No information available.
+                                    </p>
+                                    <p class="block my-2 text-gray-500 text-xs">
+                                        Please create invoices to see your source of income.
+                                    </p>
+                                </div>
+                                <div class="sm:mx-24 mb-4">
+                                    <p
+                                        class="flex justify-center rounded-md text-sm text-blue-500 border-1 border-blue-500 py-1 px-3 hover:cursor-pointer"
+                                        href=""
+                                    >Create your invoice</p>
+                                </div>
                             </div>
-                            <div class="flex justify-center my-3">
-                                <img class="w-24 h-24 opacity-50" src='/img/empty_bar_chart.png' alt='' />
-                            </div>
-                            <div class="text-center">
-                                <p class="block my-2 text-gray-500 text-xs">
-                                    No information available.
-                                </p>
-                                <p class="block my-2 text-gray-500 text-xs">
-                                    Please create invoices to see your source of income.
-                                </p>
-                            </div>
-                            <div class="mx-auto mb-4">
-                                <p
-                                    class="flex justify-center rounded-md text-sm text-blue-500 border-1 border-blue-500 py-1 px-3 hover:cursor-pointer"
-                                    href=""
-                                >Create your invoice</p>
-                            </div>
+
                         </div>
 
 
 
                     </div>
                 </div>
-                {/* Dashboard 1,2 */}
+                {/* Dashboard 1,2 copy */}
+
+
 
                 {/* Dashboard 3,4 */}
                 <div class="ml-12 mb-8 px-10 ">
