@@ -97,7 +97,7 @@ export default function Cash_invoice() {
 	const [ProductUnit_3, setProductUnit_3] = useState('')
 	const [ProductUnit_4, setProductUnit_4] = useState('')
 
-	const [DocumentNumber, setDocumentNumber] = useState(0);
+	const [DocumentNumber, setDocumentNumber] = useState(0)
 	
 	const [error, setError] = useState('')
 
@@ -170,8 +170,6 @@ export default function Cash_invoice() {
 	// 				console.error(err)
 	// 			})
 	// 	}
-
-
 
 	// }
 

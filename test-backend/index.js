@@ -26,6 +26,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/cash-invoice", cashInvoiceRouter);
 app.use("/api/business-info", businessInfoRouter)
 
+
 // Get Token
 app.get("/", (req, res) => {
   const requestBody = {
