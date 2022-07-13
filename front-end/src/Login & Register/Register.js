@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import '../Login & Register/Register.css'
 // import axios from 'axios';
-import { regist } from "/Users/zeeracha/Desktop/Flowaccount/front-end/src/Login & Register/features/userSlice.js";
+import { regist } from "./features/userSlice.js";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 const Register = () => {
+
+    let navigate = useNavigate();
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -38,6 +41,8 @@ const Register = () => {
                 '\nphone:', phone,
             )
         }
+
+        navigate("/BusinessInformation")
     }
 
 
