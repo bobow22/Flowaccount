@@ -31,11 +31,18 @@ export default function Dashboard() {
 
     const [totalIncome, setTotalIncome] = useState(0)
     console.log(totalIncome == 0)
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         const getDashboardData = async () => {
             const res = await axios.get(`http://localhost:3000/api/dashboard/${user_id}`);
             console.log(res.data)
+            if (res.data.length === 0) {
+                setShow(false);
+            } else {
+                setShow(true);
+            }
+
             const totalIncome = res.data.map(item => parseFloat(item['sum(item_total)'])).reduce((prev, curr) => prev + curr, 0)
             setTotalIncome(totalIncome.toLocaleString(undefined, {
                 minimumFractionDigits: 2,
@@ -82,7 +89,20 @@ export default function Dashboard() {
                         "#e1f6ff"
                     ],
                 }],
-                labels: label
+                labels: label,
+
+            })
+            setChartOptions({
+                // responsive: true,
+                plugins: {
+                    legend: {
+                        position: "right"
+                    },
+                    title: {
+                        display: false,
+                        text: "",
+                    }
+                }
             })
         };
         getDashboardData();
@@ -444,16 +464,15 @@ export default function Dashboard() {
                             </div>
                             <div class="flex justify-center mb-3">
                                 {
-                                    totalIncome === 0.00 ?
-                                        <div class=" sm:w-3/4 lg:w-1/2"><Doughnut data={data} /></div> :
-                                        <img class="w-24 h-24 opacity-50" src='/img/empty_donut_chart.png' alt='' />
+                                    show === false ?
+                                        <img class="w-24 h-24 opacity-50" src='/img/empty_donut_chart.png' alt='' /> : <div class=" sm:w-3/4 lg:w-1/2"><Doughnut data={data} options={chartOptions} /></div>
                                 }
 
 
                             </div>
 
                             <div class="text-center">
-                                {totalIncome !== 0.00 ? <div><p class="block my-2 text-gray-500 text-xs">
+                                {show === false ? <div><p class="block my-2 text-gray-500 text-xs">
                                     No information available.
                                 </p>
                                     <p class="block my-2 text-gray-500 text-xs">
@@ -461,12 +480,12 @@ export default function Dashboard() {
                                     </p></div> : <div></div>}
 
                             </div>
-                            {totalIncome === 0 ? <></> : <div class="mx-auto mb-4">
+                            {show === false ? <div class="mx-auto mb-4">
                                 <p
                                     class="flex justify-center rounded-md text-sm text-blue-500 border-1 border-blue-500 py-1 px-3 hover:cursor-pointer"
                                     href=""
                                 >Create your invoice</p>
-                            </div>}
+                            </div> : <div></div>}
 
                         </div>
 

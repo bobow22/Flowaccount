@@ -39,7 +39,7 @@ export default function Login() {
                 '\npassword:', password)
 
             try {
-                const result = await axios.post("/api/auth/token", {
+                const result = await axios.post("http://localhost:3000/api/auth/token", {
                     username: email,
                     password: password,
                 });
