@@ -125,7 +125,7 @@ app.post("/cash-invoice", (req, res) => {
       res.status(200).json(response.data);
     })
     .catch(function (error) {
-      // console.log(error)
+      res.status(400).send(error);
     });
 });
 
