@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import '../Login & Register/Register.css'
 // import axios from 'axios';
-import { regist } from "../Login & Register/features/userSlice.js";
-import { useDispatch } from "react-redux";
+import { regist } from "./features/userSlice.js";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
 
 
 const Register = () => {
+
+    // const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+
+    let navigate = useNavigate();
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [phone, setPhone] = useState("")
     const [error, setError] = useState()
-
-    const dispatch = useDispatch();
-
 
     // -----------onFinish---------------
     const onFinish = async (e) => {
@@ -41,11 +45,14 @@ const Register = () => {
                 '\nphone:', phone,
             )
         }
+
+        navigate("/BusinessInformation")
     }
 
 
 
     return (<>
+
         {/* --------------------Form Register----------------- */}
         <div className="Container_Register">
             <form className="Form_Register" >
@@ -99,7 +106,7 @@ const Register = () => {
                     </button>
 
                     <div className="text_below_button" style={{ marginTop: '25px' }}>
-                        <p>มีบัญชีกับเราแล้ว? <span>ล๊อกอินเข้าสู้ระบบ</span></p>
+                        <p>มีบัญชีกับเราแล้ว? <span>ล๊อกอินเข้าสู่ระบบ</span></p>
                     </div>
 
                     <hr style={{ color: 'rgb(173, 173, 173)' }} />
@@ -128,9 +135,7 @@ const Register = () => {
 
         </div>
 
-        <div className='FlowAccount_Co'>
-            <p>2014-2022 © FlowAccount Co., Ltd. All Right Reserved <span>Terms of Service</span><span >Privacy Policy</span></p>
-        </div>
+     
 
 
 

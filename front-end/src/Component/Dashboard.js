@@ -8,6 +8,7 @@ import {
 } from 'chart.js'
 import { Bar, Doughnut, Line, Pie } from "react-chartjs-2"
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 
 ChartJS.register(
@@ -15,6 +16,8 @@ ChartJS.register(
 )
 
 export default function Dashboard() {
+
+    let navigate = useNavigate();
 
     const user_id = localStorage.getItem("user_id");
 
@@ -67,26 +70,32 @@ export default function Dashboard() {
                 datasets: [{
                     data: data,
                     backgroundColor: [
-                        "#00abf0",
-                        "#19bdff",
-                        "#55ceff",
-                        "#91e0ff",
-                        "#b9ebff",
-                        "#e1f6ff"
-                        // "rgba(255, 99, 132, 1)",
-                        // "rgba(54, 162, 235, 1)",
-                        // "rgba(255, 206, 86, 1)",
-                        // "rgba(75, 192, 192, 1)",
-                        // "rgba(153, 102, 255, 1)",
-                        // "rgba(255, 159, 64, 0.3)",
+                        // "#00abf0",
+                        // "#19bdff",
+                        // "#55ceff",
+                        // "#91e0ff",
+                        // "#b9ebff",
+                        // "#e1f6ff"
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 159, 64, 0.3)",
                     ],
                     borderColor: [
-                        "#00abf0",
-                        "#19bdff",
-                        "#55ceff",
-                        "#91e0ff",
-                        "#b9ebff",
-                        "#e1f6ff"
+                        // "#00abf0",
+                        // "#19bdff",
+                        // "#55ceff",
+                        // "#91e0ff",
+                        // "#b9ebff",
+                        // "#e1f6ff"
+                        "rgba(255, 99, 132, 1)",
+                        "rgba(54, 162, 235, 1)",
+                        "rgba(255, 206, 86, 1)",
+                        "rgba(75, 192, 192, 1)",
+                        "rgba(153, 102, 255, 1)",
+                        "rgba(255, 159, 64, 0.3)",
                     ],
                 }],
                 labels: label,
@@ -96,7 +105,7 @@ export default function Dashboard() {
                 // responsive: true,
                 plugins: {
                     legend: {
-                        position: "right"
+                        position: "top"
                     },
                     title: {
                         display: false,
@@ -174,17 +183,25 @@ export default function Dashboard() {
     const company_name = localStorage.getItem("company_name")
     const customer_id = localStorage.getItem("user_id")
 
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user_id");
+        localStorage.removeItem("docNum");
+        localStorage.removeItem("company_name");
+        navigate("/");
+    }
+
     return (<>
         <div class='flex'>
             <div class="sidebar">
                 <ul class="nav-links">
                     <li>
-                        <a href="#">
+                        <a href="" onClick={() => navigate("/dashboard")}>
                             <img src="/img/icon_Flow.png" alt="" />
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="active">
+                        <a href="" onClick={() => navigate("/dashboardcashinvoice")}>
                             <i class='bx bx-dollar'></i>
                         </a>
                     </li>
@@ -213,11 +230,13 @@ export default function Dashboard() {
                             <i class='bx bxs-chalkboard'></i>
                         </a>
                     </li>
-                    <li style={{ marginBottom: '1.5rem' }}>
+                    <li>
                         <a href="#">
                             <i class='bx bxs-briefcase-alt-2'></i>
                         </a>
                     </li>
+                </ul>
+                <ul class="nav-links">
                     <li>
                         <a href="#">
                             <i class='bx bxs-bell'></i>
@@ -233,9 +252,14 @@ export default function Dashboard() {
                             <i class='bx bx-cog'></i>
                         </a>
                     </li>
-                    <li>
+                    <li style={{ borderBottom: '1px solid white' }}>
                         <a href="#">
                             <i class='bx bx-user-circle'></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" onClick={handleLogout}>
+                            <i class='bx bx-log-out-circle' ></i>
                         </a>
                     </li>
                 </ul>
@@ -465,7 +489,7 @@ export default function Dashboard() {
                             <div class="flex justify-center mb-3">
                                 {
                                     show === false ?
-                                        <img class="w-24 h-24 opacity-50" src='/img/empty_donut_chart.png' alt='' /> : <div class=" sm:w-3/4 lg:w-1/2"><Doughnut data={data} options={chartOptions} /></div>
+                                        <img class="w-24 h-24 opacity-50" src='/img/empty_donut_chart.png' alt='' /> : <div class="my-auto sm:w-3/4 lg:w-1/2"><Doughnut data={data} options={chartOptions} /></div>
                                 }
 
 

@@ -67,7 +67,8 @@
   justify-content: center;
   flex-wrap: wrap;
   padding: 1rem;
-  
+  width: 100vw;
+  height: 150vh;
 }
 
 .Form_Register{
@@ -78,6 +79,7 @@
   padding: 1rem;
   max-width: 35rem;
   min-width: 35rem;
+  max-height: 55rem;
   /* border: 2px solid rgb(0, 30, 201); */
 }
 
@@ -228,11 +230,6 @@
 
 
 /*-------------------------- Responsive Web Design - Media Queries --------------------*/
-
-@media screen and (max-width: 1415px) {  
-
-}
-
 
 
 
