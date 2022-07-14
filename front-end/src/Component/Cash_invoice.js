@@ -18,6 +18,8 @@ export default function Cash_invoice() {
 	const token = localStorage.getItem("token");
 	const user_id = localStorage.getItem("user_id");
 
+
+
 	// FLOWACCOUT ------------------------------------------------------------------------
 	// const [companyNameEn, setCompanyNameEn] = useState('')
 	// const [companyName, setCompanyName] = useState('')
@@ -102,7 +104,7 @@ export default function Cash_invoice() {
 	const [ProductUnit_4, setProductUnit_4] = useState('')
 
 	const [DocumentNumber, setDocumentNumber] = useState(0);
-	
+
 	const [error, setError] = useState('')
 
 
@@ -179,7 +181,36 @@ export default function Cash_invoice() {
 
 	// }
 
-	
+	let docNum = parseInt(localStorage.getItem("docNum")) + 1;
+	console.log(docNum.toString().length)
+
+	if (docNum.toString().length === 1) {
+		docNum = "000" + docNum;
+	} else if (docNum.toString().length === 2) {
+		docNum = "00" + docNum;
+	} else if (docNum.toString().length === 3) {
+		docNum = "0" + docNum;
+	}
+
+	let dateObj = new Date();
+	// let month = dateObj.getUTCMonth() + 1; //months from 1-12
+	// console.log(month)
+	// let day = dateObj.getUTCDate();
+	// console.log(day)
+	let year = dateObj.getUTCFullYear();
+	console.log(year)
+
+	let month = String(dateObj.getUTCMonth() + 1);
+	if (month.length === 1) {
+		month = "0" + month;
+	}
+	let day = String(dateObj.getUTCDate());
+	if (day.length === 1) {
+		day = "0" + day;
+	}
+
+	let newDate = year.toString() + month + day;
+	console.log(newDate)
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
@@ -203,7 +234,7 @@ export default function Cash_invoice() {
 					},
 					// dataObj: {
 					user_id: user_id,
-					document_number: "CA000" + DocumentNumber,
+					document_number: "CA" + newDate + docNum,
 					customer_company: contactCompanyNameRef.current.value,
 					customer_name: contactCompanyNameRef.current.value,
 					customer_address: contactAddressRef.current.value,
@@ -258,15 +289,12 @@ export default function Cash_invoice() {
 					console.error(err)
 				})
 
-				console.log(
-					'document_number:',"CA000" + DocumentNumber
-					)
-				//--------------React-Toastify----------------
-				toast.success("Successfull!", {
-					position: "top-center",
-				});
+			//--------------React-Toastify----------------
+			toast.success("Successfull!", {
+				position: "top-center",
+			});
 		}
-		
+
 
 
 
@@ -381,6 +409,8 @@ export default function Cash_invoice() {
 		tax,
 		netTotal,
 		displayDiscount,
+
+
 	]);
 
 	return (<>
@@ -419,21 +449,21 @@ export default function Cash_invoice() {
 			<div className="Btn_and_PDF">
 				<div className="Btn_Content">
 					{/* -------------Submit------------- */}
-					
+
 					<button
 						id="form"
 						type="submit"
 						className="button-1"
 						onClick={handleSubmit}
-						>
-						
+					>
+
 						ส่ง
 					</button>
-					
+
 					<button type="submit" id='button_save' className="button-2" onClick={handleSubmit}>
 						บันทึก
 					</button>
-					<button type="submit" style={{marginLeft: '10px', marginRight: '10px'}} className="button-2" onClick={handleSubmit}>
+					<button type="submit" style={{ marginLeft: '10px', marginRight: '10px' }} className="button-2" onClick={handleSubmit}>
 						รับ PDF
 					</button>
 					<button type="submit" className="button-2" onClick={handleSubmit}>
@@ -548,7 +578,7 @@ export default function Cash_invoice() {
 								<thead className="thead-dark">
 									<tr>
 										<th>ลำดับ</th>
-										<th style={{width: "20%"}}>ชื่อสินค้า/รายละเอียด</th>
+										<th style={{ width: "20%" }}>ชื่อสินค้า/รายละเอียด</th>
 										<th>จำนวน</th>
 										<th>หน่วย</th>
 										<th>ราคาต่อหน่วย</th>

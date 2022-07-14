@@ -53,10 +53,10 @@ app.get("/", (req, res) => {
     )
     .then((response) => {
       // console.log(response.data)
-      res.json(response.data)
+      res.status(200).json(response.data)
     })
     .catch((error) => {
-      // console.log(error)
+      res.status(400).send("Bad Request");
     })
 
   // axios({
@@ -96,10 +96,10 @@ app.get("/company", (req, res) => {
     .then(function (response) {
       // console.log(JSON.stringify(response.data));
       // console.log(response.data)
-      res.json(response.data)
+      res.status(200).json(response.data)
     })
     .catch(function (error) {
-      // console.log(error)
+      res.status(400).send("Bad Request");
     })
 })
 
@@ -122,7 +122,7 @@ app.post("/cash-invoice", (req, res) => {
 
   axios(config)
     .then(function (response) {
-      res.json(response.data);
+      res.status(200).json(response.data);
     })
     .catch(function (error) {
       // console.log(error)
