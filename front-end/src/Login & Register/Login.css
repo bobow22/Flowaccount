@@ -45,16 +45,20 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 100vw;
+  height: 110vh;
 }
 
 .Form_Login{
   margin-top: 2rem;
+  margin-top: 0.5rem;
   width: 45%;
   background: rgb(255, 255, 255);
   border-radius: 0.6rem;
   padding: 1rem;
   max-width: 35rem;
   min-width: 35rem;
+  max-height: 41rem;
   /* border: 2px solid rgb(0, 30, 201); */
 }
 
@@ -82,6 +86,7 @@
   /* margin-bottom: 2.2rem; */
   width: 100%;
 }
+
 
 .form__input2{
   border: 1.5px solid rgb(212, 212, 212);
@@ -249,14 +254,14 @@
   flex-wrap: wrap;
   color: rgb(255, 255, 255);
   font-size: 0.8rem;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   width: 75%;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-.FlowAccount_Co p{
+/* .FlowAccount_Co p{
   margin-top: 1rem;
-}
+} */
 
 .FlowAccount_Co p span{
   margin-left: 1.5rem;
@@ -280,7 +285,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    height: 55rem;
+    height: 20rem;
     position: relative;
   }
 
@@ -306,9 +311,13 @@
     text-align: center;
     color: rgb(12, 12, 12);
     font-size: 0.8rem;
-    margin: auto;
+    margin-top: 4.6rem;
     width: 67%;
     font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .form_text_Encryption{
+    margin-top: 1.5rem;
   }
 
    /* Facebook */

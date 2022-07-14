@@ -13,6 +13,9 @@
   width: 3.5rem;
   background: #44a2d8;
   transition: all 0.5s ease;
+  display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .sidebar ul.nav-links {

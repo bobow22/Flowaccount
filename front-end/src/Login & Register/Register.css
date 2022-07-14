@@ -67,7 +67,8 @@
   justify-content: center;
   flex-wrap: wrap;
   padding: 1rem;
-  
+  width: 100vw;
+  height: 160vh;
 }
 
 .Form_Register{
@@ -78,6 +79,7 @@
   padding: 1rem;
   max-width: 35rem;
   min-width: 35rem;
+  max-height: 60rem;
   /* border: 2px solid rgb(0, 30, 201); */
 }
 
@@ -229,11 +231,6 @@
 
 /*-------------------------- Responsive Web Design - Media Queries --------------------*/
 
-@media screen and (max-width: 1415px) {  
-
-}
-
-
 
 
 @media screen and (max-width: 749px) {  
@@ -254,6 +251,7 @@
   .FlowAccount_Co_Register{
     text-align: center;
     color: black;
+    margin-top: 3rem;
   }
 }
 

@@ -94,7 +94,7 @@ export default function Dashboard_cash_invoice() {
 
     return (<>
         <div class="flex relative">
-            <div class="sidebar">
+        <div class="sidebar">
                 <ul class="nav-links">
                     <li>
                         <a href="" onClick={() => navigate("/dashboard")}>
@@ -131,11 +131,13 @@ export default function Dashboard_cash_invoice() {
                             <i class='bx bxs-chalkboard'></i>
                         </a>
                     </li>
-                    <li style={{ marginBottom: '1.5rem' }}>
+                    <li>
                         <a href="#">
                             <i class='bx bxs-briefcase-alt-2'></i>
                         </a>
                     </li>
+                </ul>
+                <ul class="nav-links">
                     <li>
                         <a href="#">
                             <i class='bx bxs-bell'></i>

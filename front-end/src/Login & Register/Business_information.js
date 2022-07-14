@@ -35,34 +35,29 @@ export default function Business_information() {
         if (firstName.length === 0 || lastName.length === 0 || company_name.length === 0 || company_address.length === 0 || tax_number.length != 13) {
             setError(true)
         } else {
-            console.log('FirstName:', firstName,
+            try {
+                await axios.post("http://localhost:3000/api/users", {
+                    username: user.user.email,
+                    password: user.user.password,
+                    phone_number: user.user.phone,
+                    first_name: firstName,
+                    last_name: lastName,
+                    company_name: company_name,
+                    company_address: company_address,
+                    tax_id: tax_number
+                })
+                console.log('FirstName:', firstName,
                 '\nLastName:', lastName,
                 '\nCompanyName:', company_name
-
-            )
+                )
+                navigate("/");
+    
+            } catch (error) {
+                console.log('Error:', error)
+            }
         }
 
-        try {
-            const result = await axios.post("http://localhost:3000/api/users", {
-                username: user.user.email,
-                password: user.user.password,
-                phone_number: user.user.phone,
-                first_name: firstName,
-                last_name: lastName,
-                company_name: company_name,
-                company_address: company_address,
-                tax_id: tax_number
-            });
-
-            navigate("/");
-        } catch (e) {
-            // form.setFields([
-            //     {
-            //         name: "username",
-            //         errors: [e.response.data.error],
-            //     },
-            // ]);
-        }
+        
     }
 
     return (<>

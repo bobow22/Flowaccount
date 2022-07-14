@@ -94,6 +94,20 @@
   font-weight: 300;
 }
 
+.Btn_Content {
+  /* border: 1px solid rgb(199, 119, 0); */
+  width: 79.5%;
+  margin-left: 6.7rem;
+}
+
+.Btn_Content button {
+  background-color: #1CA4FC;
+  padding: 8px 20px;
+  width: 150px;
+  font-family: "Kanit", sans-serif;
+  font-weight: 300;
+}
+
 .receipt {
   font-family: "Kanit", sans-serif;
 }
@@ -265,19 +279,7 @@
   margin-left: 10px;
 }
 
-.Btn_Content {
-  /* border: 1px solid rgb(199, 119, 0); */
-  width: 79.5%;
-  margin-left: 6.7rem;
-}
 
-.Btn_Content button {
-  background-color: #1CA4FC;
-  padding: 8px 20px;
-  width: 150px;
-  font-family: "Kanit", sans-serif;
-  font-weight: 300;
-}
 
 /* CSS */
 .button-65 {

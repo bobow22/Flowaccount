@@ -67,6 +67,8 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    width: 100vw;
+    height: 150vh;
 }
 
 .Form_BusinessInformation{
@@ -78,6 +80,7 @@
     padding: 2.5rem;
     max-width: 40rem;
     min-width: 40rem;
+    max-height: 44rem;
     /* border: 2px solid rgb(0, 30, 201); */
 }
 
@@ -151,8 +154,6 @@
     padding: 0.6rem;
     width: 100%;
 }
-
-
 
 .row_CompanyInformation{
     display: flex;

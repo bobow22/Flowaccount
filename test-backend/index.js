@@ -7,6 +7,7 @@ const cookieSession = require('cookie-session')
 const session = require('express-session');
 const cors = require("cors");
 const isLoggedIn = require('./Middleware/auth')
+
 require('./passport-facebook')
 require('./passport-google')
 
@@ -18,6 +19,7 @@ var businessInfoRouter = require("./routes/business-info")
 var dashboardRouter = require("./routes/dashboard")
 
 const app = express();
+
 app.use(cors());
 app.use(bodyParser.json())
 app.use(express.json());
@@ -29,6 +31,7 @@ app.use("/api/cash-invoice", cashInvoiceRouter);
 app.use("/api/cash-invoice-summary", cashInvoiceSummaryRouter);
 app.use("/api/business-info", businessInfoRouter)
 app.use("/api/dashboard", dashboardRouter)
+
 
 // Get Token
 app.get("/", (req, res) => {
@@ -210,5 +213,104 @@ const PORT = 3000
 app.listen(PORT, () => {
   console.log(`Listening at port ${PORT}`)
 });
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------- Test Register ---------------------------------------
+// app.post('/register',async function (req, res){
+//   const { username, password, phone_number, first_name, last_name, company_name, company_address, tax_id } = req.body;
+
+//   //------bcrypt-----
+//   const hashedPassword = await bcrypt.hash(password, 10);
+
+//   const checkUser = await pool.execute(`select username from general_register where username = ?`, [username])
+//   console.log(checkUser[0])
+//   console.log(checkUser[0].length)
+
+//   //------------Check User----------------
+//   if (checkUser[0].length === 0) {
+
+//     const result = await pool.execute(`INSERT INTO register (phone_number, first_name, last_name, company_name, company_address, tax_id, register_type) VALUES (?, ?, ?, ?, ?, ?, "general")`, [phone_number, first_name, last_name, company_name, company_address, tax_id])
+
+//     const result2 = await pool.execute(
+//       `INSERT INTO general_register (username, password, register_id) VALUES (?, ?, ?)`,
+//       [username, hashedPassword, result[0].insertId]
+//     )
+
+//     res.status(200).json({status: 'Success', user_id: result[0].insertId, general_register_id: result2[0].insertId });
+
+//   } else {
+//     res.status(400).send("Email is already registered.")
+//   }
+// })
+
+// const privateKey = "codecamp_very_$secr3T!";
+
+// //----------------------------------- Test Login ---------------------------------------
+// app.post('/login',async function (req, res){ 
+
+//   const { username, password } = req.body; // รับ post json object
+
+//   const result = await pool.query(
+//     `SELECT * FROM general_register WHERE username='${username}'`
+//   )
+
+//   console.log(result[0])
+//   console.log(result[0][0])
+
+//   if (result[0].length > 0) {
+//     const passwordMatch = await bcrypt.compare(password, result[0][0].password)
+//     if (passwordMatch) {
+
+//       const token = jwt.sign(
+//         {
+//           id: result[0][0].id,
+//           username: result[0][0].username,
+//         },
+//         privateKey,
+//         { expiresIn: "90000ms" }
+//       )
+
+//     const result2 = await pool.query(`SELECT * FROM register WHERE user_id = '${result[0][0].register_id}'`)
+
+//     //-----------login successful
+//     res.json({status:'ok', token: token, user_id: result2[0][0].user_id, company_name: result2[0][0].company_name })
+      
+//     } else {
+//       //-----------login failed
+//       res.status(401).send({ error: "password does not match" })
+//       return
+//     }
+    
+//   } else {
+//     res.status(401).send({ error: "user not found" })
+//     return
+//   }
+// })
+
+
+
+//----------------------------------- Test Auth ---------------------------------------
+// app.post("/authen", function (req, res) {
+//   try{
+
+//     const token = req.headers.authorization.split(' ')[1]
+//     const decoded = jwt.verify(token, privateKey)
+//     res.json({status:'ok', decoded})
+//     res.json({decoded})
+
+//   } catch(err){
+//     res.json({status:'error', message: err.message})
+//   }
+// })
+
 
 

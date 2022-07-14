@@ -177,8 +177,6 @@ export default function Cash_invoice() {
 	// 			})
 	// 	}
 
-
-
 	// }
 
 	let docNum = parseInt(localStorage.getItem("docNum")) + 1;
@@ -292,7 +290,7 @@ export default function Cash_invoice() {
 			//--------------React-Toastify----------------
 			toast.success("Successfull!", {
 				position: "top-center",
-			});
+			})
 		}
 
 
@@ -441,7 +439,7 @@ export default function Cash_invoice() {
 					</a>
 				</button>
 			</div>
-		</div>;
+		</div>
 		{
 			/* -----------------------------------------Content----------------------------------------------- */
 		}
@@ -582,7 +580,7 @@ export default function Cash_invoice() {
 										<th>จำนวน</th>
 										<th>หน่วย</th>
 										<th>ราคาต่อหน่วย</th>
-										<th>ราคารวม</th>
+										<th style={{ width: "10%"}}>ราคารวม</th>
 									</tr>
 								</thead>
 								<tbody>

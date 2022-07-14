@@ -1,26 +1,12 @@
 import '../Login & Register/Login.css';
 import React, { useState } from "react";
-import FacebookLogin from 'react-facebook-login'
+// import FacebookLogin from 'react-facebook-login'
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Login() {
-
-    // const signUserIn = async (response) => {
-    //     console.log('Res -->', response)
-    //     const { name, email, accessToken, userID } = response
-    //     const user = { name, email, accessToken, userId: userID }
-
-    //     await axios({
-    //         method: 'post',
-    //         url: 'http://localhost:3000/signin/facebook',
-    //         data: {
-    //             user,
-    //         },
-    //     })
-    // }
 
     let navigate = useNavigate();
 
@@ -42,18 +28,22 @@ export default function Login() {
                 const result = await axios.post("http://localhost:3000/api/auth/token", {
                     username: email,
                     password: password,
-                });
-                localStorage.setItem("token", result.data.token);
+                })
+
+                localStorage.setItem("token", result.data.token)
                 localStorage.setItem("user_id", result.data.user_id)
                 localStorage.setItem("company_name", result.data.company_name)
-                navigate("/dashboard");
-            } catch (e) {
-                // form.setFields([
-                //     {
-                //         name: "username",
-                //         errors: [e.response.data.error],
-                //     },
-                // ]);
+
+                if(result.data.status == 'ok'){
+                    alert('Login Successfull!')
+                    navigate("/dashboard")
+                }else{
+                    alert('login failed')
+                }
+			    
+            } catch (error) {
+                alert('Login Failed')
+                console.log('Error:', error)
             }
         }
     }
@@ -61,19 +51,6 @@ export default function Login() {
 
     return (<>
         {/* --------------------Form Login----------------- */}
-
-        {/* <div className="download">
-        <div className="download_logo">
-            <img src="https://yt3.ggpht.com/ytc/AKedOLR7cAY0PMWykv9qnD0byzz19CfsRuBgBZxKrRkVKw=s900-c-k-c0x00ffffff-no-rj" />
-            {/* <p>FlowAccount<br/><span>ดาวน์โหลดฟรีได้แล้ววันนี้</span></p> 
-        </div>
-
-        {/* <div style={{border:'1px solid red'}}>
-            
-        </div>        */} {/*
-        <button>ดาวน์โหลด</button>
-    </div> */}
-
 
         <div className="Container">
             <div className="Form_Login">
@@ -89,7 +66,7 @@ export default function Login() {
 
                         <input onChange={e => setEmail(e.target.value)} className='form__input1' placeholder="name@example.com" />
                         {/* ---------------error: Email---------------- */}
-                        {error && email.length <= 0 ? <label style={{ color: 'red', marginTop: '0.3rem' }}>ไม่มีที่อยู่ Email นี้ในระบบ</label> : ''}
+                        {error && email.length <= 0 ? <label style={{ color: 'red', marginTop: '0.3rem' }}>กรุณากรอก Email </label> : ''}
                     </div>
 
                     <div>
@@ -97,7 +74,7 @@ export default function Login() {
 
                         <input className='form__input2' type="password" placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร" onChange={e => setPassword(e.target.value)} />
                         {/* ---------------error: Password---------------- */}
-                        {error && password.length <= 0 ? <label style={{ color: 'red', marginTop: '0.3rem' }}>รหัสผ่านไม่ถูกต้อง</label> : ''}
+                        {error && password.length <= 0 ? <label style={{ color: 'red', marginTop: '0.3rem' }}>กรุณากรอกรหัสผ่าน</label> : ''}
                     </div>
 
 
