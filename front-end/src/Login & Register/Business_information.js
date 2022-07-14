@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './Business_information.css'
-import { busInfo } from "/Users/zeeracha/Desktop/Flowaccount/front-end/src/Login & Register/features/userSlice.js";
+import { busInfo } from "../Login & Register/features/userSlice.js";
 import { useDispatch } from "react-redux";
 
 export default function Business_information() {

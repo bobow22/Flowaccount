@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../Login & Register/Register.css'
 // import axios from 'axios';
-import { regist } from "/Users/zeeracha/Desktop/Flowaccount/front-end/src/Login & Register/features/userSlice.js";
+import { regist } from "../Login & Register/features/userSlice.js";
 import { useDispatch } from "react-redux";
 
 
@@ -13,8 +13,11 @@ const Register = () => {
     const [error, setError] = useState()
 
     const dispatch = useDispatch();
+
+
     // -----------onFinish---------------
     const onFinish = async (e) => {
+
         e.preventDefault()
 
         dispatch(
@@ -23,8 +26,7 @@ const Register = () => {
                 password: password,
                 phone: phone,
             })
-        );
-
+        )
         setEmail("");
         setPassword("");
         setPhone("");
@@ -32,6 +34,7 @@ const Register = () => {
         if (email.length === 0 || password.length === 0 || phone.length != 10) {
             setError(true)
         } else {
+
 
             console.log('email:', email,
                 '\npassword:', password,

@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 
 // (POST) /api/auth/token
 router.post("/token", async function (req, res) {
+
   const { username, password } = req.body; // รับ post json object
 
   const result = await pool.query(
@@ -15,6 +16,7 @@ router.post("/token", async function (req, res) {
   // console.log(result[0]);
   // console.log(result[0][0]);
   // พบ record
+  
   if (result[0].length > 0) {
     const passwordMatch = await bcrypt.compare(password, result[0][0].password);
     if (passwordMatch) {
