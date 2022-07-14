@@ -116,6 +116,11 @@ export default function Cash_invoice() {
 
 			setError(true)
 
+			//--------------React-Toastify----------------
+			toast.error("Error!", {
+				position: "top-center",
+			});
+
 		} else {
 			axios
 				.post("http://13.215.205.13:3000/cash-invoice", {
@@ -175,6 +180,11 @@ export default function Cash_invoice() {
 				.catch((err) => {
 					console.error(err)
 				})
+
+			//--------------React-Toastify----------------
+			toast.success(`Successfull!`, {
+				position: "top-center",
+			});
 		}
 
 
