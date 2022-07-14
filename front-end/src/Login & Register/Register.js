@@ -4,12 +4,12 @@ import '../Login & Register/Register.css'
 import { regist } from "./features/userSlice.js";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { addUser } from "../profileReducer";
+
 
 
 const Register = () => {
 
-    const user = useSelector((state) => state.user);
+    // const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
     let navigate = useNavigate();
@@ -51,7 +51,7 @@ const Register = () => {
 
 
     return (<>
-        <p>{JSON.stringify(user)}</p>
+
         {/* --------------------Form Register----------------- */}
         <div className="Container_Register">
             <form className="Form_Register" >

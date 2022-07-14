@@ -1,18 +1,12 @@
 import React, { useState } from "react";
 import './Business_information.css'
-import { busInfo, regist } from "./features/userSlice.js";
 import { useSelector, useDispatch } from "react-redux";
-import { addUser } from "../profileReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function Business_information() {
 
     let navigate = useNavigate();
-
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [phone, setPhone] = useState("")
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -23,33 +17,13 @@ export default function Business_information() {
     const [error, setError] = useState('')
 
     const user = useSelector((state) => state.user);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     console.log(user.user.email)
 
     //-----------onFinish---------------
     const onFinish = async (e) => {
         e.preventDefault()
-
-        // dispatch(
-        //     busInfo({
-        //         firstName: firstName,
-        //         LastName: lastName,
-        //         Company_name: company_name,
-        //         Company_address: company_address,
-        //         Tax_number: tax_number,
-        //     }),
-        //     regist({
-        //         email: email,
-        //         password: password,
-        //         phone: phone,
-        //     })
-        // );
-        // console.log(profile.userData[0])
-
-        setEmail("");
-        setPassword("");
-        setPhone("");
 
         setFirstName("");
         setLastName("");
@@ -91,7 +65,7 @@ export default function Business_information() {
     }
 
     return (<>
-        <p>{JSON.stringify(user)}</p>
+        {/* <p>{JSON.stringify(user)}</p> */}
         <div className="Container_BusinessInformation">
 
             <div className="Form_BusinessInformation">
