@@ -439,7 +439,7 @@ export default function Cash_invoice() {
 					</a>
 				</button>
 			</div>
-		</div>;
+		</div>
 		{
 			/* -----------------------------------------Content----------------------------------------------- */
 		}
@@ -580,7 +580,7 @@ export default function Cash_invoice() {
 										<th>จำนวน</th>
 										<th>หน่วย</th>
 										<th>ราคาต่อหน่วย</th>
-										<th>ราคารวม</th>
+										<th style={{ width: "10%"}}>ราคารวม</th>
 									</tr>
 								</thead>
 								<tbody>

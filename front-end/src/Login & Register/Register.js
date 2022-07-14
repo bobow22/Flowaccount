@@ -38,15 +38,12 @@ const Register = () => {
         if (email.length === 0 || password.length === 0 || phone.length != 10) {
             setError(true)
         } else {
-
-
             console.log('email:', email,
                 '\npassword:', password,
                 '\nphone:', phone,
             )
+            navigate("/BusinessInformation")
         }
-
-        navigate("/BusinessInformation")
     }
 
 
@@ -64,12 +61,12 @@ const Register = () => {
 
                 <div className='Conten_in_from'>
                     <div>
-                        <span style={{ textAlign: 'left' }}>อีเมล*</span><br />
+                        <span style={{ textAlign: 'left' }}>ชื่อผู้ใช้งาน*</span><br />
 
                         {/* put email here */}
-                        <input type="email" className='input_email' placeholder="name@example.com" value={email} onChange={e => setEmail(e.target.value)} />
+                        <input type="email" className='input_email' placeholder="ชื่อผู้ใช้งาน" value={email} onChange={e => setEmail(e.target.value)} />
                         {/* ---------------error: Email---------------- */}
-                        {error && email.length <= 0 ? <label style={{ color: 'red', marginTop: '0.3rem' }}>กรุณากรอกที่อยู่ Email</label> : ''}
+                        {error && email.length <= 0 ? <label style={{ color: 'red', marginTop: '0.3rem' }}>กรุณากรอกชื่อผู้ใช้งาน</label> : ''}
                     </div>
 
 
@@ -79,7 +76,7 @@ const Register = () => {
                         {/* put password here */}
                         <br /><input type="password" className='input_pass' placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร" value={password} onChange={e => setPassword(e.target.value)} />
                         <p class="limit_pass"></p>
-                        <p className='password_rule'>รหัสผ่านควรมีทั้งตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน</p>
+                        {/* <p className='password_rule'>รหัสผ่านควรมีทั้งตัวอักษร ตัวเลข และสัญลักษณ์ผสมกัน</p> */}
                         {/* ---------------error: password---------------- */}
                         {error && password.length < 8 ? <label style={{ color: 'red', marginTop: '0.3rem' }}>กรุณากรอกรหัสผ่านอย่างน้อย 8 ตัวอักษร</label> : ''}
                     </div>

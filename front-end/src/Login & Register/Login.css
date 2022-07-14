@@ -51,13 +51,14 @@
 
 .Form_Login{
   margin-top: 2rem;
+  margin-top: 0.5rem;
   width: 45%;
   background: rgb(255, 255, 255);
   border-radius: 0.6rem;
   padding: 1rem;
   max-width: 35rem;
   min-width: 35rem;
-  max-height: 40rem;
+  max-height: 41rem;
   /* border: 2px solid rgb(0, 30, 201); */
 }
 
@@ -284,7 +285,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    height: 55rem;
+    height: 20rem;
     position: relative;
   }
 
@@ -310,9 +311,13 @@
     text-align: center;
     color: rgb(12, 12, 12);
     font-size: 0.8rem;
-    margin: auto;
+    margin-top: 4.6rem;
     width: 67%;
     font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  .form_text_Encryption{
+    margin-top: 1.5rem;
   }
 
    /* Facebook */

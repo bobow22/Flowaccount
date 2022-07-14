@@ -68,7 +68,7 @@
   flex-wrap: wrap;
   padding: 1rem;
   width: 100vw;
-  height: 150vh;
+  height: 160vh;
 }
 
 .Form_Register{
@@ -79,7 +79,7 @@
   padding: 1rem;
   max-width: 35rem;
   min-width: 35rem;
-  max-height: 55rem;
+  max-height: 60rem;
   /* border: 2px solid rgb(0, 30, 201); */
 }
 
@@ -251,6 +251,7 @@
   .FlowAccount_Co_Register{
     text-align: center;
     color: black;
+    margin-top: 3rem;
   }
 }
 
