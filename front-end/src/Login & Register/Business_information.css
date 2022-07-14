@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+
+
+
+/*---------------------------- CSS ----------------------------*/
+.button-4 {
+    width: 70%;
+    appearance: none;
+    background-color: #91d642;
+    /* border: 1px solid rgba(27, 31, 35, .15); */
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-size: 16px;
+    /* font-weight: 600; */
+    line-height: 20px;
+    padding: 16px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  
+  .button-4:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+  }
+  
+  .button-4:hover {
+    background-color:#7fbb3b;
+  }
+  
+  .button-4:focus {
+    /* box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px; */
+    outline: none;
+  }
+  
+  .button-4:disabled {
+    background-color: #94d3a2;
+    border-color: rgba(27, 31, 35, .1);
+    color: rgba(255, 255, 255, .8);
+    cursor: default;
+  }
+  
+  .button-4:active {
+    background-color: #6da52c;
+    box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
+  }
+
+
+/*---------------------------------Container_BusinessInformation-------------------------------------*/
+.Container_BusinessInformation{
+    background-color: rgb(84, 192, 235);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.Form_BusinessInformation{
+    margin-top: 3.2rem;
+    margin-bottom: 3.2rem;
+    width: 45%;
+    background: rgb(255, 255, 255);
+    border-radius: 0.6rem;
+    padding: 2.5rem;
+    max-width: 40rem;
+    min-width: 40rem;
+    /* border: 2px solid rgb(0, 30, 201); */
+}
+
+.Form_BusinessInformation h4{
+    margin-top: 2rem;
+    color: rgb(45, 163, 192);
+    font-size: 1.2rem;
+    font-family: 'Prompt', sans-serif;
+}
+
+.Logo_BusinessInformation{
+    text-align: center;
+}
+
+.Logo_BusinessInformation img{
+    margin: auto;
+    width: 38%;
+}
+
+.Logo_BusinessInformation h3{
+    margin-top: 2rem;
+    color: rgb(45, 163, 192);
+    font-size: 1.2rem;
+    font-family: 'Prompt', sans-serif;
+}
+
+.Logo_BusinessInformation span{
+    color: rgb(145, 145, 145);
+    font-size: 1rem;
+    font-family: 'Prompt', sans-serif;
+}
+
+
+/*------------------------------------------Conten-------------------------------------*/
+
+.row_Firstname_ane_LastName{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Firstname{
+    /* border: 1px solid red; */
+    width: 49%;
+}
+
+.Firstname span{
+    color: rgb(68, 68, 68);
+    /* border: 1px solid red; */
+}
+
+.Firstname input{
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 0.3rem;
+    padding: 0.6rem;
+    width: 100%;
+}
+
+.LastName{
+    /* border: 1px solid red; */
+    width: 49%;
+}
+
+.LastName span{
+    color: rgb(68, 68, 68);
+}
+
+.LastName input{
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 0.3rem;
+    padding: 0.6rem;
+    width: 100%;
+}
+
+
+
+.row_CompanyInformation{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.company_name{
+    /* border: 1px solid red; */
+    width: 49%;
+}
+
+.company_name span{
+    color: rgb(68, 68, 68);
+}
+
+.company_name input{
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 0.3rem;
+    padding: 0.6rem;
+    width: 100%;
+}
+
+.company_address{
+    /* border: 1px solid red; */
+    width: 49%;
+}
+
+.company_address span{
+    color: rgb(68, 68, 68);
+}
+
+.company_address input{
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 0.3rem;
+    padding: 0.6rem;
+    width: 100%;
+}
+
+.tax_number{
+    /* border: 1px solid red; */
+    margin-top: 1.4rem;
+}
+
+.tax_number span{
+    color: rgb(68, 68, 68);
+}
+
+.tax_number input{
+    border: 1px solid rgb(214, 214, 214);
+    border-radius: 0.3rem;
+    padding: 0.6rem;
+    width: 100%;
+}
+
+.Btn_BusinessInformation{
+    text-align: center;
+}
+
+
+/*-------------------------- Responsive Web Design - Media Queries --------------------*/
+@media screen and (max-width: 749px) {  
+    .Container_BusinessInformation{
+        background-color: white;
+    }
+
+    .Form_BusinessInformation{
+        margin-top: 1.2rem;
+        margin-bottom: 1.2rem;
+        width: 85%;
+    }
+}

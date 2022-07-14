@@ -5,13 +5,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect } from "react";
 import axios from "axios";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Cash_invoice() {
 
-	const token = localStorage.getItem("token");
+	let navigate = useNavigate();
 
+	const token = localStorage.getItem("token");
+	const user_id = localStorage.getItem("user_id");
+
+
+
+	// FLOWACCOUT ------------------------------------------------------------------------
 	const [companyNameEn, setCompanyNameEn] = useState('')
 	const [companyName, setCompanyName] = useState('')
 	const [companyAddress, setCompanyAddress] = useState('')
@@ -41,6 +50,38 @@ export default function Cash_invoice() {
 		getCompanyInfo();
 	}, [])
 
+	// const [companyName, setCompanyName] = useState('');
+	// const [name, setName] = useState('');
+	// const [companyAddress, setCompanyAddress] = useState('');
+	// const [companyTaxId, setCompanyTaxId] = useState('');
+
+	// useEffect(() => {
+
+	// 	console.log(token)
+	// 	const getCompanyInfo = async () => {
+	// 		await axios
+	// 			.get("http://13.215.205.13:3000/company", {
+	// 				headers: {
+	// 					Authorization: `Bearer ${token}`,
+
+	// 				},
+
+	// 			})
+	// 			.then((res) => {
+	// 				console.log(res.data.result[0].company_name)
+	// 				setCompanyName(res.data.result[0].company_name)
+	// 				setName(res.data.result[0].first_name + " " + res.data.result[0].last_name)
+	// 				setCompanyAddress(res.data.result[0].company_address)
+	// 				setCompanyTaxId(res.data.result[0].tax_id)
+	// 			})
+	// 			.catch((err) => {
+	// 				console.error(err);
+	// 			}
+	// 			);
+	// 	}
+	// 	getCompanyInfo();
+	// }, [])
+
 	//------------------------Thousand separator input with React Hooks--------------------------//
 
 
@@ -62,10 +103,12 @@ export default function Cash_invoice() {
 	const [ProductUnit_3, setProductUnit_3] = useState('')
 	const [ProductUnit_4, setProductUnit_4] = useState('')
 
+	const [DocumentNumber, setDocumentNumber] = useState(0);
 
 	const [error, setError] = useState('')
 
 
+	// FLOWACCOUNT ------------------------------------------------------------------------------------
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		//--------------Error 
@@ -137,6 +180,126 @@ export default function Cash_invoice() {
 
 
 	}
+
+	let docNum = parseInt(localStorage.getItem("docNum")) + 1;
+	console.log(docNum.toString().length)
+
+	if (docNum.toString().length === 1) {
+		docNum = "000" + docNum;
+	} else if (docNum.toString().length === 2) {
+		docNum = "00" + docNum;
+	} else if (docNum.toString().length === 3) {
+		docNum = "0" + docNum;
+	}
+
+	let dateObj = new Date();
+	// let month = dateObj.getUTCMonth() + 1; //months from 1-12
+	// console.log(month)
+	// let day = dateObj.getUTCDate();
+	// console.log(day)
+	let year = dateObj.getUTCFullYear();
+	console.log(year)
+
+	let month = String(dateObj.getUTCMonth() + 1);
+	if (month.length === 1) {
+		month = "0" + month;
+	}
+	let day = String(dateObj.getUTCDate());
+	if (day.length === 1) {
+		day = "0" + day;
+	}
+
+	let newDate = year.toString() + month + day;
+	console.log(newDate)
+
+	// const handleSubmit = (e) => {
+	// 	e.preventDefault()
+	// 	//--------------Error 
+	// 	if (customer_name.length === 0 || CompanyCustomer_name.length === 0 || Customer_address.length === 0 || Tax_Number.length != 13 || ItemName_1.length === 0 || ItemName_2.length === 0 || ItemName_3.length === 0 || ItemName_4.length === 0 || ProductUnit_1.length === 0 || ProductUnit_2.length === 0 || ProductUnit_3.length === 0 || ProductUnit_4.length === 0) {
+
+	// 		setError(true)
+
+	// 		//--------------React-Toastify----------------
+	// 		toast.error("Error!", {
+	// 			position: "top-center",
+	// 		});
+
+	// 	} else {
+	// 		setDocumentNumber(DocumentNumber + 1)
+
+	// 		axios
+	// 			.post("http://13.215.205.13:3000/cash-invoice", {
+	// 				headers: {
+	// 					Authorization: `Bearer ${token}`,
+	// 				},
+	// 				// dataObj: {
+	// 				user_id: user_id,
+	// 				document_number: "CA" + newDate + docNum,
+	// 				customer_company: contactCompanyNameRef.current.value,
+	// 				customer_name: contactCompanyNameRef.current.value,
+	// 				customer_address: contactAddressRef.current.value,
+	// 				customer_tax_id: contactAddressRef.current.value,
+	// 				date: publishedOnRef.current.value,
+	// 				salesperson: salesNameRef.current.value,
+	// 				due_date: dueDateRef.current.value,
+
+	// 				sub_total: sum,
+	// 				discount: numberDiscount,
+	// 				total_after_discount: discount,
+	// 				vat: tax,
+	// 				grand_total: netTotal,
+
+	// 				items: [
+	// 					{
+	// 						item_name: nameRef1.current.value,
+	// 						item_quantity: quantity1,
+	// 						item_unit: unitNameRef1.current.value,
+	// 						price_per_unit: price1,
+	// 						item_total: amount1,
+	// 					},
+	// 					{
+	// 						item_name: nameRef2.current.value,
+	// 						item_quantity: quantity2,
+	// 						item_unit: unitNameRef2.current.value,
+	// 						price_per_unit: price2,
+	// 						item_total: amount2,
+	// 					},
+	// 					{
+	// 						item_name: nameRef3.current.value,
+	// 						item_quantity: quantity3,
+	// 						item_unit: unitNameRef3.current.value,
+	// 						price_per_unit: price3,
+	// 						item_total: amount3,
+	// 					},
+	// 					{
+	// 						item_name: nameRef4.current.value,
+	// 						item_quantity: quantity4,
+	// 						item_unit: unitNameRef4.current.value,
+	// 						price_per_unit: price4,
+	// 						item_total: amount4,
+	// 					},
+	// 				],
+	// 				// },
+	// 			})
+	// 			.then((res) => {
+	// 				console.log(res)
+	// 				// navigate("/DashboardCashInvoice");
+	// 			})
+	// 			.catch((err) => {
+	// 				console.error(err)
+	// 			})
+
+	// 		//--------------React-Toastify----------------
+	// 		toast.success("Successfull!", {
+	// 			position: "top-center",
+	// 		});
+	// 	}
+
+
+
+
+	// }
+
 
 	//----------------- 1 -----------------//
 	const [quantity1, setQuantity1] = useState(0);
@@ -247,6 +410,8 @@ export default function Cash_invoice() {
 		tax,
 		netTotal,
 		displayDiscount,
+
+
 	]);
 
 	return (<>
@@ -277,7 +442,7 @@ export default function Cash_invoice() {
 					</a>
 				</button>
 			</div>
-		</div>;
+		</div>
 		{
 			/* -----------------------------------------Content----------------------------------------------- */
 		}
@@ -285,25 +450,28 @@ export default function Cash_invoice() {
 			<div className="Btn_and_PDF">
 				<div className="Btn_Content">
 					{/* -------------Submit------------- */}
+
 					<button
 						id="form"
 						type="submit"
 						className="button-1"
 						onClick={handleSubmit}
 					>
+
 						ส่ง
 					</button>
-					<button type="submit" className="button-2" onClick={handleSubmit}>
+
+					<button type="submit" id='button_save' className="button-2" onClick={handleSubmit}>
 						บันทึก
 					</button>
-					<button type="submit" className="button-2" onClick={handleSubmit}>
+					<button type="submit" style={{ marginLeft: '10px', marginRight: '10px' }} className="button-2" onClick={handleSubmit}>
 						รับ PDF
 					</button>
 					<button type="submit" className="button-2" onClick={handleSubmit}>
 						พิมพ์
 					</button>
 				</div>
-
+				<ToastContainer />
 				{/*---------------------------------- PDF --------------------------------- */}
 
 				<div className="PDF" style={{ marginTop: "25px" }}>
@@ -318,12 +486,14 @@ export default function Cash_invoice() {
 								<p>
 									ชื่อบริษัท:{" "}
 									<input type="text" value={companyNameEn} />
+									{/* <input type="text" value={companyName} /> */}
 									<span>
 										<br />
 										ชื่อ:{" "}
 										<input
 											type="text"
 											value={companyName}
+										// value={name}
 										/>
 									</span>
 									<span className="Address">
@@ -409,11 +579,11 @@ export default function Cash_invoice() {
 								<thead className="thead-dark">
 									<tr>
 										<th>ลำดับ</th>
-										<th>ชื่อสินค้า/รายละเอียด</th>
+										<th style={{ width: "20%" }}>ชื่อสินค้า/รายละเอียด</th>
 										<th>จำนวน</th>
 										<th>หน่วย</th>
 										<th>ราคาต่อหน่วย</th>
-										<th>ราคารวม</th>
+										<th style={{ width: "10%" }}>ราคารวม</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -767,11 +937,11 @@ export default function Cash_invoice() {
 					<span>พิมพ์ใบเสร็จรับเงิน</span>
 				</p>
 
-				<div className="Text_Create_quote">
+				{/* <div className="Text_Create_quote">
 					<h1>สร้างใบเสนอราคา</h1>
 					<h1>สร้างใบวางบิล</h1>
 					<h1>สร้างใบกำกับภาษี</h1>
-				</div>
+				</div> */}
 			</div>
 		</div>;
 

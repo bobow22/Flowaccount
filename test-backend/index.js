@@ -9,11 +9,25 @@ const cors = require("cors");
 require('./passport-facebook')
 require('./passport-google')
 
+var usersRouter = require("./routes/users");
+var authRouter = require("./routes/auth");
+var cashInvoiceRouter = require("./routes/cash-invoice");
+var cashInvoiceSummaryRouter = require("./routes/cash-invoice-summary")
+var businessInfoRouter = require("./routes/business-info")
+var dashboardRouter = require("./routes/dashboard")
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.json())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use("/api/users", usersRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/cash-invoice", cashInvoiceRouter);
+app.use("/api/cash-invoice-summary", cashInvoiceSummaryRouter);
+app.use("/api/business-info", businessInfoRouter)
+app.use("/api/dashboard", dashboardRouter)
 
 // Get Token
 app.get("/", (req, res) => {
@@ -37,11 +51,11 @@ app.get("/", (req, res) => {
       config
     )
     .then((response) => {
-      console.log(response.data)
-      res.json(response.data)
+      // console.log(response.data)
+      res.status(200).json(response.data)
     })
     .catch((error) => {
-      console.log(error)
+      res.status(400).send("Bad Request");
     })
 
 })
@@ -61,10 +75,10 @@ app.get("/company", (req, res) => {
     .then(function (response) {
       // console.log(JSON.stringify(response.data));
       // console.log(response.data)
-      res.json(response.data)
+      res.status(200).json(response.data)
     })
     .catch(function (error) {
-      console.log(error)
+      res.status(400).send("Bad Request");
     })
 })
 
@@ -87,10 +101,10 @@ app.post("/cash-invoice", (req, res) => {
 
   axios(config)
     .then(function (response) {
-      res.json(response.data);
+      res.status(200).json(response.data);
     })
     .catch(function (error) {
-      console.log(error)
+      res.status(400).send(error);
     });
 });
 
