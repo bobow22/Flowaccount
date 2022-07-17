@@ -38,7 +38,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         const getDashboardData = async () => {
-            const res = await axios.get(`http://localhost:3000/api/dashboard/${user_id}`);
+            const res = await axios.get(`http://13.215.205.13:3000/api/dashboard/${user_id}`);
             console.log(res.data)
             if (res.data.length === 0) {
                 setShow(false);
@@ -379,7 +379,7 @@ export default function Dashboard() {
 
                             <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-4">
                                 <div class="text-center px-4 mt-2">
-                                    <div class="flex justify-center mb-4"><img src="/img/start_1.png" alt="" /></div>
+                                    <div class="flex justify-center mb-4"><img src="/img/start_1.PNG" alt="" /></div>
                                     <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
                                     <span class="inline-block pt-3 text-sm">
                                         How to create quotation
@@ -396,7 +396,7 @@ export default function Dashboard() {
                                 </div>
 
                                 <div class="text-center px-4 mt-2">
-                                    <div class="flex justify-center mb-4"><img src="/img/start_2.png" alt="" /></div>
+                                    <div class="flex justify-center mb-4"><img src="/img/start_2.PNG" alt="" /></div>
                                     <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
                                     <span class="inline-block pt-3 text-sm">
                                         How to issue invoices
@@ -413,7 +413,7 @@ export default function Dashboard() {
                                 </div>
 
                                 <div class="text-center px-4 mt-2">
-                                    <div class="flex justify-center mb-4"><img src="/img/start_3.png" alt="" /></div>
+                                    <div class="flex justify-center mb-4"><img src="/img/start_3.PNG" alt="" /></div>
                                     <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
                                     <span class="inline-block pt-3 text-sm">
                                         Add Business Details
@@ -430,7 +430,7 @@ export default function Dashboard() {
                                 </div>
 
                                 <div class="text-center px-4 mt-2">
-                                    <div class="flex justify-center mb-4"><img src="/img/start_4.png" alt="" /></div>
+                                    <div class="flex justify-center mb-4"><img src="/img/start_4.PNG" alt="" /></div>
                                     <div class="flex justify-center"><div class="w-12 h-12 rounded-full border"></div></div>
                                     <span class="inline-block pt-3 text-sm">
                                         How to add users

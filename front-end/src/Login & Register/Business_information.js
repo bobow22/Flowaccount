@@ -36,7 +36,7 @@ export default function Business_information() {
             setError(true)
         } else {
             try {
-                await axios.post("http://localhost:3000/api/users", {
+                await axios.post("http://13.215.205.13:3000/api/users", {
                     username: user.user.email,
                     password: user.user.password,
                     phone_number: user.user.phone,
@@ -47,17 +47,17 @@ export default function Business_information() {
                     tax_id: tax_number
                 })
                 console.log('FirstName:', firstName,
-                '\nLastName:', lastName,
-                '\nCompanyName:', company_name
+                    '\nLastName:', lastName,
+                    '\nCompanyName:', company_name
                 )
                 navigate("/");
-    
+
             } catch (error) {
                 console.log('Error:', error)
             }
         }
 
-        
+
     }
 
     return (<>

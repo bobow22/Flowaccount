@@ -61,7 +61,7 @@ export default function Dashboard_cash_invoice() {
         console.log(token)
         const getData = async () => {
             await axios
-                .get(`http://localhost:3000/api/cash-invoice-summary/${user_id}`, {
+                .get(`http://13.215.205.13:3000/api/cash-invoice-summary/${user_id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -94,7 +94,7 @@ export default function Dashboard_cash_invoice() {
 
     return (<>
         <div class="flex relative">
-        <div class="sidebar">
+            <div class="sidebar">
                 <ul class="nav-links">
                     <li>
                         <a href="" onClick={() => navigate("/dashboard")}>

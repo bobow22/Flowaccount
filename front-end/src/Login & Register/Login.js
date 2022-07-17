@@ -25,7 +25,7 @@ export default function Login() {
                 '\npassword:', password)
 
             try {
-                const result = await axios.post("http://localhost:3000/api/auth/token", {
+                const result = await axios.post("http://13.215.205.13:3000/api/auth/token", {
                     username: email,
                     password: password,
                 })
@@ -34,13 +34,13 @@ export default function Login() {
                 localStorage.setItem("user_id", result.data.user_id)
                 localStorage.setItem("company_name", result.data.company_name)
 
-                if(result.data.status == 'ok'){
+                if (result.data.status == 'ok') {
                     alert('Login Successfull!')
                     navigate("/dashboard")
-                }else{
+                } else {
                     alert('login failed')
                 }
-			    
+
             } catch (error) {
                 alert('Login Failed')
                 console.log('Error:', error)
@@ -92,11 +92,13 @@ export default function Login() {
 
                     <div class="animate-bottom">
                         <button class="loginBtn loginBtn--facebook" >
-                            <a href="http://localhost:3000/auth/facebook" style={{ color: "white", textDecoration: "none" }}>Log in With Facebook</a>
+                            {/* <a href="http://localhost:3000/auth/facebook" style={{ color: "white", textDecoration: "none" }}>Log in With Facebook</a> */}
+                            <a href="#" style={{ color: "white", textDecoration: "none" }}>Log in With Facebook</a>
                         </button>
 
                         <button class="loginBtn loginBtn--google">
-                            <a href="http://localhost:3000/auth/google" style={{ color: "white", textDecoration: "none" }}>Log in With Google</a>
+                            {/* <a href="http://localhost:3000/auth/google" style={{ color: "white", textDecoration: "none" }}>Log in With Google</a> */}
+                            <a href="#" style={{ color: "white", textDecoration: "none" }}>Log in With Google</a>
                         </button>
                     </div>
 

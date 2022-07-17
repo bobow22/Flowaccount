@@ -60,7 +60,7 @@ export default function Cash_invoice() {
 		console.log(token)
 		const getCompanyInfo = async () => {
 			await axios
-				.get(`http://localhost:3000/api/business-info/${user_id}`, {
+				.get(`http://13.215.205.13:3000/api/business-info/${user_id}`, {
 					headers: {
 						Authorization: `Bearer ${token}`,
 
@@ -226,7 +226,7 @@ export default function Cash_invoice() {
 			setDocumentNumber(DocumentNumber + 1)
 
 			axios
-				.post("http://localhost:3000/api/cash-invoice", {
+				.post("http://13.215.205.13:3000/api/cash-invoice", {
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
@@ -580,7 +580,7 @@ export default function Cash_invoice() {
 										<th>จำนวน</th>
 										<th>หน่วย</th>
 										<th>ราคาต่อหน่วย</th>
-										<th style={{ width: "10%"}}>ราคารวม</th>
+										<th style={{ width: "10%" }}>ราคารวม</th>
 									</tr>
 								</thead>
 								<tbody>

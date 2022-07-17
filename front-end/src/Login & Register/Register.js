@@ -114,11 +114,13 @@ const Register = () => {
 
                     <div class="animate-bottom">
                         <button class="loginBtn loginBtn--facebook" >
-                            <a href="http://localhost:3000/auth/facebook" style={{ color: "white", textDecoration: "none" }}>Log in With Facebook</a>
+                            {/* <a href="http://localhost:3000/auth/facebook" style={{ color: "white", textDecoration: "none" }}>Log in With Facebook</a> */}
+                            <a href="#" style={{ color: "white", textDecoration: "none" }}>Log in With Facebook</a>
                         </button>
 
                         <button class="loginBtn loginBtn--google">
-                            <a href="http://localhost:3000/auth/google" style={{ color: "white", textDecoration: "none" }}>Log in With Google</a>
+                            {/* <a href="http://localhost:3000/auth/google" style={{ color: "white", textDecoration: "none" }}>Log in With Google</a> */}
+                            <a href="#" style={{ color: "white", textDecoration: "none" }}>Log in With Google</a>
                         </button>
 
                     </div>
@@ -132,7 +134,7 @@ const Register = () => {
 
         </div>
 
-     
+
 
 
 

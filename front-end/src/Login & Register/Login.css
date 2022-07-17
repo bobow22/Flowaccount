@@ -1,13 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
 @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300);
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 /*----------------------------------Download-------------------------------*/
-.download{
+.download {
   display: flex;
   justify-content: space-between;
   background-color: rgb(247, 247, 247);
@@ -15,19 +12,19 @@
   /* border: 2px solid rgb(94, 76, 255); */
 }
 
-.download img{
+.download img {
   width: 4%;
   border-radius: 0.2rem;
   /* border: 1px solid rgb(255, 113, 113); */
 }
 
-.download p{
-  color:rgb(114, 114, 114);
+.download p {
+  color: rgb(114, 114, 114);
   font-size: 0.8rem;
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
 }
 
-.download button{
+.download button {
   color: white;
   background-color: rgb(71, 192, 240);
   font-size: 0.8rem;
@@ -37,10 +34,8 @@
   border-radius: 0.1rem;
 }
 
-
-
 /*----------------------------------Login Logo-------------------------------*/
-.Container{
+.Container {
   background-color: rgb(62, 180, 226);
   display: flex;
   justify-content: center;
@@ -49,9 +44,8 @@
   height: 110vh;
 }
 
-.Form_Login{
-  margin-top: 2rem;
-  margin-top: 0.5rem;
+.Form_Login {
+  margin-top: 4rem;
   width: 45%;
   background: rgb(255, 255, 255);
   border-radius: 0.6rem;
@@ -62,24 +56,23 @@
   /* border: 2px solid rgb(0, 30, 201); */
 }
 
-.image_header img{
+.image_header img {
   padding-top: 0.7rem;
   margin: auto;
   width: 38%;
   /* border: 1px solid rgb(188, 201, 0); */
 }
 
-.image_header h2{
+.image_header h2 {
   text-align: center;
   margin-top: 1.5rem;
-  color: rgb(32, 172, 207);;
+  color: rgb(32, 172, 207);
   font-size: 1.3rem;
-  font-family: 'Prompt', sans-serif;
+  font-family: "Prompt", sans-serif;
 }
 
-
 /*----------------------Form Email Pass-----------------------------*/
-.form__input1{
+.form__input1 {
   border: 1.5px solid rgb(212, 212, 212);
   border-radius: 0.3rem;
   padding: 0.8rem;
@@ -87,8 +80,7 @@
   width: 100%;
 }
 
-
-.form__input2{
+.form__input2 {
   border: 1.5px solid rgb(212, 212, 212);
   border-radius: 0.3rem;
   padding: 0.8rem;
@@ -96,12 +88,12 @@
   width: 100%;
 }
 
-.Form span{
+.Form span {
   /* border: 1px solid rgb(165, 112, 13); */
-  color:rgb(112, 112, 112);
+  color: rgb(112, 112, 112);
 }
 
-.Form{
+.Form {
   padding: 0.7rem;
   /* border: 2px solid rgb(59, 13, 165);  */
 }
@@ -111,16 +103,16 @@
   font-size: 0.9rem;
 }
 
-.Form p{
+.Form p {
   font-size: 0.9rem;
-  color:rgb(122, 122, 122);
+  color: rgb(122, 122, 122);
 }
 
-.form_text{
+.form_text {
   text-align: center;
 }
 
-.form_text_Encryption p{
+.form_text_Encryption p {
   margin-top: 0.6rem;
   text-align: center;
   font-size: 0.7rem;
@@ -129,42 +121,43 @@
 /*----------------------Button-----------------------------*/
 
 .button-37 {
-    background-color: rgb(55, 174, 221);
-    border: 1px solid rgb(55, 174, 221);
-    border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    outline: none;
-    outline: 0;
-    padding: 10px 25px;
-    text-align: center;
-    transform: translateY(0);
-    transition: transform 150ms, box-shadow 150ms;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    width: 100%;
+  background-color: rgb(55, 174, 221);
+  border: 1px solid rgb(55, 174, 221);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+}
+
+.button-37:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .button-37 {
+    padding: 10px 30px;
   }
-  
-  .button-37:hover {
-    box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
-    transform: translateY(-2px);
-  }
-  
-  @media (min-width: 768px) {
-    .button-37 {
-      padding: 10px 30px;
-    }
-  }
+}
 
 /*----------------------Facebook and Google Button-----------------------------*/
 
-.animate-bottom{
+.animate-bottom {
   /* border: 2px solid red; */
   display: flex;
   flex-wrap: wrap;
@@ -216,8 +209,8 @@
 .loginBtn--facebook:before {
   border-right: #364e92 1px solid;
   background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png")
-  4px 14px no-repeat;
-  
+    4px 14px no-repeat;
+
   /* border: 1px solid red; */
 }
 .loginBtn--facebook:hover,
@@ -235,8 +228,8 @@
 .loginBtn--google:before {
   border-right: #bb3f30 1px solid;
   background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png")
-  4px 14px no-repeat;
-    /* border: 1px solid rgb(229, 255, 0); */
+    4px 14px no-repeat;
+  /* border: 1px solid rgb(229, 255, 0); */
 }
 .loginBtn--google:hover,
 .loginBtn--google:focus {
@@ -244,10 +237,8 @@
   cursor: pointer;
 }
 
-
-
 /*-----------------------------FlowAccount_Co-----------------------------------*/
-.FlowAccount_Co{
+.FlowAccount_Co {
   /* border: 2px solid rgb(59, 13, 165); */
   display: flex;
   justify-content: center;
@@ -256,31 +247,28 @@
   font-size: 0.8rem;
   /* margin-top: 1rem; */
   width: 75%;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 /* .FlowAccount_Co p{
   margin-top: 1rem;
 } */
 
-.FlowAccount_Co p span{
+.FlowAccount_Co p span {
   margin-left: 1.5rem;
 }
 
-
-
 /*-------------------------- Responsive Web Design - Media Queries --------------------*/
 
-@media screen and (max-width: 1546px) {  
+@media screen and (max-width: 1546px) {
   /* .Form_Login{
     width: 38%;
     margin: auto;
   } */
 }
 
-
-@media screen and (max-width: 749px) { 
-  .Container{
+@media screen and (max-width: 749px) {
+  .Container {
     background: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
@@ -289,7 +277,7 @@
     position: relative;
   }
 
-  .Form_Login{
+  .Form_Login {
     margin-top: 3.8rem;
     width: 67%;
     background: rgb(255, 255, 255);
@@ -297,14 +285,14 @@
     padding: 1rem;
   }
 
-  .image_header img{
+  .image_header img {
     padding-top: 0.7rem;
     margin: auto;
     width: 40%;
     /* border: 1px solid rgb(188, 201, 0); */
   }
 
-  .FlowAccount_Co{
+  .FlowAccount_Co {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -313,14 +301,14 @@
     font-size: 0.8rem;
     margin-top: 4.6rem;
     width: 67%;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
   }
 
-  .form_text_Encryption{
+  .form_text_Encryption {
     margin-top: 1.5rem;
   }
 
-   /* Facebook */
+  /* Facebook */
   .loginBtn--facebook {
     text-align: center;
     width: 100%;
@@ -329,17 +317,16 @@
     /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
     text-shadow: 0 -1px 0 #354c8c;
     padding-top: 0.5rem;
-    padding-bottom: 0.5rem;    
+    padding-bottom: 0.5rem;
   }
-  
+
   .loginBtn--facebook:before {
     border-right: #364e92 1px solid;
     background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png")
-    4px 12px no-repeat;
+      4px 12px no-repeat;
     /* border: 1px solid red; */
   }
   .loginBtn--facebook:hover,
-
   .loginBtn--facebook:focus {
     background-color: #5b7bd5;
     background-image: linear-gradient(#5b7bd5, #4864b1);
@@ -358,8 +345,8 @@
   .loginBtn--google:before {
     border-right: #bb3f30 1px solid;
     background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png")
-    4px 13px no-repeat;
-      /* border: 1px solid rgb(229, 255, 0); */
+      4px 13px no-repeat;
+    /* border: 1px solid rgb(229, 255, 0); */
   }
   .loginBtn--google:hover,
   .loginBtn--google:focus {
@@ -367,13 +354,3 @@
     cursor: pointer;
   }
 }
-
-
-
-
-
-
-
-
-
-
